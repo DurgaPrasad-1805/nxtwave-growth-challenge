@@ -1,6 +1,6 @@
 # 🚀 NxtWave Growth Challenge — AI Workshop Acquisition & Viral Engine
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge)](https://durga-nxtwave-growth.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge)](https://durgaprasad-1805.github.io/nxtwave-growth-challenge/)
 [![GitHub](https://img.shields.io/badge/GitHub-Repo-blue?style=for-the-badge)](https://github.com/DurgaPrasad-1805/nxtwave-growth-challenge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
