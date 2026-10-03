@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NxtWave Growth Engine | AI Workshop Acquisition & Viral Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1f293d;
+      --accent-blue: #38bdf8;
+      --accent-purple: #818cf8;
+      --accent-green: #10b981;
+      --accent-amber: #f59e0b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --gradient-brand: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Top Navigation Mode Switcher */
+    .top-nav {
+      background: #0f172a;
+      border-bottom: 1px solid var(--card-border);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-tag {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-blue);
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .view-toggle-group {
+      display: flex;
+      background: #1e293b;
+      padding: 4px;
+      border-radius: 10px;
+      gap: 4px;
+    }
+
+    .toggle-btn {
+      border: none;
+      background: transparent;
+      color: #94a3b8;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .toggle-btn.active {
+      background: #0b1120;
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Top Badge */
+    .top-badge-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 28px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent-blue);
+    }
+
+    .badge-pulse {
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent-green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    /* Hero */
+    header {
+      text-align: center;
+      padding: 24px 0 40px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.18;
+      letter-spacing: -0.03em;
+      margin-top: 14px;
+    }
+
+    .gradient-text {
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--text-muted);
+      max-width: 780px;
+      margin: 16px auto 0;
+    }
+
+    .urgency-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+    }
+
+    .urgency-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .progress-pill {
+      background: #1e293b;
+      border-radius: 999px;
+      width: 130px;
+      height: 8px;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: middle;
+      border: 1px solid #334155;
+    }
+
+    .progress-fill {
+      width: 82%;
+      height: 100%;
+      background: linear-gradient(90deg, #38bdf8, #10b981);
+    }
+
+    /* Main Grid */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      margin-bottom: 50px;
+    }
+
+    @media (max-width: 860px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .card-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(56, 189, 248, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    /* Form Controls */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #94a3b8;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    select, input[type="text"], input[type="tel"] {
+      width: 100%;
+      background: #0b1120;
+      border: 1px solid #243048;
+      border-radius: 12px;
+      padding: 12px 16px;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    select:focus, input:focus {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%);
+      color: #ffffff;
+      box-shadow: 0 8px 24px -6px rgba(56, 189, 248, 0.5);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px -6px rgba(56, 189, 248, 0.7);
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #0b1120;
+      font-weight: 700;
+      margin-top: 12px;
+    }
+
+    .btn-whatsapp:hover {
+      background: #20ba59;
+      transform: translateY(-2px);
+    }
+
+    /* Dynamic Project Box */
+    .project-preview {
+      margin-top: 20px;
+      background: #090e1a;
+      border: 1px solid #1e293b;
+      border-radius: 14px;
+      padding: 20px;
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .preview-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-green);
+      background: rgba(16, 185, 129, 0.12);
+      padding: 3px 10px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
+    .preview-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .preview-desc {
+      font-size: 0.86rem;
+      color: #94a3b8;
+      margin-bottom: 12px;
+    }
+
+    .resume-bullet-box {
+      background: #030712;
+      border-left: 3px solid var(--accent-purple);
+      padding: 12px;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: #e2e8f0;
+      line-height: 1.5;
+    }
+
+    .bullet-label {
+      font-size: 0.7rem;
+      color: var(--accent-purple);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      display: block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Ticket & Referral */
+    .registered-state {
+      display: none;
+    }
+
+    .ticket-badge {
+      background: #0f172a;
+      border: 1px dashed #38bdf8;
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .ticket-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+    }
+
+    .referral-box {
+      background: #0b1120;
+      border: 1px solid #1e293b;
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .referral-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .referral-link-display {
+      background: #030712;
+      border: 1px solid #1f293d;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: #38bdf8;
+      word-break: break-all;
+      margin: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .copy-btn {
+      background: #1e293b;
+      border: none;
+      color: #94a3b8;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+
+    .copy-btn:hover {
+      background: #334155;
+      color: #fff;
+    }
+
+    .milestone-container {
+      margin-top: 14px;
+    }
+
+    .milestone-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: #0e1726;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      font-size: 0.83rem;
+    }
+
+    .milestone-item.unlocked {
+      border-color: rgba(16, 185, 129, 0.4);
+      background: rgba(16, 185, 129, 0.05);
+    }
+
+    .milestone-status {
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    .status-locked { color: #f43f5e; }
+    .status-unlocked { color: #10b981; }
+
+    /* Deliverables */
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      margin-bottom: 60px;
+    }
+
+    .deliverable-card {
+      background: rgba(17, 24, 39, 0.6);
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      padding: 22px;
+    }
+
+    .deliverable-icon {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .deliverable-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .deliverable-desc {
+      font-size: 0.86rem;
+      color: #94a3b8;
+    }
+
+    /* INTERNAL OPERATIONS CONSOLE */
+    .dashboard-view {
+      display: none;
+      padding-top: 16px;
+      margin-bottom: 60px;
+    }
+
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .metric-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .metric-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .metric-value {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin: 6px 0 2px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .metric-sub {
+      font-size: 0.75rem;
+      color: var(--accent-green);
+    }
+
+    .dash-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 860px) {
+      .dash-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 0.84rem;
+    }
+
+    .data-table th, .data-table td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .data-table th {
+      color: #94a3b8;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+    }
+
+    .badge-channel {
+      background: #1e293b;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    footer {
+      border-top: 1px solid #1e293b;
+      padding: 28px 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation & View Switcher -->
+  <nav class="top-nav">
+    <div class="brand-logo">
+      <span>NxtWave</span>
+      <span class="brand-tag">GROWTH SPRINT</span>
+    </div>
+
+    <div class="view-toggle-group">
+      <button class="toggle-btn active" id="btnStudentView" onclick="switchView('student')">
+        🎓 Student Acquisition View
+      </button>
+      <button class="toggle-btn" id="btnOpsView" onclick="switchView('ops')">
+        📊 Growth Ops Console (500 Reg Tracker)
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==================== VIEW 1: STUDENT EXPERIENCE ==================== -->
+  <div id="studentExperienceView">
+    <div class="container">
+      
+      <div class="top-badge-wrapper">
+        <div class="badge">
+          <span class="badge-pulse"></span>
+          Live Placement Sprint • Strictly 500 Seats Available
+        </div>
+      </div>
+
+      <header>
+        <h1>Build Your First AI Project<br><span class="gradient-text">In Just 60 Minutes</span></h1>
+        <p class="hero-sub">
+          No theory lectures. Open your browser, build an end-to-end Generative AI application, deploy it live on GitHub, and leave with 3 ATS-optimized resume bullet points for your upcoming placement interviews.
+        </p>
+
+        <div class="urgency-bar">
+          <div class="urgency-item">
+            <span>📅 <strong>Upcoming Sunday, 7:00 PM IST</strong></span>
+          </div>
+          <div class="urgency-item">
+            <span>⏱ <strong>60 Minutes Flat</strong></span>
+          </div>
+          <div class="urgency-item">
+            <span>⚡ <strong><span id="seatCounterDisplay">412</span> / 500 Claimed</strong></span>
+            <span class="progress-pill"><span class="progress-fill" id="seatProgressBar"></span></span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Interactive Grid -->
+      <div class="main-grid">
+        
+        <!-- LEFT: AI Project Architect -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon">⚡</div>
+            <div>
+              <h2 class="card-title">Interactive AI Project Architect</h2>
+              <p style="font-size: 0.82rem; color: #94a3b8;">Discover your branch-specific 60-min capstone project</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="branchSelect">Your Engineering Branch</label>
+            <select id="branchSelect">
+              <option value="cs">Computer Science / IT (CSE, ISE, AI/ML)</option>
+              <option value="ece">Electronics & Communication (ECE, EEE)</option>
+              <option value="mech">Mechanical / Automation</option>
+              <option value="civil">Civil / Structural</option>
+              <option value="nontech">Non-CS / Open Branch</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="interestSelect">Preferred Project Domain</label>
+            <select id="interestSelect">
+              <option value="copilot">Autonomous Interview & Placement Copilot</option>
+              <option value="docai">Multi-PDF Semantic Research Assistant</option>
+              <option value="agent">Automated Web Task & Job Application Agent</option>
+              <option value="vision">Multimodal Vision & Real-time Defect Detector</option>
+            </select>
+          </div>
+
+          <button class="btn btn-primary" id="generateBtn" type="button">
+            <span>Preview My 60-Minute AI Project & Resume Bullet</span> ➔
+          </button>
+
+          <div class="project-preview" id="projectPreview">
+            <span class="preview-tag" id="previewTag">CUSTOMIZED FOR CSE/IT</span>
+            <h3 class="preview-title" id="previewTitle">AI Technical Interviewer with Real-time Code & Voice Evaluation</h3>
+            <p class="preview-desc" id="previewDesc">
+              Full-stack application using Gemini API and Streamlit that evaluates coding solutions, checks edge cases, and provides instant audio-style feedback.
+            </p>
+
+            <span class="bullet-label">📄 Your Exact Resume Bullet Post-Workshop:</span>
+            <div class="resume-bullet-box" id="resumeBulletText">
+              • Engineered an AI Technical Interview Platform using Gemini 1.5 Flash and Python; automated real-time test-case generation and code evaluation with &lt;1.2s response latency.
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Instant RSVP & Viral Referral Locker -->
+        <div class="card">
+          
+          <!-- Unregistered State -->
+          <div id="unregisteredState">
+            <div class="card-header">
+              <div class="card-icon">🎟️</div>
+              <div>
+                <h2 class="card-title">Free Registration</h2>
+                <p style="font-size: 0.82rem; color: #94a3b8;">1-Click Entry • Zero Spam • 100% Free</p>
+              </div>
+            </div>
+
+            <form id="regForm">
+              <div class="form-group">
+                <label for="studentName">Full Name</label>
+                <input type="text" id="studentName" placeholder="e.g. Rahul Sharma" required>
+              </div>
+
+              <div class="form-group">
+                <label for="studentPhone">WhatsApp Number</label>
+                <input type="tel" id="studentPhone" placeholder="e.g. 9876543210" required>
+              </div>
+
+              <div class="form-group">
+                <label for="collegeName">College / Institute Name</label>
+                <input type="text" id="collegeName" placeholder="e.g. CBIT Hyderabad / SRM Chennai" required>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="margin-top: 6px;">
+                <span>Confirm 60-Min Workshop Seat</span> 🎟️
+              </button>
+            </form>
+          </div>
+
+          <!-- Registered State (Viral Engine) -->
+          <div id="registeredState" class="registered-state">
+            <div class="ticket-badge">
+              <div style="font-size: 0.8rem; color: #94a3b8; text-transform: uppercase;">Seat Confirmed • Ticket ID</div>
+              <div class="ticket-number" id="ticketId">NXW-2026-8491</div>
+              <div style="font-size: 0.82rem; color: var(--accent-green); margin-top: 4px;">Confirmation link dispatched to WhatsApp!</div>
+            </div>
+
+            <div class="referral-box">
+              <div class="referral-title">
+                <span>🎁</span> Unlock the 2026 Final-Year AI Vault
+              </div>
+              <p style="font-size: 0.82rem; color: #94a3b8;">
+                Invite <strong>2 batchmates</strong> with your unique link to instantly unlock 50+ GitHub Starter Repos, Capstone Architecture diagrams, and ATS Templates!
+              </p>
+
+              <div class="referral-link-display">
+                <span id="refLinkText">nxtwave.io/ai60?ref=NXW-HERO-1024</span>
+                <button class="copy-btn" id="copyBtn" onclick="copyReferral()">Copy</button>
+              </div>
+
+              <button class="btn btn-whatsapp" id="whatsappShareBtn" onclick="shareOnWhatsApp()">
+                <span>Share to Batch WhatsApp Group</span> 📲
+              </button>
+
+              <div class="milestone-container">
+                <div class="milestone-item" id="m1">
+                  <span>1 Friend Registered</span>
+                  <span class="milestone-status status-locked">🔒 Locked</span>
+                </div>
+                <div class="milestone-item" id="m2">
+                  <span>2 Friends Registered (Full Project Vault)</span>
+                  <span class="milestone-status status-locked">🔒 Locked</span>
+                </div>
+              </div>
+
+              <div style="margin-top: 12px; text-align: center;">
+                <button type="button" style="background: none; border: none; color: #38bdf8; font-size: 0.78rem; cursor: pointer; text-decoration: underline;" onclick="simulateReferral()">
+                  [Simulation Demo: Test +1 Friend Joining]
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Value Props -->
+      <h2 style="text-align: center; font-size: 1.6rem; margin-bottom: 24px; font-weight: 800;">
+        What You Walk Away With In <span class="gradient-text">60 Minutes</span>
+      </h2>
+
+      <div class="deliverables-grid">
+        <div class="deliverable-card">
+          <div class="deliverable-icon">🚀</div>
+          <h3 class="deliverable-title">Live Deployed AI App</h3>
+          <p class="deliverable-desc">A working public web link running your AI model that you can demo live to technical interviewers on your phone.</p>
+        </div>
+        <div class="deliverable-card">
+          <div class="deliverable-icon">💻</div>
+          <h3 class="deliverable-title">Clean GitHub Repository</h3>
+          <p class="deliverable-desc">A professional README formatted with system architecture diagrams, environment configurations, and clean modular code.</p>
+        </div>
+        <div class="deliverable-card">
+          <div class="deliverable-icon">📑</div>
+          <h3 class="deliverable-title">3 ATS Resume Bullets</h3>
+          <p class="deliverable-desc">Copy-paste resume bullets written with the industry-standard STAR format and quantifiable latency metrics.</p>
+        </div>
+        <div class="deliverable-card">
+          <div class="deliverable-icon">🎯</div>
+          <h3 class="deliverable-title">Zero Math Fluff</h3>
+          <p class="deliverable-desc">No boring mathematical slides. 100% focused on modern APIs, LLM prompts, and deployment pipelines.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== VIEW 2: GROWTH OPERATIONS CONSOLE ==================== -->
+  <div id="opsDashboardView" class="dashboard-view">
+    <div class="container">
+      
+      <div style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px;">
+        <div>
+          <h2 style="font-size: 1.8rem; font-weight: 800;">Campaign Telemetry & 500-Registration Model</h2>
+          <p style="color: var(--text-muted); font-size: 0.88rem;">Live execution metrics, channel attribution, viral K-factor, and ₹2,000 budget burn</p>
+        </div>
+        <button class="btn btn-primary" style="width: auto; padding: 8px 16px; font-size: 0.82rem;" onclick="exportRegistrationsCSV()">
+          📥 Export Lead Telemetry (CSV)
+        </button>
+      </div>
+
+      <!-- Top Metric Cards -->
+      <div class="metrics-row">
+        <div class="metric-card">
+          <div class="metric-label">Total Verified Registrations</div>
+          <div class="metric-value" style="color: var(--accent-blue);" id="opsTotalRegs">412</div>
+          <div class="metric-sub">Target: 500 (82.4% Achieved)</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-label">Viral Coefficient (K-Factor)</div>
+          <div class="metric-value" style="color: var(--accent-green);" id="opsKFactor">0.34</div>
+          <div class="metric-sub">Target: 0.32 (+6.2% above baseline)</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-label">Budget Burn / Blended CAC</div>
+          <div class="metric-value" style="color: var(--accent-amber);">₹3.84</div>
+          <div class="metric-sub">₹1,580 Spent / ₹2,000 Cap</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-label">CR WhatsApp Groups Active</div>
+          <div class="metric-value" style="color: var(--accent-purple);">36 / 35</div>
+          <div class="metric-sub">20 Targeted Engineering Colleges</div>
+        </div>
+      </div>
+
+      <!-- Detailed Dashboard Grid -->
+      <div class="dash-grid">
+        
+        <!-- Left: Channel Attribution Breakdown -->
+        <div class="card">
+          <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">Channel Attribution & Conversion Math</h3>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Channel Vector</th>
+                <th>Reach</th>
+                <th>Conv %</th>
+                <th>Regs</th>
+                <th>CAC</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge-channel">Channel 1: CR WhatsApp Guilds</span></td>
+                <td>2,800</td>
+                <td>10.0%</td>
+                <td><strong>280</strong></td>
+                <td>₹4.28</td>
+              </tr>
+              <tr>
+                <td><span class="badge-channel">Channel 2: Peer Referral (K=0.34)</span></td>
+                <td>1,120</td>
+                <td>14.2%</td>
+                <td><strong>160</strong></td>
+                <td>₹0.00</td>
+              </tr>
+              <tr>
+                <td><span class="badge-channel">Channel 3: Micro-Bounties / Clubs</span></td>
+                <td>650</td>
+                <td>12.3%</td>
+                <td><strong>80</strong></td>
+                <td>₹10.00</td>
+              </tr>
+              <tr style="background: rgba(56, 189, 248, 0.05); font-weight: 700;">
+                <td>Total Projected Output</td>
+                <td>4,570</td>
+                <td>11.3%</td>
+                <td style="color: var(--accent-green);">520</td>
+                <td style="color: var(--accent-blue);">₹3.84</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #1e293b;">
+            <h4 style="font-size: 0.9rem; font-weight: 700; margin-bottom: 8px;">₹2,000 Budget Allocation Breakdown</h4>
+            <div style="font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
+              • <strong>₹1,200 (60%):</strong> Top 3 Class Representative Performance Bounties (1st: ₹600, 2nd: ₹400, 3rd: ₹200 Amazon cards).<br>
+              • <strong>₹800 (40%):</strong> Live Attendance Retention Raffle (Two ₹400 cards drawn live at min 50 to secure &gt;70% attendance).<br>
+              • <strong>₹0 (0%):</strong> Paid Meta/Google Ads (scrapped due to unviable ₹40+ CAC).
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Recent Leads & Real-time Log -->
+        <div class="card">
+          <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">Live Registration Stream</h3>
+          <div id="leadStream" style="display: flex; flex-direction: column; gap: 8px; max-height: 340px; overflow-y: auto;">
+            <div style="font-size: 0.8rem; padding: 8px 12px; background: #0b1120; border-radius: 8px; border-left: 3px solid var(--accent-blue);">
+              <strong>Karthik R.</strong> (CBIT Hyderabad • CSE) <br>
+              <span style="color: #64748b;">Source: CR Group #04 • 3 mins ago</span>
+            </div>
+            <div style="font-size: 0.8rem; padding: 8px 12px; background: #0b1120; border-radius: 8px; border-left: 3px solid var(--accent-green);">
+              <strong>Ananya S.</strong> (SRM Chennai • ECE) <br>
+              <span style="color: #64748b;">Source: Referral (ref=NXW-PRIYA) • 7 mins ago</span>
+            </div>
+            <div style="font-size: 0.8rem; padding: 8px 12px; background: #0b1120; border-radius: 8px; border-left: 3px solid var(--accent-purple);">
+              <strong>Siddharth M.</strong> (VNR VJIET • Mech) <br>
+              <span style="color: #64748b;">Source: CR Group #12 • 14 mins ago</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>NxtWave Growth Intern Challenge • Submission Simulation Built by Durga Prasad</p>
+  </footer>
+
+  <script>
+    // Tab Switching
+    function switchView(view) {
+      const studentView = document.getElementById('studentExperienceView');
+      const opsView = document.getElementById('opsDashboardView');
+      const btnStudent = document.getElementById('btnStudentView');
+      const btnOps = document.getElementById('btnOpsView');
+
+      if (view === 'student') {
+        studentView.style.display = 'block';
+        opsView.style.display = 'none';
+        btnStudent.classList.add('active');
+        btnOps.classList.remove('active');
+      } else {
+        studentView.style.display = 'none';
+        opsView.style.display = 'block';
+        btnOps.classList.add('active');
+        btnStudent.classList.remove('active');
+      }
+    }
+
+    // Project Matcher Logic
+    const projects = {
+      cs: {
+        copilot: {
+          tag: "OPTIMIZED FOR CS/IT • PLACEMENTS",
+          title: "AI Technical Interviewer with Real-time Code & Voice Evaluation",
+          desc: "Full-stack application using Gemini API and Streamlit that evaluates coding solutions, checks edge cases, and provides instant audio-style feedback.",
+          bullet: "• Engineered an AI Technical Interview Platform using Gemini 1.5 Flash and Python; automated real-time test-case generation and code evaluation with <1.2s response latency."
+        },
+        docai: {
+          tag: "OPTIMIZED FOR CS/IT • RAG ARCHITECTURE",
+          title: "Hybrid Retrieval-Augmented Generation (RAG) Document QA Engine",
+          desc: "A vector-based research paper analyzer allowing students to query 100+ page technical PDFs with cited page numbers.",
+          bullet: "• Developed an end-to-end RAG Document Intelligence pipeline utilizing ChromaDB and Gemini Embeddings; reduced document query latency by 45% through chunking optimization."
+        },
+        agent: {
+          tag: "OPTIMIZED FOR CS/IT • AGENTIC WORKFLOWS",
+          title: "Autonomous Job Application Screener & Cover Letter Synthesizer",
+          desc: "An intelligent agent that parses job descriptions, cross-references student GitHub repos, and generates custom tailored technical cover letters.",
+          bullet: "• Built an autonomous multi-step LLM agent utilizing LangChain and web scraping tools; processed and parsed 50+ job specs/min with structured JSON extraction."
+        },
+        vision: {
+          tag: "OPTIMIZED FOR CS/IT • MULTIMODAL",
+          title: "Multimodal Visual Bug & Diagram-to-Code Generator",
+          desc: "An AI tool where users upload whiteboard architecture diagrams, and the system automatically outputs React scaffolding code.",
+          bullet: "• Created a multimodal diagram-to-code pipeline leveraging Gemini Vision API; converted UI wireframe screenshots into clean Tailwind/React components with 90% fidelity."
+        }
+      },
+      ece: {
+        copilot: {
+          tag: "OPTIMIZED FOR ECE/EEE • EMBEDDED SYSTEMS",
+          title: "Verilog / VHDL Syntax Assistant & Waveform Error Explainer",
+          desc: "An intelligent debugging assistant that translates HDL synthesis warnings and modelsim waveform errors into plain English fixes.",
+          bullet: "• Built an AI-driven HDL Debugging Assistant using Gemini API; automated root-cause analysis for timing violations in Verilog testbenches."
+        },
+        docai: {
+          tag: "OPTIMIZED FOR ECE/EEE • HARDWARE SPECS",
+          title: "Datasheet Intelligence: Automated Component Parameter Comparator",
+          desc: "Upload microcontroller and IC datasheets (e.g., STM32 vs ESP32) and query pinout maps, voltage thresholds, and ADC specs in tabular format.",
+          bullet: "• Implemented a Datasheet Intelligence Engine for IC component comparison using vector embeddings, saving 60% manual reference time."
+        },
+        agent: {
+          tag: "OPTIMIZED FOR ECE/EEE • AUTOMATION",
+          title: "IoT Telemetry Anomaly Detector with Automated Alerting",
+          desc: "Connects to live sensor data streams and uses Gemini reasoning to detect sensor drift, thermal spikes, and automated maintenance actions.",
+          bullet: "• Deployed an IoT predictive maintenance agent that analyzes multi-sensor telemetry streams and triggers real-time Telegram alerts on anomalies."
+        },
+        vision: {
+          tag: "OPTIMIZED FOR ECE/EEE • HARDWARE VISION",
+          title: "PCB Component & Solder Bridge Defect Inspector",
+          desc: "Upload high-res photos of printed circuit boards to detect missing surface-mount resistors, misaligned chips, and solder bridges.",
+          bullet: "• Developed a visual PCB defect inspection tool using multimodal vision models, identifying soldering anomalies with high accuracy."
+        }
+      },
+      mech: {
+        copilot: {
+          tag: "OPTIMIZED FOR MECHANICAL / CAD",
+          title: "CAD Constraint & Material Selection Advisory Agent",
+          desc: "A conversational engineering assistant that suggests optimal alloys and fatigue tolerances based on stress requirements.",
+          bullet: "• Designed an AI Material Selection Advisory Tool using LLM reasoning to evaluate tensile strength, thermal resistance, and cost tradeoffs."
+        },
+        docai: {
+          tag: "OPTIMIZED FOR MECHANICAL / AUTOMOTIVE",
+          title: "Automotive Service Manual & OBD-II Diagnostic Assistant",
+          desc: "Translates complex vehicle error codes and engine service manuals into step-by-step repair walkthroughs.",
+          bullet: "• Engineered an OBD-II Diagnostic Copilot parsing SAE standard fault codes into natural-language mechanical troubleshooting guides."
+        },
+        agent: {
+          tag: "OPTIMIZED FOR MECHANICAL / AUTOMATION",
+          title: "HVAC Thermal Load & Energy Optimization Forecaster",
+          desc: "Takes ambient weather data and room dimensions to calculate real-time cooling loads and optimal chiller schedules.",
+          bullet: "• Built an automated thermal optimization calculator utilizing Gemini API to estimate HVAC compressor load reductions."
+        },
+        vision: {
+          tag: "OPTIMIZED FOR MECHANICAL / MANUFACTURING",
+          title: "CNC Machining Surface Roughness & Tool Wear Inspector",
+          desc: "Inspects macro photographs of machined metal parts to classify tool chatter, burrs, and surface finish compliance.",
+          bullet: "• Created a visual quality control inspection prototype for CNC milled components using Gemini Vision API."
+        }
+      },
+      civil: {
+        copilot: {
+          tag: "OPTIMIZED FOR CIVIL / STRUCTURAL",
+          title: "IS Code Compliance & Concrete Mix Design Calculator",
+          desc: "An AI copilot trained on Indian Standard (IS 456 / IS 10262) codes to provide automated mix proportioning calculations.",
+          bullet: "• Developed an IS-Code compliance copilot for structural concrete mix design, cutting code verification time by 75%."
+        },
+        docai: {
+          tag: "OPTIMIZED FOR CIVIL / INFRASTRUCTURE",
+          title: "Construction Tender & BOQ (Bill of Quantities) Analyzer",
+          desc: "Analyzes 200+ page public works tenders, extracting material rate escalations, penalty clauses, and milestones automatically.",
+          bullet: "• Implemented an automated tender specification parsing pipeline for structural civil projects using vector search."
+        },
+        agent: {
+          tag: "OPTIMIZED FOR CIVIL / GEOTECHNICAL",
+          title: "Soil Bearing Capacity & Foundation Safety Recommender",
+          desc: "Input standard penetration test (SPT) N-values and soil stratigraphy to get foundation type recommendations.",
+          bullet: "• Built a geotechnical advisory tool matching borehole logs to allowable bearing capacities using generative AI."
+        },
+        vision: {
+          tag: "OPTIMIZED FOR CIVIL / URBAN",
+          title: "Pavement Pothole & Concrete Crack Severity Classifier",
+          desc: "Upload drone or mobile imagery of road surfaces to classify longitudinal cracks, alligator cracking, and calculate repair volume.",
+          bullet: "• Developed an infrastructure health monitoring app using multimodal vision to categorize road pavement distress levels."
+        }
+      },
+      nontech: {
+        copilot: {
+          tag: "ZERO CODING REQUIRED • RAPID AI APP",
+          title: "Zero-Code Personal Placement Interview Coach",
+          desc: "A browser-based conversational assistant that asks you standard HR & behavioral questions (STAR technique) and grades your clarity.",
+          bullet: "• Built and launched a web-based AI Interview Coach utilizing prompt engineering and Streamlit; evaluated 50+ mock interview scenarios."
+        },
+        docai: {
+          tag: "ZERO CODING REQUIRED • RESEARCH",
+          title: "Instant College Syllabus & Exam Paper Summarizer",
+          desc: "Upload your semester syllabus and 5 years of past exam papers to receive high-probability topic clusters and summary notes.",
+          bullet: "• Designed an automated syllabus & past-paper knowledge engine synthesizing complex exam trends into high-yield revision summaries."
+        },
+        agent: {
+          tag: "ZERO CODING REQUIRED • AUTOMATION",
+          title: "LinkedIn Profile & Tech Project Portfolio Optimizer",
+          desc: "Evaluates your current LinkedIn headline, bio, and project list against top software engineering job descriptions.",
+          bullet: "• Created an automated LinkedIn & Resume optimization engine matching student credentials to entry-level software job benchmarks."
+        },
+        vision: {
+          tag: "ZERO CODING REQUIRED • MULTIMODAL",
+          title: "Handwritten Note Digitizer & Flashcard Synthesizer",
+          desc: "Take photos of messy handwritten classroom notes and instantly get clean markdown summaries and active recall flashcards.",
+          bullet: "• Built a multimodal optical document intelligence tool transforming handwritten lecture notes into formatted digital study guides."
+        }
+      }
+    };
+
+    const generateBtn = document.getElementById('generateBtn');
+    const projectPreview = document.getElementById('projectPreview');
+    const previewTag = document.getElementById('previewTag');
+    const previewTitle = document.getElementById('previewTitle');
+    const previewDesc = document.getElementById('previewDesc');
+    const resumeBulletText = document.getElementById('resumeBulletText');
+
+    function updatePreview() {
+      const branch = document.getElementById('branchSelect').value;
+      const interest = document.getElementById('interestSelect').value;
+      const data = (projects[branch] && projects[branch][interest]) || projects.cs.copilot;
+
+      previewTag.textContent = data.tag;
+      previewTitle.textContent = data.title;
+      previewDesc.textContent = data.desc;
+      resumeBulletText.textContent = data.bullet;
+      projectPreview.style.display = 'block';
+    }
+
+    generateBtn.addEventListener('click', updatePreview);
+
+    // Registration Form Handler
+    const regForm = document.getElementById('regForm');
+    const unregisteredState = document.getElementById('unregisteredState');
+    const registeredState = document.getElementById('registeredState');
+    const ticketId = document.getElementById('ticketId');
+    const refLinkText = document.getElementById('refLinkText');
+
+    let simulatedFriends = 0;
+    let totalRegCount = 412;
+
+    regForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('studentName').value.trim();
+      const college = document.getElementById('collegeName').value.trim();
+      
+      const cleanName = name.split(' ')[0].toUpperCase() || "HERO";
+      const randomNum = Math.floor(1000 + Math.random() * 9000);
+      const code = `NXW-${cleanName}-${randomNum}`;
+
+      ticketId.textContent = code;
+      refLinkText.textContent = `nxtwave.io/ai60?ref=${code}`;
+
+      unregisteredState.style.display = 'none';
+      registeredState.style.display = 'block';
+
+      // Update counters
+      totalRegCount++;
+      document.getElementById('seatCounterDisplay').textContent = totalRegCount;
+      document.getElementById('opsTotalRegs').textContent = totalRegCount;
+
+      // Add to ops lead stream
+      const stream = document.getElementById('leadStream');
+      const newLead = document.createElement('div');
+      newLead.style = "font-size: 0.8rem; padding: 8px 12px; background: #0b1120; border-radius: 8px; border-left: 3px solid var(--accent-green); animation: fadeIn 0.3s ease;";
+      newLead.innerHTML = `<strong>${name}</strong> (${college}) <br><span style="color: #64748b;">Source: Web RSVP • Just now</span>`;
+      stream.insertBefore(newLead, stream.firstChild);
+    });
+
+    function copyReferral() {
+      const text = document.getElementById('refLinkText').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy', 2000);
+      });
+    }
+
+    function shareOnWhatsApp() {
+      const link = document.getElementById('refLinkText').textContent;
+      const msg = encodeURIComponent(
+        `🚨 Final Year Engineers: Instead of regular theoretical webinars, NxtWave is hosting a FREE 60-Minute sprint where we build and deploy a live AI project directly to our GitHub with ATS-ready resume bullets for campus placements.\n\nOnly 500 seats available. Register using my invite link:\nhttps://${link}`
+      );
+      window.open(`https://api.whatsapp.com/send?text=${msg}`, '_blank');
+    }
+
+    function simulateReferral() {
+      simulatedFriends++;
+      const m1 = document.getElementById('m1');
+      const m2 = document.getElementById('m2');
+
+      if (simulatedFriends === 1) {
+        m1.classList.add('unlocked');
+        m1.querySelector('.milestone-status').className = 'milestone-status status-unlocked';
+        m1.querySelector('.milestone-status').textContent = '✅ Unlocked! (GitHub Starters)';
+        alert("🎉 Milestone 1 Reached: 1 Friend Registered! You unlocked the GitHub Starter Pack.");
+      } else if (simulatedFriends >= 2) {
+        m2.classList.add('unlocked');
+        m2.querySelector('.milestone-status').className = 'milestone-status status-unlocked';
+        m2.querySelector('.milestone-status').textContent = '🎉 Fully Unlocked! (Download Vault)';
+        alert("🔥 Milestone 2 Reached: 2 Friends Registered! The entire 2026 AI Capstone & Interview Vault is now unlocked!");
+      }
+    }
+
+    function exportRegistrationsCSV() {
+      const csvContent = "data:text/csv;charset=utf-8,TicketID,Name,College,Branch,Source,Timestamp\n" +
+        "NXW-2026-8491,Rahul Sharma,CBIT Hyderabad,CSE,CR Group #04,2026-10-04 10:15:00\n" +
+        "NXW-2026-8492,Ananya S.,SRM Chennai,ECE,Referral,2026-10-04 10:22:00\n" +
+        "NXW-2026-8493,Siddharth M.,VNR VJIET,Mech,CR Group #12,2026-10-04 10:35:00";
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "nxtwave_growth_leads_telemetry.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    updatePreview();
+  </script>
+</body>
+</html>
