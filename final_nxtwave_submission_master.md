@@ -425,7 +425,7 @@ https://drive.google.com/file/d/YOUR_GOOGLE_DRIVE_LINK/view?usp=sharing
 *Field Type: Short answer / URL*  
 **What to Paste:**
 ```text
-https://nxtwave-growth-sprint.vercel.app/
+https://durgaprasad-1805.github.io/nxtwave-growth-challenge/
 (Live Working Asset: Dual-mode application featuring Student AI Project Architect, 1-Click RSVP, Ticket Generator, Milestone Viral Referral Engine, and Growth Operations Console with Lead Telemetry & CSV Export)
 ```
 *(Deploy `index.html` to Vercel/Netlify/GitHub Pages or link to a Loom walkthrough of the local file).*
