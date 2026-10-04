@@ -3023,9 +3023,9 @@
     }
 
     .pipeline-detail-desc {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
+      font-size: 0.84rem;
+      color: #f1f5f9 !important;
+      line-height: 1.55;
       margin-bottom: 8px;
     }
 
@@ -3216,19 +3216,49 @@
     /* 4. Central Growth Loop Detail Drawer */
     .loop-stage-detail-box {
       margin-top: 14px;
-      background: rgba(4, 9, 20, 0.75);
-      border: 1px solid rgba(56, 189, 248, 0.25);
+      background: rgba(8, 14, 26, 0.94);
+      border: 1px solid rgba(56, 189, 248, 0.35);
       border-radius: var(--radius-md);
-      padding: 14px 18px;
+      padding: 16px 20px;
       display: none;
       animation: fadeInSlide 0.3s ease;
       text-align: left;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .loop-stage-detail-box p,
+    #loopStageDesc,
+    .loop-stage-desc-text {
+      color: #f1f5f9 !important;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      font-weight: 450;
     }
 
     .loop-stage-detail-grid {
       display: grid;
       grid-template-columns: 1.2fr 1fr;
       gap: 14px;
+      align-items: center;
+    }
+
+    .loop-stage-subbox {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+      padding: 8px 14px;
+      flex: 1;
+      min-width: 140px;
+    }
+
+    .loop-stage-sublabel {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #94a3b8 !important;
+      display: block;
+      margin-bottom: 3px;
     }
 
     @media (max-width: 700px) {
@@ -6121,22 +6151,22 @@
               <div class="loop-stage-detail-box" id="loopStageDetailBox" role="region" aria-live="polite" style="display: block;">
                 <div class="loop-stage-detail-grid">
                   <div>
-                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-                      <span class="status-pill" id="loopStageBadge" style="background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); border-color: rgba(56, 189, 248, 0.35); font-size: 0.68rem; padding: 2px 8px;">STAGE 01 • ACQUISITION VECTOR</span>
-                      <strong id="loopStageName" style="color: #ffffff; font-size: 0.95rem;">CR WhatsApp Network (Peer Authority)</strong>
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap;">
+                      <span class="status-pill" id="loopStageBadge" style="background: rgba(56, 189, 248, 0.18); color: #38bdf8; border-color: rgba(56, 189, 248, 0.45); font-size: 0.68rem; padding: 2px 8px; font-weight: 700;">STAGE 01 • ACQUISITION VECTOR</span>
+                      <strong id="loopStageName" style="color: #ffffff; font-size: 0.98rem; font-weight: 800;">CR WhatsApp Network (Peer Authority)</strong>
                     </div>
-                    <p id="loopStageDesc" style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                    <p id="loopStageDesc" class="loop-stage-desc-text" style="font-size: 0.86rem; color: #f1f5f9; line-height: 1.6; margin: 0; font-weight: 450;">
                       Direct peer distribution via 35 Class Representatives across 20 verified engineering institutions. Generates high-trust inbound clicks with zero paid ad fatigue.
                     </p>
                   </div>
                   <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                    <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 6px; padding: 6px 12px; flex: 1; min-width: 140px;">
-                      <span style="font-size: 0.66rem; text-transform: uppercase; color: var(--text-tertiary); display: block;">Key Model Metric</span>
-                      <strong id="loopStageMetric" style="color: var(--accent-cyan); font-size: 0.85rem;">35 Active CR Guilds • ₹34.28 Bounty</strong>
+                    <div class="loop-stage-subbox" style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 8px; padding: 8px 14px; flex: 1; min-width: 140px;">
+                      <span class="loop-stage-sublabel" style="font-size: 0.68rem; text-transform: uppercase; color: #94a3b8; font-weight: 700; letter-spacing: 0.05em; display: block; margin-bottom: 3px;">Key Model Metric</span>
+                      <strong id="loopStageMetric" style="color: #38bdf8; font-size: 0.88rem; font-weight: 700;">35 Active CR Guilds • ₹34.28 Bounty</strong>
                     </div>
-                    <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 6px; padding: 6px 12px; flex: 1; min-width: 140px;">
-                      <span style="font-size: 0.66rem; text-transform: uppercase; color: var(--text-tertiary); display: block;">Execution Risk / Mitigant</span>
-                      <strong id="loopStageRisk" style="color: var(--accent-emerald); font-size: 0.85rem;">Direct CR WhatsApp Admin Access</strong>
+                    <div class="loop-stage-subbox" style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 8px; padding: 8px 14px; flex: 1; min-width: 140px;">
+                      <span class="loop-stage-sublabel" style="font-size: 0.68rem; text-transform: uppercase; color: #94a3b8; font-weight: 700; letter-spacing: 0.05em; display: block; margin-bottom: 3px;">Execution Risk / Mitigant</span>
+                      <strong id="loopStageRisk" style="color: #34d399; font-size: 0.88rem; font-weight: 700;">Direct CR WhatsApp Admin Access</strong>
                     </div>
                   </div>
                 </div>
