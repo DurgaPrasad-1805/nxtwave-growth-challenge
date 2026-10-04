@@ -2598,17 +2598,647 @@
       border-color: rgba(99, 102, 241, 0.25);
     }
 
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--border-subtle);
-      background: var(--bg-footer);
-      padding: 28px 0;
-      text-align: center;
-      font-size: 0.82rem;
-      color: var(--text-tertiary);
-      margin-top: auto;
+    /* ==========================================================================
+       RESPONSIVE MOBILE ARCHITECTURE & MULTI-BREAKPOINT SUITE (320px – 1440px)
+       ========================================================================== */
+
+    /* Global Horizontal Containment */
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+    }
+
+    /* Mobile Table Hint */
+    .mobile-table-hint {
+      display: none;
+      font-size: 0.72rem;
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+      margin-bottom: 8px;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Mobile Header & Navigation Components */
+    .mobile-menu-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-glass);
+      color: var(--text-primary);
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.2s var(--ease-cinematic);
       position: relative;
-      z-index: 10;
+    }
+
+    .mobile-menu-btn:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      background: rgba(56, 189, 248, 0.1);
+    }
+
+    .hamburger-line {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background-color: currentColor;
+      border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      position: absolute;
+    }
+
+    .hamburger-line.line-1 { transform: translateY(-5px); }
+    .hamburger-line.line-2 { transform: translateY(0); }
+    .hamburger-line.line-3 { transform: translateY(5px); }
+
+    .mobile-menu-btn.open .hamburger-line.line-1 {
+      transform: translateY(0) rotate(45deg);
+    }
+    .mobile-menu-btn.open .hamburger-line.line-2 {
+      opacity: 0;
+    }
+    .mobile-menu-btn.open .hamburger-line.line-3 {
+      transform: translateY(0) rotate(-45deg);
+    }
+
+    /* Mobile 1-Tap Mode Switcher Bar */
+    .mobile-mode-bar {
+      display: none;
+      width: 100%;
+      padding-top: 10px;
+      margin-top: 10px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .mobile-mode-dock {
+      display: flex;
+      gap: 6px;
+      background: var(--bg-dock);
+      border: 1px solid var(--border-glass);
+      padding: 3px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-fresnel);
+      width: 100%;
+    }
+
+    .mobile-mode-btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 8px 10px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s var(--ease-cinematic);
+      min-height: 40px;
+      font-family: var(--font-sans);
+    }
+
+    .mobile-mode-btn.active {
+      background: rgba(56, 189, 248, 0.18);
+      color: #fff;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Mobile Expandable Navigation Drawer */
+    .mobile-nav-drawer {
+      display: none;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.35s var(--ease-cinematic), opacity 0.3s ease;
+      opacity: 0;
+      background: var(--bg-surface-elevated);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-glass);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
+    }
+
+    .mobile-nav-drawer.open {
+      max-height: 560px;
+      opacity: 1;
+    }
+
+    .mobile-drawer-inner {
+      padding: 16px 16px 20px;
+    }
+
+    .drawer-section-title {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--accent-cyan);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .drawer-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .drawer-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      transition: all 0.2s ease;
+      min-height: 44px;
+    }
+
+    .drawer-nav-link:hover, .drawer-nav-link:active {
+      color: #fff;
+      background: rgba(56, 189, 248, 0.12);
+      border-color: rgba(56, 189, 248, 0.3);
+      transform: translateX(3px);
+    }
+
+    .drawer-footer-cluster {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    /* Light Theme Styling for Mobile Nav Components */
+    [data-theme="light"] .mobile-menu-btn {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .mobile-mode-dock {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+    }
+
+    [data-theme="light"] .mobile-mode-btn {
+      color: var(--text-secondary);
+    }
+
+    [data-theme="light"] .mobile-mode-btn.active {
+      background: #ffffff;
+      color: #0f172a;
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.12);
+    }
+
+    [data-theme="light"] .mobile-nav-drawer {
+      background: rgba(255, 255, 255, 0.98);
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #cbd5e1;
+      box-shadow: 0 16px 32px rgba(99, 102, 241, 0.12);
+    }
+
+    [data-theme="light"] .drawer-nav-link {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+      color: #334155;
+    }
+
+    [data-theme="light"] .drawer-nav-link:hover,
+    [data-theme="light"] .drawer-nav-link:active {
+      background: #eef2ff;
+      border-color: rgba(99, 102, 241, 0.35);
+      color: #0f172a;
+    }
+
+    /* ==========================================================================
+       MEDIA QUERY: TABLETS & MOBILE PHONES (max-width: 768px)
+       ========================================================================== */
+    @media (max-width: 768px) {
+      /* Form Ergonomics & Prevent iOS Safari Auto-Zoom */
+      input[type="text"],
+      input[type="tel"],
+      input[type="email"],
+      select,
+      textarea {
+        font-size: 16px !important;
+      }
+
+      /* Container & Layout */
+      .container {
+        padding: 0 16px;
+      }
+
+      /* Navigation Adaptations */
+      .desktop-only-nav {
+        display: none !important;
+      }
+
+      .mobile-menu-btn {
+        display: flex;
+      }
+
+      .mobile-mode-bar {
+        display: block;
+      }
+
+      .mobile-nav-drawer {
+        display: block;
+      }
+
+      .product-header {
+        padding: 10px 0 8px;
+      }
+
+      .nav-flex {
+        gap: 8px;
+      }
+
+      .theme-switch-dock {
+        padding: 2px;
+      }
+
+      .theme-toggle-btn .theme-text {
+        display: none;
+      }
+
+      .theme-toggle-btn {
+        padding: 6px 8px;
+        min-width: 32px;
+        min-height: 34px;
+        justify-content: center;
+      }
+
+      .nav-right-cluster {
+        gap: 8px;
+      }
+
+      .mobile-table-hint {
+        display: flex;
+      }
+
+      /* Typography Scaling */
+      h1 {
+        font-size: clamp(1.75rem, 6.2vw, 2.5rem);
+        letter-spacing: -0.025em;
+      }
+
+      .sec-title {
+        font-size: clamp(1.35rem, 5vw, 1.75rem);
+      }
+
+      .sec-desc {
+        font-size: 0.86rem;
+      }
+
+      /* Hero Section */
+      .hero-container {
+        padding: 24px 0 18px;
+      }
+
+      .hero-subhead {
+        font-size: 0.94rem;
+        margin-top: 12px;
+        line-height: 1.55;
+      }
+
+      .hero-actions-dock {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .hero-actions-dock button {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: 48px;
+      }
+
+      .capacity-dock {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        gap: 10px;
+        padding: 14px 16px;
+        width: 100%;
+      }
+
+      .dock-stat {
+        justify-content: center;
+        font-size: 0.84rem;
+      }
+
+      /* Student Journey Cards */
+      .why-attend-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .why-attend-card {
+        padding: 20px 18px;
+      }
+
+      .walkaway-deck {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-bottom: 38px;
+      }
+
+      .walkaway-card {
+        padding: 20px 18px;
+      }
+
+      .how-it-works-deck {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-bottom: 38px;
+      }
+
+      .how-step-card {
+        padding: 20px 18px;
+      }
+
+      .placement-matrix-container {
+        margin-bottom: 38px;
+      }
+
+      .contrast-column-card {
+        padding: 20px 18px;
+      }
+
+      .prereqs-matrix-grid {
+        margin-bottom: 38px;
+      }
+
+      .prereq-col {
+        padding: 20px 18px;
+      }
+
+      .product-stage-grid {
+        gap: 20px;
+        margin-bottom: 38px;
+      }
+
+      .surface-card {
+        padding: 20px 18px;
+      }
+
+      .demo-playground-body {
+        padding: 16px 14px;
+        gap: 16px;
+      }
+
+      .demo-cta-footer {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        gap: 12px;
+        padding: 14px 16px;
+      }
+
+      .demo-cta-footer button {
+        width: 100% !important;
+        min-height: 44px;
+      }
+
+      .final-conversion-strip {
+        padding: 28px 18px;
+        margin-bottom: 40px;
+      }
+
+      .final-conversion-strip button {
+        width: 100% !important;
+        min-height: 48px;
+      }
+
+      /* Growth Ops Console Mobile Styles */
+      .metric-cards-quad {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .hud-metric-card {
+        padding: 18px 16px;
+      }
+
+      .hud-number-readout {
+        font-size: 2.2rem;
+      }
+
+      .telemetry-stage-split {
+        gap: 18px;
+      }
+
+      .reg-intel-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
+
+      .reg-search-input {
+        min-width: 0 !important;
+        width: 100%;
+        min-height: 44px;
+      }
+
+      .reg-filter-select {
+        width: 100%;
+        min-height: 44px;
+      }
+
+      .table-scroll-wrap {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border-subtle);
+        margin-top: 10px;
+      }
+
+      .hud-data-table {
+        min-width: 580px;
+      }
+
+      .experiments-card-deck {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .exp-spec-card {
+        padding: 20px 18px;
+      }
+
+      .ops-button-shelf {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding: 14px 16px;
+      }
+
+      .ops-button-shelf > div {
+        width: 100%;
+      }
+
+      .ops-button-shelf .sim-btn-pill {
+        flex: 1;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 16px;
+        font-size: 0.82rem;
+      }
+
+      .simulator-container {
+        padding: 20px 18px;
+      }
+    }
+
+    /* ==========================================================================
+       MEDIA QUERY: STANDARD PHONES (max-width: 480px)
+       ========================================================================== */
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 14px;
+      }
+
+      .global-disclaimer-strip {
+        font-size: 0.72rem;
+        padding: 6px 10px;
+        gap: 6px;
+      }
+
+      .brand-cube {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+      }
+
+      .brand-text-title {
+        font-size: 1.05rem;
+      }
+
+      .brand-tag-pill {
+        font-size: 0.65rem;
+        padding: 1px 6px;
+      }
+
+      .form-row-compact {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .campaign-context-dock {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        padding: 10px;
+      }
+
+      .context-stat-pill {
+        padding: 6px 8px;
+      }
+
+      .context-pill-label {
+        font-size: 0.62rem;
+      }
+
+      .context-pill-val {
+        font-size: 0.8rem;
+      }
+
+      .loop-node-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+
+      .referral-funnel-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+
+      .ref-funnel-node {
+        padding: 10px 6px;
+      }
+
+      .ref-node-val {
+        font-size: 1.15rem;
+      }
+
+      .sim-output-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+
+      .sim-output-box {
+        padding: 10px 6px;
+      }
+
+      .sim-output-box > div:nth-child(2) {
+        font-size: 1.2rem !important;
+      }
+
+      .leaderboard-row {
+        padding: 8px 10px;
+        font-size: 0.78rem;
+      }
+
+      .stream-entry-pill {
+        font-size: 0.75rem;
+        padding: 8px 10px;
+      }
+    }
+
+    /* ==========================================================================
+       MEDIA QUERY: NARROW PHONES (max-width: 360px)
+       ========================================================================== */
+    @media (max-width: 360px) {
+      .container {
+        padding: 0 10px;
+      }
+
+      .brand-tag-pill {
+        display: none;
+      }
+
+      h1 {
+        font-size: 1.55rem;
+      }
+
+      .campaign-context-dock {
+        grid-template-columns: 1fr;
+      }
+
+      .loop-node-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .referral-funnel-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sim-output-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mobile-mode-btn {
+        font-size: 0.72rem;
+        padding: 7px 4px;
+      }
     }
   </style>
 </head>
@@ -2630,7 +3260,7 @@
     </aside>
 
     <!-- Product Navigation Bar -->
-    <header class="product-header">
+    <header class="product-header" id="productHeader">
       <div class="container nav-flex">
         
         <a href="https://durgaprasad-1805.github.io/nxtwave-growth-challenge/" class="brand-mark" aria-label="NxtWave Growth Engine Home">
@@ -2641,8 +3271,8 @@
           </div>
         </a>
 
-        <!-- Dual-Mode Switcher -->
-        <nav class="view-control-dock" role="tablist" aria-label="View Mode Switcher">
+        <!-- Desktop Dual-Mode Switcher -->
+        <nav class="view-control-dock desktop-only-nav" role="tablist" aria-label="View Mode Switcher">
           <button class="mode-tab-btn active" id="tabStudent" role="tab" aria-selected="true" aria-controls="studentFunnelView" onclick="switchViewMode('student')">
             <span>🎓</span> Student Acquisition View
           </button>
@@ -2651,8 +3281,8 @@
           </button>
         </nav>
 
-        <!-- Right Cluster: 3-Mode Theme Switcher & 3D HUD Badge -->
-        <div class="nav-right-cluster" style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+        <!-- Right Cluster: 3-Mode Theme Switcher & 3D HUD Badge & Mobile Menu Button -->
+        <div class="nav-right-cluster" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
           
           <!-- Premium 3-Mode Theme Switcher -->
           <div class="theme-switch-dock" role="radiogroup" aria-label="Color Theme">
@@ -2670,13 +3300,95 @@
             </button>
           </div>
 
-          <div class="camera-hud-badge" id="webglStatusBadge" role="status" aria-label="3D Engine Status">
+          <div class="camera-hud-badge desktop-only-nav" id="webglStatusBadge" role="status" aria-label="3D Engine Status">
             <span class="camera-dot" id="webglStatusDot"></span>
             <span id="webglStatusText">Ambient 3D: Active</span>
           </div>
 
+          <!-- Mobile Hamburger Toggle Button -->
+          <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileNavDrawer" onclick="toggleMobileMenu()">
+            <span class="hamburger-line line-1"></span>
+            <span class="hamburger-line line-2"></span>
+            <span class="hamburger-line line-3"></span>
+          </button>
+
         </div>
 
+      </div>
+
+      <!-- Mobile Sub-Header: Instant 1-Tap Dual-Mode Switcher Bar (Mobile only) -->
+      <div class="mobile-mode-bar" id="mobileModeBar">
+        <div class="container">
+          <div class="mobile-mode-dock" role="tablist" aria-label="Mobile View Mode Switcher">
+            <button class="mobile-mode-btn active" id="tabStudentMobile" role="tab" aria-selected="true" aria-controls="studentFunnelView" onclick="switchViewMode('student')">
+              <span>🎓</span> Student View
+            </button>
+            <button class="mobile-mode-btn" id="tabOpsMobile" role="tab" aria-selected="false" aria-controls="opsTelemetryView" onclick="switchViewMode('ops')">
+              <span>📊</span> Growth Ops (500)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Expandable Navigation Drawer -->
+      <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+        <div class="container mobile-drawer-inner">
+          
+          <div class="drawer-section-title">QUICK NAVIGATION</div>
+          
+          <!-- Student Links (Shown when in student view) -->
+          <div class="drawer-nav-links" id="drawerStudentLinks">
+            <a href="#whyAttendSection" class="drawer-nav-link" onclick="closeMobileMenuAndScroll('whyAttendSection')">
+              <span class="drawer-link-icon">🎯</span> Why Attend (4 Outcomes)
+            </a>
+            <a href="#whatYouWillBuildSection" class="drawer-nav-link" onclick="closeMobileMenuAndScroll('whatYouWillBuildSection')">
+              <span class="drawer-link-icon">⚡</span> What You'll Build (Live Demo)
+            </a>
+            <a href="#walkawayHeading" class="drawer-nav-link" onclick="closeMobileMenuAndScroll('walkawayHeading')">
+              <span class="drawer-link-icon">🏆</span> Tangible Proof of Work
+            </a>
+            <a href="#howItWorksHeading" class="drawer-nav-link" onclick="closeMobileMenuAndScroll('howItWorksHeading')">
+              <span class="drawer-link-icon">🚀</span> 4-Step Student Journey
+            </a>
+            <a href="#registrationSection" class="drawer-nav-link" onclick="closeMobileMenuAndScroll('registrationSection')">
+              <span class="drawer-link-icon">🎟️</span> Reserve My Free Seat (RSVP)
+            </a>
+            <a href="#faqHeading" class="drawer-nav-link" onclick="closeMobileMenuAndScroll('faqHeading')">
+              <span class="drawer-link-icon">❓</span> Frequently Asked Questions
+            </a>
+          </div>
+
+          <!-- Ops Links (Shown when in ops view) -->
+          <div class="drawer-nav-links" id="drawerOpsLinks" style="display: none;">
+            <a href="#opsTelemetryView" class="drawer-nav-link" onclick="closeMobileMenuAndScroll('opsTelemetryView')">
+              <span class="drawer-link-icon">📈</span> Campaign Overview & KPIs
+            </a>
+            <a href="#regTable" class="drawer-nav-link" onclick="closeMobileMenuAndScroll('regTable')">
+              <span class="drawer-link-icon">📋</span> Registration Intelligence Table
+            </a>
+            <a href="#leadStream" class="drawer-nav-link" onclick="closeMobileMenuAndScroll('leadStream')">
+              <span class="drawer-link-icon">📡</span> Simulated Lead Stream
+            </a>
+            <a href="#experimentsTitle" class="drawer-nav-link" onclick="closeMobileMenuAndScroll('experimentsTitle')">
+              <span class="drawer-link-icon">🧪</span> 3 Growth Experiments
+            </a>
+            <a href="#simCrSlider" class="drawer-nav-link" onclick="closeMobileMenuAndScroll('simCrSlider')">
+              <span class="drawer-link-icon">🎛️</span> Campaign Sensitivity Simulator
+            </a>
+          </div>
+
+          <!-- Drawer Footer Cluster -->
+          <div class="drawer-footer-cluster">
+            <div class="camera-hud-badge mobile-hud-badge" id="webglStatusBadgeMobile" role="status" aria-label="3D Engine Status">
+              <span class="camera-dot" id="webglStatusDotMobile"></span>
+              <span id="webglStatusTextMobile">Ambient 3D: Active</span>
+            </div>
+            <button class="action-btn btn-gradient-glow" style="padding: 11px 20px; font-size: 0.9rem;" type="button" onclick="closeMobileMenu(); scrollToReserve();">
+              <span>Reserve My Free Seat →</span>
+            </button>
+          </div>
+
+        </div>
       </div>
     </header>
 
@@ -3688,6 +4400,7 @@
             </div>
 
             <!-- Synthetic Lead Table -->
+            <div class="mobile-table-hint" aria-hidden="true">⇄ Swipe horizontally to inspect full telemetry records</div>
             <div class="table-scroll-wrap">
               <table class="hud-data-table" id="regTable" aria-label="Simulated Registration Telemetry Table">
                 <thead>
@@ -3928,6 +4641,7 @@
               <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">Channel Attribution & Conversion Model (Modeled Projections)</h3>
               <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 12px;">Unit economics and volume breakdown across prioritized growth loops (Demo / Projected Data)</p>
               
+              <div class="mobile-table-hint" aria-hidden="true">⇄ Swipe horizontally to inspect full channel economics</div>
               <div class="table-scroll-wrap">
                 <table class="hud-data-table" aria-label="Channel Attribution Data">
                   <thead>
@@ -4530,11 +5244,17 @@
     function initAmbient3D() {
       const statusDot = document.getElementById('webglStatusDot');
       const statusText = document.getElementById('webglStatusText');
+      const statusDotMobile = document.getElementById('webglStatusDotMobile');
+      const statusTextMobile = document.getElementById('webglStatusTextMobile');
 
       if (!window.WebGLRenderingContext || !canvas) {
         if (statusDot && statusText) {
           statusDot.classList.add('fallback');
           statusText.textContent = "CSS Depth: Active";
+        }
+        if (statusDotMobile && statusTextMobile) {
+          statusDotMobile.classList.add('fallback');
+          statusTextMobile.textContent = "CSS Depth: Active";
         }
         document.body.classList.add('webgl-fallback-active');
         return;
@@ -4561,7 +5281,8 @@
           powerPreference: "high-performance"
         });
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
+        const maxDPR = window.innerWidth < 768 ? 1.25 : 1.75;
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, maxDPR));
         renderer.outputEncoding = THREE.sRGBEncoding;
         renderer.toneMapping = THREE.ACESFilmicToneMapping;
         renderer.toneMappingExposure = 1.05;
@@ -4590,6 +5311,10 @@
         if (statusDot && statusText) {
           statusDot.classList.remove('fallback');
           statusText.textContent = "Ambient 3D: Active";
+        }
+        if (statusDotMobile && statusTextMobile) {
+          statusDotMobile.classList.remove('fallback');
+          statusTextMobile.textContent = "Ambient 3D: Active";
         }
 
         // Window & Interaction Listeners
@@ -4721,11 +5446,18 @@
       ambientNodes.forEach((node, idx) => {
         let [x, y, z] = node.spec.basePos;
 
-        if (isMobile) {
+        const isSmallMobile = width < 480;
+
+        if (isSmallMobile) {
+          // Push outward and scale down on narrow phones
+          x = x < 0 ? -16 : (x > 0 ? 16 : 0);
+          z -= 16;
+          node.group.scale.set(0.55, 0.55, 0.55);
+        } else if (isMobile) {
           // Push outward and scale down on mobile so the center reading column is 100% unobstructed
           x = x < 0 ? -19 : (x > 0 ? 19 : 0);
-          z -= 10;
-          node.group.scale.set(0.7, 0.7, 0.7);
+          z -= 12;
+          node.group.scale.set(0.68, 0.68, 0.68);
         } else if (isTablet) {
           x = x * 0.92;
           node.group.scale.set(0.85, 0.85, 0.85);
@@ -4742,6 +5474,8 @@
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
+      const maxDPR = window.innerWidth < 768 ? 1.25 : 1.75;
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, maxDPR));
       adjustNodesForViewport();
     }
 
@@ -4816,8 +5550,9 @@
       currentCamX += (mouseX - currentCamX) * 0.025;
       currentCamY += (mouseY + scrollYOffset - currentCamY) * 0.025;
 
-      let targetCamZ = isOpsMode ? 52 : 46;
-      let targetCamXOffset = isOpsMode ? 6 : 0;
+      const isMobileScreen = window.innerWidth < 768;
+      let targetCamZ = isMobileScreen ? (isOpsMode ? 62 : 54) : (isOpsMode ? 52 : 46);
+      let targetCamXOffset = isMobileScreen ? 0 : (isOpsMode ? 6 : 0);
 
       camera.position.x = targetCamXOffset + currentCamX;
       camera.position.y = currentCamY;
@@ -4829,32 +5564,84 @@
     }
 
     /* ==========================================================================
-       2. PRODUCT VIEW SWITCHER
+       2. PRODUCT VIEW SWITCHER & MOBILE NAVIGATION LOGIC
        ========================================================================== */
     function switchViewMode(mode) {
       const studentView = document.getElementById('studentFunnelView');
       const opsView = document.getElementById('opsTelemetryView');
       const tabStudent = document.getElementById('tabStudent');
       const tabOps = document.getElementById('tabOps');
+      const tabStudentMobile = document.getElementById('tabStudentMobile');
+      const tabOpsMobile = document.getElementById('tabOpsMobile');
+      const drawerStudent = document.getElementById('drawerStudentLinks');
+      const drawerOps = document.getElementById('drawerOpsLinks');
 
       if (mode === 'student') {
-        studentView.style.display = 'block';
-        opsView.style.display = 'none';
-        tabStudent.classList.add('active');
-        tabOps.classList.remove('active');
-        tabStudent.setAttribute('aria-selected', 'true');
-        tabOps.setAttribute('aria-selected', 'false');
+        if (studentView) studentView.style.display = 'block';
+        if (opsView) opsView.style.display = 'none';
+        if (tabStudent) { tabStudent.classList.add('active'); tabStudent.setAttribute('aria-selected', 'true'); }
+        if (tabOps) { tabOps.classList.remove('active'); tabOps.setAttribute('aria-selected', 'false'); }
+        if (tabStudentMobile) { tabStudentMobile.classList.add('active'); tabStudentMobile.setAttribute('aria-selected', 'true'); }
+        if (tabOpsMobile) { tabOpsMobile.classList.remove('active'); tabOpsMobile.setAttribute('aria-selected', 'false'); }
+        if (drawerStudent) drawerStudent.style.display = 'flex';
+        if (drawerOps) drawerOps.style.display = 'none';
         isOpsMode = false;
       } else {
-        studentView.style.display = 'none';
-        opsView.style.display = 'block';
-        tabOps.classList.add('active');
-        tabStudent.classList.remove('active');
-        tabOps.setAttribute('aria-selected', 'true');
-        tabStudent.setAttribute('aria-selected', 'false');
+        if (studentView) studentView.style.display = 'none';
+        if (opsView) opsView.style.display = 'block';
+        if (tabOps) { tabOps.classList.add('active'); tabOps.setAttribute('aria-selected', 'true'); }
+        if (tabStudent) { tabStudent.classList.remove('active'); tabStudent.setAttribute('aria-selected', 'false'); }
+        if (tabOpsMobile) { tabOpsMobile.classList.add('active'); tabOpsMobile.setAttribute('aria-selected', 'true'); }
+        if (tabStudentMobile) { tabStudentMobile.classList.remove('active'); tabStudentMobile.setAttribute('aria-selected', 'false'); }
+        if (drawerStudent) drawerStudent.style.display = 'none';
+        if (drawerOps) drawerOps.style.display = 'flex';
         isOpsMode = true;
       }
     }
+
+    function toggleMobileMenu() {
+      const btn = document.getElementById('mobileMenuBtn');
+      const drawer = document.getElementById('mobileNavDrawer');
+      if (!btn || !drawer) return;
+      const isOpen = btn.classList.toggle('open');
+      drawer.classList.toggle('open', isOpen);
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    }
+
+    function closeMobileMenu() {
+      const btn = document.getElementById('mobileMenuBtn');
+      const drawer = document.getElementById('mobileNavDrawer');
+      if (btn) {
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+      if (drawer) {
+        drawer.classList.remove('open');
+        drawer.setAttribute('aria-hidden', 'true');
+      }
+    }
+
+    function closeMobileMenuAndScroll(targetId) {
+      closeMobileMenu();
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Keyboard & outside click handling for mobile drawer
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMobileMenu();
+    });
+
+    document.addEventListener('click', (e) => {
+      const drawer = document.getElementById('mobileNavDrawer');
+      const btn = document.getElementById('mobileMenuBtn');
+      if (drawer && drawer.classList.contains('open') && !drawer.contains(e.target) && !btn.contains(e.target)) {
+        closeMobileMenu();
+      }
+    });
 
     /* ==========================================================================
        3. AI PROJECT ARCHITECT & RESUME GENERATOR
