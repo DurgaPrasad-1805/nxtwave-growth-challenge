@@ -265,6 +265,10 @@
       color: var(--text-secondary);
     }
 
+    [data-theme="light"] .mode-tab-btn:hover {
+      color: var(--accent-indigo);
+    }
+
     [data-theme="light"] .mode-tab-btn.active {
       background: #ffffff;
       color: #0f172a;
@@ -409,6 +413,12 @@
       color: #475569;
     }
 
+    [data-theme="light"] .demo-preset-btn:hover {
+      background: #ffffff;
+      color: var(--accent-indigo);
+      border-color: var(--accent-indigo);
+    }
+
     [data-theme="light"] .demo-preset-btn.active {
       background: #ffffff;
       border-color: var(--accent-indigo);
@@ -508,6 +518,17 @@
 
     [data-theme="light"] .exp-row-lead {
       color: #334155;
+    }
+
+    [data-theme="light"] .next-24-hours-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: rgba(99, 102, 241, 0.25);
+    }
+
+    [data-theme="light"] .phase-plan-step {
+      background: #ffffff;
+      border-color: #e2e8f0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
     }
 
     [data-theme="light"] .faq-item-card {
@@ -1483,6 +1504,27 @@
       color: var(--text-secondary);
     }
 
+    /* 24-Hour Iterative Protocol Strategy Card */
+    .next-24-hours-card {
+      margin-top: 32px;
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      box-shadow: var(--shadow-ambient);
+      position: relative;
+    }
+
+    .phase-plan-step {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+    }
+
     
     /* ==========================================================================
        CONVERSION-OPTIMIZED STUDENT JOURNEY STYLES
@@ -2213,13 +2255,13 @@
                 <span>⏱ 60 Minutes Flat</span>
               </div>
               <div class="dock-stat">
-                <span>⚡ <strong><span id="seatCounterDisplay">412</span> / 500</strong> Base Target</span>
+                <span>⚡ <strong><span id="seatCounterDisplay">412</span> / 500</strong> Base Target (Simulated Pace)</span>
                 <div class="stat-progress-track" aria-hidden="true">
                   <div class="stat-progress-val" id="seatProgressBar"></div>
                 </div>
               </div>
               <div class="dock-stat">
-                <span class="buffer-tag-chip">+20 Safety Buffer (520 Projected)</span>
+                <span class="buffer-tag-chip">Target: 500 Base → 520 Projected (+20 Safety Buffer)</span>
               </div>
             </div>
 
@@ -2248,8 +2290,8 @@
               </div>
               <div class="loop-node-item" onclick="focusAmbientNode(1)">
                 <div class="loop-node-step">02. REGISTER</div>
-                <div class="loop-node-name">1-Click RSVP</div>
-                <div class="loop-node-detail">Zero Form Friction</div>
+                <div class="loop-node-name">30-Second RSVP</div>
+                <div class="loop-node-detail">Low-Friction Pass</div>
               </div>
               <div class="loop-node-item" onclick="focusAmbientNode(2)">
                 <div class="loop-node-step">03. REFER</div>
@@ -2259,12 +2301,12 @@
               <div class="loop-node-item" onclick="focusAmbientNode(3)">
                 <div class="loop-node-step">04. UNLOCK</div>
                 <div class="loop-node-name">Capstone Vault</div>
-                <div class="loop-node-detail">K=0.32 Multiplier</div>
+                <div class="loop-node-detail">Target K=0.32 Loop</div>
               </div>
               <div class="loop-node-item" onclick="focusAmbientNode(4)">
                 <div class="loop-node-step">05. MEASURE</div>
                 <div class="loop-node-name">Ops Console</div>
-                <div class="loop-node-detail">Live CAC & Velocity</div>
+                <div class="loop-node-detail">Model CAC & Velocity</div>
               </div>
             </div>
           </section>
@@ -2424,7 +2466,7 @@
               </div>
             </div>
 
-            <!-- RIGHT: 1-Click Registration & Viral Referral Loop Engine -->
+            <!-- RIGHT: 30-Second Low-Friction Registration & Viral Referral Loop Engine -->
             <div class="surface-card">
               
               <!-- State 1: Quick RSVP Form -->
@@ -2433,7 +2475,7 @@
                   <div class="surface-icon" aria-hidden="true">🎟️</div>
                   <div>
                     <h2 class="card-heading-title">Free Registration</h2>
-                    <p class="card-heading-sub">1-Click Entry • Zero Spam • 100% Free</p>
+                    <p class="card-heading-sub">30-Second RSVP • Zero Spam • 100% Free</p>
                   </div>
                 </div>
 
@@ -2525,75 +2567,130 @@
               <!-- Experiment 1 -->
               <article class="exp-spec-card">
                 <div class="exp-meta-header">
-                  <span class="exp-category-pill tag-message-hook">Message Hook</span>
-                  <span class="exp-num-label">TEST 01</span>
+                  <span class="exp-category-pill tag-message-hook">Messaging & Value Prop</span>
+                  <span class="exp-num-label">EXPERIMENT 01</span>
                 </div>
-                <h3 class="exp-name-title">Placement Armor vs. Tech Stack</h3>
+                <h3 class="exp-name-title">Placement Armor vs. Generic Tech Stack Hook</h3>
                 <div class="exp-text-row">
-                  <span class="exp-row-lead">Hypothesis:</span> Positioning around "Placement Armor & 3 ATS Bullets" converts &ge;25% higher than "Learn Generative AI & LLMs".
-                </div>
-                <div class="exp-text-row">
-                  <span class="exp-row-lead">What We Test:</span> A/B test 2 WhatsApp broadcast copies across 20 college groups using dedicated UTM tags.
-                </div>
-                <div class="exp-metrics-strip">
-                  Primary: Form Conv % | Secondary: Link CTR
+                  <span class="exp-row-lead">Hypothesis:</span> Positioning around "Placement Armor & 3 ATS Bullets" will generate higher click-to-registration conversion than generic "Learn Generative AI & LLMs" messaging.
                 </div>
                 <div class="exp-text-row">
-                  <span class="exp-row-lead">Threshold:</span> &ge;25% relative conversion lift on Variant A.
+                  <span class="exp-row-lead">What We Test:</span> A/B test 2 distinct WhatsApp broadcast copies across 20 college groups using dedicated UTM parameters (Variant A: Outcome/Placement Hook vs. Variant B: Skill/Tech Hook).
+                </div>
+                <div class="exp-text-row">
+                  <span class="exp-row-lead">Primary Metric:</span> Click-to-Registration Conversion Rate (Form Submissions / Unique Link Clicks).
+                </div>
+                <div class="exp-text-row">
+                  <span class="exp-row-lead">Secondary Metric:</span> Unique Click-Through Rate (CTR) in college WhatsApp groups.
+                </div>
+                <div class="exp-text-row">
+                  <span class="exp-row-lead">Success Threshold:</span> Variant A achieves &ge;25% higher relative conversion rate than Variant B.
                 </div>
                 <div class="exp-decision-footer">
-                  <strong>Decision:</strong> If Variant A wins, lock placement-first messaging for all retargeting pushes; if Variant B wins, emphasize technical LLM depth.
+                  <strong>Decision:</strong> If Variant A wins, lock placement-first messaging across all Day 5–6 retargeting pushes; if Variant B wins, pivot messaging to emphasize technical LLM depth and modern AI skills.
                 </div>
               </article>
 
               <!-- Experiment 2 -->
               <article class="exp-spec-card">
                 <div class="exp-meta-header">
-                  <span class="exp-category-pill tag-channel-dist">Channel Authority</span>
-                  <span class="exp-num-label">TEST 02</span>
+                  <span class="exp-category-pill tag-channel-dist">Distribution & Channel Authority</span>
+                  <span class="exp-num-label">EXPERIMENT 02</span>
                 </div>
-                <h3 class="exp-name-title">CR Broadcasts vs. Open Discord/Telegram</h3>
+                <h3 class="exp-name-title">CR Broadcasts vs. Open Community Channels</h3>
                 <div class="exp-text-row">
-                  <span class="exp-row-lead">Hypothesis:</span> Official CR batch WhatsApp circulars deliver &ge;3&times; more verified signups per reach than open student Discord communities.
-                </div>
-                <div class="exp-text-row">
-                  <span class="exp-row-lead">What We Test:</span> 15 CR batch broadcasts vs. 5 regional Discord/Telegram placement communities (~1,500 reach each).
-                </div>
-                <div class="exp-metrics-strip">
-                  Primary: Verified Regs / 1k Reach | Secondary: Time-to-50-Signups
+                  <span class="exp-row-lead">Hypothesis:</span> Promotional messages distributed directly by Class Representatives (CRs) in official batch WhatsApp groups deliver &ge;3&times; more verified signups per reach than open student Discord/Telegram channels.
                 </div>
                 <div class="exp-text-row">
-                  <span class="exp-row-lead">Threshold:</span> &ge;3&times; higher registration rate on CR WhatsApp.
+                  <span class="exp-row-lead">What We Test:</span> 15 peer CR broadcasts vs. 5 regional Discord/Telegram placement communities of similar reach (~1,500 reach each), tracked via UTM tags.
+                </div>
+                <div class="exp-text-row">
+                  <span class="exp-row-lead">Primary Metric:</span> Total Verified Registrations per 1,000 Reach.
+                </div>
+                <div class="exp-text-row">
+                  <span class="exp-row-lead">Secondary Metric:</span> Registration Completion Speed (time from broadcast to first 50 verified signups).
+                </div>
+                <div class="exp-text-row">
+                  <span class="exp-row-lead">Success Threshold:</span> CR WhatsApp generates &ge;3&times; more verified registrations per reach than open Discord/Telegram groups.
                 </div>
                 <div class="exp-decision-footer">
-                  <strong>Decision:</strong> If CR WhatsApp wins, allocate 100% of ₹1,200 bounty to CR leaderboard; if Discord performs, reallocate ₹400 to incentivize Discord moderators.
+                  <strong>Decision:</strong> If CR WhatsApp wins, allocate 100% of the ₹1,200 bounty pool to the CR performance leaderboard; if Discord/Telegram performs strongly, divert ₹400 to incentivize Discord moderators.
                 </div>
               </article>
 
               <!-- Experiment 3 -->
               <article class="exp-spec-card">
                 <div class="exp-meta-header">
-                  <span class="exp-category-pill tag-referral-k">Referral Mechanics</span>
-                  <span class="exp-num-label">TEST 03</span>
+                  <span class="exp-category-pill tag-referral-k">Referral Mechanics & K-Factor</span>
+                  <span class="exp-num-label">EXPERIMENT 03</span>
                 </div>
                 <h3 class="exp-name-title">Digital Milestone Vault vs. Cash Lottery</h3>
                 <div class="exp-text-row">
-                  <span class="exp-row-lead">Hypothesis:</span> A guaranteed Milestone Digital Vault unlock (2 referrals) drives higher K-factor (&ge;0.30) than a probabilistic lottery raffle.
+                  <span class="exp-row-lead">Hypothesis:</span> A guaranteed Milestone Digital Asset Unlock (2-referral threshold to unlock the 2026 Capstone Vault) will drive a higher viral coefficient (K-factor &ge; 0.30) than an abstract raffle lottery.
                 </div>
                 <div class="exp-text-row">
-                  <span class="exp-row-lead">What We Test:</span> 50/50 split on post-registration screen: Digital Capstone Vault vs. ₹500 Amazon Voucher Lucky Draw entry.
-                </div>
-                <div class="exp-metrics-strip">
-                  Primary: Viral K-Factor | Secondary: WhatsApp Share Button CTR
+                  <span class="exp-row-lead">What We Test:</span> 50/50 split on post-registration screen: Milestone Capstone Vault vs. ₹500 Amazon Gift Card lucky draw entry.
                 </div>
                 <div class="exp-text-row">
-                  <span class="exp-row-lead">Threshold:</span> Milestone Vault achieves K &ge; 0.30 (vs. lottery K &lt; 0.15).
+                  <span class="exp-row-lead">Primary Metric:</span> Viral Coefficient (K-factor = Referred Registrations / Direct Registrations).
+                </div>
+                <div class="exp-text-row">
+                  <span class="exp-row-lead">Secondary Metric:</span> Referral Share Rate (% of registrants clicking the WhatsApp share button).
+                </div>
+                <div class="exp-text-row">
+                  <span class="exp-row-lead">Success Threshold:</span> Milestone Vault achieves K &ge; 0.30 (vs. lottery K &lt; 0.15).
                 </div>
                 <div class="exp-decision-footer">
-                  <strong>Decision:</strong> If Milestone Vault wins, lock all viral mechanics to digital asset gating; if lottery wins, shift referral rewards to cash vouchers.
+                  <strong>Decision:</strong> If Milestone Vault wins, lock all post-registration flows to asset gating; if lottery wins, shift the referral reward to cash vouchers.
                 </div>
               </article>
 
+            </div>
+
+            <!-- If I Had Another 24 Hours: Iterative Optimization Protocol Card -->
+            <div class="next-24-hours-card" role="region" aria-label="Next 24 Hours Optimization Strategy">
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span class="status-pill" style="background: rgba(99, 102, 241, 0.15); color: var(--accent-indigo); border-color: rgba(99, 102, 241, 0.3); font-weight: 700;">
+                    ⏱️ NEXT EXECUTION HORIZON
+                  </span>
+                  <h3 style="font-size: 1.25rem; font-weight: 800; margin: 0;">
+                    If I Had Another 24 Hours: Controlled Sample Optimization Protocol
+                  </h3>
+                </div>
+                <span class="buffer-tag-chip" style="font-size: 0.76rem;">Phase-Gated Capital Reallocation</span>
+              </div>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;">
+                Rather than deploying the entire ₹2,000 budget and outreach capacity simultaneously across all 35 college groups, the next 24 hours would be strictly dedicated to running the 3 controlled growth experiments on an initial 10% sample, validating statistical winners, and dynamically reallocating capital and distribution effort toward the highest-performing combination before the final Day 6–7 surge.
+              </p>
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px;">
+                
+                <div class="phase-plan-step">
+                  <div style="font-size: 0.76rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 6px;">Hours 01–06 • Micro-Sample Test</div>
+                  <strong style="font-size: 0.92rem; display: block; margin-bottom: 6px;">Deploy 10% Sample Across 3 Vectors</strong>
+                  <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                    Release Experiment 1 copy (Variant A vs. B) across 4 CR groups (2 vs 2); test Experiment 2 in 2 CR groups vs. 2 student Discord servers; activate Experiment 3 50/50 split on the first 50 signups.
+                  </p>
+                </div>
+
+                <div class="phase-plan-step">
+                  <div style="font-size: 0.76rem; font-weight: 700; color: var(--accent-emerald); text-transform: uppercase; margin-bottom: 6px;">Hours 07–14 • Signal Detection</div>
+                  <strong style="font-size: 0.92rem; display: block; margin-bottom: 6px;">Read Early Telemetry & Determine Winners</strong>
+                  <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                    Evaluate Link CTR and Form Conversion % to confirm whether "Placement Armor" beats "Tech Stack"; compute real-time K-factor from the initial 50 shares; measure CR signup velocity vs. open communities.
+                  </p>
+                </div>
+
+                <div class="phase-plan-step">
+                  <div style="font-size: 0.76rem; font-weight: 700; color: var(--accent-amber); text-transform: uppercase; margin-bottom: 6px;">Hours 15–24 • Capital Reallocation</div>
+                  <strong style="font-size: 0.92rem; display: block; margin-bottom: 6px;">Shift 100% Effort to Winning Combination</strong>
+                  <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                    Kill underperforming message copies immediately; route all remaining 31 CR broadcasts with the winning placement hook; reallocate the full ₹1,200 bounty pool to the winning channel; lock post-registration to the winning referral engine.
+                  </p>
+                </div>
+
+              </div>
             </div>
           </section>
 
@@ -2694,7 +2791,7 @@
                 <div class="step-num-pill">STEP 01</div>
                 <h3 class="step-title">Reserve Your Seat</h3>
                 <p class="step-desc">
-                  Fill in your name, WhatsApp number, and college in the 1-Click RSVP form. Zero fee, no credit card required. Receive your instant ticket ID and calendar invite.
+                  Fill in your name, WhatsApp number, and college in the 30-Second RSVP form. Zero fee, no credit card required. Receive your instant ticket ID and calendar invite.
                 </p>
               </div>
 
@@ -3016,27 +3113,27 @@
           <div class="metric-cards-quad">
             
             <div class="hud-metric-card">
-              <div class="hud-label-text">Simulated Registrations</div>
+              <div class="hud-label-text">Simulated Registrations (Demo Data)</div>
               <div class="hud-number-readout" style="color: var(--accent-cyan);" id="opsTotalRegs">412</div>
-              <div class="hud-subtext-note">Base Target: 500 (82.4%) | Projected: 520 (+4% Buffer)</div>
+              <div class="hud-subtext-note">Base Target: 500 (82.4% pace) | Projected Target: 520 (+20 Safety Buffer)</div>
             </div>
 
             <div class="hud-metric-card">
-              <div class="hud-label-text">Simulated Viral K-Factor</div>
+              <div class="hud-label-text">Simulated Viral K-Factor (Demo Data)</div>
               <div class="hud-number-readout" style="color: var(--accent-emerald);" id="opsKFactor">0.34</div>
               <div class="hud-subtext-note">Model Target: 0.32 (+6.2% above baseline assumption)</div>
             </div>
 
             <div class="hud-metric-card">
-              <div class="hud-label-text">Budget Burn & CAC</div>
+              <div class="hud-label-text">Modeled Budget Burn & CAC</div>
               <div class="hud-number-readout" style="color: var(--accent-amber);">₹3.84</div>
-              <div class="hud-subtext-note">Projected Blended CAC (₹2,000 Cap / 520 Regs)</div>
+              <div class="hud-subtext-note">Projected Blended CAC (₹2,000 Budget Cap / 520 Regs)</div>
             </div>
 
             <div class="hud-metric-card">
-              <div class="hud-label-text">Active CR WhatsApp Guilds</div>
+              <div class="hud-label-text">Target CR WhatsApp Guilds</div>
               <div class="hud-number-readout" style="color: var(--accent-indigo);">36 / 35</div>
-              <div class="hud-subtext-note">Target: 35 Groups across 20 Engineering Colleges</div>
+              <div class="hud-subtext-note">Target: 35 Groups across 20 Engineering Colleges (Simulated Pace)</div>
             </div>
 
           </div>
@@ -3046,18 +3143,18 @@
             
             <!-- Channel Attribution Table -->
             <div class="surface-card">
-              <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">Channel Attribution & Conversion Model</h3>
-              <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 12px;">Unit economics and volume breakdown across prioritized growth loops</p>
+              <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">Channel Attribution & Conversion Model (Modeled Projections)</h3>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 12px;">Unit economics and volume breakdown across prioritized growth loops (Demo / Projected Data)</p>
               
               <div class="table-scroll-wrap">
                 <table class="hud-data-table" aria-label="Channel Attribution Data">
                   <thead>
                     <tr>
                       <th>Channel Vector</th>
-                      <th>Reach</th>
-                      <th>Conv %</th>
-                      <th>Regs</th>
-                      <th>CAC</th>
+                      <th>Reach (Proj)</th>
+                      <th>Conv % (Est)</th>
+                      <th>Regs (Proj)</th>
+                      <th>Channel CAC</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -3076,11 +3173,11 @@
                       <td>₹0.00</td>
                     </tr>
                     <tr>
-                      <td><strong style="color: var(--accent-indigo);">Channel 3: Campus Micro-Bounties</strong></td>
+                      <td><strong style="color: var(--accent-indigo);">Channel 3: Campus Club Activations</strong></td>
                       <td>650</td>
                       <td>12.3%</td>
                       <td><strong>80</strong></td>
-                      <td>₹10.00</td>
+                      <td>₹0.00</td>
                     </tr>
                     <tr style="background: rgba(56, 189, 248, 0.06); font-weight: 700;">
                       <td>Projected Funnel Output</td>
@@ -3106,8 +3203,8 @@
 
             <!-- Live Registration Stream (Simulated) -->
             <div class="surface-card">
-              <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">Simulated Lead Telemetry Stream</h3>
-              <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 12px;">Real-time feed showing lead ingestion and attribution</p>
+              <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">Simulated Lead Telemetry Stream (Demo Data)</h3>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 12px;">Mock telemetry pipeline showing real-time event ingestion and UTM attribution (Simulated Demo)</p>
               
               <div class="stream-feed-deck" id="leadStream" role="log" aria-live="polite">
                 <div class="stream-entry-pill">
@@ -3148,7 +3245,7 @@
     <footer>
       <div class="container">
         <p>NxtWave Growth Intern Challenge (Round 1) • Strategy & Interactive 3D Asset Built by <strong>Durga Prasad</strong></p>
-        <p style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 4px;">Simulation model for 500-student workshop acquisition sprint with ₹2,000 budget cap.</p>
+        <p style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 4px;">Evaluator Model: 500 Base Target → 520 Projected (+20 Safety Buffer) • ₹2,000 Budget Cap (₹1,200 CR Bounties + ₹800 Attendance Raffle) • All lead streams and metric readouts represent simulated pre-launch demonstration data.</p>
       </div>
     </footer>
 
@@ -3178,7 +3275,7 @@
     // No central clutter! The center reading window is completely open.
     const nodeArchitectures = [
       { name: "CR WhatsApp Guilds (Acquire)", basePos: [-25, 11, -18], radius: 4.2, speed: 0.0006, phase: 0.0 },
-      { name: "1-Click RSVP Gateway (Register)", basePos: [-22, -15, -10], radius: 3.5, speed: 0.0005, phase: 1.8 },
+      { name: "30-Second RSVP Gateway (Register)", basePos: [-22, -15, -10], radius: 3.5, speed: 0.0005, phase: 1.8 },
       { name: "Viral Peer Multiplier (Refer)", basePos: [26, 12, -22], radius: 4.6, speed: 0.0007, phase: 3.4 },
       { name: "2026 Capstone Vault (Unlock)", basePos: [23, -14, -12], radius: 3.8, speed: 0.0005, phase: 5.1 },
       { name: "Telemetry Matrix (Measure)", basePos: [0, 24, -36], radius: 5.8, speed: 0.0004, phase: 2.2 }
