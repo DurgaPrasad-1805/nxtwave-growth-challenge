@@ -2143,6 +2143,345 @@
       background: #283754;
     }
 
+    /* ==========================================================================
+       STUDENT JOURNEY ENHANCEMENTS & WHY ATTEND SECTION
+       ========================================================================== */
+    .why-attend-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .why-attend-card {
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: var(--shadow-ambient);
+      transition: transform 0.25s var(--ease-cinematic), border-color 0.25s;
+    }
+    .why-attend-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+    .outcome-icon-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      margin-bottom: 16px;
+    }
+    .outcome-card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .outcome-card-desc {
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+    .outcome-meta-pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-cyan);
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      width: fit-content;
+    }
+
+    /* 5-Stage Build-to-Showcase Pipeline Bar */
+    .pipeline-progress-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 22px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scrollbar-width: thin;
+    }
+    .pipeline-step-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      padding: 6px 14px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+    .pipeline-step-chip.active {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: rgba(56, 189, 248, 0.35);
+      color: var(--accent-cyan);
+    }
+    .chip-step-num {
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 0.7rem;
+      background: rgba(56, 189, 248, 0.2);
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+    }
+    .pipeline-connector {
+      color: var(--text-tertiary);
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       GROWTH OPS CONSOLE UPGRADE & INTELLIGENCE SUITE
+       ========================================================================== */
+    .demo-mode-persistent-banner {
+      background: linear-gradient(90deg, rgba(225, 29, 72, 0.15) 0%, rgba(225, 29, 72, 0.05) 100%);
+      border: 1px solid rgba(225, 29, 72, 0.35);
+      border-radius: var(--radius-md);
+      padding: 12px 18px;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .pulse-indicator-red {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #f43f5e;
+      box-shadow: 0 0 10px #f43f5e;
+      animation: pulseAlert 2s infinite;
+    }
+    @keyframes pulseAlert {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+    .campaign-context-dock {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-ambient);
+    }
+    .context-stat-pill {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+    }
+    .context-pill-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text-tertiary);
+      letter-spacing: 0.04em;
+    }
+    .context-pill-val {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-heading);
+    }
+
+    /* Registration Intelligence */
+    .reg-intel-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .reg-search-input {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 8px 14px;
+      font-size: 0.82rem;
+      color: var(--text-primary);
+      flex: 1;
+      min-width: 240px;
+      outline: none;
+    }
+    .reg-search-input:focus {
+      border-color: var(--border-focus);
+    }
+    .reg-filter-select {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 8px 14px;
+      font-size: 0.82rem;
+      color: var(--text-primary);
+      outline: none;
+    }
+    .reg-filter-select:focus {
+      border-color: var(--border-focus);
+    }
+
+    /* Referral Funnel Grid */
+    .referral-funnel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .ref-funnel-node {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      text-align: center;
+    }
+    .ref-node-stage {
+      font-size: 0.72rem;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .ref-node-val {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--accent-cyan);
+    }
+    .ref-node-conv {
+      font-size: 0.74rem;
+      color: var(--accent-emerald);
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    /* Leaderboard */
+    .leaderboard-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .leaderboard-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+    }
+
+    /* Lightweight Campaign Simulator */
+    .simulator-container {
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-top: 26px;
+      box-shadow: var(--shadow-ambient);
+    }
+    .sim-slider-row {
+      margin-bottom: 16px;
+    }
+    .sim-slider-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+    .sim-range-input {
+      width: 100%;
+      accent-color: var(--accent-indigo);
+      cursor: pointer;
+    }
+    .sim-output-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .sim-output-box {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      text-align: center;
+    }
+
+    /* Light Theme Overrides for New Modules */
+    [data-theme="light"] .why-attend-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: rgba(203, 213, 225, 0.8);
+    }
+    [data-theme="light"] .outcome-card-title {
+      color: #0f172a;
+    }
+    [data-theme="light"] .outcome-meta-pill {
+      background: #eef2ff;
+      border-color: rgba(99, 102, 241, 0.25);
+      color: var(--accent-indigo);
+    }
+    [data-theme="light"] .pipeline-step-chip {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      color: #475569;
+    }
+    [data-theme="light"] .pipeline-step-chip.active {
+      background: #eef2ff;
+      border-color: rgba(99, 102, 241, 0.35);
+      color: var(--accent-indigo);
+    }
+    [data-theme="light"] .demo-mode-persistent-banner {
+      background: #fff1f2;
+      border-color: rgba(244, 63, 94, 0.3);
+      color: #9f1239;
+    }
+    [data-theme="light"] .campaign-context-dock {
+      background: #ffffff;
+      border-color: #e2e8f0;
+    }
+    [data-theme="light"] .context-stat-pill {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+    }
+    [data-theme="light"] .ref-funnel-node,
+    [data-theme="light"] .sim-output-box,
+    [data-theme="light"] .leaderboard-row {
+      background: #ffffff;
+      border-color: #e2e8f0;
+    }
+    [data-theme="light"] .simulator-container {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: rgba(99, 102, 241, 0.25);
+    }
+
     /* Footer */
     footer {
       border-top: 1px solid var(--border-subtle);
@@ -2276,37 +2615,59 @@
             </div>
           </div>
 
-          <!-- Central Growth Loop Process Pipeline -->
-          <section class="growth-loop-strip" aria-labelledby="loopHeading">
-            <div class="loop-strip-header">
-              <span id="loopHeading">Central Growth Loop: Acquire → Register → Refer → Unlock → Measure</span>
-              <span style="color: var(--text-tertiary); font-size: 0.74rem;">Organic High-Leverage Loop</span>
+          <!-- ==========================================================================
+               WHY ATTEND: 4 CONCRETE PLACEMENT OUTCOMES (STUDENT VALUE PROP)
+               ========================================================================== -->
+          <section id="whyAttendSection" style="margin: 40px 0 50px;" aria-labelledby="whyAttendHeading">
+            <div class="section-headline-box">
+              <span class="section-eyebrow">Zero Theory Slides • Pure Proof of Work</span>
+              <h2 id="whyAttendHeading" class="sec-title">
+                Why Attend This <span class="gradient-hero-text">60-Minute AI Sprint?</span>
+              </h2>
+              <p class="sec-desc">
+                Most students attend webinars and leave with generic certificates that campus recruiters ignore. Here are the 4 tangible assets you leave with on Sunday night.
+              </p>
             </div>
-            <div class="loop-node-grid">
-              <div class="loop-node-item active" onclick="focusAmbientNode(0)">
-                <div class="loop-node-step">01. ACQUIRE</div>
-                <div class="loop-node-name">CR WhatsApp</div>
-                <div class="loop-node-detail">35 College Guilds</div>
+
+            <div class="why-attend-grid">
+              <!-- Outcome 1 -->
+              <div class="why-attend-card">
+                <div class="outcome-icon-badge">🌐</div>
+                <h3 class="outcome-card-title">Live Public HTTPS App</h3>
+                <p class="outcome-card-desc">
+                  Build and deploy a functional Generative AI web app to Streamlit Cloud. Hand the live URL to recruiters during interviews or embed it directly in your portfolio.
+                </p>
+                <div class="outcome-meta-pill">Instant Proof • Mobile-Viewable</div>
               </div>
-              <div class="loop-node-item" onclick="focusAmbientNode(1)">
-                <div class="loop-node-step">02. REGISTER</div>
-                <div class="loop-node-name">30-Second RSVP</div>
-                <div class="loop-node-detail">Low-Friction Pass</div>
+
+              <!-- Outcome 2 -->
+              <div class="why-attend-card">
+                <div class="outcome-icon-badge">🐙</div>
+                <h3 class="outcome-card-title">Clean GitHub Repository</h3>
+                <p class="outcome-card-desc">
+                  Create a production-structured repository with clean commits, modular code, environment configurations, and an architectural README that proves engineering craft.
+                </p>
+                <div class="outcome-meta-pill">Git Commits • Verified Code</div>
               </div>
-              <div class="loop-node-item" onclick="focusAmbientNode(2)">
-                <div class="loop-node-step">03. REFER</div>
-                <div class="loop-node-name">WhatsApp Share</div>
-                <div class="loop-node-detail">Peer Invite Links</div>
+
+              <!-- Outcome 3 -->
+              <div class="why-attend-card">
+                <div class="outcome-icon-badge">📄</div>
+                <h3 class="outcome-card-title">3 ATS-Ready Resume Bullets</h3>
+                <p class="outcome-card-desc">
+                  Formatted using the STAR framework with concrete numbers (e.g., &lt;1.2s response latency, token efficiency). Passes campus placement screening algorithms effortlessly.
+                </p>
+                <div class="outcome-meta-pill">STAR Method • ATS Optimized</div>
               </div>
-              <div class="loop-node-item" onclick="focusAmbientNode(3)">
-                <div class="loop-node-step">04. UNLOCK</div>
-                <div class="loop-node-name">Capstone Vault</div>
-                <div class="loop-node-detail">Target K=0.32 Loop</div>
-              </div>
-              <div class="loop-node-item" onclick="focusAmbientNode(4)">
-                <div class="loop-node-step">05. MEASURE</div>
-                <div class="loop-node-name">Ops Console</div>
-                <div class="loop-node-detail">Model CAC & Velocity</div>
+
+              <!-- Outcome 4 -->
+              <div class="why-attend-card">
+                <div class="outcome-icon-badge">🎯</div>
+                <h3 class="outcome-card-title">Explainable Architecture</h3>
+                <p class="outcome-card-desc">
+                  Understand every layer of your project: LLM API authentication, prompt design, streaming responses, and state management. Confidently ace deep technical viva questions.
+                </p>
+                <div class="outcome-meta-pill">Interview Ready • System Design</div>
               </div>
             </div>
           </section>
@@ -2327,6 +2688,34 @@
               </div>
               <div style="display: flex; align-items: center; gap: 8px;">
                 <span class="status-pill" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald); border-color: rgba(16, 185, 129, 0.35);">● LIVE 60-MIN BUILD DEMO</span>
+              </div>
+            </div>
+
+            <!-- 5-Stage Build-to-Showcase Pipeline Bar -->
+            <div class="pipeline-progress-bar" role="region" aria-label="Build Pipeline Steps" style="margin: 16px 20px 0;">
+              <div class="pipeline-step-chip active">
+                <span class="chip-step-num">01</span>
+                <span>Branch Selection</span>
+              </div>
+              <span class="pipeline-connector">➔</span>
+              <div class="pipeline-step-chip active">
+                <span class="chip-step-num">02</span>
+                <span>Prompt & Architecture Spec</span>
+              </div>
+              <span class="pipeline-connector">➔</span>
+              <div class="pipeline-step-chip active">
+                <span class="chip-step-num">03</span>
+                <span>60-Min Live Coding</span>
+              </div>
+              <span class="pipeline-connector">➔</span>
+              <div class="pipeline-step-chip active">
+                <span class="chip-step-num">04</span>
+                <span>Public Cloud Deploy</span>
+              </div>
+              <span class="pipeline-connector">➔</span>
+              <div class="pipeline-step-chip active">
+                <span class="chip-step-num">05</span>
+                <span>GitHub & Resume Showcase</span>
               </div>
             </div>
 
@@ -2408,289 +2797,6 @@
               <button type="button" class="action-btn btn-gradient-glow" style="padding: 8px 18px; font-size: 0.82rem; width: auto;" onclick="scrollToReserve()">
                 <span>Reserve Seat to Build This ➔</span>
               </button>
-            </div>
-          </section>
-
-          <!-- Main Interactive Stage Grid -->
-          <div class="product-stage-grid">
-            
-            <!-- LEFT: Interactive AI Project Architect -->
-            <div class="surface-card" id="projectArchitectCard">
-              <div class="card-top-bar">
-                <div class="surface-icon" aria-hidden="true">⚡</div>
-                <div>
-                  <h2 class="card-heading-title">Interactive AI Project Architect</h2>
-                  <p class="card-heading-sub">Discover your branch-tailored 60-min capstone project & resume bullet</p>
-                </div>
-              </div>
-
-              <form id="projectArchitectForm" onsubmit="event.preventDefault(); updateProjectPreview();">
-                <div class="form-group-wrap">
-                  <label for="branchSelect" class="field-caption">Your Engineering Branch</label>
-                  <select id="branchSelect" class="select-dropdown" onchange="updateProjectPreview()">
-                    <option value="cs">Computer Science / IT (CSE, ISE, AI/ML)</option>
-                    <option value="ece">Electronics & Communication (ECE, EEE)</option>
-                    <option value="mech">Mechanical / Automation</option>
-                    <option value="civil">Civil / Structural Engineering</option>
-                    <option value="nontech">Non-CS / Open Branch</option>
-                  </select>
-                </div>
-
-                <div class="form-group-wrap">
-                  <label for="interestSelect" class="field-caption">Preferred Project Domain</label>
-                  <select id="interestSelect" class="select-dropdown" onchange="updateProjectPreview()">
-                    <option value="copilot">Autonomous Interview & Placement Copilot</option>
-                    <option value="docai">Multi-PDF Semantic Research Assistant</option>
-                    <option value="agent">Automated Web Task & Job Application Agent</option>
-                    <option value="vision">Multimodal Vision & Real-time Defect Detector</option>
-                  </select>
-                </div>
-
-                <button class="action-btn btn-gradient-glow" id="generateBtn" type="button" onclick="updateProjectPreview()">
-                  <span>Preview My 60-Minute AI Project & Resume Bullet</span> ➔
-                </button>
-              </form>
-
-              <!-- Dynamic Project Output -->
-              <div class="project-card-3d-box" id="projectPreview" role="region" aria-live="polite">
-                <span class="tag-category-badge" id="previewTag">CUSTOMIZED FOR CSE/IT</span>
-                <h3 class="card-project-name" id="previewTitle">AI Technical Interviewer with Real-time Code & Voice Evaluation</h3>
-                <p class="card-project-summary" id="previewDesc">
-                  Full-stack application using Gemini API and Streamlit that evaluates coding solutions, checks edge cases, and provides instant audio-style feedback.
-                </p>
-
-                <span class="bullet-label-hdr">📄 Your Verified Post-Workshop ATS Resume Bullet:</span>
-                <div class="resume-bullet-shell" id="resumeBulletText">
-                  • Engineered an AI Technical Interview Platform using Gemini 1.5 Flash and Python; automated real-time test-case generation and code evaluation with &lt;1.2s response latency.
-                </div>
-              </div>
-            </div>
-
-            <!-- RIGHT: 30-Second Low-Friction Registration & Viral Referral Loop Engine -->
-            <div class="surface-card">
-              
-              <!-- State 1: Quick RSVP Form -->
-              <div id="unregisteredState">
-                <div class="card-top-bar">
-                  <div class="surface-icon" aria-hidden="true">🎟️</div>
-                  <div>
-                    <h2 class="card-heading-title">Free Registration</h2>
-                    <p class="card-heading-sub">30-Second RSVP • Zero Spam • 100% Free</p>
-                  </div>
-                </div>
-
-                <form id="rsvpForm" novalidate onsubmit="processRegistration(event)">
-                  <div class="form-group-wrap">
-                    <label for="studentName" class="field-caption">Full Name</label>
-                    <input type="text" id="studentName" class="input-text-field" placeholder="e.g. Rahul Sharma" required aria-required="true">
-                    <div class="field-error-hint" id="nameError">Please enter your full name.</div>
-                  </div>
-
-                  <div class="form-group-wrap">
-                    <label for="studentPhone" class="field-caption">WhatsApp Number</label>
-                    <input type="tel" id="studentPhone" class="input-text-field" placeholder="e.g. 9876543210" pattern="[6-9][0-9]{9}" required aria-required="true">
-                    <div class="field-error-hint" id="phoneError">Please enter a valid 10-digit Indian mobile number.</div>
-                  </div>
-
-                  <div class="form-group-wrap">
-                    <label for="collegeName" class="field-caption">College / Institute Name</label>
-                    <input type="text" id="collegeName" class="input-text-field" placeholder="e.g. CBIT Hyderabad / SRM Chennai" required aria-required="true">
-                    <div class="field-error-hint" id="collegeError">Please enter your college name.</div>
-                  </div>
-
-                  <button type="submit" class="action-btn btn-gradient-glow" style="margin-top: 6px;">
-                    <span>Confirm 60-Min Workshop Seat</span> 🎟️
-                  </button>
-                </form>
-              </div>
-
-              <!-- State 2: Registered State (Viral Engine) -->
-              <div id="registeredState" class="ticket-view-wrapper" aria-live="polite">
-                <div class="hologram-ticket-stub">
-                  <div style="font-size: 0.78rem; color: var(--text-secondary); text-transform: uppercase;">Seat Confirmed • Ticket ID</div>
-                  <div class="ticket-id-display" id="ticketId">NXW-2026-8491</div>
-                  <div style="font-size: 0.8rem; color: var(--accent-emerald); margin-top: 4px;">Confirmation link dispatched to WhatsApp!</div>
-                </div>
-
-                <div class="viral-referral-shell">
-                  <h3 style="font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 4px;">
-                    🎁 Unlock the 2026 Final-Year AI Vault
-                  </h3>
-                  <p style="font-size: 0.8rem; color: var(--text-secondary);">
-                    Invite <strong>2 batchmates</strong> with your unique link to unlock 50+ GitHub Starter Repos, Capstone Architecture diagrams, and ATS Templates!
-                  </p>
-
-                  <div class="link-copy-shelf">
-                    <span id="refLinkText">nxtwave.io/ai60?ref=NXW-HERO-1024</span>
-                    <button class="btn-copy-chip" id="copyBtn" type="button" onclick="copyReferralLink()">Copy</button>
-                  </div>
-
-                  <button class="action-btn btn-whatsapp-action" id="whatsappShareBtn" type="button" onclick="openWhatsAppShare()">
-                    <span>Share to Batch WhatsApp Group</span> 📲
-                  </button>
-
-                  <!-- Dynamic Milestone Tracker -->
-                  <div class="milestone-track-stack">
-                    <div class="milestone-tier-row" id="tier1">
-                      <span>1 Friend Registered (GitHub Starter Pack)</span>
-                      <span class="badge-lock-status badge-locked" id="t1Badge">🔒 Locked</span>
-                    </div>
-                    <div class="milestone-tier-row" id="tier2">
-                      <span>2 Friends Registered (Full Project Vault)</span>
-                      <span class="badge-lock-status badge-locked" id="t2Badge">🔒 Locked</span>
-                    </div>
-                  </div>
-
-                  <div style="margin-top: 14px; text-align: center;">
-                    <button type="button" class="sim-btn-pill" style="font-size: 0.75rem;" onclick="simulateReferredFriend()">
-                      ⚡ Test Simulation: Add +1 Referred Friend
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-
-          <!-- Section: 3 Controlled Growth Experiments -->
-          <section class="growth-experiments-container" aria-labelledby="experimentsTitle">
-            <div class="section-headline-box">
-              <h2 id="experimentsTitle" class="sec-title">3 Controlled Growth Experiments</h2>
-              <p class="sec-desc">
-                Empirical A/B tests designed to validate value proposition hooks, distribution channels, and viral referral mechanics.
-              </p>
-            </div>
-
-            <div class="experiments-card-deck">
-              
-              <!-- Experiment 1 -->
-              <article class="exp-spec-card">
-                <div class="exp-meta-header">
-                  <span class="exp-category-pill tag-message-hook">Messaging & Value Prop</span>
-                  <span class="exp-num-label">EXPERIMENT 01</span>
-                </div>
-                <h3 class="exp-name-title">Placement Armor vs. Generic Tech Stack Hook</h3>
-                <div class="exp-text-row">
-                  <span class="exp-row-lead">Hypothesis:</span> Positioning around "Placement Armor & 3 ATS Bullets" will generate higher click-to-registration conversion than generic "Learn Generative AI & LLMs" messaging.
-                </div>
-                <div class="exp-text-row">
-                  <span class="exp-row-lead">What We Test:</span> A/B test 2 distinct WhatsApp broadcast copies across 20 college groups using dedicated UTM parameters (Variant A: Outcome/Placement Hook vs. Variant B: Skill/Tech Hook).
-                </div>
-                <div class="exp-text-row">
-                  <span class="exp-row-lead">Primary Metric:</span> Click-to-Registration Conversion Rate (Form Submissions / Unique Link Clicks).
-                </div>
-                <div class="exp-text-row">
-                  <span class="exp-row-lead">Secondary Metric:</span> Unique Click-Through Rate (CTR) in college WhatsApp groups.
-                </div>
-                <div class="exp-text-row">
-                  <span class="exp-row-lead">Success Threshold:</span> Variant A achieves &ge;25% higher relative conversion rate than Variant B.
-                </div>
-                <div class="exp-decision-footer">
-                  <strong>Decision:</strong> If Variant A wins, lock placement-first messaging across all Day 5–6 retargeting pushes; if Variant B wins, pivot messaging to emphasize technical LLM depth and modern AI skills.
-                </div>
-              </article>
-
-              <!-- Experiment 2 -->
-              <article class="exp-spec-card">
-                <div class="exp-meta-header">
-                  <span class="exp-category-pill tag-channel-dist">Distribution & Channel Authority</span>
-                  <span class="exp-num-label">EXPERIMENT 02</span>
-                </div>
-                <h3 class="exp-name-title">CR Broadcasts vs. Open Community Channels</h3>
-                <div class="exp-text-row">
-                  <span class="exp-row-lead">Hypothesis:</span> Promotional messages distributed directly by Class Representatives (CRs) in official batch WhatsApp groups deliver &ge;3&times; more verified signups per reach than open student Discord/Telegram channels.
-                </div>
-                <div class="exp-text-row">
-                  <span class="exp-row-lead">What We Test:</span> 15 peer CR broadcasts vs. 5 regional Discord/Telegram placement communities of similar reach (~1,500 reach each), tracked via UTM tags.
-                </div>
-                <div class="exp-text-row">
-                  <span class="exp-row-lead">Primary Metric:</span> Total Verified Registrations per 1,000 Reach.
-                </div>
-                <div class="exp-text-row">
-                  <span class="exp-row-lead">Secondary Metric:</span> Registration Completion Speed (time from broadcast to first 50 verified signups).
-                </div>
-                <div class="exp-text-row">
-                  <span class="exp-row-lead">Success Threshold:</span> CR WhatsApp generates &ge;3&times; more verified registrations per reach than open Discord/Telegram groups.
-                </div>
-                <div class="exp-decision-footer">
-                  <strong>Decision:</strong> If CR WhatsApp wins, allocate 100% of the ₹1,200 bounty pool to the CR performance leaderboard; if Discord/Telegram performs strongly, divert ₹400 to incentivize Discord moderators.
-                </div>
-              </article>
-
-              <!-- Experiment 3 -->
-              <article class="exp-spec-card">
-                <div class="exp-meta-header">
-                  <span class="exp-category-pill tag-referral-k">Referral Mechanics & K-Factor</span>
-                  <span class="exp-num-label">EXPERIMENT 03</span>
-                </div>
-                <h3 class="exp-name-title">Digital Milestone Vault vs. Cash Lottery</h3>
-                <div class="exp-text-row">
-                  <span class="exp-row-lead">Hypothesis:</span> A guaranteed Milestone Digital Asset Unlock (2-referral threshold to unlock the 2026 Capstone Vault) will drive a higher viral coefficient (K-factor &ge; 0.30) than an abstract raffle lottery.
-                </div>
-                <div class="exp-text-row">
-                  <span class="exp-row-lead">What We Test:</span> 50/50 split on post-registration screen: Milestone Capstone Vault vs. ₹500 Amazon Gift Card lucky draw entry.
-                </div>
-                <div class="exp-text-row">
-                  <span class="exp-row-lead">Primary Metric:</span> Viral Coefficient (K-factor = Referred Registrations / Direct Registrations).
-                </div>
-                <div class="exp-text-row">
-                  <span class="exp-row-lead">Secondary Metric:</span> Referral Share Rate (% of registrants clicking the WhatsApp share button).
-                </div>
-                <div class="exp-text-row">
-                  <span class="exp-row-lead">Success Threshold:</span> Milestone Vault achieves K &ge; 0.30 (vs. lottery K &lt; 0.15).
-                </div>
-                <div class="exp-decision-footer">
-                  <strong>Decision:</strong> If Milestone Vault wins, lock all post-registration flows to asset gating; if lottery wins, shift the referral reward to cash vouchers.
-                </div>
-              </article>
-
-            </div>
-
-            <!-- If I Had Another 24 Hours: Iterative Optimization Protocol Card -->
-            <div class="next-24-hours-card" role="region" aria-label="Next 24 Hours Optimization Strategy">
-              <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                  <span class="status-pill" style="background: rgba(99, 102, 241, 0.15); color: var(--accent-indigo); border-color: rgba(99, 102, 241, 0.3); font-weight: 700;">
-                    ⏱️ NEXT EXECUTION HORIZON
-                  </span>
-                  <h3 style="font-size: 1.25rem; font-weight: 800; margin: 0;">
-                    If I Had Another 24 Hours: Controlled Sample Optimization Protocol
-                  </h3>
-                </div>
-                <span class="buffer-tag-chip" style="font-size: 0.76rem;">Phase-Gated Capital Reallocation</span>
-              </div>
-              <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;">
-                Rather than deploying the entire ₹2,000 budget and outreach capacity simultaneously across all 35 college groups, the next 24 hours would be strictly dedicated to running the 3 controlled growth experiments on an initial 10% sample, validating statistical winners, and dynamically reallocating capital and distribution effort toward the highest-performing combination before the final Day 6–7 surge.
-              </p>
-
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px;">
-                
-                <div class="phase-plan-step">
-                  <div style="font-size: 0.76rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 6px;">Hours 01–06 • Micro-Sample Test</div>
-                  <strong style="font-size: 0.92rem; display: block; margin-bottom: 6px;">Deploy 10% Sample Across 3 Vectors</strong>
-                  <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
-                    Release Experiment 1 copy (Variant A vs. B) across 4 CR groups (2 vs 2); test Experiment 2 in 2 CR groups vs. 2 student Discord servers; activate Experiment 3 50/50 split on the first 50 signups.
-                  </p>
-                </div>
-
-                <div class="phase-plan-step">
-                  <div style="font-size: 0.76rem; font-weight: 700; color: var(--accent-emerald); text-transform: uppercase; margin-bottom: 6px;">Hours 07–14 • Signal Detection</div>
-                  <strong style="font-size: 0.92rem; display: block; margin-bottom: 6px;">Read Early Telemetry & Determine Winners</strong>
-                  <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
-                    Evaluate Link CTR and Form Conversion % to confirm whether "Placement Armor" beats "Tech Stack"; compute real-time K-factor from the initial 50 shares; measure CR signup velocity vs. open communities.
-                  </p>
-                </div>
-
-                <div class="phase-plan-step">
-                  <div style="font-size: 0.76rem; font-weight: 700; color: var(--accent-amber); text-transform: uppercase; margin-bottom: 6px;">Hours 15–24 • Capital Reallocation</div>
-                  <strong style="font-size: 0.92rem; display: block; margin-bottom: 6px;">Shift 100% Effort to Winning Combination</strong>
-                  <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
-                    Kill underperforming message copies immediately; route all remaining 31 CR broadcasts with the winning placement hook; reallocate the full ₹1,200 bounty pool to the winning channel; lock post-registration to the winning referral engine.
-                  </p>
-                </div>
-
-              </div>
             </div>
           </section>
 
@@ -2979,6 +3085,163 @@
           </section>
 
           <!-- ==========================================================================
+               INTERACTIVE AI PROJECT ARCHITECT & 30-SECOND FREE RSVP
+               ========================================================================== -->
+          <section id="registrationSection" style="margin: 44px 0 54px;" aria-labelledby="regSectionHeading">
+            <div class="section-headline-box">
+              <span class="section-eyebrow">Personalized AI Project & Instant Pass</span>
+              <h2 id="regSectionHeading" class="sec-title">
+                Configure Your Project & <span class="gradient-hero-text">Claim Your Free Seat</span>
+              </h2>
+              <p class="sec-desc">
+                Select your engineering branch to preview your custom capstone project, then complete the 30-second low-friction RSVP to receive your ticket and unlock the viral referral vault.
+              </p>
+            </div>
+
+            <!-- Main Interactive Stage Grid -->
+            <div class="product-stage-grid">
+              
+              <!-- LEFT: Interactive AI Project Architect -->
+              <div class="surface-card" id="projectArchitectCard">
+                <div class="card-top-bar">
+                  <div class="surface-icon" aria-hidden="true">⚡</div>
+                  <div>
+                    <h2 class="card-heading-title">Interactive AI Project Architect</h2>
+                    <p class="card-heading-sub">Discover your branch-tailored 60-min capstone project & resume bullet</p>
+                  </div>
+                </div>
+
+                <form id="projectArchitectForm" onsubmit="event.preventDefault(); updateProjectPreview();">
+                  <div class="form-group-wrap">
+                    <label for="branchSelect" class="field-caption">Your Engineering Branch</label>
+                    <select id="branchSelect" class="select-dropdown" onchange="updateProjectPreview()">
+                      <option value="cs">Computer Science / IT (CSE, ISE, AI/ML)</option>
+                      <option value="ece">Electronics & Communication (ECE, EEE)</option>
+                      <option value="mech">Mechanical / Automation</option>
+                      <option value="civil">Civil / Structural Engineering</option>
+                      <option value="nontech">Non-CS / Open Branch</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group-wrap">
+                    <label for="interestSelect" class="field-caption">Preferred Project Domain</label>
+                    <select id="interestSelect" class="select-dropdown" onchange="updateProjectPreview()">
+                      <option value="copilot">Autonomous Interview & Placement Copilot</option>
+                      <option value="docai">Multi-PDF Semantic Research Assistant</option>
+                      <option value="agent">Automated Web Task & Job Application Agent</option>
+                      <option value="vision">Multimodal Vision & Real-time Defect Detector</option>
+                    </select>
+                  </div>
+
+                  <button class="action-btn btn-gradient-glow" id="generateBtn" type="button" onclick="updateProjectPreview()">
+                    <span>Preview My 60-Minute AI Project & Resume Bullet</span> ➔
+                  </button>
+                </form>
+
+                <!-- Dynamic Project Output -->
+                <div class="project-card-3d-box" id="projectPreview" role="region" aria-live="polite">
+                  <span class="tag-category-badge" id="previewTag">CUSTOMIZED FOR CSE/IT</span>
+                  <h3 class="card-project-name" id="previewTitle">AI Technical Interviewer with Real-time Code & Voice Evaluation</h3>
+                  <p class="card-project-summary" id="previewDesc">
+                    Full-stack application using Gemini API and Streamlit that evaluates coding solutions, checks edge cases, and provides instant audio-style feedback.
+                  </p>
+
+                  <span class="bullet-label-hdr">📄 Your Verified Post-Workshop ATS Resume Bullet:</span>
+                  <div class="resume-bullet-shell" id="resumeBulletText">
+                    • Engineered an AI Technical Interview Platform using Gemini 1.5 Flash and Python; automated real-time test-case generation and code evaluation with &lt;1.2s response latency.
+                  </div>
+                </div>
+              </div>
+
+              <!-- RIGHT: 30-Second Low-Friction Registration & Viral Referral Loop Engine -->
+              <div class="surface-card">
+                
+                <!-- State 1: Quick RSVP Form -->
+                <div id="unregisteredState">
+                  <div class="card-top-bar">
+                    <div class="surface-icon" aria-hidden="true">🎟️</div>
+                    <div>
+                      <h2 class="card-heading-title">Free Registration</h2>
+                      <p class="card-heading-sub">30-Second RSVP • Zero Spam • 100% Free</p>
+                    </div>
+                  </div>
+
+                  <form id="rsvpForm" novalidate onsubmit="processRegistration(event)">
+                    <div class="form-group-wrap">
+                      <label for="studentName" class="field-caption">Full Name</label>
+                      <input type="text" id="studentName" class="input-text-field" placeholder="e.g. Rahul Sharma" required aria-required="true">
+                      <div class="field-error-hint" id="nameError">Please enter your full name.</div>
+                    </div>
+
+                    <div class="form-group-wrap">
+                      <label for="studentPhone" class="field-caption">WhatsApp Number</label>
+                      <input type="tel" id="studentPhone" class="input-text-field" placeholder="e.g. 9876543210" pattern="[6-9][0-9]{9}" required aria-required="true">
+                      <div class="field-error-hint" id="phoneError">Please enter a valid 10-digit Indian mobile number.</div>
+                    </div>
+
+                    <div class="form-group-wrap">
+                      <label for="collegeName" class="field-caption">College / Institute Name</label>
+                      <input type="text" id="collegeName" class="input-text-field" placeholder="e.g. CBIT Hyderabad / SRM Chennai" required aria-required="true">
+                      <div class="field-error-hint" id="collegeError">Please enter your college name.</div>
+                    </div>
+
+                    <button type="submit" class="action-btn btn-gradient-glow" style="margin-top: 6px;">
+                      <span>Confirm 60-Min Workshop Seat</span> 🎟️
+                    </button>
+                  </form>
+                </div>
+
+                <!-- State 2: Registered State (Viral Engine) -->
+                <div id="registeredState" class="ticket-view-wrapper" aria-live="polite">
+                  <div class="hologram-ticket-stub">
+                    <div style="font-size: 0.78rem; color: var(--text-secondary); text-transform: uppercase;">Seat Confirmed • Ticket ID</div>
+                    <div class="ticket-id-display" id="ticketId">NXW-2026-8491</div>
+                    <div style="font-size: 0.8rem; color: var(--accent-emerald); margin-top: 4px;">Confirmation link dispatched to WhatsApp!</div>
+                  </div>
+
+                  <div class="viral-referral-shell">
+                    <h3 style="font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 4px;">
+                      🎁 Unlock the 2026 Final-Year AI Vault
+                    </h3>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary);">
+                      Invite <strong>2 batchmates</strong> with your unique link to unlock 50+ GitHub Starter Repos, Capstone Architecture diagrams, and ATS Templates!
+                    </p>
+
+                    <div class="link-copy-shelf">
+                      <span id="refLinkText">nxtwave.io/ai60?ref=NXW-HERO-1024</span>
+                      <button class="btn-copy-chip" id="copyBtn" type="button" onclick="copyReferralLink()">Copy</button>
+                    </div>
+
+                    <button class="action-btn btn-whatsapp-action" id="whatsappShareBtn" type="button" onclick="openWhatsAppShare()">
+                      <span>Share to Batch WhatsApp Group</span> 📲
+                    </button>
+
+                    <!-- Dynamic Milestone Tracker -->
+                    <div class="milestone-track-stack">
+                      <div class="milestone-tier-row" id="tier1">
+                        <span>1 Friend Registered (GitHub Starter Pack)</span>
+                        <span class="badge-lock-status badge-locked" id="t1Badge">🔒 Locked</span>
+                      </div>
+                      <div class="milestone-tier-row" id="tier2">
+                        <span>2 Friends Registered (Full Project Vault)</span>
+                        <span class="badge-lock-status badge-locked" id="t2Badge">🔒 Locked</span>
+                      </div>
+                    </div>
+
+                    <div style="margin-top: 14px; text-align: center;">
+                      <button type="button" class="sim-btn-pill" style="font-size: 0.75rem;" onclick="simulateReferredFriend()">
+                        ⚡ Test Simulation: Add +1 Referred Friend
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ==========================================================================
                FREQUENTLY ASKED QUESTIONS (ACCESSIBLE INTERACTIVE ACCORDION)
                ========================================================================== -->
           <section style="margin: 44px 0 54px;" aria-labelledby="faqHeading">
@@ -3091,57 +3354,389 @@
       <section id="opsTelemetryView" class="ops-console-stage" role="tabpanel" aria-labelledby="tabOps">
         <div class="container">
           
-          <!-- Simulation Notice -->
-          <aside class="ops-notice-callout" aria-label="Dashboard Methodology">
-            <div>
-              <strong>Operational Simulation Console:</strong> Live model demonstrating campaign measurement, channel attribution, budget burn, and registration telemetry.
+          <!-- Persistent Demo Mode Banner -->
+          <aside class="demo-mode-persistent-banner" aria-label="Demo Mode Alert">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span class="pulse-indicator-red" aria-hidden="true"></span>
+              <div>
+                <strong style="font-size: 0.88rem; letter-spacing: 0.02em;">DEMO MODE • SYNTHETIC EVALUATOR TELEMETRY</strong>
+                <div style="font-size: 0.76rem; color: var(--text-secondary); margin-top: 2px;">
+                  All metrics, lead streams, and channel numbers below represent calibrated pre-launch simulations for evaluator review. No real student PII is exposed.
+                </div>
+              </div>
             </div>
-            <span class="buffer-tag-chip">Model: 500 Base Target | 520 Projected (+4% Safety Buffer)</span>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="buffer-tag-chip" style="background: rgba(244, 63, 94, 0.15); border-color: rgba(244, 63, 94, 0.35); color: #f43f5e;">
+                Simulated Model: 500 Base Target | 520 Projected (+4% Safety Buffer)
+              </span>
+            </div>
           </aside>
 
-          <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px;">
-            <div>
-              <h2 style="font-size: 1.85rem; font-weight: 800;">Campaign Telemetry & Funnel Performance</h2>
+          <!-- Campaign Context Bar (Fixed Strategic Parameters) -->
+          <div class="campaign-context-dock" role="region" aria-label="Campaign Strategic Parameters">
+            <div class="context-stat-pill">
+              <span class="context-pill-label">COHORT BASE TARGET</span>
+              <span class="context-pill-val" style="color: var(--accent-cyan);">500 Registrations</span>
+            </div>
+            <div class="context-stat-pill">
+              <span class="context-pill-label">PROJECTED ACQUISITION</span>
+              <span class="context-pill-val" style="color: var(--accent-emerald);">520 (+20 Safety Buffer)</span>
+            </div>
+            <div class="context-stat-pill">
+              <span class="context-pill-label">BUDGET CAP</span>
+              <span class="context-pill-val" style="color: var(--accent-amber);">₹2,000 (100% Non-Paid)</span>
+            </div>
+            <div class="context-stat-pill">
+              <span class="context-pill-label">BLENDED CAC (PROJ)</span>
+              <span class="context-pill-val" style="color: var(--accent-indigo);">₹3.84 / Registrant</span>
+            </div>
+            <div class="context-stat-pill">
+              <span class="context-pill-label">PRIMARY DISTRIBUTION</span>
+              <span class="context-pill-val" style="color: var(--text-heading);">35 WhatsApp CR Guilds</span>
+            </div>
+            <div class="context-stat-pill">
+              <span class="context-pill-label">VIRAL MULTIPLIER</span>
+              <span class="context-pill-val" style="color: var(--accent-emerald);">Target K = 0.32</span>
+            </div>
+          </div>
+
+          <!-- Section 1: Campaign Overview & Growth Loop Orchestration -->
+          <div style="margin-bottom: 24px;">
+            <div style="margin-bottom: 16px;">
+              <h2 style="font-size: 1.85rem; font-weight: 800; margin-bottom: 4px;">Campaign Overview & Growth Loop Orchestration</h2>
               <p style="color: var(--text-secondary); font-size: 0.86rem;">Tracking registration velocity, K-factor virality, and ₹2,000 budget ledger</p>
             </div>
-            <button class="action-btn btn-gradient-glow" style="width: auto; padding: 8px 18px; font-size: 0.82rem;" type="button" onclick="exportSimulatedCSV()">
-              📥 Export Simulated Lead Telemetry (CSV)
-            </button>
+
+            <!-- Central Growth Loop Process Pipeline -->
+            <section class="growth-loop-strip" aria-labelledby="loopHeading" style="margin-bottom: 20px;">
+              <div class="loop-strip-header">
+                <span id="loopHeading">Central Growth Loop: Acquire → Register → Refer → Unlock → Measure</span>
+                <span style="color: var(--text-tertiary); font-size: 0.74rem;">Organic High-Leverage Loop</span>
+              </div>
+              <div class="loop-node-grid">
+                <div class="loop-node-item active" onclick="focusAmbientNode(0)">
+                  <div class="loop-node-step">01. ACQUIRE</div>
+                  <div class="loop-node-name">CR WhatsApp</div>
+                  <div class="loop-node-detail">35 College Guilds</div>
+                </div>
+                <div class="loop-node-item" onclick="focusAmbientNode(1)">
+                  <div class="loop-node-step">02. REGISTER</div>
+                  <div class="loop-node-name">30-Second RSVP</div>
+                  <div class="loop-node-detail">Low-Friction Pass</div>
+                </div>
+                <div class="loop-node-item" onclick="focusAmbientNode(2)">
+                  <div class="loop-node-step">03. REFER</div>
+                  <div class="loop-node-name">WhatsApp Share</div>
+                  <div class="loop-node-detail">Peer Invite Links</div>
+                </div>
+                <div class="loop-node-item" onclick="focusAmbientNode(3)">
+                  <div class="loop-node-step">04. UNLOCK</div>
+                  <div class="loop-node-name">Capstone Vault</div>
+                  <div class="loop-node-detail">Target K=0.32 Loop</div>
+                </div>
+                <div class="loop-node-item" onclick="focusAmbientNode(4)">
+                  <div class="loop-node-step">05. MEASURE</div>
+                  <div class="loop-node-name">Ops Console</div>
+                  <div class="loop-node-detail">Model CAC & Velocity</div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Key Metrics Quad -->
+            <div class="metric-cards-quad">
+              
+              <div class="hud-metric-card">
+                <div class="hud-label-text">Simulated Registrations (Demo Data)</div>
+                <div class="hud-number-readout" style="color: var(--accent-cyan);" id="opsTotalRegs">412</div>
+                <div class="hud-subtext-note">Base Target: 500 (82.4% pace) | Projected Target: 520 (+20 Safety Buffer)</div>
+              </div>
+
+              <div class="hud-metric-card">
+                <div class="hud-label-text">Simulated Viral K-Factor (Demo Data)</div>
+                <div class="hud-number-readout" style="color: var(--accent-emerald);" id="opsKFactor">0.34</div>
+                <div class="hud-subtext-note">Model Target: 0.32 (+6.2% above baseline assumption)</div>
+              </div>
+
+              <div class="hud-metric-card">
+                <div class="hud-label-text">Modeled Budget Burn & CAC</div>
+                <div class="hud-number-readout" style="color: var(--accent-amber);">₹3.84</div>
+                <div class="hud-subtext-note">Projected Blended CAC (₹2,000 Budget Cap / 520 Regs)</div>
+              </div>
+
+              <div class="hud-metric-card">
+                <div class="hud-label-text">Target CR WhatsApp Guilds</div>
+                <div class="hud-number-readout" style="color: var(--accent-indigo);">36 / 35</div>
+                <div class="hud-subtext-note">Target: 35 Groups across 20 Engineering Colleges (Simulated Pace)</div>
+              </div>
+
+            </div>
           </div>
 
-          <!-- Key Metrics Quad -->
-          <div class="metric-cards-quad">
+          <!-- Section 2: Registration Intelligence (Searchable/Filterable Demo Table) -->
+          <div class="surface-card" style="margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; margin-bottom: 14px;">
+              <div>
+                <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 4px;">Registration Intelligence (Synthetic Lead Pipeline)</h3>
+                <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0;">Search, filter, and inspect simulated registrant telemetry across acquisition vectors (Demo Data)</p>
+              </div>
+              <button class="action-btn btn-gradient-glow" style="width: auto; padding: 7px 16px; font-size: 0.8rem;" type="button" onclick="exportSimulatedCSV()">
+                📥 Export Simulated Lead Telemetry (CSV)
+              </button>
+            </div>
+
+            <!-- Toolbar -->
+            <div class="reg-intel-toolbar">
+              <input type="text" id="regSearchInput" class="reg-search-input" placeholder="🔍 Search simulated name, college, branch, or ticket..." oninput="filterRegistrationTable()" aria-label="Search simulated leads">
+              
+              <select id="regChannelFilter" class="reg-filter-select" onchange="filterRegistrationTable()" aria-label="Filter by acquisition channel">
+                <option value="all">All Channels</option>
+                <option value="cr">CR WhatsApp Guilds</option>
+                <option value="referral">Peer Referral (Viral)</option>
+                <option value="campus">Campus Club Activations</option>
+              </select>
+
+              <div style="font-size: 0.78rem; color: var(--text-secondary); font-family: var(--font-mono);">
+                Showing <strong id="visibleRegCount" style="color: var(--accent-cyan);">12</strong> of 12 Synthetic Demo Leads
+              </div>
+            </div>
+
+            <!-- Synthetic Lead Table -->
+            <div class="table-scroll-wrap">
+              <table class="hud-data-table" id="regTable" aria-label="Simulated Registration Telemetry Table">
+                <thead>
+                  <tr>
+                    <th>Ticket ID</th>
+                    <th>Registrant Name (Demo)</th>
+                    <th>College / Institute</th>
+                    <th>Branch</th>
+                    <th>Acquisition Channel</th>
+                    <th>Unit Cost</th>
+                    <th>Timestamp</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-channel="cr">
+                    <td><code>NXW-RAHUL-8491</code></td>
+                    <td><strong>Rahul S. [DEMO]</strong></td>
+                    <td>CBIT Hyderabad</td>
+                    <td>CSE</td>
+                    <td><span class="status-pill" style="background: rgba(56, 189, 248, 0.12); color: var(--accent-cyan); border-color: rgba(56, 189, 248, 0.3);">CR WhatsApp #04</span></td>
+                    <td>₹4.28</td>
+                    <td style="color: var(--text-tertiary); font-size: 0.75rem;">Just now</td>
+                  </tr>
+                  <tr data-channel="referral">
+                    <td><code>NXW-ANANYA-8492</code></td>
+                    <td><strong>Ananya M. [DEMO]</strong></td>
+                    <td>SRM Chennai</td>
+                    <td>ECE</td>
+                    <td><span class="status-pill" style="background: rgba(16, 185, 129, 0.12); color: var(--accent-emerald); border-color: rgba(16, 185, 129, 0.3);">Peer Referral (ref=PRIYA)</span></td>
+                    <td>₹0.00</td>
+                    <td style="color: var(--text-tertiary); font-size: 0.75rem;">4m ago</td>
+                  </tr>
+                  <tr data-channel="cr">
+                    <td><code>NXW-SIDDHARTH-8493</code></td>
+                    <td><strong>Siddharth K. [DEMO]</strong></td>
+                    <td>VNR VJIET</td>
+                    <td>Mech</td>
+                    <td><span class="status-pill" style="background: rgba(56, 189, 248, 0.12); color: var(--accent-cyan); border-color: rgba(56, 189, 248, 0.3);">CR WhatsApp #12</span></td>
+                    <td>₹4.28</td>
+                    <td style="color: var(--text-tertiary); font-size: 0.75rem;">11m ago</td>
+                  </tr>
+                  <tr data-channel="campus">
+                    <td><code>NXW-POOJA-8494</code></td>
+                    <td><strong>Pooja P. [DEMO]</strong></td>
+                    <td>MIT Manipal</td>
+                    <td>CSE</td>
+                    <td><span class="status-pill" style="background: rgba(99, 102, 241, 0.12); color: var(--accent-indigo); border-color: rgba(99, 102, 241, 0.3);">Campus Club Activation</span></td>
+                    <td>₹0.00</td>
+                    <td style="color: var(--text-tertiary); font-size: 0.75rem;">18m ago</td>
+                  </tr>
+                  <tr data-channel="cr">
+                    <td><code>NXW-VIKAS-8495</code></td>
+                    <td><strong>Vikas T. [DEMO]</strong></td>
+                    <td>RV College Bangalore</td>
+                    <td>ISE</td>
+                    <td><span class="status-pill" style="background: rgba(56, 189, 248, 0.12); color: var(--accent-cyan); border-color: rgba(56, 189, 248, 0.3);">CR WhatsApp #07</span></td>
+                    <td>₹4.28</td>
+                    <td style="color: var(--text-tertiary); font-size: 0.75rem;">24m ago</td>
+                  </tr>
+                  <tr data-channel="referral">
+                    <td><code>NXW-SNEHA-8496</code></td>
+                    <td><strong>Sneha R. [DEMO]</strong></td>
+                    <td>GRIET Hyderabad</td>
+                    <td>EEE</td>
+                    <td><span class="status-pill" style="background: rgba(16, 185, 129, 0.12); color: var(--accent-emerald); border-color: rgba(16, 185, 129, 0.3);">Peer Referral (ref=VIKAS)</span></td>
+                    <td>₹0.00</td>
+                    <td style="color: var(--text-tertiary); font-size: 0.75rem;">31m ago</td>
+                  </tr>
+                  <tr data-channel="cr">
+                    <td><code>NXW-ADITYA-8497</code></td>
+                    <td><strong>Aditya N. [DEMO]</strong></td>
+                    <td>BMSCE Bangalore</td>
+                    <td>Civil</td>
+                    <td><span class="status-pill" style="background: rgba(56, 189, 248, 0.12); color: var(--accent-cyan); border-color: rgba(56, 189, 248, 0.3);">CR WhatsApp #19</span></td>
+                    <td>₹4.28</td>
+                    <td style="color: var(--text-tertiary); font-size: 0.75rem;">42m ago</td>
+                  </tr>
+                  <tr data-channel="referral">
+                    <td><code>NXW-KAVYA-8498</code></td>
+                    <td><strong>Kavya G. [DEMO]</strong></td>
+                    <td>Amrita Coimbatore</td>
+                    <td>CSE</td>
+                    <td><span class="status-pill" style="background: rgba(16, 185, 129, 0.12); color: var(--accent-emerald); border-color: rgba(16, 185, 129, 0.3);">Peer Referral (ref=ANANYA)</span></td>
+                    <td>₹0.00</td>
+                    <td style="color: var(--text-tertiary); font-size: 0.75rem;">55m ago</td>
+                  </tr>
+                  <tr data-channel="campus">
+                    <td><code>NXW-ROHAN-8499</code></td>
+                    <td><strong>Rohan D. [DEMO]</strong></td>
+                    <td>PSG Tech Coimbatore</td>
+                    <td>Mech</td>
+                    <td><span class="status-pill" style="background: rgba(99, 102, 241, 0.12); color: var(--accent-indigo); border-color: rgba(99, 102, 241, 0.3);">Campus Club Activation</span></td>
+                    <td>₹0.00</td>
+                    <td style="color: var(--text-tertiary); font-size: 0.75rem;">1h 12m ago</td>
+                  </tr>
+                  <tr data-channel="cr">
+                    <td><code>NXW-MEGHA-8500</code></td>
+                    <td><strong>Megha B. [DEMO]</strong></td>
+                    <td>JNTU Hyderabad</td>
+                    <td>CSE</td>
+                    <td><span class="status-pill" style="background: rgba(56, 189, 248, 0.12); color: var(--accent-cyan); border-color: rgba(56, 189, 248, 0.3);">CR WhatsApp #02</span></td>
+                    <td>₹4.28</td>
+                    <td style="color: var(--text-tertiary); font-size: 0.75rem;">1h 25m ago</td>
+                  </tr>
+                  <tr data-channel="cr">
+                    <td><code>NXW-HARSH-8501</code></td>
+                    <td><strong>Harsh V. [DEMO]</strong></td>
+                    <td>VIT Vellore</td>
+                    <td>ECE</td>
+                    <td><span class="status-pill" style="background: rgba(56, 189, 248, 0.12); color: var(--accent-cyan); border-color: rgba(56, 189, 248, 0.3);">CR WhatsApp #22</span></td>
+                    <td>₹4.28</td>
+                    <td style="color: var(--text-tertiary); font-size: 0.75rem;">1h 40m ago</td>
+                  </tr>
+                  <tr data-channel="referral">
+                    <td><code>NXW-DIVYA-8502</code></td>
+                    <td><strong>Divya L. [DEMO]</strong></td>
+                    <td>PES University</td>
+                    <td>ISE</td>
+                    <td><span class="status-pill" style="background: rgba(16, 185, 129, 0.12); color: var(--accent-emerald); border-color: rgba(16, 185, 129, 0.3);">Peer Referral (ref=POOJA)</span></td>
+                    <td>₹0.00</td>
+                    <td style="color: var(--text-tertiary); font-size: 0.75rem;">1h 55m ago</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Section 3: Referral Intelligence (Visual Funnel & Top Growth Contributors) -->
+          <div class="telemetry-stage-split" style="margin-bottom: 24px;">
             
-            <div class="hud-metric-card">
-              <div class="hud-label-text">Simulated Registrations (Demo Data)</div>
-              <div class="hud-number-readout" style="color: var(--accent-cyan);" id="opsTotalRegs">412</div>
-              <div class="hud-subtext-note">Base Target: 500 (82.4% pace) | Projected Target: 520 (+20 Safety Buffer)</div>
+            <!-- Left: 4-Stage Referral Funnel Grid -->
+            <div class="surface-card">
+              <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 6px;">Viral Referral Funnel Architecture</h3>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 14px;">Modeled progression from direct RSVP to secondary viral acquisition (Target K = 0.32)</p>
+              
+              <div class="referral-funnel-grid">
+                <div class="ref-funnel-node">
+                  <div class="ref-node-stage">STAGE 01: DIRECT RSVPs</div>
+                  <div class="ref-node-val">360</div>
+                  <div class="ref-node-conv">100% Baseline</div>
+                </div>
+                <div class="ref-funnel-node">
+                  <div class="ref-node-stage">STAGE 02: SHARED LINKS</div>
+                  <div class="ref-node-val">180</div>
+                  <div class="ref-node-conv">50.0% Share Rate</div>
+                </div>
+                <div class="ref-funnel-node">
+                  <div class="ref-node-stage">STAGE 03: FRIEND CLICKS</div>
+                  <div class="ref-node-val">450</div>
+                  <div class="ref-node-conv">2.5 Clicks / Sharer</div>
+                </div>
+                <div class="ref-funnel-node">
+                  <div class="ref-node-stage">STAGE 04: PEER REGISTRATIONS</div>
+                  <div class="ref-node-val" style="color: var(--accent-emerald);">160</div>
+                  <div class="ref-node-conv">35.5% Click-to-Reg</div>
+                </div>
+              </div>
+
+              <div style="font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5; background: rgba(16, 185, 129, 0.05); padding: 10px 14px; border-radius: var(--radius-sm); border-left: 3px solid var(--accent-emerald);">
+                <strong>K-Factor Verification:</strong> 160 Referred Registrations &divide; 360 Direct Base Registrations = <strong>K = 0.444 (relative to direct)</strong>, delivering a cohort-wide viral multiplier of <strong>0.308 &approx; 0.32</strong> across the full 520 target. Zero cash rewards required for peer loop.
+              </div>
             </div>
 
-            <div class="hud-metric-card">
-              <div class="hud-label-text">Simulated Viral K-Factor (Demo Data)</div>
-              <div class="hud-number-readout" style="color: var(--accent-emerald);" id="opsKFactor">0.34</div>
-              <div class="hud-subtext-note">Model Target: 0.32 (+6.2% above baseline assumption)</div>
-            </div>
+            <!-- Right: Top Growth Contributors Leaderboard -->
+            <div class="surface-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <h3 style="font-size: 1.1rem; font-weight: 700;">Top Growth Contributors (Simulated)</h3>
+                <span class="buffer-tag-chip" style="font-size: 0.7rem;">Leaderboard</span>
+              </div>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 12px;">Top student advocates driving viral invites and CR broadcasts (Demo Data)</p>
 
-            <div class="hud-metric-card">
-              <div class="hud-label-text">Modeled Budget Burn & CAC</div>
-              <div class="hud-number-readout" style="color: var(--accent-amber);">₹3.84</div>
-              <div class="hud-subtext-note">Projected Blended CAC (₹2,000 Budget Cap / 520 Regs)</div>
-            </div>
+              <div class="leaderboard-list">
+                <div class="leaderboard-row">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="font-weight: 800; color: #f59e0b;">🥇 #1</span>
+                    <div>
+                      <strong>Priya N. [DEMO]</strong>
+                      <div style="font-size: 0.72rem; color: var(--text-tertiary);">SRM Chennai • CSE</div>
+                    </div>
+                  </div>
+                  <div style="text-align: right;">
+                    <span style="color: var(--accent-emerald); font-weight: 700;">8 Verified Invites</span>
+                    <div style="font-size: 0.7rem; color: var(--text-tertiary);">Tier 2 Vault Unlocked • Lead CR</div>
+                  </div>
+                </div>
 
-            <div class="hud-metric-card">
-              <div class="hud-label-text">Target CR WhatsApp Guilds</div>
-              <div class="hud-number-readout" style="color: var(--accent-indigo);">36 / 35</div>
-              <div class="hud-subtext-note">Target: 35 Groups across 20 Engineering Colleges (Simulated Pace)</div>
+                <div class="leaderboard-row">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="font-weight: 800; color: #94a3b8;">🥈 #2</span>
+                    <div>
+                      <strong>Vikas K. [DEMO]</strong>
+                      <div style="font-size: 0.72rem; color: var(--text-tertiary);">RV College Bangalore • ISE</div>
+                    </div>
+                  </div>
+                  <div style="text-align: right;">
+                    <span style="color: var(--accent-emerald); font-weight: 700;">6 Verified Invites</span>
+                    <div style="font-size: 0.7rem; color: var(--text-tertiary);">Tier 2 Vault Unlocked</div>
+                  </div>
+                </div>
+
+                <div class="leaderboard-row">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="font-weight: 800; color: #b45309;">🥉 #3</span>
+                    <div>
+                      <strong>Rahul S. [DEMO]</strong>
+                      <div style="font-size: 0.72rem; color: var(--text-tertiary);">CBIT Hyderabad • CSE</div>
+                    </div>
+                  </div>
+                  <div style="text-align: right;">
+                    <span style="color: var(--accent-emerald); font-weight: 700;">5 Verified Invites</span>
+                    <div style="font-size: 0.7rem; color: var(--text-tertiary);">Tier 2 Vault Unlocked</div>
+                  </div>
+                </div>
+
+                <div class="leaderboard-row">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="font-weight: 800; color: var(--text-tertiary);">#4</span>
+                    <div>
+                      <strong>Karthik R. [DEMO]</strong>
+                      <div style="font-size: 0.72rem; color: var(--text-tertiary);">VNR VJIET • CSE</div>
+                    </div>
+                  </div>
+                  <div style="text-align: right;">
+                    <span style="color: var(--accent-emerald); font-weight: 700;">4 Verified Invites</span>
+                    <div style="font-size: 0.7rem; color: var(--text-tertiary);">Tier 2 Vault Unlocked</div>
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>
 
-          <!-- Telemetry Two-Column Layout -->
-          <div class="telemetry-stage-split">
+          <!-- Section 4: Channel Performance & Budget Ledger Split -->
+          <div class="telemetry-stage-split" style="margin-bottom: 24px;">
             
-            <!-- Channel Attribution Table -->
+            <!-- Channel Attribution Table & Budget Ledger -->
             <div class="surface-card">
               <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">Channel Attribution & Conversion Model (Modeled Projections)</h3>
               <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 12px;">Unit economics and volume breakdown across prioritized growth loops (Demo / Projected Data)</p>
@@ -3191,7 +3786,7 @@
               </div>
 
               <!-- Budget Ledger -->
-              <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+              <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-subtle);">
                 <h4 style="font-size: 0.88rem; font-weight: 700; margin-bottom: 6px;">₹2,000 Budget Ledger & Allocation Logic</h4>
                 <ul style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.8; list-style-type: disc; padding-left: 20px;">
                   <li><strong>₹1,200 (60%):</strong> Top 3 Class Representative Performance Bounties (1st: ₹600, 2nd: ₹400, 3rd: ₹200 Amazon vouchers).</li>
@@ -3235,6 +3830,283 @@
               </div>
             </div>
 
+          </div>
+
+          <!-- Section 5: 3 Controlled Growth Experiments & 24-Hour Optimization Protocol -->
+          <div style="margin-bottom: 24px;">
+            
+            <section class="growth-experiments-container" aria-labelledby="experimentsTitle">
+              <div class="section-headline-box">
+                <h2 id="experimentsTitle" class="sec-title">3 Controlled Growth Experiments</h2>
+                <p class="sec-desc">
+                  Empirical A/B tests designed to validate value proposition hooks, distribution channels, and viral referral mechanics.
+                </p>
+              </div>
+
+              <div class="experiments-card-deck">
+                
+                <!-- Experiment 1 -->
+                <article class="exp-spec-card">
+                  <div class="exp-meta-header">
+                    <span class="exp-category-pill tag-message-hook">Messaging & Value Prop</span>
+                    <span class="exp-num-label">EXPERIMENT 01</span>
+                  </div>
+                  <h3 class="exp-name-title">Placement Armor vs. Generic Tech Stack Hook</h3>
+                  <div class="exp-text-row">
+                    <span class="exp-row-lead">Hypothesis:</span> Positioning around "Placement Armor & 3 ATS Bullets" will generate higher click-to-registration conversion than generic "Learn Generative AI & LLMs" messaging.
+                  </div>
+                  <div class="exp-text-row">
+                    <span class="exp-row-lead">What We Test:</span> A/B test 2 distinct WhatsApp broadcast copies across 20 college groups using dedicated UTM parameters (Variant A: Outcome/Placement Hook vs. Variant B: Skill/Tech Hook).
+                  </div>
+                  <div class="exp-text-row">
+                    <span class="exp-row-lead">Primary Metric:</span> Click-to-Registration Conversion Rate (Form Submissions / Unique Link Clicks).
+                  </div>
+                  <div class="exp-text-row">
+                    <span class="exp-row-lead">Secondary Metric:</span> Unique Click-Through Rate (CTR) in college WhatsApp groups.
+                  </div>
+                  <div class="exp-text-row">
+                    <span class="exp-row-lead">Success Threshold:</span> Variant A achieves &ge;25% higher relative conversion rate than Variant B.
+                  </div>
+                  <div class="exp-decision-footer">
+                    <strong>Decision:</strong> If Variant A wins, lock placement-first messaging across all Day 5–6 retargeting pushes; if Variant B wins, pivot messaging to emphasize technical LLM depth and modern AI skills.
+                  </div>
+                </article>
+
+                <!-- Experiment 2 -->
+                <article class="exp-spec-card">
+                  <div class="exp-meta-header">
+                    <span class="exp-category-pill tag-channel-dist">Distribution & Channel Authority</span>
+                    <span class="exp-num-label">EXPERIMENT 02</span>
+                  </div>
+                  <h3 class="exp-name-title">CR Broadcasts vs. Open Community Channels</h3>
+                  <div class="exp-text-row">
+                    <span class="exp-row-lead">Hypothesis:</span> Promotional messages distributed directly by Class Representatives (CRs) in official batch WhatsApp groups deliver &ge;3&times; more verified signups per reach than open student Discord/Telegram channels.
+                  </div>
+                  <div class="exp-text-row">
+                    <span class="exp-row-lead">What We Test:</span> 15 peer CR broadcasts vs. 5 regional Discord/Telegram placement communities of similar reach (~1,500 reach each), tracked via UTM tags.
+                  </div>
+                  <div class="exp-text-row">
+                    <span class="exp-row-lead">Primary Metric:</span> Total Verified Registrations per 1,000 Reach.
+                  </div>
+                  <div class="exp-text-row">
+                    <span class="exp-row-lead">Secondary Metric:</span> Registration Completion Speed (time from broadcast to first 50 verified signups).
+                  </div>
+                  <div class="exp-text-row">
+                    <span class="exp-row-lead">Success Threshold:</span> CR WhatsApp generates &ge;3&times; more verified registrations per reach than open Discord/Telegram groups.
+                  </div>
+                  <div class="exp-decision-footer">
+                    <strong>Decision:</strong> If CR WhatsApp wins, allocate 100% of the ₹1,200 bounty pool to the CR performance leaderboard; if Discord/Telegram performs strongly, divert ₹400 to incentivize Discord moderators.
+                  </div>
+                </article>
+
+                <!-- Experiment 3 -->
+                <article class="exp-spec-card">
+                  <div class="exp-meta-header">
+                    <span class="exp-category-pill tag-referral-k">Referral Mechanics & K-Factor</span>
+                    <span class="exp-num-label">EXPERIMENT 03</span>
+                  </div>
+                  <h3 class="exp-name-title">Digital Milestone Vault vs. Cash Lottery</h3>
+                  <div class="exp-text-row">
+                    <span class="exp-row-lead">Hypothesis:</span> A guaranteed Milestone Digital Asset Unlock (2-referral threshold to unlock the 2026 Capstone Vault) will drive a higher viral coefficient (K-factor &ge; 0.30) than an abstract raffle lottery.
+                  </div>
+                  <div class="exp-text-row">
+                    <span class="exp-row-lead">What We Test:</span> 50/50 split on post-registration screen: Milestone Capstone Vault vs. ₹500 Amazon Gift Card lucky draw entry.
+                  </div>
+                  <div class="exp-text-row">
+                    <span class="exp-row-lead">Primary Metric:</span> Viral Coefficient (K-factor = Referred Registrations / Direct Registrations).
+                  </div>
+                  <div class="exp-text-row">
+                    <span class="exp-row-lead">Secondary Metric:</span> Referral Share Rate (% of registrants clicking the WhatsApp share button).
+                  </div>
+                  <div class="exp-text-row">
+                    <span class="exp-row-lead">Success Threshold:</span> Milestone Vault achieves K &ge; 0.30 (vs. lottery K &lt; 0.15).
+                  </div>
+                  <div class="exp-decision-footer">
+                    <strong>Decision:</strong> If Milestone Vault wins, lock all post-registration flows to asset gating; if lottery wins, shift the referral reward to cash vouchers.
+                  </div>
+                </article>
+
+              </div>
+
+              <!-- If I Had Another 24 Hours: Iterative Optimization Protocol Card -->
+              <div class="next-24-hours-card" role="region" aria-label="Next 24 Hours Optimization Strategy">
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <span class="status-pill" style="background: rgba(99, 102, 241, 0.15); color: var(--accent-indigo); border-color: rgba(99, 102, 241, 0.3); font-weight: 700;">
+                      ⏱️ NEXT EXECUTION HORIZON
+                    </span>
+                    <h3 style="font-size: 1.25rem; font-weight: 800; margin: 0;">
+                      If I Had Another 24 Hours: Controlled Sample Optimization Protocol
+                    </h3>
+                  </div>
+                  <span class="buffer-tag-chip" style="font-size: 0.76rem;">Phase-Gated Capital Reallocation</span>
+                </div>
+                <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;">
+                  Rather than deploying the entire ₹2,000 budget and outreach capacity simultaneously across all 35 college groups, the next 24 hours would be strictly dedicated to running the 3 controlled growth experiments on an initial 10% sample, validating statistical winners, and dynamically reallocating capital and distribution effort toward the highest-performing combination before the final Day 6–7 surge.
+                </p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px;">
+                  
+                  <div class="phase-plan-step">
+                    <div style="font-size: 0.76rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 6px;">Hours 01–06 • Micro-Sample Test</div>
+                    <strong style="font-size: 0.92rem; display: block; margin-bottom: 6px;">Deploy 10% Sample Across 3 Vectors</strong>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                      Release Experiment 1 copy (Variant A vs. B) across 4 CR groups (2 vs 2); test Experiment 2 in 2 CR groups vs. 2 student Discord servers; activate Experiment 3 50/50 split on the first 50 signups.
+                    </p>
+                  </div>
+
+                  <div class="phase-plan-step">
+                    <div style="font-size: 0.76rem; font-weight: 700; color: var(--accent-emerald); text-transform: uppercase; margin-bottom: 6px;">Hours 07–14 • Signal Detection</div>
+                    <strong style="font-size: 0.92rem; display: block; margin-bottom: 6px;">Read Early Telemetry & Determine Winners</strong>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                      Evaluate Link CTR and Form Conversion % to confirm whether "Placement Armor" beats "Tech Stack"; compute real-time K-factor from the initial 50 shares; measure CR signup velocity vs. open communities.
+                    </p>
+                  </div>
+
+                  <div class="phase-plan-step">
+                    <div style="font-size: 0.76rem; font-weight: 700; color: var(--accent-amber); text-transform: uppercase; margin-bottom: 6px;">Hours 15–24 • Capital Reallocation</div>
+                    <strong style="font-size: 0.92rem; display: block; margin-bottom: 6px;">Shift 100% Effort to Winning Combination</strong>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                      Kill underperforming message copies immediately; route all remaining 31 CR broadcasts with the winning placement hook; reallocate the full ₹1,200 bounty pool to the winning channel; lock post-registration to the winning referral engine.
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+            </section>
+
+          </div>
+
+          <!-- Section 6: Interactive Campaign Funnel Simulator -->
+          <div class="simulator-container" style="margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; margin-bottom: 14px;">
+              <div>
+                <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 4px;">Interactive Campaign Funnel Simulator (Sensitivity Model)</h3>
+                <p style="font-size: 0.82rem; color: var(--text-secondary); margin: 0;">Adjust growth levers to simulate real-time acquisition volume, live attendance, budget burn, and blended CAC</p>
+              </div>
+              <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button type="button" class="sim-btn-pill" onclick="setSimulatorPreset('base')">
+                  🎯 Base Model (520 Regs)
+                </button>
+                <button type="button" class="sim-btn-pill" onclick="setSimulatorPreset('conservative')">
+                  🛡️ Conservative Floor (355 Regs)
+                </button>
+                <button type="button" class="sim-btn-pill" onclick="setSimulatorPreset('stretch')">
+                  🚀 Stretch Target (736 Regs)
+                </button>
+              </div>
+            </div>
+
+            <!-- Sliders -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-top: 18px;">
+              
+              <div class="sim-slider-row">
+                <div class="sim-slider-label">
+                  <span>Class Representative (CR) Groups:</span>
+                  <strong style="color: var(--accent-cyan);"><span id="simCrVal">35</span> Groups</strong>
+                </div>
+                <input type="range" id="simCrSlider" class="sim-range-input" min="20" max="50" step="1" value="35" oninput="updateCampaignSimulation()">
+                <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--text-tertiary); margin-top: 4px;">
+                  <span>20 Groups (160 direct)</span>
+                  <span>35 Baseline (280 direct)</span>
+                  <span>50 Groups (400 direct)</span>
+                </div>
+              </div>
+
+              <div class="sim-slider-row">
+                <div class="sim-slider-label">
+                  <span>Viral Referral Multiplier (K-Factor):</span>
+                  <strong style="color: var(--accent-emerald);">K = <span id="simKVal">0.32</span></strong>
+                </div>
+                <input type="range" id="simKSlider" class="sim-range-input" min="0.15" max="0.50" step="0.01" value="0.32" oninput="updateCampaignSimulation()">
+                <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--text-tertiary); margin-top: 4px;">
+                  <span>0.15 (Low Viral)</span>
+                  <span>0.32 (Target Multiplier)</span>
+                  <span>0.50 (High Viral)</span>
+                </div>
+              </div>
+
+              <div class="sim-slider-row">
+                <div class="sim-slider-label">
+                  <span>Attendance Raffle Budget:</span>
+                  <strong style="color: var(--accent-amber);"><span id="simRaffleVal">₹800</span></strong>
+                </div>
+                <input type="range" id="simRaffleSlider" class="sim-range-input" min="400" max="1200" step="100" value="800" oninput="updateCampaignSimulation()">
+                <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--text-tertiary); margin-top: 4px;">
+                  <span>₹400 (Single Draw)</span>
+                  <span>₹800 (Target 2×₹400)</span>
+                  <span>₹1,200 (Expanded Raffle)</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Output Calculation Boxes -->
+            <div class="sim-output-grid">
+              
+              <div class="sim-output-box">
+                <div style="font-size: 0.7rem; color: var(--text-tertiary); text-transform: uppercase; font-weight: 700; margin-bottom: 4px;">Direct Regs (CR + Campus)</div>
+                <div style="font-size: 1.4rem; font-weight: 800; color: var(--accent-cyan);" id="simDirectRegs">360</div>
+                <div style="font-size: 0.72rem; color: var(--text-secondary); margin-top: 2px;">8 Regs / CR Group + 80 Clubs</div>
+              </div>
+
+              <div class="sim-output-box">
+                <div style="font-size: 0.7rem; color: var(--text-tertiary); text-transform: uppercase; font-weight: 700; margin-bottom: 4px;">Referred Regs (Viral Loop)</div>
+                <div style="font-size: 1.4rem; font-weight: 800; color: var(--accent-emerald);" id="simReferredRegs">160</div>
+                <div style="font-size: 0.72rem; color: var(--text-secondary); margin-top: 2px;">Driven by Capstone Vault unlock</div>
+              </div>
+
+              <div class="sim-output-box">
+                <div style="font-size: 0.7rem; color: var(--text-tertiary); text-transform: uppercase; font-weight: 700; margin-bottom: 4px;">Total Projected Acquisition</div>
+                <div style="font-size: 1.4rem; font-weight: 800; color: #fff;" id="simTotalRegs">520</div>
+                <div style="font-size: 0.72rem; color: var(--accent-emerald); margin-top: 2px;">+20 Safety Buffer vs 500 Base</div>
+              </div>
+
+              <div class="sim-output-box">
+                <div style="font-size: 0.7rem; color: var(--text-tertiary); text-transform: uppercase; font-weight: 700; margin-bottom: 4px;">Projected Live Attendees</div>
+                <div style="font-size: 1.4rem; font-weight: 800; color: var(--accent-indigo);" id="simLiveAttendees">364</div>
+                <div style="font-size: 0.72rem; color: var(--text-secondary); margin-top: 2px;">Modeled @ 70% Turnout Rate</div>
+              </div>
+
+              <div class="sim-output-box">
+                <div style="font-size: 0.7rem; color: var(--text-tertiary); text-transform: uppercase; font-weight: 700; margin-bottom: 4px;">Total Budget Commitment</div>
+                <div style="font-size: 1.4rem; font-weight: 800; color: var(--accent-amber);" id="simTotalBudget">₹2,000</div>
+                <div style="font-size: 0.72rem; color: var(--text-secondary); margin-top: 2px;">₹1,200 CR Bounties + Raffle</div>
+              </div>
+
+              <div class="sim-output-box">
+                <div style="font-size: 0.7rem; color: var(--text-tertiary); text-transform: uppercase; font-weight: 700; margin-bottom: 4px;">Blended Projected CAC</div>
+                <div style="font-size: 1.4rem; font-weight: 800; color: var(--accent-cyan);" id="simBlendedCAC">₹3.84</div>
+                <div style="font-size: 0.72rem; color: var(--text-secondary); margin-top: 2px;">100% Non-Paid Channel Discipline</div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Section 7: Strategic Growth Rationale & Architectural Notes -->
+          <div class="surface-card">
+            <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 8px;">AI & Strategic Growth Rationale: Why This Engine Outperforms Paid Ads</h3>
+            <p style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 14px;">
+              Conventional EdTech campaigns burn ₹40–₹80 per lead on Facebook/Instagram ads, attracting casual clicks with single-digit attendance rates. Our zero-paid model achieves superior registration volume and high attendee intent through 4 strategic pillars:
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px;">
+              <div style="padding: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);">
+                <strong style="color: var(--accent-cyan); font-size: 0.85rem; display: block; margin-bottom: 4px;">1. Peer Trust Authority (CRs)</strong>
+                <p style="font-size: 0.78rem; color: var(--text-secondary); margin: 0; line-height: 1.5;">Class Representatives hold direct batch trust. A broadcast from an elected peer converts at 10–14% vs. &lt;1.5% for cold social ads.</p>
+              </div>
+              <div style="padding: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);">
+                <strong style="color: var(--accent-emerald); font-size: 0.85rem; display: block; margin-bottom: 4px;">2. Product-Led Instant Value</strong>
+                <p style="font-size: 0.78rem; color: var(--text-secondary); margin: 0; line-height: 1.5;">The AI Project Architect customizes the capstone to the student's exact branch before registration, generating high intrinsic intent to attend.</p>
+              </div>
+              <div style="padding: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);">
+                <strong style="color: var(--accent-indigo); font-size: 0.85rem; display: block; margin-bottom: 4px;">3. Gated Asset Referral Mechanics</strong>
+                <p style="font-size: 0.78rem; color: var(--text-secondary); margin: 0; line-height: 1.5;">Unlocking the 2026 AI Placement Vault requires 2 peer invites. Students share because the reward directly aids their placement preparation.</p>
+              </div>
+              <div style="padding: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);">
+                <strong style="color: var(--accent-amber); font-size: 0.85rem; display: block; margin-bottom: 4px;">4. 100% Performance-Linked Capital</strong>
+                <p style="font-size: 0.78rem; color: var(--text-secondary); margin: 0; line-height: 1.5;">₹1,200 is paid exclusively to top-performing CRs on confirmed registrations; ₹800 rewards live attendance at minute 50. Zero wasted capital.</p>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -4139,11 +5011,19 @@
     }
 
     function exportSimulatedCSV() {
-      const csvData = "data:text/csv;charset=utf-8,TicketID,Name,College,Branch,AttributionSource,SimulatedTimestamp\n" +
-        "NXW-2026-8491,Rahul Sharma,CBIT Hyderabad,CSE,CR WhatsApp Group #04,2026-10-04 10:15:00\n" +
-        "NXW-2026-8492,Ananya S.,SRM Chennai,ECE,Viral Referral (ref=NXW-PRIYA),2026-10-04 10:22:00\n" +
-        "NXW-2026-8493,Siddharth M.,VNR VJIET,Mech,CR WhatsApp Group #12,2026-10-04 10:35:00\n" +
-        "NXW-2026-8494,Pooja Patel,MIT Manipal,CSE,Micro-Bounty Coding Club,2026-10-04 10:48:00";
+      const csvData = "data:text/csv;charset=utf-8,TicketID,Name,College,Branch,AcquisitionChannel,UnitCost,Timestamp\n" +
+        "NXW-RAHUL-8491,Rahul S. [DEMO],CBIT Hyderabad,CSE,CR WhatsApp #04,₹4.28,Just now\n" +
+        "NXW-ANANYA-8492,Ananya M. [DEMO],SRM Chennai,ECE,Peer Referral (ref=PRIYA),₹0.00,4m ago\n" +
+        "NXW-SIDDHARTH-8493,Siddharth K. [DEMO],VNR VJIET,Mech,CR WhatsApp #12,₹4.28,11m ago\n" +
+        "NXW-POOJA-8494,Pooja P. [DEMO],MIT Manipal,CSE,Campus Club Activation,₹0.00,18m ago\n" +
+        "NXW-VIKAS-8495,Vikas T. [DEMO],RV College Bangalore,ISE,CR WhatsApp #07,₹4.28,24m ago\n" +
+        "NXW-SNEHA-8496,Sneha R. [DEMO],GRIET Hyderabad,EEE,Peer Referral (ref=VIKAS),₹0.00,31m ago\n" +
+        "NXW-ADITYA-8497,Aditya N. [DEMO],BMSCE Bangalore,Civil,CR WhatsApp #19,₹4.28,42m ago\n" +
+        "NXW-KAVYA-8498,Kavya G. [DEMO],Amrita Coimbatore,CSE,Peer Referral (ref=ANANYA),₹0.00,55m ago\n" +
+        "NXW-ROHAN-8499,Rohan D. [DEMO],PSG Tech Coimbatore,Mech,Campus Club Activation,₹0.00,1h 12m ago\n" +
+        "NXW-MEGHA-8500,Megha B. [DEMO],JNTU Hyderabad,CSE,CR WhatsApp #02,₹4.28,1h 25m ago\n" +
+        "NXW-HARSH-8501,Harsh V. [DEMO],VIT Vellore,ECE,CR WhatsApp #22,₹4.28,1h 40m ago\n" +
+        "NXW-DIVYA-8502,Divya L. [DEMO],PES University,ISE,Peer Referral (ref=POOJA),₹0.00,1h 55m ago";
       const encodedUri = encodeURI(csvData);
       const link = document.createElement("a");
       link.setAttribute("href", encodedUri);
@@ -4151,6 +5031,110 @@
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+    }
+
+    /* ==========================================================================
+       4B. REGISTRATION INTELLIGENCE FILTER & CAMPAIGN SIMULATOR
+       ========================================================================== */
+    function filterRegistrationTable() {
+      const searchInput = document.getElementById('regSearchInput');
+      const filterSelect = document.getElementById('regChannelFilter');
+      if (!searchInput || !filterSelect) return;
+      
+      const searchVal = searchInput.value.toLowerCase().trim();
+      const channelVal = filterSelect.value;
+      const rows = document.querySelectorAll('#regTable tbody tr');
+      let visibleCount = 0;
+
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        const channel = row.getAttribute('data-channel');
+        const matchesSearch = !searchVal || text.includes(searchVal);
+        const matchesChannel = (channelVal === 'all') || (channel === channelVal);
+
+        if (matchesSearch && matchesChannel) {
+          row.style.display = '';
+          visibleCount++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      const countEl = document.getElementById('visibleRegCount');
+      if (countEl) countEl.textContent = visibleCount;
+    }
+
+    function updateCampaignSimulation() {
+      const crSlider = document.getElementById('simCrSlider');
+      const kSlider = document.getElementById('simKSlider');
+      const raffleSlider = document.getElementById('simRaffleSlider');
+      if (!crSlider || !kSlider || !raffleSlider) return;
+
+      const crGroups = parseInt(crSlider.value, 10);
+      const kFactor = parseFloat(kSlider.value);
+      const raffleBudget = parseInt(raffleSlider.value, 10);
+
+      const crValEl = document.getElementById('simCrVal');
+      const kValEl = document.getElementById('simKVal');
+      const raffleValEl = document.getElementById('simRaffleVal');
+
+      if (crValEl) crValEl.textContent = crGroups;
+      if (kValEl) kValEl.textContent = kFactor.toFixed(2);
+      if (raffleValEl) raffleValEl.textContent = `₹${raffleBudget.toLocaleString('en-IN')}`;
+
+      // Mathematical logic:
+      // Direct CR Registrations: 8 per active group
+      // Direct Campus Club Registrations: 80 fixed baseline
+      const directCr = Math.round(crGroups * 8.0);
+      const directCampus = 80;
+      const directTotal = directCr + directCampus;
+
+      // Viral Referral Registrations: driven by K-Factor
+      const referredRegs = Math.round(directTotal * kFactor);
+      const totalRegs = directTotal + referredRegs;
+
+      // Live Attendees: Modeled @ 70% Turnout
+      const liveAttendees = Math.round(totalRegs * 0.70);
+
+      // Total Budget: ₹1,200 CR Performance Bounties + Attendance Raffle Budget
+      const totalBudget = 1200 + raffleBudget;
+      const blendedCAC = (totalBudget / totalRegs).toFixed(2);
+
+      const simDirectEl = document.getElementById('simDirectRegs');
+      const simReferredEl = document.getElementById('simReferredRegs');
+      const simTotalEl = document.getElementById('simTotalRegs');
+      const simAttendeesEl = document.getElementById('simLiveAttendees');
+      const simBudgetEl = document.getElementById('simTotalBudget');
+      const simCacEl = document.getElementById('simBlendedCAC');
+
+      if (simDirectEl) simDirectEl.textContent = directTotal;
+      if (simReferredEl) simReferredEl.textContent = referredRegs;
+      if (simTotalEl) simTotalEl.textContent = totalRegs;
+      if (simAttendeesEl) simAttendeesEl.textContent = liveAttendees;
+      if (simBudgetEl) simBudgetEl.textContent = `₹${totalBudget.toLocaleString('en-IN')}`;
+      if (simCacEl) simCacEl.textContent = `₹${blendedCAC}`;
+    }
+
+    function setSimulatorPreset(preset) {
+      const crSlider = document.getElementById('simCrSlider');
+      const kSlider = document.getElementById('simKSlider');
+      const raffleSlider = document.getElementById('simRaffleSlider');
+      if (!crSlider || !kSlider || !raffleSlider) return;
+
+      if (preset === 'base') {
+        crSlider.value = 35;
+        kSlider.value = 0.32;
+        raffleSlider.value = 800;
+      } else if (preset === 'conservative') {
+        crSlider.value = 28;
+        kSlider.value = 0.25;
+        raffleSlider.value = 800;
+      } else if (preset === 'stretch') {
+        crSlider.value = 45;
+        kSlider.value = 0.40;
+        raffleSlider.value = 800;
+      }
+      updateCampaignSimulation();
     }
 
 
@@ -4383,6 +5367,7 @@
       applyTheme(savedTheme);
       initAmbient3D();
       updateProjectPreview();
+      updateCampaignSimulation();
     });
   </script>
 </body>
