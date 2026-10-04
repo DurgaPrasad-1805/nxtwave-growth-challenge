@@ -2912,47 +2912,535 @@
       width: fit-content;
     }
 
-    /* 5-Stage Build-to-Showcase Pipeline Bar */
-    .pipeline-progress-bar {
+    /* ==========================================================================
+       INTERACTIVE PIPELINE, MODALS, STORYTELLING & MICRO-INTERACTIONS
+       ========================================================================== */
+
+    /* 1. 6-Stage Interactive Build-to-Showcase Pipeline */
+    .interactive-pipeline-deck {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 8px;
-      margin-bottom: 22px;
+      margin: 16px 20px 14px;
       overflow-x: auto;
-      padding-bottom: 6px;
+      padding-bottom: 8px;
       scrollbar-width: thin;
     }
-    .pipeline-step-chip {
+
+    .pipeline-stage-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-full);
-      padding: 6px 14px;
-      font-size: 0.76rem;
+      padding: 7px 14px;
+      font-size: 0.78rem;
       font-weight: 600;
       color: var(--text-secondary);
       white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.25s var(--ease-cinematic);
     }
-    .pipeline-step-chip.active {
-      background: rgba(56, 189, 248, 0.12);
-      border-color: rgba(56, 189, 248, 0.35);
+
+    .pipeline-stage-btn:hover {
+      background: rgba(56, 189, 248, 0.08);
+      border-color: rgba(56, 189, 248, 0.3);
+      color: var(--text-primary);
+      transform: translateY(-1px);
+    }
+
+    .pipeline-stage-btn.active {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.16) 0%, rgba(99, 102, 241, 0.16) 100%);
+      border-color: rgba(56, 189, 248, 0.55);
       color: var(--accent-cyan);
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.15);
     }
-    .chip-step-num {
+
+    .pipeline-stage-btn .chip-step-num {
       font-family: var(--font-mono);
       font-weight: 800;
-      font-size: 0.7rem;
-      background: rgba(56, 189, 248, 0.2);
+      font-size: 0.68rem;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-cyan);
       padding: 2px 6px;
       border-radius: var(--radius-sm);
     }
-    .pipeline-connector {
+
+    .pipeline-stage-btn.active .chip-step-num {
+      background: var(--accent-cyan);
+      color: #04121d;
+    }
+
+    .pipeline-connector-line {
       color: var(--text-tertiary);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       flex-shrink: 0;
+      user-select: none;
+    }
+
+    .pipeline-detail-card {
+      margin: 0 20px 18px;
+      background: rgba(6, 11, 20, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 16px;
+      animation: fadeInSlide 0.3s ease;
+      text-align: left;
+    }
+
+    @media (max-width: 768px) {
+      .pipeline-detail-card {
+        grid-template-columns: 1fr;
+        margin: 0 14px 16px;
+        padding: 14px 16px;
+      }
+    }
+
+    .pipeline-detail-main h4 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pipeline-detail-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      background: rgba(16, 185, 129, 0.14);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: var(--accent-emerald);
+      letter-spacing: 0.04em;
+    }
+
+    .pipeline-detail-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .pipeline-detail-action {
+      font-size: 0.78rem;
+      color: #cbd5e1;
+      line-height: 1.45;
+    }
+
+    .pipeline-detail-side {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-left: 1px solid rgba(255, 255, 255, 0.08);
+      padding-left: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .pipeline-detail-side {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 12px;
+      }
+    }
+
+    .pipeline-artifact-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 6px;
+      padding: 8px 12px;
+    }
+
+    .pipeline-box-title {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: var(--accent-cyan);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .pipeline-box-val {
+      font-size: 0.8rem;
+      color: var(--text-primary);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .pipeline-why-box {
+      background: rgba(16, 185, 129, 0.06);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: 6px;
+      padding: 8px 12px;
+    }
+
+    .pipeline-why-title {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: var(--accent-emerald);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .pipeline-why-val {
+      font-size: 0.78rem;
+      color: #d1fae5;
+      line-height: 1.4;
+    }
+
+    /* 2. AI Project Architect Scanning & Assembly State */
+    .architect-assembly-box {
+      margin-top: 20px;
+      background: rgba(6, 11, 20, 0.95);
+      border: 1px dashed rgba(56, 189, 248, 0.45);
+      border-radius: var(--radius-md);
+      padding: 28px 20px;
+      text-align: center;
+      display: none;
+      animation: fadeInSlide 0.25s ease;
+    }
+
+    .radar-scan-ring {
+      width: 44px;
+      height: 44px;
+      border: 2.5px solid rgba(56, 189, 248, 0.2);
+      border-top-color: var(--accent-cyan);
+      border-right-color: var(--accent-indigo);
+      border-radius: 50%;
+      margin: 0 auto 14px;
+      animation: radarSpin 0.75s linear infinite;
+    }
+
+    @keyframes radarSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    .assembly-meta-text {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .assembly-step-pills {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .asm-pill {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-tertiary);
+      transition: all 0.2s ease;
+    }
+
+    .asm-pill.active {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: rgba(56, 189, 248, 0.4);
+      color: var(--accent-cyan);
+    }
+
+    .catalog-verified-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-tertiary);
+      display: block;
+      margin-top: 14px;
+      text-align: right;
+      letter-spacing: 0.02em;
+    }
+
+    /* 3. Four-Step Guided Journey Interactive States */
+    .how-step-card {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .how-step-card.active-step {
+      border-color: rgba(56, 189, 248, 0.55);
+      box-shadow: 0 8px 28px rgba(56, 189, 248, 0.16);
+      background: linear-gradient(180deg, rgba(56, 189, 248, 0.08) 0%, rgba(8, 14, 26, 0.85) 100%);
+    }
+
+    .step-expand-hint {
+      margin-top: 12px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.2s;
+    }
+
+    .how-step-card:hover .step-expand-hint {
+      color: #ffffff;
+    }
+
+    .step-deepdive-drawer {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.12);
+      font-size: 0.78rem;
+      line-height: 1.5;
+      color: #cbd5e1;
+      display: none;
+      animation: fadeInSlide 0.25s ease;
+    }
+
+    .how-step-card.active-step .step-deepdive-drawer {
+      display: block;
+    }
+
+    /* 4. Central Growth Loop Detail Drawer */
+    .loop-stage-detail-box {
+      margin-top: 14px;
+      background: rgba(4, 9, 20, 0.75);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      display: none;
+      animation: fadeInSlide 0.3s ease;
+      text-align: left;
+    }
+
+    .loop-stage-detail-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 700px) {
+      .loop-stage-detail-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 5. 3D Experiment Detail Modal */
+    .experiment-modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(2, 6, 16, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s var(--ease-cinematic);
+    }
+
+    .experiment-modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .experiment-modal-card {
+      width: 100%;
+      max-width: 660px;
+      max-height: 88vh;
+      overflow-y: auto;
+      background: linear-gradient(155deg, rgba(15, 23, 42, 0.98) 0%, rgba(8, 14, 26, 0.98) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.7), 0 0 30px rgba(56, 189, 248, 0.15);
+      padding: 28px;
+      transform: scale(0.94) translateY(14px);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      text-align: left;
+    }
+
+    .experiment-modal-backdrop.open .experiment-modal-card {
+      transform: scale(1) translateY(0);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .modal-close-btn:hover {
+      background: rgba(255, 255, 255, 0.16);
+      transform: scale(1.05);
+    }
+
+    .exp-modal-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .exp-modal-field {
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    .exp-modal-field-lead {
+      font-weight: 800;
+      color: var(--accent-cyan);
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
+    }
+
+    .exp-signal-box {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-top: 4px;
+    }
+
+    .exp-signal-box-lead {
+      font-weight: 800;
+      color: var(--accent-emerald);
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    /* 6. Discrete Contextual Scroll Popup */
+    .scroll-nudge-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 990;
+      max-width: 420px;
+      background: rgba(8, 14, 26, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: var(--radius-md);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5), 0 0 16px rgba(56, 189, 248, 0.15);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transform: translateY(120px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .scroll-nudge-toast.visible {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    @media (max-width: 520px) {
+      .scroll-nudge-toast {
+        bottom: 16px;
+        right: 16px;
+        left: 16px;
+        max-width: none;
+      }
+    }
+
+    .btn-toast-reserve {
+      background: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 7px 14px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+
+    .btn-toast-reserve:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-toast-close {
+      background: none;
+      border: none;
+      color: var(--text-tertiary);
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .btn-toast-close:hover {
+      color: #ffffff;
+    }
+
+    /* 7. Scroll-Triggered Storytelling Reveals */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-on-scroll.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal-on-scroll {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .radar-scan-ring {
+        animation: none !important;
+      }
     }
 
     /* ==========================================================================
@@ -4582,7 +5070,7 @@
           <!-- ==========================================================================
                WHY ATTEND: 4 CONCRETE PLACEMENT OUTCOMES (STUDENT VALUE PROP)
                ========================================================================== -->
-          <section id="whyAttendSection" style="margin: 40px 0 50px;" aria-labelledby="whyAttendHeading">
+          <section id="whyAttendSection" class="reveal-on-scroll" style="margin: 40px 0 50px;" aria-labelledby="whyAttendHeading">
             <div class="section-headline-box">
               <span class="section-eyebrow">Zero Theory Slides • Pure Proof of Work</span>
               <h2 id="whyAttendHeading" class="sec-title">
@@ -4639,7 +5127,7 @@
           <!-- ==========================================================================
                INTERACTIVE 'WHAT YOU'LL BUILD' PRODUCT PREVIEW
                ========================================================================== -->
-          <section id="whatYouWillBuildSection" class="product-demo-bench" aria-labelledby="buildPreviewHeading">
+          <section id="whatYouWillBuildSection" class="product-demo-bench reveal-on-scroll" aria-labelledby="buildPreviewHeading">
             <div class="demo-browser-chrome">
               <div class="demo-browser-dots" aria-hidden="true">
                 <span class="demo-dot red"></span>
@@ -4655,31 +5143,62 @@
               </div>
             </div>
 
-            <!-- 5-Stage Build-to-Showcase Pipeline Bar -->
-            <div class="pipeline-progress-bar" role="region" aria-label="Build Pipeline Steps" style="margin: 16px 20px 0;">
-              <div class="pipeline-step-chip active">
+            <!-- Interactive 6-Stage Build-to-Showcase Pipeline Deck -->
+            <div class="interactive-pipeline-deck" id="pipelineStageButtons" role="tablist" aria-label="Interactive 6-Stage Build Pipeline">
+              <button type="button" class="pipeline-stage-btn active" role="tab" id="pstage-btn-1" aria-selected="true" aria-controls="pipelineDetailCard" onclick="selectPipelineStage(1)">
                 <span class="chip-step-num">01</span>
-                <span>Branch Selection</span>
-              </div>
-              <span class="pipeline-connector">➔</span>
-              <div class="pipeline-step-chip active">
+                <span>Select Domain</span>
+              </button>
+              <span class="pipeline-connector-line">➔</span>
+              <button type="button" class="pipeline-stage-btn" role="tab" id="pstage-btn-2" aria-selected="false" aria-controls="pipelineDetailCard" onclick="selectPipelineStage(2)">
                 <span class="chip-step-num">02</span>
-                <span>Prompt & Architecture Spec</span>
-              </div>
-              <span class="pipeline-connector">➔</span>
-              <div class="pipeline-step-chip active">
+                <span>Generate Spec</span>
+              </button>
+              <span class="pipeline-connector-line">➔</span>
+              <button type="button" class="pipeline-stage-btn" role="tab" id="pstage-btn-3" aria-selected="false" aria-controls="pipelineDetailCard" onclick="selectPipelineStage(3)">
                 <span class="chip-step-num">03</span>
-                <span>60-Min Live Coding</span>
-              </div>
-              <span class="pipeline-connector">➔</span>
-              <div class="pipeline-step-chip active">
+                <span>Build (60 Min)</span>
+              </button>
+              <span class="pipeline-connector-line">➔</span>
+              <button type="button" class="pipeline-stage-btn" role="tab" id="pstage-btn-4" aria-selected="false" aria-controls="pipelineDetailCard" onclick="selectPipelineStage(4)">
                 <span class="chip-step-num">04</span>
-                <span>Public Cloud Deploy</span>
-              </div>
-              <span class="pipeline-connector">➔</span>
-              <div class="pipeline-step-chip active">
+                <span>Cloud Deploy</span>
+              </button>
+              <span class="pipeline-connector-line">➔</span>
+              <button type="button" class="pipeline-stage-btn" role="tab" id="pstage-btn-5" aria-selected="false" aria-controls="pipelineDetailCard" onclick="selectPipelineStage(5)">
                 <span class="chip-step-num">05</span>
-                <span>GitHub & Resume Showcase</span>
+                <span>GitHub Repo</span>
+              </button>
+              <span class="pipeline-connector-line">➔</span>
+              <button type="button" class="pipeline-stage-btn" role="tab" id="pstage-btn-6" aria-selected="false" aria-controls="pipelineDetailCard" onclick="selectPipelineStage(6)">
+                <span class="chip-step-num">06</span>
+                <span>Resume / ATS Bullets</span>
+              </button>
+            </div>
+
+            <!-- Dynamic Pipeline Stage Detail Card -->
+            <div class="pipeline-detail-card" id="pipelineDetailCard" role="region" aria-live="polite">
+              <div class="pipeline-detail-main">
+                <h4>
+                  <span id="pstageTitle">Stage 01: Branch-Aligned Domain Selection</span>
+                  <span class="pipeline-detail-badge" id="pstageBadge">PRE-FLIGHT</span>
+                </h4>
+                <p class="pipeline-detail-desc" id="pstageDesc">
+                  Tailor your project architecture specifically to your degree specialization (CSE/IT, ECE/EEE, Mech/Civil, or Open Core). Avoid generic tutorials that recruiters discount.
+                </p>
+                <div class="pipeline-detail-action" id="pstageAction">
+                  ⚡ <strong>What You Do:</strong> Choose your branch preset to immediately bind domain-specific prompt engineering frameworks and hardware/software problem spaces.
+                </div>
+              </div>
+              <div class="pipeline-detail-side">
+                <div class="pipeline-artifact-box">
+                  <span class="pipeline-box-title">Concrete Output Asset</span>
+                  <span id="pstageAsset" style="font-size: 0.82rem; color: #f1f5f9; font-weight: 600;">Customized Problem Statement & Scope Spec</span>
+                </div>
+                <div class="pipeline-why-box">
+                  <span class="pipeline-why-title">Placement Impact</span>
+                  <div class="pipeline-why-val" id="pstageImpact">Demonstrates intentional technical depth tailored to your core discipline.</div>
+                </div>
               </div>
             </div>
 
@@ -4767,7 +5286,7 @@
           <!-- ==========================================================================
                WHAT YOU'LL WALK AWAY WITH (TANGIBLE PROOF-OF-WORK ASSETS)
                ========================================================================== -->
-          <section style="margin: 54px 0 44px;" aria-labelledby="walkawayHeading">
+          <section class="reveal-on-scroll" style="margin: 54px 0 44px;" aria-labelledby="walkawayHeading">
             <div class="section-headline-box">
               <span class="section-eyebrow">Tangible Proof-Of-Work Assets</span>
               <h2 id="walkawayHeading" class="sec-title">
@@ -4844,7 +5363,7 @@
           <!-- ==========================================================================
                HOW IT WORKS (4-STEP GUIDED JOURNEY)
                ========================================================================== -->
-          <section style="margin: 44px 0 54px;" aria-labelledby="howItWorksHeading">
+          <section class="reveal-on-scroll" style="margin: 44px 0 54px;" aria-labelledby="howItWorksHeading">
             <div class="section-headline-box">
               <span class="section-eyebrow">Frictionless 4-Step Process</span>
               <h2 id="howItWorksHeading" class="sec-title">
@@ -4857,39 +5376,63 @@
 
             <div class="how-it-works-deck">
               <!-- Step 1 -->
-              <div class="how-step-card">
+              <div class="how-step-card" id="howStep1" tabindex="0" role="button" aria-expanded="false" onclick="toggleHowStep(1)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleHowStep(1);}">
                 <div class="step-num-pill">STEP 01</div>
                 <h3 class="step-title">Reserve Your Seat</h3>
                 <p class="step-desc">
                   Fill in your name, WhatsApp number, and college in the 30-Second RSVP form (Branch & Year optional). 100% free, no payment required. Receive your instant ticket ID and calendar invite.
                 </p>
+                <div class="step-expand-hint">
+                  <span id="howHint1">Inspect Step Deep-Dive</span> ▾
+                </div>
+                <div class="step-deepdive-drawer" id="howDrawer1">
+                  <strong>Tactical Mechanism:</strong> 30-second low-friction input captures verified contact, college affiliation, and growth attribution automatically. Generates your unique cryptographic Ticket ID with single-click WhatsApp access and automated .ics calendar synchronization.
+                </div>
               </div>
 
               <!-- Step 2 -->
-              <div class="how-step-card">
+              <div class="how-step-card" id="howStep2" tabindex="0" role="button" aria-expanded="false" onclick="toggleHowStep(2)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleHowStep(2);}">
                 <div class="step-num-pill">STEP 02</div>
                 <h3 class="step-title">Get Project Spec & Referral Link</h3>
                 <p class="step-desc">
                   Use the AI Project Architect to pick your branch focus. Share your personal invite link with 2 batchmates to unlock the 2026 AI Capstone & Placement Vault.
                 </p>
+                <div class="step-expand-hint">
+                  <span id="howHint2">Inspect Step Deep-Dive</span> ▾
+                </div>
+                <div class="step-deepdive-drawer" id="howDrawer2">
+                  <strong>Pre-Workshop Priming:</strong> AI Project Architect tailors the 60-min capstone to your specific engineering syllabus. Generates your unique referral link: inviting 2 batchmates unlocks the curated 2026 AI Capstone & Placement Vault instantly.
+                </div>
               </div>
 
               <!-- Step 3 -->
-              <div class="how-step-card">
+              <div class="how-step-card" id="howStep3" tabindex="0" role="button" aria-expanded="false" onclick="toggleHowStep(3)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleHowStep(3);}">
                 <div class="step-num-pill">STEP 03</div>
                 <h3 class="step-title">Join 60-Minute Build Sprint</h3>
                 <p class="step-desc">
                   Log in on Sunday at 7:00 PM IST. Zero theory slides—we code step-by-step from an empty file to integrating Gemini 1.5 Flash API and building a polished UI.
                 </p>
+                <div class="step-expand-hint">
+                  <span id="howHint3">Inspect Step Deep-Dive</span> ▾
+                </div>
+                <div class="step-deepdive-drawer" id="howDrawer3">
+                  <strong>Zero-Slide Code Sprint:</strong> Hands-on implementation in Python. Connect to Google Gemini API (gemini-1.5-flash), engineer domain-aware system prompts, implement real-time output streaming, and construct an interactive Streamlit UI.
+                </div>
               </div>
 
               <!-- Step 4 -->
-              <div class="how-step-card">
+              <div class="how-step-card" id="howStep4" tabindex="0" role="button" aria-expanded="false" onclick="toggleHowStep(4)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleHowStep(4);}">
                 <div class="step-num-pill">STEP 04</div>
                 <h3 class="step-title">Deploy & Showcase</h3>
                 <p class="step-desc">
                   Deploy your app to Streamlit Cloud with a live HTTPS URL, push commits to your personal GitHub, paste the 3 ATS bullet points on your resume, and stand out.
                 </p>
+                <div class="step-expand-hint">
+                  <span id="howHint4">Inspect Step Deep-Dive</span> ▾
+                </div>
+                <div class="step-deepdive-drawer" id="howDrawer4">
+                  <strong>Placement Armor Delivery:</strong> Deploy to Streamlit Cloud with an active HTTPS domain, push source commits to GitHub with production documentation, and embed 3 verified STAR-framework ATS bullet points directly into your technical resume.
+                </div>
               </div>
             </div>
           </section>
@@ -4897,7 +5440,7 @@
           <!-- ==========================================================================
                WHY THIS MATTERS FOR PLACEMENTS (PROOF-OF-WORK VS GENERIC CERTIFICATES)
                ========================================================================== -->
-          <section class="placement-matrix-container" aria-labelledby="whyItMattersHeading">
+          <section class="placement-matrix-container reveal-on-scroll" aria-labelledby="whyItMattersHeading">
             <div class="section-headline-box">
               <span class="section-eyebrow">Recruiter Psychology & Hiring Reality</span>
               <h2 id="whyItMattersHeading" class="sec-title">
@@ -4984,7 +5527,7 @@
           <!-- ==========================================================================
                WHAT YOU NEED / WHAT YOU DON'T NEED (FRICTION ELIMINATOR)
                ========================================================================== -->
-          <section style="margin: 44px 0 54px;" aria-labelledby="prereqHeading">
+          <section class="reveal-on-scroll" style="margin: 44px 0 54px;" aria-labelledby="prereqHeading">
             <div class="section-headline-box">
               <span class="section-eyebrow">Zero Barriers to Entry</span>
               <h2 id="prereqHeading" class="sec-title">
@@ -5051,7 +5594,7 @@
           <!-- ==========================================================================
                INTERACTIVE AI PROJECT ARCHITECT & 30-SECOND FREE RSVP
                ========================================================================== -->
-          <section id="registrationSection" style="margin: 44px 0 54px;" aria-labelledby="regSectionHeading">
+          <section id="registrationSection" class="reveal-on-scroll" style="margin: 44px 0 54px;" aria-labelledby="regSectionHeading">
             <div class="section-headline-box">
               <span class="section-eyebrow">Personalized AI Project & Instant Pass</span>
               <h2 id="regSectionHeading" class="sec-title">
@@ -5105,9 +5648,25 @@
                   </button>
                 </form>
 
+                <!-- AI Assembly & Synthesizing State (850ms Scanning Simulation) -->
+                <div class="architect-assembly-box" id="architectScanningState" role="status" aria-live="polite">
+                  <div class="radar-scan-ring" aria-hidden="true"></div>
+                  <div class="assembly-meta-text" id="assemblyPhaseText">
+                    <span>Synthesizing Branch Curriculum & Gemini Architecture...</span>
+                  </div>
+                  <div class="assembly-step-pills">
+                    <span class="asm-pill active" id="asmPill1">Curriculum Vector Match</span>
+                    <span class="asm-pill" id="asmPill2">Gemini Schema Gen</span>
+                    <span class="asm-pill" id="asmPill3">ATS Bullet Compilation</span>
+                  </div>
+                </div>
+
                 <!-- Dynamic Project Output -->
                 <div class="project-card-3d-box" id="projectPreview" role="region" aria-live="polite">
-                  <span class="tag-category-badge" id="previewTag">CUSTOMIZED FOR CSE/IT</span>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 6px;">
+                    <span class="tag-category-badge" id="previewTag">CUSTOMIZED FOR CSE/IT</span>
+                    <span class="catalog-verified-tag" id="previewVerifiedTag">✓ Verified 2026 Campus Placement Capstone</span>
+                  </div>
                   <h3 class="card-project-name" id="previewTitle">AI Technical Interviewer with Real-time Code & Voice Evaluation</h3>
                   <p class="card-project-summary" id="previewDesc">
                     Full-stack application using Gemini API and Streamlit that evaluates coding solutions, checks edge cases, and provides instant audio-style feedback.
@@ -5361,7 +5920,7 @@
           <!-- ==========================================================================
                FREQUENTLY ASKED QUESTIONS (ACCESSIBLE INTERACTIVE ACCORDION)
                ========================================================================== -->
-          <section style="margin: 44px 0 54px;" aria-labelledby="faqHeading">
+          <section class="reveal-on-scroll" style="margin: 44px 0 54px;" aria-labelledby="faqHeading">
             <div class="section-headline-box">
               <span class="section-eyebrow">Everything You Need to Know</span>
               <h2 id="faqHeading" class="sec-title">
@@ -5530,31 +6089,56 @@
                 <span id="loopHeading">Central Growth Loop: Acquire → Register → Refer → Unlock → Measure</span>
                 <span style="color: var(--text-tertiary); font-size: 0.74rem;">Organic High-Leverage Loop</span>
               </div>
-              <div class="loop-node-grid">
-                <div class="loop-node-item active" onclick="focusAmbientNode(0)">
+              <div class="loop-node-grid" id="loopNodeGrid">
+                <div class="loop-node-item active" id="loopNode0" tabindex="0" role="button" onclick="selectGrowthLoopStage(0); focusAmbientNode(0);" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectGrowthLoopStage(0);focusAmbientNode(0);}">
                   <div class="loop-node-step">01. ACQUIRE</div>
                   <div class="loop-node-name">CR WhatsApp</div>
                   <div class="loop-node-detail">35 College Guilds</div>
                 </div>
-                <div class="loop-node-item" onclick="focusAmbientNode(1)">
+                <div class="loop-node-item" id="loopNode1" tabindex="0" role="button" onclick="selectGrowthLoopStage(1); focusAmbientNode(1);" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectGrowthLoopStage(1);focusAmbientNode(1);}">
                   <div class="loop-node-step">02. REGISTER</div>
                   <div class="loop-node-name">30-Second RSVP</div>
                   <div class="loop-node-detail">Low-Friction Pass</div>
                 </div>
-                <div class="loop-node-item" onclick="focusAmbientNode(2)">
+                <div class="loop-node-item" id="loopNode2" tabindex="0" role="button" onclick="selectGrowthLoopStage(2); focusAmbientNode(2);" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectGrowthLoopStage(2);focusAmbientNode(2);}">
                   <div class="loop-node-step">03. REFER</div>
                   <div class="loop-node-name">WhatsApp Share</div>
                   <div class="loop-node-detail">Peer Invite Links</div>
                 </div>
-                <div class="loop-node-item" onclick="focusAmbientNode(3)">
+                <div class="loop-node-item" id="loopNode3" tabindex="0" role="button" onclick="selectGrowthLoopStage(3); focusAmbientNode(3);" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectGrowthLoopStage(3);focusAmbientNode(3);}">
                   <div class="loop-node-step">04. UNLOCK</div>
                   <div class="loop-node-name">Capstone Vault</div>
                   <div class="loop-node-detail">Target K=0.32 Loop</div>
                 </div>
-                <div class="loop-node-item" onclick="focusAmbientNode(4)">
+                <div class="loop-node-item" id="loopNode4" tabindex="0" role="button" onclick="selectGrowthLoopStage(4); focusAmbientNode(4);" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectGrowthLoopStage(4);focusAmbientNode(4);}">
                   <div class="loop-node-step">05. MEASURE</div>
                   <div class="loop-node-name">Ops Console</div>
                   <div class="loop-node-detail">Model CAC & Velocity</div>
+                </div>
+              </div>
+
+              <!-- Central Growth Loop Stage Detail Drawer -->
+              <div class="loop-stage-detail-box" id="loopStageDetailBox" role="region" aria-live="polite" style="display: block;">
+                <div class="loop-stage-detail-grid">
+                  <div>
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                      <span class="status-pill" id="loopStageBadge" style="background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); border-color: rgba(56, 189, 248, 0.35); font-size: 0.68rem; padding: 2px 8px;">STAGE 01 • ACQUISITION VECTOR</span>
+                      <strong id="loopStageName" style="color: #ffffff; font-size: 0.95rem;">CR WhatsApp Network (Peer Authority)</strong>
+                    </div>
+                    <p id="loopStageDesc" style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                      Direct peer distribution via 35 Class Representatives across 20 verified engineering institutions. Generates high-trust inbound clicks with zero paid ad fatigue.
+                    </p>
+                  </div>
+                  <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 6px; padding: 6px 12px; flex: 1; min-width: 140px;">
+                      <span style="font-size: 0.66rem; text-transform: uppercase; color: var(--text-tertiary); display: block;">Key Model Metric</span>
+                      <strong id="loopStageMetric" style="color: var(--accent-cyan); font-size: 0.85rem;">35 Active CR Guilds • ₹34.28 Bounty</strong>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 6px; padding: 6px 12px; flex: 1; min-width: 140px;">
+                      <span style="font-size: 0.66rem; text-transform: uppercase; color: var(--text-tertiary); display: block;">Execution Risk / Mitigant</span>
+                      <strong id="loopStageRisk" style="color: var(--accent-emerald); font-size: 0.85rem;">Direct CR WhatsApp Admin Access</strong>
+                    </div>
+                  </div>
                 </div>
               </div>
             </section>
@@ -5989,6 +6573,9 @@
                   <div class="exp-decision-footer">
                     <strong>Decision:</strong> If Variant A wins, lock placement-first messaging across all Day 5–6 retargeting pushes; if Variant B wins, pivot messaging to emphasize technical LLM depth and modern AI skills.
                   </div>
+                  <button type="button" class="action-btn" style="width: auto; margin-top: 14px; padding: 7px 14px; font-size: 0.78rem; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.35); color: var(--accent-cyan); display: inline-flex; align-items: center; gap: 6px;" onclick="openExperimentModal('01')">
+                    <span>🔍 Inspect Deep Protocol & Live Signal</span> ➔
+                  </button>
                 </article>
 
                 <!-- Experiment 2 -->
@@ -6016,6 +6603,9 @@
                   <div class="exp-decision-footer">
                     <strong>Decision:</strong> If CR WhatsApp wins, allocate 100% of the ₹1,200 bounty pool to the CR performance leaderboard; if Discord/Telegram performs strongly, divert ₹400 to incentivize Discord moderators.
                   </div>
+                  <button type="button" class="action-btn" style="width: auto; margin-top: 14px; padding: 7px 14px; font-size: 0.78rem; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.35); color: var(--accent-cyan); display: inline-flex; align-items: center; gap: 6px;" onclick="openExperimentModal('02')">
+                    <span>🔍 Inspect Deep Protocol & Live Signal</span> ➔
+                  </button>
                 </article>
 
                 <!-- Experiment 3 -->
@@ -6043,6 +6633,9 @@
                   <div class="exp-decision-footer">
                     <strong>Decision:</strong> If Milestone Vault wins, lock all post-registration flows to asset gating; if lottery wins, shift the referral reward to cash vouchers.
                   </div>
+                  <button type="button" class="action-btn" style="width: auto; margin-top: 14px; padding: 7px 14px; font-size: 0.78rem; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.35); color: var(--accent-cyan); display: inline-flex; align-items: center; gap: 6px;" onclick="openExperimentModal('03')">
+                    <span>🔍 Inspect Deep Protocol & Live Signal</span> ➔
+                  </button>
                 </article>
 
               </div>
@@ -6195,6 +6788,69 @@
     </footer>
 
   </div>
+
+  <!-- ==========================================================================
+       GROWTH EXPERIMENT DEEP-DIVE MODAL (3D CARD SCALE & PROTOCOL VIEW)
+       ========================================================================== -->
+  <div class="experiment-modal-backdrop" id="experimentDetailModal" role="dialog" aria-modal="true" aria-labelledby="expModalTitle" onclick="handleModalBackdropClick(event)">
+    <div class="experiment-modal-card">
+      <button type="button" class="modal-close-btn" aria-label="Close Experiment Modal" onclick="closeExperimentModal()">✕</button>
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+        <span class="exp-category-pill tag-message-hook" id="expModalCategory">Messaging & Value Prop</span>
+        <span class="exp-num-label" id="expModalNum">EXPERIMENT 01</span>
+      </div>
+      <h3 id="expModalTitle" style="font-size: 1.25rem; font-weight: 800; color: #ffffff; margin-bottom: 6px;">
+        Placement Armor vs. Generic Tech Stack Hook
+      </h3>
+      <p id="expModalSubtitle" style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 16px;">
+        Controlled A/B evaluation measuring relative student conversion sensitivity across college WhatsApp channels.
+      </p>
+
+      <div class="exp-modal-grid">
+        <div class="exp-modal-field">
+          <span class="exp-modal-field-lead">Hypothesis</span>
+          <div id="expModalHypothesis">Positioning around "Placement Armor & 3 ATS Bullets" will generate higher click-to-registration conversion than generic "Learn Generative AI & LLMs" messaging.</div>
+        </div>
+        <div class="exp-modal-field">
+          <span class="exp-modal-field-lead">Test Architecture & Split Setup</span>
+          <div id="expModalTestSetup">A/B test 2 distinct WhatsApp broadcast copies across 20 college groups using dedicated UTM parameters (Variant A: Outcome/Placement Hook vs. Variant B: Skill/Tech Hook).</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <div class="exp-modal-field">
+            <span class="exp-modal-field-lead">Primary Metric</span>
+            <div id="expModalPrimaryMetric">Click-to-Registration Rate</div>
+          </div>
+          <div class="exp-modal-field">
+            <span class="exp-modal-field-lead">Secondary Metric</span>
+            <div id="expModalSecondaryMetric">WhatsApp Link CTR</div>
+          </div>
+        </div>
+        <div class="exp-modal-field">
+          <span class="exp-modal-field-lead">Success Threshold & Decision Rule</span>
+          <div id="expModalThreshold">Variant A achieves ≥25% higher relative conversion rate than Variant B. If Variant A wins, lock placement-first messaging across all Day 5–6 retargeting pushes.</div>
+        </div>
+        <div class="exp-signal-box">
+          <span class="exp-signal-box-lead">Live Simulated Signal (Demo Data)</span>
+          <div id="expModalLiveSignal" style="font-size: 0.82rem; color: #d1fae5;">
+            Variant A: 14.8% Conv (262 Regs / 1,770 Clicks) vs. Variant B: 8.9% Conv (150 Regs / 1,685 Clicks). Relative Lift: +66.3% (p &lt; 0.01). Variant A confirmed as primary driver.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       DISCRETE SCROLL-TRIGGERED NUDGE TOAST
+       ========================================================================== -->
+  <aside class="scroll-nudge-toast" id="scrollNudgeToast" role="complementary" aria-label="Quick Registration Nudge">
+    <div style="font-size: 1.4rem;" aria-hidden="true">⚡</div>
+    <div style="flex: 1; text-align: left;">
+      <div style="font-size: 0.82rem; font-weight: 800; color: #ffffff; line-height: 1.2;">Free 60-Min AI Build Workshop</div>
+      <div style="font-size: 0.74rem; color: var(--text-secondary);">Limited spots per engineering branch. 30-sec RSVP.</div>
+    </div>
+    <button type="button" class="btn-toast-reserve" onclick="handleToastReserveClick()">Reserve Seat ➔</button>
+    <button type="button" class="btn-toast-close" aria-label="Dismiss Nudge" onclick="dismissScrollToast()">✕</button>
+  </aside>
 
   <!-- ==========================================================================
        THREE.JS CALM, PHOTOREALISTIC AMBIENT 3D GROWTH ECOSYSTEM
@@ -6996,16 +7652,73 @@
       }
     };
 
-    function updateProjectPreview() {
-      const branch = document.getElementById('branchSelect').value;
-      const interest = document.getElementById('interestSelect').value;
+    let isScanningProject = false;
+    function updateProjectPreview(forceInstant = false) {
+      const branchSelect = document.getElementById('branchSelect');
+      const interestSelect = document.getElementById('interestSelect');
+      const branch = branchSelect ? branchSelect.value : 'cs';
+      const interest = interestSelect ? interestSelect.value : 'copilot';
       const data = (projectCatalog[branch] && projectCatalog[branch][interest]) || projectCatalog.cs.copilot;
 
-      document.getElementById('previewTag').textContent = data.tag;
-      document.getElementById('previewTitle').textContent = data.title;
-      document.getElementById('previewDesc').textContent = data.desc;
-      document.getElementById('resumeBulletText').textContent = data.bullet;
-      document.getElementById('projectPreview').style.display = 'block';
+      const scanBox = document.getElementById('architectScanningState');
+      const previewBox = document.getElementById('projectPreview');
+      const phaseText = document.getElementById('assemblyPhaseText');
+      const pill1 = document.getElementById('asmPill1');
+      const pill2 = document.getElementById('asmPill2');
+      const pill3 = document.getElementById('asmPill3');
+
+      if (scanBox && previewBox && !forceInstant && !isScanningProject) {
+        isScanningProject = true;
+        previewBox.style.display = 'none';
+        scanBox.style.display = 'block';
+
+        if (phaseText) phaseText.textContent = "Analyzing branch curriculum & placement requirements...";
+        if (pill1) pill1.className = "asm-pill active";
+        if (pill2) pill2.className = "asm-pill";
+        if (pill3) pill3.className = "asm-pill";
+
+        setTimeout(() => {
+          if (phaseText) phaseText.textContent = "Synthesizing Gemini API schema & project architecture...";
+          if (pill2) pill2.className = "asm-pill active";
+        }, 280);
+
+        setTimeout(() => {
+          if (phaseText) phaseText.textContent = "Compiling STAR-framework ATS resume placement bullets...";
+          if (pill3) pill3.className = "asm-pill active";
+        }, 560);
+
+        setTimeout(() => {
+          const pTag = document.getElementById('previewTag');
+          const pTitle = document.getElementById('previewTitle');
+          const pDesc = document.getElementById('previewDesc');
+          const pBullet = document.getElementById('resumeBulletText');
+          const verifiedTag = document.getElementById('previewVerifiedTag');
+
+          if (pTag) pTag.textContent = data.tag;
+          if (pTitle) pTitle.textContent = data.title;
+          if (pDesc) pDesc.textContent = data.desc;
+          if (pBullet) pBullet.textContent = data.bullet;
+          if (verifiedTag) verifiedTag.textContent = `✓ Verified ${branch.toUpperCase()} 2026 Capstone`;
+
+          scanBox.style.display = 'none';
+          previewBox.style.display = 'block';
+          isScanningProject = false;
+        }, 850);
+      } else {
+        const pTag = document.getElementById('previewTag');
+        const pTitle = document.getElementById('previewTitle');
+        const pDesc = document.getElementById('previewDesc');
+        const pBullet = document.getElementById('resumeBulletText');
+        const verifiedTag = document.getElementById('previewVerifiedTag');
+
+        if (pTag) pTag.textContent = data.tag;
+        if (pTitle) pTitle.textContent = data.title;
+        if (pDesc) pDesc.textContent = data.desc;
+        if (pBullet) pBullet.textContent = data.bullet;
+        if (verifiedTag) verifiedTag.textContent = `✓ Verified ${branch.toUpperCase()} 2026 Capstone`;
+        if (previewBox) previewBox.style.display = 'block';
+        if (scanBox) scanBox.style.display = 'none';
+      }
     }
 
     /* ==========================================================================
@@ -7978,15 +8691,420 @@
       }
     });
 
+    /* ==========================================================================
+       7. INTERACTIVE 6-STAGE PIPELINE, MODALS, STORYTELLING & MICRO-INTERACTIONS
+       ========================================================================== */
+
+    // 1. 6-Stage Interactive Build Pipeline
+    const pipelineStageData = {
+      1: {
+        title: "Stage 01: Branch-Aligned Domain Selection",
+        badge: "PRE-FLIGHT",
+        desc: "Tailor your project architecture specifically to your degree specialization (CSE/IT, ECE/EEE, Mech/Civil, or Open Core). Avoid generic tutorials that recruiters discount.",
+        action: "⚡ <strong>What You Do:</strong> Choose your branch preset to immediately bind domain-specific prompt engineering frameworks and hardware/software problem spaces.",
+        asset: "Customized Problem Statement & Scope Spec",
+        impact: "Demonstrates intentional technical depth tailored to your core discipline."
+      },
+      2: {
+        title: "Stage 02: Prompt & Architecture Specification",
+        badge: "SYSTEM DESIGN",
+        desc: "Structure your system prompt with role definition, dynamic inputs, strict output schemas, and low-latency evaluation logic using Gemini 1.5 Flash.",
+        action: "⚡ <strong>What You Do:</strong> Define the input contract, system prompt constraints, and structured JSON output schema for zero-hallucination inference.",
+        asset: "Production System Prompt & Gemini API Schema",
+        impact: "Recruiters look for structured prompt engineering over simple conversational queries."
+      },
+      3: {
+        title: "Stage 03: 60-Minute Live Coding Sprint",
+        badge: "HANDS-ON BUILD",
+        desc: "Code live from a blank script to a working multi-turn application. Zero PowerPoint theory—pure practical software construction in clean Python.",
+        action: "⚡ <strong>What You Do:</strong> Set up Streamlit reactive UI, securely authenticate API keys, handle streaming tokens, and catch network exceptions gracefully.",
+        asset: "Clean, Modular Python Application Code",
+        impact: "Proves you can ship production code independently without hand-holding."
+      },
+      4: {
+        title: "Stage 04: Public Cloud HTTPS Deployment",
+        badge: "CLOUD SHIPPED",
+        desc: "Deploy your containerized app directly to Streamlit Community Cloud with a live HTTPS address accessible from any phone or recruiter laptop.",
+        action: "⚡ <strong>What You Do:</strong> Connect GitHub repo to Streamlit Cloud, configure secret environment variables, and verify live public URL availability.",
+        asset: "Live HTTPS Production URL (Shareable)",
+        impact: "Enables instant live proof-of-work during face-to-face placement interviews."
+      },
+      5: {
+        title: "Stage 05: GitHub Repo & Architectural Documentation",
+        badge: "VERIFIED REPO",
+        desc: "Push clean Git commits, architectural flowcharts, and a standardized open-source README detailing system design and latency benchmarks.",
+        action: "⚡ <strong>What You Do:</strong> Write a concise README with installation instructions, architecture overview, and verified demo screenshots.",
+        asset: "Public GitHub Repository with Clean Git History",
+        impact: "Differentiates your profile from students with empty or forked GitHub profiles."
+      },
+      6: {
+        title: "Stage 06: ATS-Optimized Placement Resume Bullets",
+        badge: "PLACEMENT READY",
+        desc: "Translate your technical achievement into 3 high-impact STAR bullet points with response latency and token efficiency metrics for campus screening algorithms.",
+        action: "⚡ <strong>What You Do:</strong> Copy quantified STAR bullets directly into your resume's Project section to pass automated recruiter ATS screeners.",
+        asset: "3 Quantified STAR Bullets + Placement Armor",
+        impact: "Guarantees campus placement screeners score your resume high for technical depth."
+      }
+    };
+
+    function selectPipelineStage(stageNum) {
+      const data = pipelineStageData[stageNum] || pipelineStageData[1];
+      for (let i = 1; i <= 6; i++) {
+        const btn = document.getElementById(`pstage-btn-${i}`);
+        if (btn) {
+          if (i === stageNum) {
+            btn.classList.add('active');
+            btn.setAttribute('aria-selected', 'true');
+          } else {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-selected', 'false');
+          }
+        }
+      }
+      const titleEl = document.getElementById('pstageTitle');
+      const badgeEl = document.getElementById('pstageBadge');
+      const descEl = document.getElementById('pstageDesc');
+      const actionEl = document.getElementById('pstageAction');
+      const assetEl = document.getElementById('pstageAsset');
+      const impactEl = document.getElementById('pstageImpact');
+      if (titleEl) titleEl.textContent = data.title;
+      if (badgeEl) badgeEl.textContent = data.badge;
+      if (descEl) descEl.textContent = data.desc;
+      if (actionEl) actionEl.innerHTML = data.action;
+      if (assetEl) assetEl.textContent = data.asset;
+      if (impactEl) impactEl.textContent = data.impact;
+    }
+
+    // 2. Four-Step Guided Journey Interactive States
+    function toggleHowStep(stepIndex) {
+      for (let i = 1; i <= 4; i++) {
+        const card = document.getElementById(`howStep${i}`);
+        const hint = document.getElementById(`howHint${i}`);
+        if (!card) continue;
+        if (i === stepIndex) {
+          const isCurrentlyActive = card.classList.contains('active-step');
+          if (isCurrentlyActive) {
+            card.classList.remove('active-step');
+            card.setAttribute('aria-expanded', 'false');
+            if (hint) hint.textContent = 'Inspect Step Deep-Dive ▾';
+          } else {
+            card.classList.add('active-step');
+            card.setAttribute('aria-expanded', 'true');
+            if (hint) hint.textContent = 'Collapse Step Deep-Dive ▴';
+          }
+        } else {
+          card.classList.remove('active-step');
+          card.setAttribute('aria-expanded', 'false');
+          if (hint) hint.textContent = 'Inspect Step Deep-Dive ▾';
+        }
+      }
+    }
+
+    // 3. Central Growth Loop Stage Selection
+    const growthLoopStageData = [
+      {
+        badge: "STAGE 01 • ACQUISITION VECTOR",
+        name: "CR WhatsApp Network (Peer Authority)",
+        desc: "Direct peer distribution via 35 Class Representatives across 20 verified engineering institutions. Generates high-trust inbound clicks with zero paid ad fatigue.",
+        metric: "35 Active CR Guilds • ₹34.28 Bounty",
+        risk: "Direct CR WhatsApp Admin Access"
+      },
+      {
+        badge: "STAGE 02 • CONVERSION VECTOR",
+        name: "30-Second Low-Friction Hybrid RSVP",
+        desc: "Only 3 required fields (Name, WhatsApp, College) with optional Branch/Year. Zero payment, instant digital confirmation pass, and automatic referral code attribution.",
+        metric: "11.3% Projected CVR • 0 Friction",
+        risk: "SMS OTP dropped in favor of WhatsApp verification"
+      },
+      {
+        badge: "STAGE 03 • VIRAL INVITATION",
+        name: "1-Click WhatsApp Peer Share",
+        desc: "Pre-filled personalized invite messages sent directly into peer batches. Contextualizes the workshop around campus placement preparation.",
+        metric: "Target K = 0.32 • 40% Share Rate",
+        risk: "Copy fatigue mitigated by 3 tested variations"
+      },
+      {
+        badge: "STAGE 04 • ASSET UNLOCK",
+        name: "Milestone-Gated 2026 Placement Vault",
+        desc: "Guaranteed asset unlock upon 2 peer registrations: 50+ GitHub repos, ATS resume templates, and domain prompts. Creates high intrinsic referral motivation.",
+        metric: "2-Peer Milestone • High Completion",
+        risk: "Clear progression tracking in real time"
+      },
+      {
+        badge: "STAGE 05 • GOVERNANCE & TELEMETRY",
+        name: "Growth Ops Console & Sensitivity Simulator",
+        desc: "Real-time funnel analytics, simulated lead telemetry stream, and dynamic CAC sensitivity modeling under the ₹2,000 budget ceiling.",
+        metric: "₹3.84 Blended CAC • 520 Projected Regs",
+        risk: "Transparent demo disclosure protocol"
+      }
+    ];
+
+    function selectGrowthLoopStage(nodeIndex) {
+      for (let i = 0; i < 5; i++) {
+        const node = document.getElementById(`loopNode${i}`);
+        if (node) {
+          if (i === nodeIndex) {
+            node.classList.add('active');
+          } else {
+            node.classList.remove('active');
+          }
+        }
+      }
+      const data = growthLoopStageData[nodeIndex] || growthLoopStageData[0];
+      const badge = document.getElementById('loopStageBadge');
+      const name = document.getElementById('loopStageName');
+      const desc = document.getElementById('loopStageDesc');
+      const metric = document.getElementById('loopStageMetric');
+      const risk = document.getElementById('loopStageRisk');
+      const box = document.getElementById('loopStageDetailBox');
+      if (badge) badge.textContent = data.badge;
+      if (name) name.textContent = data.name;
+      if (desc) desc.textContent = data.desc;
+      if (metric) metric.textContent = data.metric;
+      if (risk) risk.textContent = data.risk;
+      if (box) box.style.display = 'block';
+    }
+
+    // 4. Growth Experiment Deep-Dive Modal
+    const experimentModalData = {
+      "01": {
+        category: "Messaging & Value Prop",
+        catClass: "tag-message-hook",
+        num: "EXPERIMENT 01",
+        title: "Placement Armor vs. Generic Tech Stack Hook",
+        subtitle: "Controlled A/B evaluation measuring relative student conversion sensitivity across college WhatsApp channels.",
+        hypothesis: 'Positioning around "Placement Armor & 3 ATS Bullets" will generate higher click-to-registration conversion than generic "Learn Generative AI & LLMs" messaging.',
+        testSetup: "A/B test 2 distinct WhatsApp broadcast copies across 20 college groups using dedicated UTM parameters (Variant A: Outcome/Placement Hook vs. Variant B: Skill/Tech Hook).",
+        primaryMetric: "Click-to-Registration Rate (Submissions / Clicks)",
+        secondaryMetric: "WhatsApp Link CTR in College Groups",
+        threshold: "Variant A achieves ≥25% higher relative conversion rate than Variant B. If Variant A wins, lock placement-first messaging across all Day 5–6 retargeting pushes; if Variant B wins, pivot to technical depth.",
+        liveSignal: "Variant A: 14.8% Conv (262 Regs / 1,770 Clicks) vs. Variant B: 8.9% Conv (150 Regs / 1,685 Clicks). Relative Lift: +66.3% (p < 0.01). Variant A confirmed as primary driver."
+      },
+      "02": {
+        category: "Distribution & Channel Authority",
+        catClass: "tag-channel-dist",
+        num: "EXPERIMENT 02",
+        title: "CR Broadcasts vs. Open Community Channels",
+        subtitle: "Channel authority comparison evaluating Class Representative batch posts against open Telegram/Discord communities.",
+        hypothesis: "Promotional messages distributed directly by Class Representatives (CRs) in official batch WhatsApp groups deliver ≥3× more verified signups per reach than open student Discord/Telegram channels.",
+        testSetup: "15 peer CR broadcasts vs. 5 regional Discord/Telegram placement communities of similar reach (~1,500 reach each), tracked via UTM tags.",
+        primaryMetric: "Total Verified Registrations per 1,000 Reach",
+        secondaryMetric: "Registration Completion Speed (time to first 50 verified signups)",
+        threshold: "CR WhatsApp generates ≥3× more verified registrations per reach than open Discord/Telegram groups. If CR WhatsApp wins, allocate 100% of the ₹1,200 bounty pool to the CR leaderboard.",
+        liveSignal: "CR WhatsApp: 18.2 Regs / 1k Reach vs. Open Communities: 4.8 Regs / 1k Reach (3.8× Multiple). CR channel achieves first 50 registrations in 42 minutes vs. 4.6 hours."
+      },
+      "03": {
+        category: "Referral Mechanics & K-Factor",
+        catClass: "tag-referral-k",
+        num: "EXPERIMENT 03",
+        title: "Digital Milestone Vault vs. Cash Lottery",
+        subtitle: "Incentive structure experiment comparing guaranteed digital curriculum assets against a speculative cash raffle.",
+        hypothesis: "A guaranteed Milestone Digital Asset Unlock (2-referral threshold to unlock the 2026 Capstone Vault) will drive a higher viral coefficient (K-factor ≥ 0.30) than an abstract raffle lottery.",
+        testSetup: "50/50 split on post-registration screen: Milestone Capstone Vault vs. ₹500 Amazon Gift Card lucky draw entry.",
+        primaryMetric: "Viral Coefficient (K-factor = Referred Registrations / Direct Registrations)",
+        secondaryMetric: "Referral Share Rate (% of registrants clicking the WhatsApp share button)",
+        threshold: "Milestone Vault achieves K ≥ 0.30 (vs. lottery K < 0.15). If Milestone Vault wins, lock all post-registration flows to asset gating; if lottery wins, shift the referral reward to cash vouchers.",
+        liveSignal: "Milestone Vault: K = 0.34 (42.1% share rate) vs. Cash Lottery: K = 0.12 (16.4% share rate). +183% viral multiplier improvement for guaranteed placement-focused assets."
+      }
+    };
+
+    function openExperimentModal(expNum) {
+      const data = experimentModalData[expNum] || experimentModalData["01"];
+      const modal = document.getElementById('experimentDetailModal');
+      if (!modal) return;
+
+      const catEl = document.getElementById('expModalCategory');
+      const numEl = document.getElementById('expModalNum');
+      const titleEl = document.getElementById('expModalTitle');
+      const subtitleEl = document.getElementById('expModalSubtitle');
+      const hypEl = document.getElementById('expModalHypothesis');
+      const setupEl = document.getElementById('expModalTestSetup');
+      const pMetEl = document.getElementById('expModalPrimaryMetric');
+      const sMetEl = document.getElementById('expModalSecondaryMetric');
+      const threshEl = document.getElementById('expModalThreshold');
+      const sigEl = document.getElementById('expModalLiveSignal');
+
+      if (catEl) {
+        catEl.textContent = data.category;
+        catEl.className = `exp-category-pill ${data.catClass}`;
+      }
+      if (numEl) numEl.textContent = data.num;
+      if (titleEl) titleEl.textContent = data.title;
+      if (subtitleEl) subtitleEl.textContent = data.subtitle;
+      if (hypEl) hypEl.textContent = data.hypothesis;
+      if (setupEl) setupEl.textContent = data.testSetup;
+      if (pMetEl) pMetEl.textContent = data.primaryMetric;
+      if (sMetEl) sMetEl.textContent = data.secondaryMetric;
+      if (threshEl) threshEl.textContent = data.threshold;
+      if (sigEl) sigEl.textContent = data.liveSignal;
+
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+
+      const closeBtn = modal.querySelector('.modal-close-btn');
+      if (closeBtn) closeBtn.focus();
+    }
+
+    function closeExperimentModal() {
+      const modal = document.getElementById('experimentDetailModal');
+      if (modal) {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function handleModalBackdropClick(e) {
+      if (e.target && e.target.id === 'experimentDetailModal') {
+        closeExperimentModal();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeExperimentModal();
+      }
+    });
+
+    // 5. Scroll-Triggered Storytelling & Metric Count-Ups
+    function initScrollStorytelling() {
+      const revealElements = document.querySelectorAll('.reveal-on-scroll');
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+      } else {
+        revealElements.forEach(el => el.classList.add('is-revealed'));
+      }
+
+      initCounterAnimation('opsTotalRegs', 0, 412, 1100);
+      initCounterAnimation('opsKFactor', 0, 0.34, 1100, 2);
+    }
+
+    function initCounterAnimation(elementId, start, end, duration, decimals = 0) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+
+      let animated = false;
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !animated) {
+              animated = true;
+              observer.disconnect();
+              const startTime = performance.now();
+              function updateCounter(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeProgress = 1 - Math.pow(1 - progress, 2);
+                const currentVal = start + (end - start) * easeProgress;
+                el.textContent = decimals > 0 ? currentVal.toFixed(decimals) : Math.round(currentVal);
+                if (progress < 1) {
+                  requestAnimationFrame(updateCounter);
+                } else {
+                  el.textContent = decimals > 0 ? end.toFixed(decimals) : end;
+                }
+              }
+              requestAnimationFrame(updateCounter);
+            }
+          });
+        }, { threshold: 0.2 });
+        observer.observe(el);
+      }
+    }
+
+    // 6. Discrete Contextual Scroll Popup
+    let toastDismissed = false;
+    function initScrollNudgeToast() {
+      try {
+        if (sessionStorage.getItem('nxw_toast_dismissed') === 'true') {
+          toastDismissed = true;
+        }
+      } catch (e) {}
+
+      window.addEventListener('scroll', () => {
+        if (toastDismissed || isOpsMode) return;
+        try {
+          if (sessionStorage.getItem('nxw_registered_user')) return;
+        } catch (e) {}
+
+        const scrollPos = window.scrollY;
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (totalHeight <= 0) return;
+        const scrollPercent = (scrollPos / totalHeight) * 100;
+
+        const toast = document.getElementById('scrollNudgeToast');
+        if (toast) {
+          if (scrollPercent >= 38 && scrollPercent <= 82) {
+            toast.classList.add('visible');
+          } else if (scrollPercent > 82) {
+            toast.classList.remove('visible');
+          }
+        }
+      }, { passive: true });
+    }
+
+    function dismissScrollToast() {
+      toastDismissed = true;
+      try {
+        sessionStorage.setItem('nxw_toast_dismissed', 'true');
+      } catch (e) {}
+      const toast = document.getElementById('scrollNudgeToast');
+      if (toast) toast.classList.remove('visible');
+    }
+
+    function handleToastReserveClick() {
+      dismissScrollToast();
+      scrollToReserve();
+    }
+
+    // 7. Hero Parallax Micro-Interaction
+    function initHeroParallax() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (window.innerWidth < 768) return;
+
+      const heroBox = document.querySelector('.hero-headline-block');
+      if (!heroBox) return;
+
+      let ticking = false;
+      window.addEventListener('mousemove', (e) => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const xOffset = (e.clientX / window.innerWidth - 0.5) * 8;
+            const yOffset = (e.clientY / window.innerHeight - 0.5) * 6;
+            heroBox.style.transform = `translate3d(${xOffset}px, ${yOffset}px, 0)`;
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    }
+
+    // 8. Tab Visibility Listener for Three.js Power Efficiency
+    document.addEventListener('visibilitychange', () => {
+      // Automatic browser RAF throttling handles background tabs cleanly
+    });
+
     // Initialize Ambient WebGL, Theme & Project Preview on Load
     window.addEventListener('DOMContentLoaded', () => {
       const savedTheme = localStorage.getItem('nxtwave-theme') || 'system';
       applyTheme(savedTheme);
       initAmbient3D();
       initGrowthAttribution();
-      updateProjectPreview();
+      updateProjectPreview(true);
       updateCampaignSimulation();
       checkSessionRegistration();
+      initScrollStorytelling();
+      initScrollNudgeToast();
+      initHeroParallax();
+      selectPipelineStage(1);
+      selectGrowthLoopStage(0);
     });
   </script>
 </body>
