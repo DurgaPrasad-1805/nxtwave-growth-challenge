@@ -4377,627 +4377,6 @@
         padding: 8px 6px;
       }
     }
-
-    /* ==========================================================================
-       PREMIUM INTERACTION SUITE: MOTION LANGUAGE, 3D MODALS & PIPELINE
-       ========================================================================== */
-
-    /* 1. Unified Motion Variables & Micro-interactions */
-    :root {
-      --motion-micro: 180ms cubic-bezier(0.16, 1, 0.3, 1);
-      --motion-ui: 320ms cubic-bezier(0.16, 1, 0.3, 1);
-      --motion-modal: 500ms cubic-bezier(0.16, 1, 0.3, 1);
-      --motion-section: 650ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    /* Subtle Hero Parallax & Sequential Entrance */
-    .hero-container {
-      perspective: 1200px;
-    }
-
-    .hero-seq-1 { animation: heroElemReveal 0.65s var(--ease-cinematic) 0.05s backwards; }
-    .hero-seq-2 { animation: heroElemReveal 0.65s var(--ease-cinematic) 0.18s backwards; }
-    .hero-seq-3 { animation: heroElemReveal 0.65s var(--ease-cinematic) 0.32s backwards; }
-    .hero-seq-4 { animation: heroElemReveal 0.65s var(--ease-cinematic) 0.46s backwards; }
-    .hero-seq-5 { animation: heroElemReveal 0.65s var(--ease-cinematic) 0.60s backwards; }
-
-    @keyframes heroElemReveal {
-      from {
-        opacity: 0;
-        transform: translateY(20px) scale(0.98);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    .hero-parallax-target {
-      transform: translate3d(calc(var(--mouse-x, 0) * 10px), calc(var(--mouse-y, 0) * 6px), 0);
-      transition: transform 0.12s ease-out;
-    }
-
-    /* 2. Scroll-Triggered Storytelling Reveals */
-    .reveal-on-scroll {
-      opacity: 0;
-      transform: translateY(22px) scale(0.985);
-      transition: opacity var(--motion-section), transform var(--motion-section);
-      will-change: opacity, transform;
-    }
-
-    .reveal-visible {
-      opacity: 1 !important;
-      transform: translateY(0) scale(1) !important;
-    }
-
-    .stagger-1 { transition-delay: 0.07s; }
-    .stagger-2 { transition-delay: 0.14s; }
-    .stagger-3 { transition-delay: 0.21s; }
-    .stagger-4 { transition-delay: 0.28s; }
-    .stagger-5 { transition-delay: 0.35s; }
-
-    /* 3. Interactive "What You'll Build" Project Pipeline */
-    .interactive-pipeline-deck {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      margin: 16px 20px 20px;
-      overflow-x: auto;
-      padding-bottom: 8px;
-      scrollbar-width: thin;
-    }
-
-    .pipeline-stage-btn {
-      background: rgba(14, 22, 40, 0.7);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      padding: 9px 14px;
-      color: var(--text-secondary);
-      font-size: 0.78rem;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      transition: all var(--motion-micro);
-      white-space: nowrap;
-      font-family: var(--font-sans);
-    }
-
-    .pipeline-stage-btn:hover {
-      color: #fff;
-      border-color: rgba(56, 189, 248, 0.4);
-      transform: translateY(-2px);
-    }
-
-    .pipeline-stage-btn.active {
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(99, 102, 241, 0.2) 100%);
-      border-color: var(--accent-cyan);
-      color: #ffffff;
-      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.2);
-    }
-
-    .pipeline-stage-btn .stage-num {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      background: rgba(255, 255, 255, 0.08);
-      padding: 1px 6px;
-      border-radius: 4px;
-      color: var(--accent-cyan);
-    }
-
-    .pipeline-stage-btn.active .stage-num {
-      background: var(--accent-cyan);
-      color: #04111d;
-      font-weight: 800;
-    }
-
-    .pipeline-arrow {
-      color: var(--text-tertiary);
-      font-size: 0.82rem;
-      flex-shrink: 0;
-    }
-
-    /* Floating Pipeline Detail Drawer */
-    .pipeline-detail-card {
-      margin: 0 20px 24px;
-      background: linear-gradient(145deg, rgba(8, 14, 28, 0.95) 0%, rgba(15, 23, 44, 0.95) 100%);
-      border: 1px solid var(--border-glass);
-      border-radius: var(--radius-md);
-      padding: 18px 22px;
-      box-shadow: var(--shadow-ambient);
-      animation: fadeInSlide 0.3s var(--ease-cinematic);
-    }
-
-    .p-detail-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
-    }
-
-    .p-detail-badge {
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--accent-cyan);
-      background: rgba(56, 189, 248, 0.12);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      padding: 3px 10px;
-      border-radius: 9999px;
-    }
-
-    .p-detail-time {
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-      color: var(--text-tertiary);
-    }
-
-    .p-detail-title {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 6px;
-    }
-
-    .p-detail-desc {
-      font-size: 0.84rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
-      margin-bottom: 12px;
-    }
-
-    .p-detail-meta-row {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
-      font-size: 0.78rem;
-    }
-
-    .p-meta-pill {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 4px 10px;
-      border-radius: 6px;
-      color: #cbd5e1;
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-    }
-
-    /* 4. Interactive Project Architect Assembling Scanner Ring */
-    .architect-scanning-box {
-      margin-top: 20px;
-      background: rgba(6, 11, 20, 0.95);
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      border-radius: var(--radius-md);
-      padding: 24px;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
-      display: none;
-      animation: fadeInSlide 0.25s var(--ease-cinematic);
-    }
-
-    .scanner-ring-spinner {
-      width: 44px;
-      height: 44px;
-      border: 3px solid rgba(56, 189, 248, 0.2);
-      border-top-color: var(--accent-cyan);
-      border-right-color: var(--accent-indigo);
-      border-radius: 50%;
-      margin: 0 auto 12px;
-      animation: scannerSpin 0.75s linear infinite;
-    }
-
-    @keyframes scannerSpin {
-      to { transform: rotate(360deg); }
-    }
-
-    .scanner-text-status {
-      font-size: 0.84rem;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 4px;
-    }
-
-    .scanner-telemetry-mono {
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-      color: var(--accent-cyan);
-    }
-
-    /* 5. Interactive 3D Modal Dialog */
-    .modal-backdrop-3d {
-      position: fixed;
-      inset: 0;
-      background: rgba(3, 7, 18, 0.78);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      z-index: 10000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity var(--motion-modal), visibility var(--motion-modal);
-    }
-
-    .modal-backdrop-3d.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal-dialog-3d {
-      background: linear-gradient(155deg, rgba(13, 21, 38, 0.98) 0%, rgba(8, 14, 26, 0.98) 100%);
-      border: 1px solid var(--border-glass);
-      border-radius: var(--radius-lg);
-      padding: 30px;
-      max-width: 660px;
-      width: 100%;
-      max-height: 88vh;
-      overflow-y: auto;
-      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.15);
-      position: relative;
-      transform: scale(0.92) perspective(1000px) rotateX(4deg);
-      transition: transform var(--motion-modal);
-      scrollbar-width: thin;
-    }
-
-    .modal-backdrop-3d.active .modal-dialog-3d {
-      transform: scale(1) perspective(1000px) rotateX(0deg);
-    }
-
-    .modal-close-btn {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: var(--text-secondary);
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: all var(--motion-micro);
-    }
-
-    .modal-close-btn:hover {
-      background: rgba(255, 255, 255, 0.15);
-      color: #ffffff;
-      transform: scale(1.08);
-    }
-
-    .btn-inspect-exp {
-      margin-top: 14px;
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.28);
-      color: var(--accent-cyan);
-      padding: 7px 14px;
-      border-radius: 6px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all var(--motion-micro);
-      width: 100%;
-      justify-content: center;
-    }
-
-    .btn-inspect-exp:hover {
-      background: rgba(56, 189, 248, 0.2);
-      border-color: var(--accent-cyan);
-      transform: translateY(-1px);
-    }
-
-    /* 6. Contextual Smart Floating Prompt */
-    .smart-floating-cta {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 998;
-      background: linear-gradient(135deg, rgba(13, 22, 40, 0.94) 0%, rgba(8, 14, 26, 0.96) 100%);
-      border: 1px solid rgba(56, 189, 248, 0.38);
-      border-radius: var(--radius-md);
-      padding: 14px 18px;
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.15);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      max-width: 380px;
-      transform: translateY(120px);
-      opacity: 0;
-      visibility: hidden;
-      transition: transform var(--motion-ui), opacity var(--motion-ui), visibility var(--motion-ui);
-    }
-
-    .smart-floating-cta.visible {
-      transform: translateY(0);
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .floating-cta-text {
-      flex: 1;
-    }
-
-    .floating-cta-title {
-      font-size: 0.86rem;
-      font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 2px;
-    }
-
-    .floating-cta-sub {
-      font-size: 0.74rem;
-      color: var(--text-secondary);
-      margin: 0;
-    }
-
-    .floating-cta-close {
-      background: none;
-      border: none;
-      color: var(--text-tertiary);
-      font-size: 1rem;
-      cursor: pointer;
-      padding: 2px 4px;
-      line-height: 1;
-    }
-
-    .floating-cta-close:hover {
-      color: #ffffff;
-    }
-
-    @media (max-width: 600px) {
-      .smart-floating-cta {
-        left: 16px;
-        right: 16px;
-        bottom: 16px;
-        max-width: none;
-      }
-    }
-
-    /* 7. Interactive Growth Loop Stage Drawer */
-    .growth-loop-drawer {
-      margin-top: 14px;
-      background: rgba(4, 8, 18, 0.85);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      border-radius: var(--radius-sm);
-      padding: 14px 18px;
-      font-size: 0.82rem;
-      animation: fadeInSlide 0.25s var(--ease-cinematic);
-    }
-
-    .growth-drawer-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 6px;
-      flex-wrap: wrap;
-    }
-
-    .growth-drawer-tag {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      font-weight: 800;
-      color: var(--accent-cyan);
-    }
-
-    .growth-drawer-metric {
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-      color: var(--accent-emerald);
-      font-weight: 700;
-    }
-
-    /* 8. Interactive Expandable Step Cards */
-    .how-step-card {
-      cursor: pointer;
-    }
-
-    .step-expand-hint {
-      font-size: 0.72rem;
-      color: var(--accent-cyan);
-      font-weight: 700;
-      margin-top: 10px;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .step-details-tray {
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: max-height var(--motion-ui), opacity var(--motion-ui), margin-top var(--motion-ui);
-      background: rgba(2, 6, 16, 0.6);
-      border-radius: 6px;
-      font-size: 0.8rem;
-      color: #cbd5e1;
-      line-height: 1.45;
-    }
-
-    .how-step-card.expanded .step-details-tray {
-      max-height: 160px;
-      opacity: 1;
-      margin-top: 10px;
-      padding: 10px 12px;
-      border: 1px solid rgba(56, 189, 248, 0.2);
-    }
-
-    /* 9. Dynamic Simulator Real-Time Decision Pill */
-    .sim-decision-pill {
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.12) 0%, rgba(99, 102, 241, 0.12) 100%);
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      border-radius: var(--radius-sm);
-      padding: 10px 14px;
-      margin-top: 14px;
-      font-size: 0.8rem;
-      color: #e2e8f0;
-      line-height: 1.45;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .sim-decision-pill-icon {
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-
-    /* 10. Light Mode Overrides for Premium Interactions */
-    [data-theme="light"] .pipeline-stage-btn {
-      background: #f8fafc;
-      border-color: #cbd5e1;
-      color: #475569;
-    }
-
-    [data-theme="light"] .pipeline-stage-btn:hover {
-      background: #eef2ff;
-      border-color: rgba(99, 102, 241, 0.4);
-      color: var(--accent-indigo);
-    }
-
-    [data-theme="light"] .pipeline-stage-btn.active {
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(147, 51, 234, 0.12) 100%);
-      border-color: rgba(99, 102, 241, 0.45);
-      color: var(--accent-indigo);
-      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.12);
-    }
-
-    [data-theme="light"] .pipeline-stage-btn .stage-num {
-      background: #e2e8f0;
-      color: #334155;
-    }
-
-    [data-theme="light"] .pipeline-stage-btn.active .stage-num {
-      background: var(--accent-indigo);
-      color: #ffffff;
-    }
-
-    [data-theme="light"] .pipeline-detail-card {
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
-      border-color: rgba(99, 102, 241, 0.25);
-      box-shadow: var(--shadow-ambient);
-    }
-
-    [data-theme="light"] .p-detail-badge {
-      background: rgba(99, 102, 241, 0.1);
-      border-color: rgba(99, 102, 241, 0.3);
-      color: var(--accent-indigo);
-    }
-
-    [data-theme="light"] .p-detail-title {
-      color: #0f172a;
-    }
-
-    [data-theme="light"] .p-detail-desc {
-      color: #475569;
-    }
-
-    [data-theme="light"] .p-meta-pill {
-      background: #f1f5f9;
-      border-color: #cbd5e1;
-      color: #334155;
-    }
-
-    [data-theme="light"] .architect-scanning-box {
-      background: rgba(255, 255, 255, 0.95);
-      border-color: rgba(99, 102, 241, 0.35);
-      box-shadow: 0 0 20px rgba(99, 102, 241, 0.12);
-    }
-
-    [data-theme="light"] .scanner-ring-spinner {
-      border-color: rgba(99, 102, 241, 0.2);
-      border-top-color: var(--accent-indigo);
-      border-right-color: #9333ea;
-    }
-
-    [data-theme="light"] .scanner-text-status {
-      color: #0f172a;
-    }
-
-    [data-theme="light"] .modal-backdrop-3d {
-      background: rgba(15, 23, 42, 0.45);
-    }
-
-    [data-theme="light"] .modal-dialog-3d {
-      background: linear-gradient(155deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
-      border-color: rgba(99, 102, 241, 0.3);
-      box-shadow: 0 25px 50px -10px rgba(99, 102, 241, 0.18), 0 0 25px rgba(99, 102, 241, 0.1);
-    }
-
-    [data-theme="light"] .modal-close-btn {
-      background: #f1f5f9;
-      border-color: #cbd5e1;
-      color: #475569;
-    }
-
-    [data-theme="light"] .btn-inspect-exp {
-      background: rgba(99, 102, 241, 0.08);
-      border-color: rgba(99, 102, 241, 0.28);
-      color: var(--accent-indigo);
-    }
-
-    [data-theme="light"] .btn-inspect-exp:hover {
-      background: rgba(99, 102, 241, 0.18);
-    }
-
-    [data-theme="light"] .smart-floating-cta {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
-      border-color: rgba(99, 102, 241, 0.35);
-      box-shadow: 0 12px 32px rgba(99, 102, 241, 0.15);
-    }
-
-    [data-theme="light"] .floating-cta-title {
-      color: #0f172a;
-    }
-
-    [data-theme="light"] .floating-cta-sub {
-      color: #475569;
-    }
-
-    [data-theme="light"] .growth-loop-drawer {
-      background: #f8fafc;
-      border-color: #cbd5e1;
-      color: #334155;
-    }
-
-    [data-theme="light"] .growth-drawer-tag {
-      color: var(--accent-indigo);
-    }
-
-    [data-theme="light"] .growth-drawer-metric {
-      color: #047857;
-    }
-
-    [data-theme="light"] .step-details-tray {
-      background: #f1f5f9;
-      color: #334155;
-    }
-
-    [data-theme="light"] .how-step-card.expanded .step-details-tray {
-      border-color: rgba(99, 102, 241, 0.3);
-    }
-
-    [data-theme="light"] .sim-decision-pill {
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(147, 51, 234, 0.08) 100%);
-      border-color: rgba(99, 102, 241, 0.3);
-      color: #1e293b;
-    }
   </style>
 </head>
 <body>
@@ -5158,20 +4537,20 @@
         <div class="container">
           
           <!-- Cinematic Hero -->
-          <div class="hero-container hero-parallax-target">
-            <div class="hero-live-pill hero-seq-1">
+          <div class="hero-container">
+            <div class="hero-live-pill">
               <span class="pulse-core" aria-hidden="true"></span>
               <span>Live Placement Sprint • Strictly 500 Base Seats</span>
             </div>
 
-            <h1 class="hero-seq-2">Build Your First AI Project<br><span class="gradient-hero-text">In Just 60 Minutes</span></h1>
+            <h1>Build Your First AI Project<br><span class="gradient-hero-text">In Just 60 Minutes</span></h1>
             
-            <p class="hero-subhead hero-seq-3">
+            <p class="hero-subhead">
               Zero theory slides. Open your browser, construct an end-to-end Generative AI application, deploy it live on GitHub, and leave with 3 ATS-ready resume bullet points for your upcoming campus placement interviews.
             </p>
 
             <!-- Capacity vs Safety Buffer Pill -->
-            <div class="capacity-dock hero-seq-4" role="region" aria-label="Seat Registration Capacity">
+            <div class="capacity-dock" role="region" aria-label="Seat Registration Capacity">
               <div class="dock-stat">
                 <span>📅 Upcoming Sunday, 7:00 PM IST</span>
               </div>
@@ -5190,7 +4569,7 @@
             </div>
 
             <!-- Hero Dual-Action Conversion CTAs -->
-            <div class="hero-actions-dock hero-seq-5" style="margin-top: 26px; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+            <div class="hero-actions-dock" style="margin-top: 26px; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
               <button class="action-btn btn-gradient-glow" style="max-width: 320px; padding: 14px 28px; font-size: 0.95rem;" type="button" onclick="scrollToReserve()">
                 <span>Reserve My Free Seat →</span>
               </button>
@@ -5203,7 +4582,7 @@
           <!-- ==========================================================================
                WHY ATTEND: 4 CONCRETE PLACEMENT OUTCOMES (STUDENT VALUE PROP)
                ========================================================================== -->
-          <section id="whyAttendSection" class="reveal-on-scroll" style="margin: 40px 0 50px;" aria-labelledby="whyAttendHeading">
+          <section id="whyAttendSection" style="margin: 40px 0 50px;" aria-labelledby="whyAttendHeading">
             <div class="section-headline-box">
               <span class="section-eyebrow">Zero Theory Slides • Pure Proof of Work</span>
               <h2 id="whyAttendHeading" class="sec-title">
@@ -5260,7 +4639,7 @@
           <!-- ==========================================================================
                INTERACTIVE 'WHAT YOU'LL BUILD' PRODUCT PREVIEW
                ========================================================================== -->
-          <section id="whatYouWillBuildSection" class="product-demo-bench reveal-on-scroll" aria-labelledby="buildPreviewHeading">
+          <section id="whatYouWillBuildSection" class="product-demo-bench" aria-labelledby="buildPreviewHeading">
             <div class="demo-browser-chrome">
               <div class="demo-browser-dots" aria-hidden="true">
                 <span class="demo-dot red"></span>
@@ -5276,47 +4655,31 @@
               </div>
             </div>
 
-            <!-- 6-Stage Interactive Build-to-Showcase Pipeline -->
-            <div class="interactive-pipeline-deck" role="region" aria-label="Interactive 6-Stage Build Pipeline">
-              <button type="button" class="pipeline-stage-btn active" data-stage="0" onclick="selectPipelineStage(0)">
-                <span class="stage-num">01</span><span>Branch Alignment</span>
-              </button>
-              <span class="pipeline-arrow" aria-hidden="true">➔</span>
-              <button type="button" class="pipeline-stage-btn" data-stage="1" onclick="selectPipelineStage(1)">
-                <span class="stage-num">02</span><span>Architecture Spec</span>
-              </button>
-              <span class="pipeline-arrow" aria-hidden="true">➔</span>
-              <button type="button" class="pipeline-stage-btn" data-stage="2" onclick="selectPipelineStage(2)">
-                <span class="stage-num">03</span><span>60-Min Live Code</span>
-              </button>
-              <span class="pipeline-arrow" aria-hidden="true">➔</span>
-              <button type="button" class="pipeline-stage-btn" data-stage="3" onclick="selectPipelineStage(3)">
-                <span class="stage-num">04</span><span>Public Cloud Deploy</span>
-              </button>
-              <span class="pipeline-arrow" aria-hidden="true">➔</span>
-              <button type="button" class="pipeline-stage-btn" data-stage="4" onclick="selectPipelineStage(4)">
-                <span class="stage-num">05</span><span>GitHub Repo</span>
-              </button>
-              <span class="pipeline-arrow" aria-hidden="true">➔</span>
-              <button type="button" class="pipeline-stage-btn" data-stage="5" onclick="selectPipelineStage(5)">
-                <span class="stage-num">06</span><span>ATS Resume Spec</span>
-              </button>
-            </div>
-
-            <!-- Floating Pipeline Detail Drawer -->
-            <div id="pipelineDetailCard" class="pipeline-detail-card">
-              <div class="p-detail-header">
-                <span class="p-detail-badge" id="pipeDetailBadge">STAGE 01 • PRE-WORKSHOP DISCOVERY</span>
-                <span class="p-detail-time" id="pipeDetailTime">Minute 00:00 (Immediate RSVP)</span>
+            <!-- 5-Stage Build-to-Showcase Pipeline Bar -->
+            <div class="pipeline-progress-bar" role="region" aria-label="Build Pipeline Steps" style="margin: 16px 20px 0;">
+              <div class="pipeline-step-chip active">
+                <span class="chip-step-num">01</span>
+                <span>Branch Selection</span>
               </div>
-              <h4 class="p-detail-title" id="pipeDetailTitle">Branch-Specific Capstone Alignment</h4>
-              <p class="p-detail-desc" id="pipeDetailDesc">
-                Select your engineering discipline (CSE/IT, ECE/EEE, Mech, Civil, or Open) in the Project Architect. We generate a tailored architecture blueprint so you don't build generic toy apps.
-              </p>
-              <div class="p-detail-meta-row" id="pipeDetailMeta">
-                <span class="p-meta-pill">🎯 Focus: Domain Relevance</span>
-                <span class="p-meta-pill">📦 Deliverable: Architectural Blueprint</span>
-                <span class="p-meta-pill">⚡ Verification: Recruiter Interview Matrix</span>
+              <span class="pipeline-connector">➔</span>
+              <div class="pipeline-step-chip active">
+                <span class="chip-step-num">02</span>
+                <span>Prompt & Architecture Spec</span>
+              </div>
+              <span class="pipeline-connector">➔</span>
+              <div class="pipeline-step-chip active">
+                <span class="chip-step-num">03</span>
+                <span>60-Min Live Coding</span>
+              </div>
+              <span class="pipeline-connector">➔</span>
+              <div class="pipeline-step-chip active">
+                <span class="chip-step-num">04</span>
+                <span>Public Cloud Deploy</span>
+              </div>
+              <span class="pipeline-connector">➔</span>
+              <div class="pipeline-step-chip active">
+                <span class="chip-step-num">05</span>
+                <span>GitHub & Resume Showcase</span>
               </div>
             </div>
 
@@ -5404,7 +4767,7 @@
           <!-- ==========================================================================
                WHAT YOU'LL WALK AWAY WITH (TANGIBLE PROOF-OF-WORK ASSETS)
                ========================================================================== -->
-          <section class="reveal-on-scroll" style="margin: 54px 0 44px;" aria-labelledby="walkawayHeading">
+          <section style="margin: 54px 0 44px;" aria-labelledby="walkawayHeading">
             <div class="section-headline-box">
               <span class="section-eyebrow">Tangible Proof-Of-Work Assets</span>
               <h2 id="walkawayHeading" class="sec-title">
@@ -5481,7 +4844,7 @@
           <!-- ==========================================================================
                HOW IT WORKS (4-STEP GUIDED JOURNEY)
                ========================================================================== -->
-          <section class="reveal-on-scroll" style="margin: 44px 0 54px;" aria-labelledby="howItWorksHeading">
+          <section style="margin: 44px 0 54px;" aria-labelledby="howItWorksHeading">
             <div class="section-headline-box">
               <span class="section-eyebrow">Frictionless 4-Step Process</span>
               <h2 id="howItWorksHeading" class="sec-title">
@@ -5494,59 +4857,39 @@
 
             <div class="how-it-works-deck">
               <!-- Step 1 -->
-              <div class="how-step-card" onclick="toggleStepDetails(this)">
+              <div class="how-step-card">
                 <div class="step-num-pill">STEP 01</div>
                 <h3 class="step-title">Reserve Your Seat</h3>
                 <p class="step-desc">
                   Fill in your name, WhatsApp number, and college in the 30-Second RSVP form (Branch & Year optional). 100% free, no payment required. Receive your instant ticket ID and calendar invite.
                 </p>
-                <div class="step-expand-hint">Inspect milestones & deliverables <span class="hint-icon">▾</span></div>
-                <div class="step-details-tray">
-                  <strong>Milestone:</strong> Instant seat allocation with unique pass ID & calendar ICS invite.<br>
-                  <strong>Verification:</strong> Automatic attribution capture via WhatsApp CR / Peer referral tag. No credit card or payment.
-                </div>
               </div>
 
               <!-- Step 2 -->
-              <div class="how-step-card" onclick="toggleStepDetails(this)">
+              <div class="how-step-card">
                 <div class="step-num-pill">STEP 02</div>
                 <h3 class="step-title">Get Project Spec & Referral Link</h3>
                 <p class="step-desc">
                   Use the AI Project Architect to pick your branch focus. Share your personal invite link with 2 batchmates to unlock the 2026 AI Capstone & Placement Vault.
                 </p>
-                <div class="step-expand-hint">Inspect milestones & deliverables <span class="hint-icon">▾</span></div>
-                <div class="step-details-tray">
-                  <strong>Milestone:</strong> Branch-tailored AI architecture spec & personal referral link.<br>
-                  <strong>Deliverable:</strong> Instant access to 2026 AI Capstone & Placement Vault upon inviting 2 peers.
-                </div>
               </div>
 
               <!-- Step 3 -->
-              <div class="how-step-card" onclick="toggleStepDetails(this)">
+              <div class="how-step-card">
                 <div class="step-num-pill">STEP 03</div>
                 <h3 class="step-title">Join 60-Minute Build Sprint</h3>
                 <p class="step-desc">
                   Log in on Sunday at 7:00 PM IST. Zero theory slides—we code step-by-step from an empty file to integrating Gemini 1.5 Flash API and building a polished UI.
                 </p>
-                <div class="step-expand-hint">Inspect milestones & deliverables <span class="hint-icon">▾</span></div>
-                <div class="step-details-tray">
-                  <strong>Milestone:</strong> Step-by-step code construction with real-time screen share.<br>
-                  <strong>Implementation:</strong> Streamlit frontend, Gemini 1.5 Flash LLM backend, session state handling.
-                </div>
               </div>
 
               <!-- Step 4 -->
-              <div class="how-step-card" onclick="toggleStepDetails(this)">
+              <div class="how-step-card">
                 <div class="step-num-pill">STEP 04</div>
                 <h3 class="step-title">Deploy & Showcase</h3>
                 <p class="step-desc">
                   Deploy your app to Streamlit Cloud with a live HTTPS URL, push commits to your personal GitHub, paste the 3 ATS bullet points on your resume, and stand out.
                 </p>
-                <div class="step-expand-hint">Inspect milestones & deliverables <span class="hint-icon">▾</span></div>
-                <div class="step-details-tray">
-                  <strong>Milestone:</strong> Live production deployment and verified portfolio showcase.<br>
-                  <strong>Deliverable:</strong> Public HTTPS Streamlit URL, public GitHub repository, and 3 ATS placement bullets.
-                </div>
               </div>
             </div>
           </section>
@@ -5554,7 +4897,7 @@
           <!-- ==========================================================================
                WHY THIS MATTERS FOR PLACEMENTS (PROOF-OF-WORK VS GENERIC CERTIFICATES)
                ========================================================================== -->
-          <section class="placement-matrix-container reveal-on-scroll" aria-labelledby="whyItMattersHeading">
+          <section class="placement-matrix-container" aria-labelledby="whyItMattersHeading">
             <div class="section-headline-box">
               <span class="section-eyebrow">Recruiter Psychology & Hiring Reality</span>
               <h2 id="whyItMattersHeading" class="sec-title">
@@ -5708,7 +5051,7 @@
           <!-- ==========================================================================
                INTERACTIVE AI PROJECT ARCHITECT & 30-SECOND FREE RSVP
                ========================================================================== -->
-          <section id="registrationSection" class="reveal-on-scroll" style="margin: 44px 0 54px;" aria-labelledby="regSectionHeading">
+          <section id="registrationSection" style="margin: 44px 0 54px;" aria-labelledby="regSectionHeading">
             <div class="section-headline-box">
               <span class="section-eyebrow">Personalized AI Project & Instant Pass</span>
               <h2 id="regSectionHeading" class="sec-title">
@@ -5761,13 +5104,6 @@
                     <span>Preview My 60-Minute AI Project & Resume Bullet</span> ➔
                   </button>
                 </form>
-
-                <!-- Architect Assembling Scanner Box -->
-                <div id="architectScanningBox" class="architect-scanning-box" role="status" aria-live="polite">
-                  <div class="scanner-ring-spinner"></div>
-                  <div class="scanner-text-status">Connecting Gemini 1.5 Flash Architecture Engine...</div>
-                  <div class="scanner-telemetry-mono" id="scannerTelemetryText">Synthesizing domain specifications & ATS placement bullets...</div>
-                </div>
 
                 <!-- Dynamic Project Output -->
                 <div class="project-card-3d-box" id="projectPreview" role="region" aria-live="polite">
@@ -6195,41 +5531,30 @@
                 <span style="color: var(--text-tertiary); font-size: 0.74rem;">Organic High-Leverage Loop</span>
               </div>
               <div class="loop-node-grid">
-                <div class="loop-node-item active" data-loop-idx="0" onclick="selectGrowthLoopStage(0)">
+                <div class="loop-node-item active" onclick="focusAmbientNode(0)">
                   <div class="loop-node-step">01. ACQUIRE</div>
                   <div class="loop-node-name">CR WhatsApp</div>
                   <div class="loop-node-detail">35 College Guilds</div>
                 </div>
-                <div class="loop-node-item" data-loop-idx="1" onclick="selectGrowthLoopStage(1)">
+                <div class="loop-node-item" onclick="focusAmbientNode(1)">
                   <div class="loop-node-step">02. REGISTER</div>
                   <div class="loop-node-name">30-Second RSVP</div>
                   <div class="loop-node-detail">Low-Friction Pass</div>
                 </div>
-                <div class="loop-node-item" data-loop-idx="2" onclick="selectGrowthLoopStage(2)">
+                <div class="loop-node-item" onclick="focusAmbientNode(2)">
                   <div class="loop-node-step">03. REFER</div>
                   <div class="loop-node-name">WhatsApp Share</div>
                   <div class="loop-node-detail">Peer Invite Links</div>
                 </div>
-                <div class="loop-node-item" data-loop-idx="3" onclick="selectGrowthLoopStage(3)">
+                <div class="loop-node-item" onclick="focusAmbientNode(3)">
                   <div class="loop-node-step">04. UNLOCK</div>
                   <div class="loop-node-name">Capstone Vault</div>
                   <div class="loop-node-detail">Target K=0.32 Loop</div>
                 </div>
-                <div class="loop-node-item" data-loop-idx="4" onclick="selectGrowthLoopStage(4)">
+                <div class="loop-node-item" onclick="focusAmbientNode(4)">
                   <div class="loop-node-step">05. MEASURE</div>
                   <div class="loop-node-name">Ops Console</div>
                   <div class="loop-node-detail">Model CAC & Velocity</div>
-                </div>
-              </div>
-
-              <!-- Interactive Growth Loop Stage Drawer -->
-              <div id="growthLoopDrawer" class="growth-loop-drawer" style="display: block;">
-                <div class="growth-drawer-header">
-                  <span class="growth-drawer-tag" id="loopDrawerTag">STAGE 01: ACQUIRE (35 CR GUILDS)</span>
-                  <span class="growth-drawer-metric" id="loopDrawerMetric">Target: 280 Direct Regs • ₹0 Media Spend</span>
-                </div>
-                <div id="loopDrawerDesc" style="color: var(--text-secondary); line-height: 1.45;">
-                  High-trust distribution orchestrated via student Class Representatives across 35 campuses. Direct WhatsApp broadcast delivers high open rates without paid ad waste.
                 </div>
               </div>
             </section>
@@ -6237,13 +5562,13 @@
             <!-- Key Metrics Quad -->
             <div class="metric-cards-quad">
               
-              <div class="hud-metric-card reveal-on-scroll stagger-1">
+              <div class="hud-metric-card">
                 <div class="hud-label-text">Simulated Registrations (Demo Data)</div>
                 <div class="hud-number-readout" style="color: var(--accent-cyan);" id="opsTotalRegs">412</div>
                 <div class="hud-subtext-note">Base Target: 500 (82.4% pace) | Projected Target: 520 (+20 Safety Buffer)</div>
               </div>
 
-              <div class="hud-metric-card reveal-on-scroll stagger-2">
+              <div class="hud-metric-card">
                 <div class="hud-label-text">Simulated Viral K-Factor (Demo Data)</div>
                 <div class="hud-number-readout" style="color: var(--accent-emerald);" id="opsKFactor">0.34</div>
                 <div class="hud-subtext-note">Model Target: 0.32 (+6.2% above baseline assumption)</div>
@@ -6629,7 +5954,7 @@
           <!-- Section 5: 3 Controlled Growth Experiments -->
           <div style="margin-bottom: 24px;">
             
-            <section class="growth-experiments-container reveal-on-scroll" aria-labelledby="experimentsTitle">
+            <section class="growth-experiments-container" aria-labelledby="experimentsTitle">
               <div class="section-headline-box">
                 <h2 id="experimentsTitle" class="sec-title">3 Controlled Growth Experiments</h2>
                 <p class="sec-desc">
@@ -6664,9 +5989,6 @@
                   <div class="exp-decision-footer">
                     <strong>Decision:</strong> If Variant A wins, lock placement-first messaging across all Day 5–6 retargeting pushes; if Variant B wins, pivot messaging to emphasize technical LLM depth and modern AI skills.
                   </div>
-                  <button type="button" class="btn-inspect-exp" onclick="openExperimentModal('exp1')">
-                    <span>🔍 Inspect Statistical Test Spec & Guardrails</span> ➔
-                  </button>
                 </article>
 
                 <!-- Experiment 2 -->
@@ -6694,9 +6016,6 @@
                   <div class="exp-decision-footer">
                     <strong>Decision:</strong> If CR WhatsApp wins, allocate 100% of the ₹1,200 bounty pool to the CR performance leaderboard; if Discord/Telegram performs strongly, divert ₹400 to incentivize Discord moderators.
                   </div>
-                  <button type="button" class="btn-inspect-exp" onclick="openExperimentModal('exp2')">
-                    <span>🔍 Inspect Statistical Test Spec & Guardrails</span> ➔
-                  </button>
                 </article>
 
                 <!-- Experiment 3 -->
@@ -6724,9 +6043,6 @@
                   <div class="exp-decision-footer">
                     <strong>Decision:</strong> If Milestone Vault wins, lock all post-registration flows to asset gating; if lottery wins, shift the referral reward to cash vouchers.
                   </div>
-                  <button type="button" class="btn-inspect-exp" onclick="openExperimentModal('exp3')">
-                    <span>🔍 Inspect Statistical Test Spec & Guardrails</span> ➔
-                  </button>
                 </article>
 
               </div>
@@ -6735,7 +6051,7 @@
           </div>
 
           <!-- Section 6: Interactive Campaign Funnel Simulator -->
-          <div class="simulator-container reveal-on-scroll" style="margin-bottom: 24px;">
+          <div class="simulator-container" style="margin-bottom: 24px;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; margin-bottom: 14px;">
               <div>
                 <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 4px;">Interactive Campaign Funnel Simulator (Sensitivity Model)</h3>
@@ -6838,14 +6154,6 @@
               </div>
 
             </div>
-
-            <!-- Dynamic Simulator Real-Time Decision Pill -->
-            <div id="simDecisionPill" class="sim-decision-pill">
-              <span class="sim-decision-pill-icon">💡</span>
-              <div id="simDecisionText">
-                <strong>OPTIMAL TARGET:</strong> At 35 CR groups (K=0.32), model delivers 520 registrations (+20 safety buffer) at ₹3.84 blended CAC. High conversion probability within ₹2,000 budget.
-              </div>
-            </div>
           </div>
 
           <!-- Section 7: Strategic Growth Rationale & Architectural Notes -->
@@ -6901,8 +6209,6 @@
     let splineCurves = [];
     let splineLineMesh;
     let dataPulses = [];
-    let ambientParticles, ambientSatellites = [];
-    let isPausedForVisibility = false;
     let mouseX = 0, mouseY = 0;
     let currentCamX = 0, currentCamY = 0;
     let scrollYOffset = 0;
@@ -7064,16 +6370,6 @@
           node.innerMesh.material.emissiveIntensity = core.intensity;
         }
       });
-      if (ambientParticles && ambientParticles.material) {
-        ambientParticles.material.color.setHex(cfg.pulse.color);
-      }
-      ambientSatellites.forEach((sat, i) => {
-        if (sat.mesh && sat.mesh.material) {
-          const core = cfg.innerCores[i] || cfg.innerCores[0];
-          sat.mesh.material.color.setHex(core.color);
-          sat.mesh.material.emissive.setHex(core.emissive);
-        }
-      });
       if (isReducedMotion && renderer && camera) {
         renderer.render(scene, camera);
       }
@@ -7230,23 +6526,6 @@
         // Build Subtle Spline Data Pathways connecting the 5 nodes
         buildSubtleDataPathways(initialCfg);
 
-        // Build 80 Floating Ambient Data Particles
-        buildAmbientParticles(initialCfg);
-
-        // Build 2 Orbiting Satellites around Node 0 (Acquire) and Node 1 (Register)
-        buildOrbitingSatellites(initialCfg);
-
-        // Tab visibility change listener
-        document.addEventListener('visibilitychange', () => {
-          if (document.hidden) {
-            isPausedForVisibility = true;
-          } else {
-            isPausedForVisibility = false;
-            clock.start();
-            if (!isReducedMotion) requestAnimationFrame(animateAmbientScene);
-          }
-        });
-
         if (statusDot && statusText) {
           statusDot.classList.remove('fallback');
           statusText.textContent = "Ambient 3D: Active";
@@ -7377,52 +6656,6 @@
       }
     }
 
-    function buildAmbientParticles(cfg) {
-      const particleCount = 80;
-      const positions = new Float32Array(particleCount * 3);
-      for (let i = 0; i < particleCount; i++) {
-        positions[i * 3] = (Math.random() - 0.5) * 80;
-        positions[i * 3 + 1] = (Math.random() - 0.5) * 60;
-        positions[i * 3 + 2] = (Math.random() - 0.5) * 50 - 15;
-      }
-      const geo = new THREE.BufferGeometry();
-      geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-      const mat = new THREE.PointsMaterial({
-        color: cfg.pulse.color,
-        size: 1.1,
-        transparent: true,
-        opacity: 0.35,
-        blending: THREE.AdditiveBlending
-      });
-      ambientParticles = new THREE.Points(geo, mat);
-      scene.add(ambientParticles);
-    }
-
-    function buildOrbitingSatellites(cfg) {
-      ambientSatellites = [];
-      // Satellites for Node 0 and Node 1
-      [0, 1].forEach((nodeIdx, sIdx) => {
-        if (!ambientNodes[nodeIdx]) return;
-        const satGeo = new THREE.SphereGeometry(0.38, 14, 14);
-        const satMat = new THREE.MeshStandardMaterial({
-          color: cfg.innerCores[nodeIdx].color,
-          emissive: cfg.innerCores[nodeIdx].emissive,
-          emissiveIntensity: 0.8,
-          roughness: 0.4
-        });
-        const satMesh = new THREE.Mesh(satGeo, satMat);
-        scene.add(satMesh);
-        ambientSatellites.push({
-          mesh: satMesh,
-          targetNode: ambientNodes[nodeIdx],
-          orbitRadius: 5.5 + sIdx * 0.8,
-          orbitSpeed: 0.012 + sIdx * 0.006,
-          orbitAngle: sIdx * Math.PI,
-          orbitTilt: 0.4 + sIdx * 0.3
-        });
-      });
-    }
-
     function adjustNodesForViewport() {
       const width = window.innerWidth;
       const isMobile = width < 768;
@@ -7469,10 +6702,6 @@
       const normY = -(e.clientY / window.innerHeight) * 2 + 1;
       mouseX = normX * 0.75;
       mouseY = normY * 0.45;
-
-      // Update CSS custom properties for DOM parallax targets
-      document.documentElement.style.setProperty('--mouse-x', (normX * 0.8).toFixed(3));
-      document.documentElement.style.setProperty('--mouse-y', (normY * 0.8).toFixed(3));
     }
 
     function onScroll() {
@@ -7499,28 +6728,13 @@
     let clock = new THREE.Clock();
 
     function animateAmbientScene() {
-      if (isReducedMotion || isPausedForVisibility) return;
+      if (isReducedMotion) return;
       requestAnimationFrame(animateAmbientScene);
 
       // Smoothly update theme transition if active
       updateSceneThemeTransition();
 
       const elapsedTime = clock.getElapsedTime();
-
-      // Slowly rotate particle cloud
-      if (ambientParticles) {
-        ambientParticles.rotation.y += 0.00018;
-        ambientParticles.rotation.x += 0.00008;
-      }
-
-      // Orbiting satellites around node 0 & 1
-      ambientSatellites.forEach(sat => {
-        sat.orbitAngle += sat.orbitSpeed;
-        const targetPos = sat.targetNode.group.position;
-        sat.mesh.position.x = targetPos.x + Math.cos(sat.orbitAngle) * sat.orbitRadius;
-        sat.mesh.position.y = targetPos.y + Math.sin(sat.orbitAngle * 0.8) * (sat.orbitRadius * sat.orbitTilt);
-        sat.mesh.position.z = targetPos.z + Math.sin(sat.orbitAngle) * sat.orbitRadius;
-      });
 
       // Slow Harmonic Floating for Each Node (Independent Sinusoidal Drift)
       ambientNodes.forEach(node => {
@@ -7787,34 +7001,11 @@
       const interest = document.getElementById('interestSelect').value;
       const data = (projectCatalog[branch] && projectCatalog[branch][interest]) || projectCatalog.cs.copilot;
 
-      const scanBox = document.getElementById('architectScanningBox');
-      const previewBox = document.getElementById('projectPreview');
-
-      if (scanBox && previewBox) {
-        scanBox.style.display = 'block';
-        previewBox.style.display = 'none';
-
-        const telemetry = document.getElementById('scannerTelemetryText');
-        if (telemetry) {
-          telemetry.textContent = `Synthesizing ${data.tag} capstone spec & ATS STAR bullets...`;
-        }
-
-        setTimeout(() => {
-          document.getElementById('previewTag').textContent = data.tag;
-          document.getElementById('previewTitle').textContent = data.title;
-          document.getElementById('previewDesc').textContent = data.desc;
-          document.getElementById('resumeBulletText').textContent = data.bullet;
-          
-          scanBox.style.display = 'none';
-          previewBox.style.display = 'block';
-        }, 650);
-      } else {
-        document.getElementById('previewTag').textContent = data.tag;
-        document.getElementById('previewTitle').textContent = data.title;
-        document.getElementById('previewDesc').textContent = data.desc;
-        document.getElementById('resumeBulletText').textContent = data.bullet;
-        if (previewBox) previewBox.style.display = 'block';
-      }
+      document.getElementById('previewTag').textContent = data.tag;
+      document.getElementById('previewTitle').textContent = data.title;
+      document.getElementById('previewDesc').textContent = data.desc;
+      document.getElementById('resumeBulletText').textContent = data.bullet;
+      document.getElementById('projectPreview').style.display = 'block';
     }
 
     /* ==========================================================================
@@ -8030,12 +7221,6 @@
         if (isNew) {
           reg.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      }
-
-      // 7. Hide Smart Floating Prompt when registered
-      const floatingCta = document.getElementById('smartFloatingCta');
-      if (floatingCta) {
-        floatingCta.classList.remove('visible');
       }
     }
 
@@ -8545,25 +7730,6 @@
       if (simAttendeesEl) simAttendeesEl.textContent = liveAttendees;
       if (simBudgetEl) simBudgetEl.textContent = `₹${totalBudget.toLocaleString('en-IN')}`;
       if (simCacEl) simCacEl.textContent = `₹${blendedCAC}`;
-
-      // Update Real-Time Evaluator Decision Pill
-      const pill = document.getElementById('simDecisionPill');
-      const text = document.getElementById('simDecisionText');
-      if (pill && text) {
-        if (totalRegs < 500) {
-          pill.style.borderColor = 'rgba(239, 68, 68, 0.45)';
-          pill.style.background = 'linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, rgba(220, 38, 38, 0.08) 100%)';
-          text.innerHTML = `<strong>BELOW TARGET DEFICIT:</strong> Modeled at ${totalRegs} registrations (${500 - totalRegs} short of 500 base target). Increase active CR groups (currently ${crGroups}) or referral incentives to reach baseline cohort scale.`;
-        } else if (totalRegs <= 550) {
-          pill.style.borderColor = 'rgba(56, 189, 248, 0.45)';
-          pill.style.background = 'linear-gradient(135deg, rgba(56, 189, 248, 0.12) 0%, rgba(99, 102, 241, 0.12) 100%)';
-          text.innerHTML = `<strong>OPTIMAL TARGET:</strong> At ${crGroups} CR groups (K=${kFactor.toFixed(2)}), model delivers ${totalRegs} registrations (+${totalRegs - 500} safety buffer) at ₹${blendedCAC} blended CAC. High conversion probability within ₹2,000 budget.`;
-        } else {
-          pill.style.borderColor = 'rgba(16, 185, 129, 0.45)';
-          pill.style.background = 'linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(5, 150, 105, 0.08) 100%)';
-          text.innerHTML = `<strong>STRETCH SCALE:</strong> Reaches ${totalRegs} registrations (+${totalRegs - 500} over target) with ultra-efficient ₹${blendedCAC} blended CAC. Monitor coordinator bandwidth and Streamlit Cloud server capacity limits.`;
-        }
-      }
     }
 
     function setSimulatorPreset(preset) {
@@ -8812,389 +7978,6 @@
       }
     });
 
-    /* ==========================================================================
-       6. INTERACTIVE WHAT YOU'LL BUILD PIPELINE & SPEC DRAWERS
-       ========================================================================== */
-    const PIPELINE_STAGES = [
-      {
-        badge: "STAGE 01 • PRE-WORKSHOP DISCOVERY",
-        time: "Minute 00:00 (Immediate RSVP)",
-        title: "Branch-Specific Capstone Alignment",
-        desc: "Select your engineering discipline (CSE/IT, ECE/EEE, Mech, Civil, or Open) in the Project Architect. We generate a tailored architecture blueprint so you don't build generic toy apps.",
-        meta: [
-          "🎯 Focus: Domain Relevance",
-          "📦 Deliverable: Architectural Blueprint",
-          "⚡ Verification: Recruiter Interview Matrix"
-        ]
-      },
-      {
-        badge: "STAGE 02 • SYSTEM ARCHITECTURE",
-        time: "Minute 00:00 – 00:15 (Workshop Kickoff)",
-        title: "Gemini 1.5 Flash Prompt & System Spec",
-        desc: "Define structured system prompts, JSON response schemas, token budgets, and error fallbacks. Master how enterprise AI systems guarantee deterministic outputs without hallucination.",
-        meta: [
-          "🎯 Focus: System Architecture & Guardrails",
-          "📦 Deliverable: System Prompt Schema & JSON Contract",
-          "⚡ Verification: Sub-1.2s API Response Budget"
-        ]
-      },
-      {
-        badge: "STAGE 03 • LIVE CODE SPRINT",
-        time: "Minute 00:15 – 00:45 (Hands-On Implementation)",
-        title: "60-Minute Live Full-Stack Construction",
-        desc: "Zero theory slides. We code step-by-step in Python Streamlit from an empty file: creating interactive user controls, hooking live Gemini Flash streaming, and formatting real-time evaluations.",
-        meta: [
-          "🎯 Focus: End-to-End Implementation",
-          "📦 Deliverable: Functional Streamlit Web App",
-          "⚡ Verification: Interactive Multimodal Feedback Loop"
-        ]
-      },
-      {
-        badge: "STAGE 04 • CLOUD DEPLOYMENT",
-        time: "Minute 00:45 – 00:55 (Public Hosting)",
-        title: "One-Click Streamlit Cloud Public Deployment",
-        desc: "Configure secure environment secrets (API Keys) and publish your repository directly to a public HTTPS URL (e.g. yourname-ai-copilot.streamlit.app) accessible by any recruiter.",
-        meta: [
-          "🎯 Focus: Production Cloud Hosting",
-          "📦 Deliverable: Live Public HTTPS Application URL",
-          "⚡ Verification: 99.9% Uptime & TLS Encryption"
-        ]
-      },
-      {
-        badge: "STAGE 05 • REPOSITORY PROOF",
-        time: "Minute 00:55 – 01:00 (Portfolio Packaging)",
-        title: "Production GitHub Repository & Architecture Docs",
-        desc: "Commit clean, modular code with an engineering README, system architecture diagram, setup instructions, and MIT license. Transforms code into verified proof-of-work on your profile.",
-        meta: [
-          "🎯 Focus: GitHub Portfolio Credibility",
-          "📦 Deliverable: Public GitHub Repo with Architecture Diagram",
-          "⚡ Verification: Clean Git Commit History & License"
-        ]
-      },
-      {
-        badge: "STAGE 06 • CAMPUS PLACEMENT ASSETS",
-        time: "Immediate Post-Workshop Artifact",
-        title: "3 Verified ATS Resume STAR Bullet Points",
-        desc: "Receive pre-formatted, quantitative bullet points (e.g., 'Engineered an AI Copilot using Gemini Flash & Streamlit; automated real-time evaluation with <1.2s latency') ready for placement drives.",
-        meta: [
-          "🎯 Focus: Recruiter ATS Screening",
-          "📦 Deliverable: 3 Quantified Placement Resume Bullets",
-          "⚡ Verification: STAR Format (Situation, Task, Action, Result)"
-        ]
-      }
-    ];
-
-    function selectPipelineStage(idx) {
-      const btns = document.querySelectorAll('.pipeline-stage-btn');
-      btns.forEach((btn, i) => {
-        if (i === idx) {
-          btn.classList.add('active');
-          btn.setAttribute('aria-selected', 'true');
-        } else {
-          btn.classList.remove('active');
-          btn.setAttribute('aria-selected', 'false');
-        }
-      });
-
-      const data = PIPELINE_STAGES[idx] || PIPELINE_STAGES[0];
-      const badgeEl = document.getElementById('pipeDetailBadge');
-      const timeEl = document.getElementById('pipeDetailTime');
-      const titleEl = document.getElementById('pipeDetailTitle');
-      const descEl = document.getElementById('pipeDetailDesc');
-      const metaEl = document.getElementById('pipeDetailMeta');
-
-      if (badgeEl) badgeEl.textContent = data.badge;
-      if (timeEl) timeEl.textContent = data.time;
-      if (titleEl) titleEl.textContent = data.title;
-      if (descEl) descEl.textContent = data.desc;
-      if (metaEl) {
-        metaEl.innerHTML = data.meta.map(m => `<span class="p-meta-pill">${m}</span>`).join('');
-      }
-
-      const card = document.getElementById('pipelineDetailCard');
-      if (card) {
-        card.style.animation = 'none';
-        void card.offsetWidth;
-        card.style.animation = 'fadeInSlide 0.3s var(--ease-cinematic)';
-      }
-    }
-
-    /* ==========================================================================
-       7. INTERACTIVE 4-STEP JOURNEY EXPANDABLE DETAILS
-       ========================================================================== */
-    function toggleStepDetails(card) {
-      if (!card) return;
-      const isExpanded = card.classList.contains('expanded');
-      // Collapse any other open cards for clean rhythm
-      document.querySelectorAll('.how-step-card.expanded').forEach(c => {
-        if (c !== card) {
-          c.classList.remove('expanded');
-          const hint = c.querySelector('.step-expand-hint');
-          if (hint) hint.innerHTML = 'Inspect milestones & deliverables <span class="hint-icon">▾</span>';
-        }
-      });
-
-      if (isExpanded) {
-        card.classList.remove('expanded');
-        const hint = card.querySelector('.step-expand-hint');
-        if (hint) hint.innerHTML = 'Inspect milestones & deliverables <span class="hint-icon">▾</span>';
-      } else {
-        card.classList.add('expanded');
-        const hint = card.querySelector('.step-expand-hint');
-        if (hint) hint.innerHTML = 'Collapse milestones <span class="hint-icon">▴</span>';
-      }
-    }
-
-    /* ==========================================================================
-       8. CENTRAL GROWTH LOOP PROCESS STAGE DRAWER
-       ========================================================================== */
-    const GROWTH_LOOP_STAGES = [
-      {
-        tag: "STAGE 01: ACQUIRE (35 CR GUILDS)",
-        metric: "Target: 280 Direct Regs • ₹0 Media Spend",
-        desc: "High-trust distribution orchestrated via student Class Representatives across 35 campuses. Direct WhatsApp broadcast delivers high open rates without paid ad waste."
-      },
-      {
-        tag: "STAGE 02: REGISTER (30-SEC RSVP)",
-        metric: "Target: 75% Completion Rate • Zero Spam",
-        desc: "Streamlined 3-required-field registration removes drop-off barriers. Automatic attribution capture preserves UTM data without forcing tedious student dropdowns."
-      },
-      {
-        tag: "STAGE 03: REFER (PEER VIRAL LOOP)",
-        metric: "Target: K = 0.32 Multiplier • 160 Referred Regs",
-        desc: "Personalized WhatsApp share trigger with pre-filled message hooks. Registrants invite 2 branch peers to unlock high-value engineering capstones."
-      },
-      {
-        tag: "STAGE 04: UNLOCK (CAPSTONE VAULT)",
-        metric: "Target: 2-Referral Threshold • Guaranteed Asset",
-        desc: "Instant unlock of the 2026 AI Capstone & Placement Vault upon reaching 2 invites. Gated digital assets drive substantially higher viral loop completion than raffle cash lotteries."
-      },
-      {
-        tag: "STAGE 05: MEASURE (GROWTH OPS CONSOLE)",
-        metric: "Target: 520 Total Regs • ₹3.84 Blended CAC",
-        desc: "Continuous real-time sensitivity modeling and ledger telemetry. Evaluators track registration velocity against the strictly managed ₹2,000 budget."
-      }
-    ];
-
-    function selectGrowthLoopStage(idx) {
-      if (typeof focusAmbientNode === 'function') {
-        focusAmbientNode(idx);
-      }
-      const items = document.querySelectorAll('.loop-node-item');
-      items.forEach((item, i) => {
-        if (i === idx) item.classList.add('active');
-        else item.classList.remove('active');
-      });
-
-      const drawer = document.getElementById('growthLoopDrawer');
-      const data = GROWTH_LOOP_STAGES[idx] || GROWTH_LOOP_STAGES[0];
-      const tagEl = document.getElementById('loopDrawerTag');
-      const metricEl = document.getElementById('loopDrawerMetric');
-      const descEl = document.getElementById('loopDrawerDesc');
-
-      if (tagEl) tagEl.textContent = data.tag;
-      if (metricEl) metricEl.textContent = data.metric;
-      if (descEl) descEl.textContent = data.desc;
-      if (drawer) drawer.style.display = 'block';
-    }
-
-    /* ==========================================================================
-       9. 3 CONTROLLED GROWTH EXPERIMENTS DEEP SPECIFICATION MODAL
-       ========================================================================== */
-    const EXPERIMENT_SPECS = {
-      exp1: {
-        category: "MESSAGING & VALUE PROP VALIDATION (EXPERIMENT 01)",
-        title: "Placement Armor vs. Generic Tech Stack Hook",
-        sample: "N = 600 unique link clicks (300 per variant)",
-        confidence: "95% Confidence (p < 0.05, 80% Statistical Power)",
-        hypothesis: "Positioning around 'Placement Armor & 3 ATS Bullets' solves the urgent pain point of final-year engineering job drives, delivering higher form conversion than generic 'Learn Generative AI & LLMs' tech copy.",
-        guardrails: "Primary CTR in WhatsApp groups must not dip below 4.5%. Registration form completion speed must remain under 40 seconds. Zero spam reports across all 20 tested college broadcast groups.",
-        decision: "If Variant A achieves ≥25% higher relative conversion, lock placement-first messaging across all Day 5–6 retargeting pushes. If Variant B wins, pivot messaging to emphasize technical LLM depth and modern AI skills."
-      },
-      exp2: {
-        category: "DISTRIBUTION & CHANNEL AUTHORITY (EXPERIMENT 02)",
-        title: "CR Broadcasts vs. Open Community Channels",
-        sample: "Reach = ~3,000 students (15 CR groups vs. 5 Discord/Telegram hubs)",
-        confidence: "95% Confidence (p < 0.05, 80% Statistical Power)",
-        hypothesis: "Promotional messages distributed directly by Class Representatives (CRs) in official batch WhatsApp groups deliver ≥3× more verified signups per reach than open student Discord/Telegram channels due to social proof and official channel authority.",
-        guardrails: "CR burnout protection: maximum 2 broadcasts per CR over 7 days. CR incentive verified only on genuine college email/phone deduplicated registrations.",
-        decision: "If CR WhatsApp achieves ≥3× registrations per reach, allocate 100% of the ₹1,200 bounty pool to the CR performance leaderboard. If open communities perform strongly, divert ₹400 to incentivize community moderators."
-      },
-      exp3: {
-        category: "REFERRAL MECHANICS & K-FACTOR (EXPERIMENT 03)",
-        title: "Digital Milestone Vault vs. Cash Lottery",
-        sample: "N = 400 post-registration screen views (200 per variant)",
-        confidence: "95% Confidence (p < 0.05, 80% Statistical Power)",
-        hypothesis: "A guaranteed Milestone Digital Asset Unlock (2-referral threshold to unlock the 2026 Capstone Vault) will drive a higher viral coefficient (K ≥ 0.30) than an abstract raffle lottery because students value immediate placement certainty over improbable cash draws.",
-        guardrails: "Self-referral fraud detection active (phone deduplication & IP rate limit). Share button click-to-lead verification latency monitored in real-time telemetry.",
-        decision: "If Milestone Vault achieves K ≥ 0.30, lock all post-registration flows to asset gating. If lottery wins, shift referral rewards to cash vouchers."
-      }
-    };
-
-    let previousActiveElement = null;
-
-    function openExperimentModal(expKey) {
-      const data = EXPERIMENT_SPECS[expKey] || EXPERIMENT_SPECS.exp1;
-      const modal = document.getElementById('experimentDetailModal');
-      if (!modal) return;
-
-      previousActiveElement = document.activeElement;
-
-      const catEl = document.getElementById('expModalCategory');
-      const titleEl = document.getElementById('expModalTitle');
-      const sampleEl = document.getElementById('expModalSample');
-      const confEl = document.getElementById('expModalConfidence');
-      const hypoEl = document.getElementById('expModalHypothesis');
-      const guardEl = document.getElementById('expModalGuardrails');
-      const decEl = document.getElementById('expModalDecision');
-
-      if (catEl) catEl.textContent = data.category;
-      if (titleEl) titleEl.textContent = data.title;
-      if (sampleEl) sampleEl.textContent = data.sample;
-      if (confEl) confEl.textContent = data.confidence;
-      if (hypoEl) hypoEl.textContent = data.hypothesis;
-      if (guardEl) guardEl.textContent = data.guardrails;
-      if (decEl) decEl.textContent = data.decision;
-
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-
-      const closeBtn = modal.querySelector('.modal-close-btn');
-      if (closeBtn) closeBtn.focus();
-    }
-
-    function closeExperimentModal() {
-      const modal = document.getElementById('experimentDetailModal');
-      if (!modal) return;
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
-      if (previousActiveElement && typeof previousActiveElement.focus === 'function') {
-        previousActiveElement.focus();
-      }
-    }
-
-    function handleModalBackdropClick(e) {
-      if (e.target && e.target.id === 'experimentDetailModal') {
-        closeExperimentModal();
-      }
-    }
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeExperimentModal();
-      }
-    });
-
-    /* ==========================================================================
-       10. CONTEXTUAL SMART FLOATING CTA
-       ========================================================================== */
-    function initSmartFloatingCta() {
-      const floatingCta = document.getElementById('smartFloatingCta');
-      if (!floatingCta) return;
-
-      let isDismissed = false;
-      try {
-        isDismissed = sessionStorage.getItem('nxw_floating_cta_dismissed') === 'true';
-      } catch (e) {}
-
-      if (isDismissed) return;
-
-      let scrollTimeout;
-      window.addEventListener('scroll', () => {
-        if (isDismissed) return;
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-          const regCard = document.getElementById('registeredState');
-          const isRegistered = regCard && regCard.style.display === 'block';
-
-          if (scrollPercent > 35 && !isRegistered && !isDismissed) {
-            floatingCta.classList.add('visible');
-          } else {
-            floatingCta.classList.remove('visible');
-          }
-        }, 80);
-      }, { passive: true });
-    }
-
-    function dismissFloatingCta() {
-      const floatingCta = document.getElementById('smartFloatingCta');
-      if (floatingCta) floatingCta.classList.remove('visible');
-      try {
-        sessionStorage.setItem('nxw_floating_cta_dismissed', 'true');
-      } catch (e) {}
-    }
-
-    /* ==========================================================================
-       11. SCROLL-TRIGGERED STORYTELLING REVEALS & NUMBER ANIMATION
-       ========================================================================== */
-    function initScrollStorytelling() {
-      const reveals = document.querySelectorAll('.reveal-on-scroll');
-      if (!reveals.length) return;
-
-      if (!('IntersectionObserver' in window)) {
-        reveals.forEach(el => el.classList.add('reveal-visible'));
-        return;
-      }
-
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('reveal-visible');
-            
-            const counters = entry.target.querySelectorAll('.hud-number-readout, #seatCounterDisplay');
-            counters.forEach(counter => {
-              animateCounter(counter);
-            });
-
-            obs.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.12,
-        rootMargin: '0px 0px -30px 0px'
-      });
-
-      reveals.forEach(el => observer.observe(el));
-    }
-
-    function animateCounter(el) {
-      if (!el || el.dataset.animated === 'true') return;
-      el.dataset.animated = 'true';
-
-      const originalText = el.textContent.trim();
-      const numValue = parseFloat(originalText.replace(/[^0-9.]/g, ''));
-      if (isNaN(numValue)) return;
-
-      const isDecimal = originalText.includes('.');
-      const decimals = isDecimal ? 2 : 0;
-      const duration = 850;
-      const startTime = performance.now();
-
-      function updateNumber(now) {
-        const elapsed = now - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const ease = 1 - Math.pow(1 - progress, 3);
-        const current = (numValue * ease).toFixed(decimals);
-
-        if (originalText.startsWith('₹')) {
-          el.textContent = `₹${current}`;
-        } else if (originalText.includes('.')) {
-          el.textContent = current;
-        } else {
-          el.textContent = Math.round(numValue * ease);
-        }
-
-        if (progress < 1) {
-          requestAnimationFrame(updateNumber);
-        } else {
-          el.textContent = originalText;
-        }
-      }
-
-      requestAnimationFrame(updateNumber);
-    }
-
     // Initialize Ambient WebGL, Theme & Project Preview on Load
     window.addEventListener('DOMContentLoaded', () => {
       const savedTheme = localStorage.getItem('nxtwave-theme') || 'system';
@@ -9204,69 +7987,7 @@
       updateProjectPreview();
       updateCampaignSimulation();
       checkSessionRegistration();
-      initScrollStorytelling();
-      initSmartFloatingCta();
-      selectPipelineStage(0);
     });
   </script>
-  <!-- ==========================================================================
-       INTERACTIVE 3D MODAL & SMART FLOATING CTA
-       ========================================================================== -->
-  <!-- Experiment Deep Inspection Modal (3D Glass Dialog) -->
-  <div id="experimentDetailModal" class="modal-backdrop-3d" role="dialog" aria-modal="true" aria-labelledby="expModalTitle" onclick="handleModalBackdropClick(event)">
-    <div class="modal-dialog-3d">
-      <button type="button" class="modal-close-btn" aria-label="Close Modal" onclick="closeExperimentModal()">✕</button>
-      <div style="font-size: 0.72rem; font-weight: 800; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;" id="expModalCategory">
-        MESSAGING & VALUE PROP VALIDATION
-      </div>
-      <h3 id="expModalTitle" style="font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 14px; line-height: 1.3;">
-        Experiment Specification
-      </h3>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 16px;">
-        <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 12px; border-radius: 8px;">
-          <div style="font-size: 0.7rem; color: var(--text-tertiary); text-transform: uppercase; font-weight: 700;">Sample Size & Power</div>
-          <div style="font-size: 0.95rem; font-weight: 700; color: #fff; margin-top: 3px;" id="expModalSample">N = 600 unique link visits (300/variant)</div>
-        </div>
-        <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 12px; border-radius: 8px;">
-          <div style="font-size: 0.7rem; color: var(--text-tertiary); text-transform: uppercase; font-weight: 700;">Statistical Confidence</div>
-          <div style="font-size: 0.95rem; font-weight: 700; color: var(--accent-emerald); margin-top: 3px;" id="expModalConfidence">95% Confidence (p &lt; 0.05, Power 80%)</div>
-        </div>
-      </div>
-
-      <div style="background: rgba(4, 10, 22, 0.7); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 8px; padding: 14px; margin-bottom: 14px;">
-        <div style="font-size: 0.74rem; font-weight: 800; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 6px;">Core Hypothesis & Mechanistic Test</div>
-        <p id="expModalHypothesis" style="font-size: 0.84rem; color: #cbd5e1; margin: 0; line-height: 1.5;"></p>
-      </div>
-
-      <div style="margin-bottom: 14px;">
-        <div style="font-size: 0.74rem; font-weight: 800; color: var(--accent-amber); text-transform: uppercase; margin-bottom: 6px;">Guardrail Metrics & Risk Mitigation</div>
-        <p id="expModalGuardrails" style="font-size: 0.82rem; color: var(--text-secondary); margin: 0; line-height: 1.45;"></p>
-      </div>
-
-      <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px; padding: 12px 14px;">
-        <div style="font-size: 0.74rem; font-weight: 800; color: var(--accent-emerald); text-transform: uppercase; margin-bottom: 4px;">Strategic Scaling Decision Playbook</div>
-        <p id="expModalDecision" style="font-size: 0.82rem; color: #e2e8f0; margin: 0; line-height: 1.45;"></p>
-      </div>
-
-      <div style="margin-top: 18px; text-align: right;">
-        <button type="button" class="action-btn btn-secondary-glass" style="padding: 8px 18px; font-size: 0.82rem; width: auto;" onclick="closeExperimentModal()">
-          Dismiss Specification
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Contextual Smart Floating CTA -->
-  <aside id="smartFloatingCta" class="smart-floating-cta" aria-label="Quick Registration Action">
-    <div class="floating-cta-text">
-      <div class="floating-cta-title">Build Your AI Project Sunday</div>
-      <p class="floating-cta-sub">60-Min Live Sprint • 412 / 500 Seats Filled</p>
-    </div>
-    <button class="action-btn btn-gradient-glow" style="padding: 8px 16px; font-size: 0.8rem; white-space: nowrap; width: auto;" type="button" onclick="scrollToReserve()">
-      Reserve Free ➔
-    </button>
-    <button type="button" class="floating-cta-close" aria-label="Dismiss quick action" onclick="dismissFloatingCta()">✕</button>
-  </aside>
 </body>
 </html>
