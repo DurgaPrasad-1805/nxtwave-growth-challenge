@@ -247,7 +247,7 @@ Key Requirements:
    - Right Column: Unregistered state shows a 3-field RSVP form (Name, WhatsApp, College). On submit, smoothly transitions to a Registered State showing a Ticket ID (e.g. NXW-RAHUL-4821), unique referral link, 1-tap WhatsApp share button with pre-filled viral text, and a 2-milestone progress bar (Milestone 1: Starter Kit, Milestone 2: 2026 AI Capstone Vault). Include a simulation button "[Demo Simulation: Test +1 Friend Joining]" that increments the referral count and unlocks milestones dynamically.
    - Deliverables Section: 4 cards highlighting Live Hosted App, GitHub Repo, 3 ATS Bullets, Zero Theory Fluff.
 3. Growth Ops Console View:
-   - 4 metric cards: Total Registrations (412/500), Viral K-Factor (0.34), Budget Burn / Blended CAC (₹3.84 / ₹1,580 of ₹2,000), Active CR WhatsApp Groups (36/35).
+   - 4 metric cards: Total Registrations (412/500 Demo Pace), Viral K-Factor (0.34 Simulated), Budget Burn / Blended CAC (₹3.84 Projected / ₹1,580 of ₹2,000), Active CR WhatsApp Groups (35/35 Target Reached • +1 additional group simulated).
    - Channel Attribution Table breaking down CR WhatsApp, Peer Referrals, and Micro-bounties with reach, conversion %, and CAC.
    - Budget allocation ledger explaining the ₹2,000 spend (₹1,200 CR leaderboard, ₹800 attendance raffle).
    - Live stream of recent registrations and a functional "Export Lead Telemetry (CSV)" button that downloads a CSV file.

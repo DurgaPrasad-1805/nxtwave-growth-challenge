@@ -1406,7 +1406,7 @@
 
     .experiments-card-deck {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 22px;
     }
 
@@ -1432,16 +1432,25 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+      width: 100%;
     }
 
     .exp-category-pill {
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-weight: 800;
       text-transform: uppercase;
-      padding: 3px 8px;
+      padding: 4px 10px;
       border-radius: 4px;
       letter-spacing: 0.04em;
+      line-height: 1.35;
+      display: inline-flex;
+      align-items: center;
+      max-width: 100%;
+      word-break: break-word;
+      flex-shrink: 1;
     }
     .tag-message-hook { background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.3); }
     .tag-channel-dist { background: rgba(129, 140, 248, 0.15); color: var(--accent-indigo); border: 1px solid rgba(129, 140, 248, 0.3); }
@@ -1449,9 +1458,28 @@
 
     .exp-num-label {
       font-family: var(--font-mono);
-      font-size: 0.8rem;
+      font-size: 0.76rem;
       color: var(--text-tertiary);
       font-weight: 700;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+
+    @keyframes leadSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .lead-entry-slidein {
+      animation: leadSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .exp-name-title {
@@ -3431,9 +3459,9 @@
               </div>
 
               <div class="hud-metric-card">
-                <div class="hud-label-text">Target CR WhatsApp Guilds</div>
-                <div class="hud-number-readout" style="color: var(--accent-indigo);">36 / 35</div>
-                <div class="hud-subtext-note">Target: 35 Groups across 20 Engineering Colleges (Simulated Pace)</div>
+                <div class="hud-label-text">Target CR WhatsApp Guilds (Progress)</div>
+                <div class="hud-number-readout" style="color: var(--accent-indigo);">35 / 35</div>
+                <div class="hud-subtext-note">Target reached (35 Groups across 20 Colleges) • +1 additional group simulated</div>
               </div>
 
             </div>
@@ -3769,17 +3797,17 @@
               <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 12px;">Mock telemetry pipeline showing real-time event ingestion and UTM attribution (Simulated Demo)</p>
               
               <div class="stream-feed-deck" id="leadStream" role="log" aria-live="polite">
-                <div class="stream-entry-pill">
-                  <strong>Karthik R.</strong> (CBIT Hyderabad • CSE) <br>
-                  <span style="color: var(--text-tertiary);">Source: CR Group #04 • 3 mins ago</span>
+                <div class="stream-entry-pill" data-lead-id="NXW-DEMO-001">
+                  <strong>Karthik R. [DEMO]</strong> (CBIT Hyderabad • CSE) <br>
+                  <span style="color: var(--text-tertiary);">Source: CR Group #04 (WhatsApp) • 3 mins ago</span>
                 </div>
-                <div class="stream-entry-pill" style="border-left-color: var(--accent-emerald);">
-                  <strong>Ananya S.</strong> (SRM Chennai • ECE) <br>
-                  <span style="color: var(--text-tertiary);">Source: Referral (ref=NXW-PRIYA) • 7 mins ago</span>
+                <div class="stream-entry-pill" data-lead-id="NXW-DEMO-002" style="border-left-color: var(--accent-emerald);">
+                  <strong>Ananya S. [DEMO]</strong> (SRM Chennai • ECE) <br>
+                  <span style="color: var(--text-tertiary);">Source: Peer Referral (ref=NXW-PRIYA) • 7 mins ago</span>
                 </div>
-                <div class="stream-entry-pill" style="border-left-color: var(--accent-indigo);">
-                  <strong>Siddharth M.</strong> (VNR VJIET • Mech) <br>
-                  <span style="color: var(--text-tertiary);">Source: CR Group #12 • 14 mins ago</span>
+                <div class="stream-entry-pill" data-lead-id="NXW-DEMO-003" style="border-left-color: var(--accent-indigo);">
+                  <strong>Siddharth M. [DEMO]</strong> (VNR VJIET • Mech) <br>
+                  <span style="color: var(--text-tertiary);">Source: Campus Club Activation • 14 mins ago</span>
                 </div>
               </div>
 
@@ -4789,6 +4817,38 @@
        ========================================================================== */
     let currentRegCount = 412;
     let referredCount = 0;
+    let nextSimLeadIndex = 21;
+    const generatedSimLeadIds = new Set(["NXW-DEMO-001", "NXW-DEMO-002", "NXW-DEMO-003"]);
+
+    const INITIAL_LEAD_STREAM_HTML = `
+      <div class="stream-entry-pill" data-lead-id="NXW-DEMO-001">
+        <strong>Karthik R. [DEMO]</strong> (CBIT Hyderabad • CSE) <br>
+        <span style="color: var(--text-tertiary);">Source: CR Group #04 (WhatsApp) • 3 mins ago</span>
+      </div>
+      <div class="stream-entry-pill" data-lead-id="NXW-DEMO-002" style="border-left-color: var(--accent-emerald);">
+        <strong>Ananya S. [DEMO]</strong> (SRM Chennai • ECE) <br>
+        <span style="color: var(--text-tertiary);">Source: Peer Referral (ref=NXW-PRIYA) • 7 mins ago</span>
+      </div>
+      <div class="stream-entry-pill" data-lead-id="NXW-DEMO-003" style="border-left-color: var(--accent-indigo);">
+        <strong>Siddharth M. [DEMO]</strong> (VNR VJIET • Mech) <br>
+        <span style="color: var(--text-tertiary);">Source: Campus Club Activation • 14 mins ago</span>
+      </div>
+    `;
+
+    const SYNTHETIC_LEAD_POOL = [
+      { college: "CBIT Hyderabad", branch: "CSE", channel: "CR Group #04 (WhatsApp)", color: "var(--accent-cyan)" },
+      { college: "SRM Chennai", branch: "ECE", channel: "Peer Referral (ref=NXW-PRIYA)", color: "var(--accent-emerald)" },
+      { college: "VNR VJIET", branch: "Mech", channel: "CR Group #12 (WhatsApp)", color: "var(--accent-cyan)" },
+      { college: "RV College Bangalore", branch: "ISE", channel: "CR Group #07 (WhatsApp)", color: "var(--accent-cyan)" },
+      { college: "MIT Manipal", branch: "CSE", channel: "Campus Club Activation", color: "var(--accent-indigo)" },
+      { college: "GRIET Hyderabad", branch: "EEE", channel: "Peer Referral (ref=NXW-VIKAS)", color: "var(--accent-emerald)" },
+      { college: "BMSCE Bangalore", branch: "Civil", channel: "CR Group #19 (WhatsApp)", color: "var(--accent-cyan)" },
+      { college: "VIT Vellore", branch: "ECE", channel: "CR Group #22 (WhatsApp)", color: "var(--accent-cyan)" },
+      { college: "Amrita Coimbatore", branch: "CSE", channel: "Peer Referral (ref=NXW-ANANYA)", color: "var(--accent-emerald)" },
+      { college: "PSG Tech Coimbatore", branch: "Mech", channel: "Campus Club Activation", color: "var(--accent-indigo)" },
+      { college: "JNTU Hyderabad", branch: "CSE", channel: "CR Group #02 (WhatsApp)", color: "var(--accent-cyan)" },
+      { college: "PES University", branch: "ISE", channel: "Peer Referral (ref=NXW-POOJA)", color: "var(--accent-emerald)" }
+    ];
 
     function processRegistration(e) {
       e.preventDefault();
@@ -4835,20 +4895,33 @@
 
       // Increment Counters
       currentRegCount++;
-      document.getElementById('seatCounterDisplay').textContent = currentRegCount;
-      document.getElementById('opsTotalRegs').textContent = currentRegCount;
-      document.getElementById('seatProgressBar').style.width = `${Math.min(100, (currentRegCount / 500) * 100)}%`;
+      const seatCounter = document.getElementById('seatCounterDisplay');
+      if (seatCounter) seatCounter.textContent = currentRegCount;
+      const opsRegs = document.getElementById('opsTotalRegs');
+      if (opsRegs) opsRegs.textContent = currentRegCount;
+      const progressBar = document.getElementById('seatProgressBar');
+      if (progressBar) progressBar.style.width = `${Math.min(100, (currentRegCount / 500) * 100)}%`;
 
-      // Prepend to Lead Stream
+      // Prepend to Lead Stream with animation & uniqueness
+      generatedSimLeadIds.add(ticketCode);
       const stream = document.getElementById('leadStream');
-      const newLead = document.createElement('div');
-      newLead.className = 'stream-entry-pill';
-      newLead.style.borderLeftColor = 'var(--accent-emerald)';
-      newLead.innerHTML = `<strong>${nameEl.value.trim()}</strong> (${collegeEl.value.trim()}) <br><span style="color: var(--text-tertiary);">Source: Direct RSVP Form • Just now</span>`;
-      stream.insertBefore(newLead, stream.firstChild);
+      if (stream) {
+        const newLead = document.createElement('div');
+        newLead.className = 'stream-entry-pill lead-entry-slidein';
+        newLead.setAttribute('data-lead-id', ticketCode);
+        newLead.style.borderLeftColor = 'var(--accent-emerald)';
+        newLead.innerHTML = `<strong>${nameEl.value.trim()} [DEMO]</strong> (${collegeEl.value.trim()}) <br><span style="color: var(--text-tertiary);">Source: Direct RSVP Form • Just now</span>`;
+        stream.insertBefore(newLead, stream.firstChild);
+
+        while (stream.children.length > 10) {
+          stream.removeChild(stream.lastChild);
+        }
+      }
 
       // Pulse 3D Registration Node
-      focusAmbientNode(1);
+      if (typeof focusAmbientNode === 'function') {
+        focusAmbientNode(1);
+      }
     }
 
     function copyReferralLink() {
@@ -4866,7 +4939,9 @@
         `🚨 Final Year Engineers: Instead of regular theoretical webinars, NxtWave is hosting a FREE 60-Minute sprint where we build and deploy a live AI project directly to our GitHub with ATS-ready resume bullets for campus placements.\n\nOnly 500 seats available. Register using my invite link:\nhttps://${linkText}`
       );
       window.open(`https://api.whatsapp.com/send?text=${viralMessage}`, '_blank');
-      focusAmbientNode(2);
+      if (typeof focusAmbientNode === 'function') {
+        focusAmbientNode(2);
+      }
     }
 
     function simulateReferredFriend() {
@@ -4877,58 +4952,112 @@
       const t2Badge = document.getElementById('t2Badge');
 
       if (referredCount === 1) {
-        t1.classList.add('unlocked');
-        t1Badge.className = 'badge-lock-status badge-unlocked';
-        t1Badge.textContent = '✅ Unlocked! (Starters)';
+        if (t1) t1.classList.add('unlocked');
+        if (t1Badge) {
+          t1Badge.className = 'badge-lock-status badge-unlocked';
+          t1Badge.textContent = '✅ Unlocked! (Starters)';
+        }
         alert("🎉 Milestone 1 Reached: 1 Friend Registered! You unlocked the GitHub Starter Pack.");
-        focusAmbientNode(3);
+        if (typeof focusAmbientNode === 'function') focusAmbientNode(3);
       } else if (referredCount >= 2) {
-        t2.classList.add('unlocked');
-        t2Badge.className = 'badge-lock-status badge-unlocked';
-        t2Badge.textContent = '🎉 Fully Unlocked! (Vault)';
+        if (t2) t2.classList.add('unlocked');
+        if (t2Badge) {
+          t2Badge.className = 'badge-lock-status badge-unlocked';
+          t2Badge.textContent = '🎉 Fully Unlocked! (Vault)';
+        }
         alert("🔥 Milestone 2 Reached: 2 Friends Registered! The entire 2026 AI Capstone & Interview Vault is now unlocked!");
-        focusAmbientNode(3);
+        if (typeof focusAmbientNode === 'function') focusAmbientNode(3);
       }
     }
 
     function triggerSimulatedLead() {
+      // 1. Generate unique deterministic ID & identity
+      let candidateId = "";
+      let padIdx = "";
+      do {
+        padIdx = String(nextSimLeadIndex).padStart(3, '0');
+        candidateId = "NXW-SIM-" + padIdx;
+        nextSimLeadIndex++;
+      } while (generatedSimLeadIds.has(candidateId));
+
+      generatedSimLeadIds.add(candidateId);
+
+      const displayName = `Demo Student ${padIdx} [SIMULATED]`;
+      const metaIndex = (parseInt(padIdx, 10) - 21) % SYNTHETIC_LEAD_POOL.length;
+      const meta = SYNTHETIC_LEAD_POOL[metaIndex >= 0 ? metaIndex : 0];
+
+      // 2. Increment simulated metrics exactly once
       currentRegCount++;
-      document.getElementById('seatCounterDisplay').textContent = currentRegCount;
-      document.getElementById('opsTotalRegs').textContent = currentRegCount;
-      document.getElementById('seatProgressBar').style.width = `${Math.min(100, (currentRegCount / 500) * 100)}%`;
+      const seatCounter = document.getElementById('seatCounterDisplay');
+      if (seatCounter) seatCounter.textContent = currentRegCount;
+      const opsRegs = document.getElementById('opsTotalRegs');
+      if (opsRegs) opsRegs.textContent = currentRegCount;
+      const progressBar = document.getElementById('seatProgressBar');
+      if (progressBar) progressBar.style.width = `${Math.min(100, (currentRegCount / 500) * 100)}%`;
 
-      const names = ["Vikas K.", "Pooja M.", "Rohan S.", "Kavya T.", "Aditya P."];
-      const colleges = ["CBIT", "SRM", "VNR VJIET", "MIT Manipal", "VIT Vellore"];
-      const rName = names[Math.floor(Math.random() * names.length)];
-      const rCollege = colleges[Math.floor(Math.random() * colleges.length)];
-
+      // 3. Insert unique lead at top of feed with animation
       const stream = document.getElementById('leadStream');
-      const newLead = document.createElement('div');
-      newLead.className = 'stream-entry-pill';
-      newLead.style.borderLeftColor = 'var(--accent-cyan)';
-      newLead.innerHTML = `<strong>${rName}</strong> (${rCollege}) <br><span style="color: var(--text-tertiary);">Source: Simulated CR WhatsApp Broadcast • Just now</span>`;
-      stream.insertBefore(newLead, stream.firstChild);
+      if (stream) {
+        // Prevent duplicate DOM insertion
+        const existingNode = stream.querySelector(`[data-lead-id="${candidateId}"]`);
+        if (!existingNode) {
+          const newLead = document.createElement('div');
+          newLead.className = 'stream-entry-pill lead-entry-slidein';
+          newLead.setAttribute('data-lead-id', candidateId);
+          newLead.style.borderLeftColor = meta.color;
+          newLead.innerHTML = `<strong>${displayName}</strong> (${meta.college} • ${meta.branch}) <br><span style="color: var(--text-tertiary);">Source: ${meta.channel} • Just now</span>`;
+          stream.insertBefore(newLead, stream.firstChild);
 
-      focusAmbientNode(0);
+          // Maintain sensible visible history (cap at 10 entries)
+          while (stream.children.length > 10) {
+            stream.removeChild(stream.lastChild);
+          }
+        }
+      }
+
+      // 4. Subtle 3D focal indicator
+      if (typeof focusAmbientNode === 'function') {
+        focusAmbientNode(0);
+      }
     }
 
     function resetCampaignData() {
       currentRegCount = 412;
+      nextSimLeadIndex = 21;
+      generatedSimLeadIds.clear();
+      generatedSimLeadIds.add("NXW-DEMO-001");
+      generatedSimLeadIds.add("NXW-DEMO-002");
+      generatedSimLeadIds.add("NXW-DEMO-003");
+
       referredCount = 0;
-      document.getElementById('seatCounterDisplay').textContent = currentRegCount;
-      document.getElementById('opsTotalRegs').textContent = currentRegCount;
-      document.getElementById('seatProgressBar').style.width = '82.4%';
+      const seatCounter = document.getElementById('seatCounterDisplay');
+      if (seatCounter) seatCounter.textContent = currentRegCount;
+      const opsRegs = document.getElementById('opsTotalRegs');
+      if (opsRegs) opsRegs.textContent = currentRegCount;
+      const progressBar = document.getElementById('seatProgressBar');
+      if (progressBar) progressBar.style.width = '82.4%';
+
+      const stream = document.getElementById('leadStream');
+      if (stream) {
+        stream.innerHTML = INITIAL_LEAD_STREAM_HTML;
+      }
       
       const t1 = document.getElementById('tier1');
       const t2 = document.getElementById('tier2');
-      t1.classList.remove('unlocked');
-      t2.classList.remove('unlocked');
-      document.getElementById('t1Badge').className = 'badge-lock-status badge-locked';
-      document.getElementById('t1Badge').textContent = '🔒 Locked';
-      document.getElementById('t2Badge').className = 'badge-lock-status badge-locked';
-      document.getElementById('t2Badge').textContent = '🔒 Locked';
+      if (t1) t1.classList.remove('unlocked');
+      if (t2) t2.classList.remove('unlocked');
+      const t1Badge = document.getElementById('t1Badge');
+      if (t1Badge) {
+        t1Badge.className = 'badge-lock-status badge-locked';
+        t1Badge.textContent = '🔒 Locked';
+      }
+      const t2Badge = document.getElementById('t2Badge');
+      if (t2Badge) {
+        t2Badge.className = 'badge-lock-status badge-locked';
+        t2Badge.textContent = '🔒 Locked';
+      }
 
-      alert("Simulation metrics and referral milestone states reset to baseline.");
+      alert("Simulation metrics and telemetry stream reset to initial baseline.");
     }
 
     function exportSimulatedCSV() {
