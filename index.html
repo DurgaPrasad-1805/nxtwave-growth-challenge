@@ -1092,9 +1092,10 @@
        ========================================================================== */
     .product-stage-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 0.95fr 1.05fr;
       gap: 28px;
       margin-bottom: 48px;
+      align-items: start;
     }
 
     @media (max-width: 900px) {
@@ -1111,12 +1112,77 @@
       border-radius: var(--radius-lg);
       padding: 28px;
       box-shadow: var(--shadow-ambient), var(--shadow-fresnel);
-      transition: border-color 0.3s;
+      transition: border-color 0.3s, box-shadow 0.3s;
       position: relative;
     }
 
     .surface-card:hover {
       border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .primary-conversion-card {
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      box-shadow: 0 10px 36px -4px rgba(56, 189, 248, 0.15), var(--shadow-ambient), var(--shadow-fresnel);
+      background: linear-gradient(175deg, rgba(14, 23, 42, 0.75) 0%, rgba(8, 14, 26, 0.85) 100%);
+    }
+
+    .pulse-focus-ring {
+      animation: focusPulse 1.8s ease-in-out;
+    }
+
+    @keyframes focusPulse {
+      0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
+      50% { box-shadow: 0 0 0 10px rgba(56, 189, 248, 0.25); border-color: var(--accent-cyan); }
+      100% { box-shadow: var(--shadow-ambient), var(--shadow-fresnel); }
+    }
+
+    .step-guide-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: var(--accent-cyan);
+      margin-bottom: 12px;
+      letter-spacing: 0.03em;
+    }
+
+    .step-guide-num {
+      background: var(--accent-cyan);
+      color: #04121d;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 1px 6px;
+      border-radius: 9999px;
+    }
+
+    .primary-step-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.18) 0%, rgba(99, 102, 241, 0.2) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      color: var(--accent-cyan);
+      margin-bottom: 12px;
+      letter-spacing: 0.03em;
+      box-shadow: 0 2px 8px rgba(56, 189, 248, 0.15);
+    }
+
+    .primary-step-num {
+      background: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%);
+      color: #ffffff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 1px 7px;
+      border-radius: 9999px;
     }
 
     .card-top-bar {
@@ -1187,6 +1253,11 @@
       color: var(--accent-rose);
       margin-top: 4px;
       display: none;
+    }
+
+    .input-error-border {
+      border-color: var(--accent-rose) !important;
+      box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.22) !important;
     }
 
     /* Hybrid Registration Form Tokens */
@@ -1324,6 +1395,29 @@
       text-decoration: none;
     }
 
+    .action-btn.loading {
+      opacity: 0.85;
+      pointer-events: none;
+      cursor: wait;
+    }
+
+    .btn-spinner {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      border: 2.2px solid rgba(255, 255, 255, 0.35);
+      border-top-color: #ffffff;
+      border-radius: 50%;
+      animation: btnSpin 0.6s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+
+    @keyframes btnSpin {
+      to { transform: rotate(360deg); }
+    }
+
     .btn-gradient-glow {
       background: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%);
       color: #ffffff;
@@ -1409,41 +1503,362 @@
       font-family: var(--font-sans);
     }
 
-    /* Ticket Confirmation & Viral Engine */
+    /* ==========================================================================
+       TICKET CONFIRMATION & DEDICATED JOINING PASS (STEP 3 & 4)
+       ========================================================================== */
     .ticket-view-wrapper {
       display: none;
-      animation: fadeInSlide 0.35s ease;
+      animation: fadeInSlide 0.4s var(--ease-cinematic);
     }
 
-    .hologram-ticket-stub {
-      background: rgba(8, 14, 26, 0.8);
-      border: 1px dashed var(--accent-cyan);
+    /* 1. Celebratory Success Banner */
+    .registration-success-banner {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(6, 78, 59, 0.28) 100%);
+      border: 1px solid rgba(16, 185, 129, 0.45);
       border-radius: var(--radius-md);
-      padding: 16px;
-      text-align: center;
-      margin-bottom: 18px;
-      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.12);
+      padding: 16px 18px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.15);
+    }
+
+    @keyframes scaleInCheckmark {
+      0% { transform: scale(0); opacity: 0; }
+      60% { transform: scale(1.18); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes checkmarkStroke {
+      100% { stroke-dashoffset: 0; }
+    }
+
+    .checkmark-circle-ring {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      animation: scaleInCheckmark 0.45s ease-in-out forwards;
+    }
+
+    .checkmark-svg {
+      width: 46px;
+      height: 46px;
+      display: block;
+    }
+
+    .checkmark-circle {
+      stroke-dasharray: 166;
+      stroke-dashoffset: 166;
+      stroke-width: 2.8;
+      stroke-miterlimit: 10;
+      stroke: #10b981;
+      fill: none;
+      animation: checkmarkStroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+    }
+
+    .checkmark-check {
+      transform-origin: 50% 50%;
+      stroke-dasharray: 48;
+      stroke-dashoffset: 48;
+      stroke-width: 3.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke: #10b981;
+      animation: checkmarkStroke 0.35s cubic-bezier(0.65, 0, 0.45, 1) 0.45s forwards;
+    }
+
+    .success-banner-content {
+      flex: 1;
+      text-align: left;
+    }
+
+    .success-status-tag {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #34d399;
+      margin-bottom: 2px;
+    }
+
+    .success-banner-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+
+    .success-banner-sub {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.82);
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    /* 2. Holographic Workshop Pass Stub */
+    .hologram-ticket-stub {
+      background: linear-gradient(145deg, rgba(8, 14, 26, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
+      border: 1.5px dashed rgba(56, 189, 248, 0.55);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      margin-bottom: 22px;
+      box-shadow: 0 10px 32px rgba(56, 189, 248, 0.12), inset 0 0 24px rgba(56, 189, 248, 0.03);
+      position: relative;
+    }
+
+    .ticket-pass-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+    }
+
+    .ticket-brand-badge {
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: #e2e8f0;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ticket-brand-icon {
+      color: var(--accent-cyan);
+    }
+
+    .ticket-status-pill {
+      font-size: 0.7rem;
+      font-weight: 800;
+      background: rgba(16, 185, 129, 0.14);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: var(--accent-emerald);
+      padding: 3px 9px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      animation: pulseDot 1.6s ease-in-out infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .ticket-main-id-row {
+      background: rgba(2, 6, 16, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .ticket-id-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--text-tertiary);
+      letter-spacing: 0.05em;
     }
 
     .ticket-id-display {
       font-family: var(--font-mono);
-      font-size: 1.3rem;
-      font-weight: 700;
+      font-size: 1.32rem;
+      font-weight: 800;
       color: var(--accent-cyan);
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
     }
 
-    .viral-referral-shell {
-      background: rgba(8, 14, 26, 0.7);
-      border: 1px solid var(--border-glass);
+    .btn-ticket-copy {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent-cyan);
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 0.74rem;
+      cursor: pointer;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .btn-ticket-copy:hover {
+      background: rgba(56, 189, 248, 0.22);
+    }
+
+    /* Grid Fields on Ticket */
+    .ticket-grid-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+      text-align: left;
+    }
+
+    @media (max-width: 520px) {
+      .ticket-grid-fields {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .ticket-field-block {
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 9px 12px;
+    }
+
+    .tf-label {
+      font-size: 0.66rem;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .tf-val {
+      font-size: 0.84rem;
+      color: var(--text-primary);
+      font-weight: 600;
+      word-break: break-word;
+    }
+
+    .tf-val.highlight-val {
+      color: var(--accent-cyan);
+      font-weight: 700;
+    }
+
+    /* WhatsApp Dispatch Notice */
+    .ticket-dispatch-notice {
+      background: rgba(16, 185, 129, 0.09);
+      border: 1px solid rgba(16, 185, 129, 0.28);
+      border-radius: 8px;
+      padding: 11px 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.8rem;
+      color: #d1fae5;
+      text-align: left;
+      line-height: 1.45;
+      margin-top: 12px;
+    }
+
+    .ticket-dispatch-notice .dispatch-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .ticket-dispatch-notice .phone-highlight {
+      color: #6ee7b7;
+      font-family: var(--font-mono);
+      font-weight: 700;
+    }
+
+    .referrer-attr-chip {
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: var(--accent-indigo);
+      font-size: 0.74rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-top: 10px;
+      font-family: var(--font-mono);
+      display: inline-block;
+    }
+
+    /* Ticket Reconnect Action */
+    .ticket-next-action-row {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-architect-reconnect {
+      width: 100%;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: var(--accent-cyan);
+      padding: 10px 16px;
       border-radius: var(--radius-md);
-      padding: 18px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-architect-reconnect:hover {
+      background: rgba(56, 189, 248, 0.22);
+      transform: translateY(-1px);
+    }
+
+    /* 3. Viral Peer Referral Engine */
+    .viral-referral-shell {
+      background: rgba(8, 14, 26, 0.75);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      text-align: left;
+    }
+
+    .referral-shell-header {
+      margin-bottom: 12px;
+    }
+
+    .referral-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-indigo);
+      margin-bottom: 3px;
+    }
+
+    .referral-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .referral-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin: 0;
     }
 
     .link-copy-shelf {
       background: #020610;
       border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 8px 12px;
+      padding: 9px 12px;
       border-radius: var(--radius-sm);
       font-family: var(--font-mono);
       font-size: 0.82rem;
@@ -1451,8 +1866,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin: 10px 0;
+      margin: 14px 0 10px;
       word-break: break-all;
+      gap: 10px;
     }
 
     .btn-copy-chip {
@@ -1464,9 +1880,16 @@
       font-size: 0.75rem;
       cursor: pointer;
       font-weight: 600;
+      flex-shrink: 0;
+      transition: background 0.2s;
     }
+
     .btn-copy-chip:hover {
       background: #2b3b5c;
+    }
+
+    .referral-actions-split {
+      margin-bottom: 14px;
     }
 
     .milestone-track-stack {
@@ -1480,12 +1903,13 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 9px 12px;
+      padding: 10px 14px;
       background: #080e1b;
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
       font-size: 0.82rem;
       transition: all 0.2s ease;
+      gap: 10px;
     }
 
     .milestone-tier-row.unlocked {
@@ -1493,12 +1917,180 @@
       background: rgba(16, 185, 129, 0.08);
     }
 
+    .tier-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .tier-name {
+      font-weight: 700;
+      color: var(--text-primary);
+      font-size: 0.82rem;
+    }
+
+    .tier-reward {
+      font-size: 0.72rem;
+      color: var(--text-tertiary);
+    }
+
     .badge-lock-status {
       font-weight: 700;
       font-size: 0.76rem;
+      flex-shrink: 0;
     }
     .badge-locked { color: var(--accent-rose); }
     .badge-unlocked { color: var(--accent-emerald); }
+
+    /* Light Mode Overrides for Step 2, 3 & 4 Components */
+    [data-theme="light"] .primary-conversion-card {
+      background: linear-gradient(175deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
+      border: 1.5px solid rgba(99, 102, 241, 0.35);
+      box-shadow: 0 10px 32px -4px rgba(99, 102, 241, 0.12), var(--shadow-ambient);
+    }
+
+    [data-theme="light"] .step-guide-chip {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      color: #334155;
+    }
+    [data-theme="light"] .step-guide-num {
+      background: #475569;
+      color: #ffffff;
+    }
+
+    [data-theme="light"] .primary-step-chip {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
+      border-color: rgba(99, 102, 241, 0.35);
+      color: var(--accent-indigo);
+    }
+
+    [data-theme="light"] .registration-success-banner {
+      background: linear-gradient(135deg, rgba(236, 253, 245, 0.95) 0%, rgba(209, 250, 229, 0.95) 100%);
+      border-color: rgba(16, 185, 129, 0.4);
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.12);
+    }
+
+    [data-theme="light"] .success-status-tag {
+      color: #047857;
+    }
+
+    [data-theme="light"] .success-banner-title {
+      color: #064e3b;
+    }
+
+    [data-theme="light"] .success-banner-sub {
+      color: #065f46;
+    }
+
+    [data-theme="light"] .hologram-ticket-stub {
+      background: linear-gradient(135deg, rgba(248, 250, 252, 0.98) 0%, rgba(241, 245, 249, 0.98) 100%);
+      border-color: rgba(99, 102, 241, 0.4);
+      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.12);
+    }
+
+    [data-theme="light"] .ticket-pass-header {
+      border-bottom-color: rgba(203, 213, 225, 0.8);
+    }
+
+    [data-theme="light"] .ticket-brand-badge {
+      color: #334155;
+    }
+
+    [data-theme="light"] .ticket-status-pill {
+      background: rgba(5, 150, 105, 0.12);
+      border-color: rgba(5, 150, 105, 0.35);
+      color: #047857;
+    }
+
+    [data-theme="light"] .ticket-main-id-row {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+    }
+
+    [data-theme="light"] .ticket-id-label {
+      color: #64748b;
+    }
+
+    [data-theme="light"] .ticket-id-display {
+      color: var(--accent-indigo);
+    }
+
+    [data-theme="light"] .btn-ticket-copy {
+      background: #eef2ff;
+      border-color: rgba(99, 102, 241, 0.35);
+      color: var(--accent-indigo);
+    }
+
+    [data-theme="light"] .btn-ticket-copy:hover {
+      background: #e0e7ff;
+    }
+
+    [data-theme="light"] .ticket-field-block {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: #e2e8f0;
+    }
+
+    [data-theme="light"] .tf-label {
+      color: #64748b;
+    }
+
+    [data-theme="light"] .tf-val {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .tf-val.highlight-val {
+      color: var(--accent-indigo);
+    }
+
+    [data-theme="light"] .ticket-dispatch-notice {
+      background: rgba(236, 253, 245, 0.95);
+      border-color: rgba(16, 185, 129, 0.4);
+      color: #065f46;
+    }
+
+    [data-theme="light"] .ticket-dispatch-notice .phone-highlight {
+      color: #047857;
+    }
+
+    [data-theme="light"] .ticket-next-action-row {
+      border-top-color: rgba(203, 213, 225, 0.8);
+    }
+
+    [data-theme="light"] .btn-architect-reconnect {
+      background: rgba(99, 102, 241, 0.08);
+      border-color: rgba(99, 102, 241, 0.35);
+      color: var(--accent-indigo);
+    }
+
+    [data-theme="light"] .btn-architect-reconnect:hover {
+      background: rgba(99, 102, 241, 0.15);
+    }
+
+    [data-theme="light"] .viral-referral-shell {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: rgba(99, 102, 241, 0.25);
+    }
+
+    [data-theme="light"] .referral-eyebrow {
+      color: #64748b;
+    }
+
+    [data-theme="light"] .referral-title {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .referral-desc {
+      color: #475569;
+    }
+
+    [data-theme="light"] .tier-name {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .tier-reward {
+      color: #64748b;
+    }
 
     /* ==========================================================================
        SECTION: 3 CONTROLLED GROWTH EXPERIMENTS (INTERACTIVE SUITE)
@@ -4473,9 +5065,12 @@
             <!-- Main Interactive Stage Grid -->
             <div class="product-stage-grid">
               
-              <!-- LEFT: Interactive AI Project Architect -->
+              <!-- LEFT: Interactive AI Project Architect (STEP 1: DISCOVER) -->
               <div class="surface-card" id="projectArchitectCard">
-                <div class="card-top-bar">
+                <div class="step-guide-chip">
+                  <span class="step-guide-num">STEP 1</span> DISCOVER WHAT YOU'LL BUILD
+                </div>
+                <div class="card-top-bar" style="margin-top: 4px;">
                   <div class="surface-icon" aria-hidden="true">⚡</div>
                   <div>
                     <h2 class="card-heading-title">Interactive AI Project Architect</h2>
@@ -4525,13 +5120,15 @@
                 </div>
               </div>
 
-              <!-- RIGHT: 30-Second Low-Friction Registration & Viral Referral Loop Engine -->
-              <!-- RIGHT: Conversion-First Hybrid Registration & Referral Engine -->
-              <div class="surface-card" id="registrationCard">
+              <!-- RIGHT: Conversion-First Hybrid Registration & Referral Engine (STEP 2: REGISTER) -->
+              <div class="surface-card primary-conversion-card" id="registrationCard">
                 
                 <!-- State 1: Quick Hybrid RSVP Form -->
                 <div id="unregisteredState">
-                  <div class="card-top-bar" style="margin-bottom: 16px;">
+                  <div class="primary-step-chip">
+                    <span class="primary-step-num">STEP 2</span> SECURE YOUR SEAT
+                  </div>
+                  <div class="card-top-bar" style="margin-top: 4px; margin-bottom: 16px;">
                     <div>
                       <h2 class="card-heading-title" id="rsvpHeading" style="font-size: 1.22rem; font-weight: 800; margin-bottom: 4px;">
                         Reserve Your Free Workshop Seat
@@ -4628,45 +5225,121 @@
                   </form>
                 </div>
 
-                <!-- State 2: Registered State (Viral Referral Engine) -->
+                <!-- State 2: Registered State (Workshop Pass & Viral Referral Engine) -->
                 <div id="registeredState" class="ticket-view-wrapper" aria-live="polite">
-                  <div class="hologram-ticket-stub">
-                    <div style="font-size: 0.76rem; color: var(--accent-emerald); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">
-                      ✓ Seat Confirmed • 60-Minute AI Project Sprint
+                  
+                  <!-- Celebratory Success Banner -->
+                  <div class="registration-success-banner">
+                    <div class="checkmark-circle-ring" aria-hidden="true">
+                      <svg class="checkmark-svg" viewBox="0 0 52 52">
+                        <circle class="checkmark-circle" cx="26" cy="26" r="23" fill="none"/>
+                        <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                      </svg>
                     </div>
-                    <div style="font-size: 0.78rem; color: var(--text-secondary); text-transform: uppercase;">Ticket ID</div>
-                    <div class="ticket-id-display" id="ticketId">NXW-HERO-8491</div>
-                    <div style="font-size: 0.8rem; color: var(--accent-cyan); margin-top: 4px;" id="ticketConfirmedSub">
-                      Joining pass reserved • WhatsApp confirmation dispatched
+                    <div class="success-banner-content">
+                      <div class="success-status-tag">SEAT RESERVED • WORKSHOP PASS ACTIVE</div>
+                      <h3 class="success-banner-title">Your Workshop Seat is Confirmed!</h3>
+                      <p class="success-banner-sub">
+                        Official Pass issued for the live <strong>60-Minute AI Project Sprint</strong>.
+                      </p>
                     </div>
-                    <div id="referrerAttributionPill" style="display: none; margin-top: 6px; font-size: 0.74rem; color: var(--accent-indigo); font-family: var(--font-mono);"></div>
                   </div>
 
+                  <!-- Dedicated Hologram Workshop Pass -->
+                  <div class="hologram-ticket-stub" id="workshopTicketPass">
+                    <div class="ticket-pass-header">
+                      <div class="ticket-brand-badge">
+                        <span class="ticket-brand-icon">⚡</span> NXTWAVE AI SPRINT PASS
+                      </div>
+                      <div class="ticket-status-pill">
+                        <span class="pulse-dot"></span> CONFIRMED
+                      </div>
+                    </div>
+
+                    <div class="ticket-main-id-row">
+                      <div>
+                        <div class="ticket-id-label">OFFICIAL PASS CODE</div>
+                        <div class="ticket-id-display" id="ticketId">NXW-HERO-8491</div>
+                      </div>
+                      <button type="button" class="btn-ticket-copy" id="btnCopyPass" onclick="copyPassCode()" title="Copy Pass Code">
+                        <span>Copy Code</span>
+                      </button>
+                    </div>
+
+                    <!-- Attendee Details Grid -->
+                    <div class="ticket-grid-fields">
+                      <div class="ticket-field-block">
+                        <span class="tf-label">ATTENDEE</span>
+                        <span class="tf-val" id="confirmedAttendeeName">Rahul Sharma</span>
+                      </div>
+                      <div class="ticket-field-block">
+                        <span class="tf-label">COLLEGE / INSTITUTE</span>
+                        <span class="tf-val" id="confirmedCollegeName">CBIT Hyderabad</span>
+                      </div>
+                      <div class="ticket-field-block">
+                        <span class="tf-label">BRANCH & GRAD YEAR</span>
+                        <span class="tf-val" id="confirmedBranchYear">CSE • Final Year (2026)</span>
+                      </div>
+                      <div class="ticket-field-block">
+                        <span class="tf-label">DATE & TIME</span>
+                        <span class="tf-val highlight-val">Upcoming Sunday • 7:00 PM IST</span>
+                      </div>
+                    </div>
+
+                    <!-- WhatsApp Dispatch Notice -->
+                    <div class="ticket-dispatch-notice">
+                      <div class="dispatch-icon" aria-hidden="true">📲</div>
+                      <div class="dispatch-text">
+                        <strong>WhatsApp Confirmation Dispatched:</strong> Prep kit, calendar invite & live meeting link routed to <span id="confirmedPhoneDisplay" class="phone-highlight">+91 98765 43210</span>.
+                      </div>
+                    </div>
+
+                    <!-- Referred attribution if present -->
+                    <div id="referrerAttributionPill" class="referrer-attr-chip" style="display: none;"></div>
+
+                    <!-- Reconnect with Project Architect Action -->
+                    <div class="ticket-next-action-row">
+                      <button type="button" class="btn-architect-reconnect" onclick="focusProjectArchitect()">
+                        <span>Explore My AI Project & Resume Spec ➔</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Step 3: Viral Peer Referral Engine -->
                   <div class="viral-referral-shell">
-                    <h3 style="font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 4px;">
-                      🎁 Next Step: Unlock the 2026 AI Capstone Vault
-                    </h3>
-                    <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.45;">
-                      Invite <strong>2 batchmates</strong> with your unique link to unlock 50+ GitHub Starter Repos, Capstone Architecture diagrams, and ATS Resume Templates!
-                    </p>
+                    <div class="referral-shell-header">
+                      <div class="referral-eyebrow">STEP 3 • OPTIONAL SPRINT PERK</div>
+                      <h4 class="referral-title">🎁 Unlock the 2026 AI Capstone Vault</h4>
+                      <p class="referral-desc">
+                        Invite <strong>2 batchmates</strong> with your unique invite link to unlock 50+ GitHub Starter Repos, Capstone Architecture diagrams, and ATS Resume Templates!
+                      </p>
+                    </div>
 
                     <div class="link-copy-shelf">
                       <span id="refLinkText">nxtwave.io/ai60?ref=NXW-HERO-1024</span>
-                      <button class="btn-copy-chip" id="copyBtn" type="button" onclick="copyReferralLink()">Copy</button>
+                      <button class="btn-copy-chip" id="copyBtn" type="button" onclick="copyReferralLink()">Copy Link</button>
                     </div>
 
-                    <button class="action-btn btn-whatsapp-action" id="whatsappShareBtn" type="button" onclick="openWhatsAppShare()">
-                      <span>Share to Batch WhatsApp Group</span> 📲
-                    </button>
+                    <div class="referral-actions-split">
+                      <button class="action-btn btn-whatsapp-action" id="whatsappShareBtn" type="button" onclick="openWhatsAppShare()">
+                        <span>Share to Batch WhatsApp Group</span> 📲
+                      </button>
+                    </div>
 
                     <!-- Dynamic Milestone Tracker -->
                     <div class="milestone-track-stack">
                       <div class="milestone-tier-row" id="tier1">
-                        <span>1 Friend Registered (GitHub Starter Pack)</span>
+                        <div class="tier-info">
+                          <span class="tier-name">1 Friend Registered</span>
+                          <span class="tier-reward">GitHub Starter Pack (5 Repos)</span>
+                        </div>
                         <span class="badge-lock-status badge-locked" id="t1Badge">🔒 Locked</span>
                       </div>
                       <div class="milestone-tier-row" id="tier2">
-                        <span>2 Friends Registered (Full Project Vault)</span>
+                        <div class="tier-info">
+                          <span class="tier-name">2 Friends Registered</span>
+                          <span class="tier-reward">Full 2026 AI Project Vault + ATS Templates</span>
+                        </div>
                         <span class="badge-lock-status badge-locked" id="t2Badge">🔒 Locked</span>
                       </div>
                     </div>
@@ -4677,6 +5350,7 @@
                       </button>
                     </div>
                   </div>
+
                 </div>
 
               </div>
@@ -6379,6 +7053,17 @@
       if (err) err.style.display = 'none';
       const dup = document.getElementById('duplicateRegistrationNotice');
       if (dup) dup.style.display = 'none';
+
+      if (errorId === 'nameError') {
+        const el = document.getElementById('studentName');
+        if (el) el.classList.remove('input-error-border');
+      } else if (errorId === 'phoneError') {
+        const el = document.getElementById('studentPhone');
+        if (el) el.classList.remove('input-error-border');
+      } else if (errorId === 'collegeError') {
+        const el = document.getElementById('collegeName');
+        if (el) el.classList.remove('input-error-border');
+      }
     }
 
     // Automatically captures growth metadata behind the scenes
@@ -6430,6 +7115,131 @@
       }
     }
 
+    // Copy Official Pass Code to Clipboard
+    function copyPassCode() {
+      const code = document.getElementById('ticketId') ? document.getElementById('ticketId').textContent.trim() : '';
+      if (!code) return;
+      navigator.clipboard.writeText(code).then(() => {
+        const btn = document.getElementById('btnCopyPass');
+        if (btn) {
+          btn.innerHTML = '<span>✓ Copied!</span>';
+          setTimeout(() => { btn.innerHTML = '<span>Copy Code</span>'; }, 2000);
+        }
+      }).catch(() => {
+        const btn = document.getElementById('btnCopyPass');
+        if (btn) {
+          btn.innerHTML = '<span>✓ ' + code + '</span>';
+          setTimeout(() => { btn.innerHTML = '<span>Copy Code</span>'; }, 2000);
+        }
+      });
+    }
+
+    // Smoothly focus Project Architect and highlight connection
+    function focusProjectArchitect() {
+      const card = document.getElementById('projectArchitectCard');
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        card.classList.add('pulse-focus-ring');
+        setTimeout(() => { card.classList.remove('pulse-focus-ring'); }, 1800);
+      }
+    }
+
+    // Render Confirmed Workshop Ticket State
+    function renderRegisteredState(record, isNew = false) {
+      if (!record) return;
+
+      // 1. Populate Ticket Header and ID
+      const ticketIdEl = document.getElementById('ticketId');
+      if (ticketIdEl && record.ticketId) ticketIdEl.textContent = record.ticketId;
+
+      // 2. Populate Attendee Details
+      const attendeeEl = document.getElementById('confirmedAttendeeName');
+      if (attendeeEl) {
+        const cleanName = (record.name || '').replace(' [DEMO]', '').trim();
+        attendeeEl.textContent = cleanName || 'Final Year Student';
+      }
+
+      const collegeEl = document.getElementById('confirmedCollegeName');
+      if (collegeEl) {
+        collegeEl.textContent = record.college || 'Engineering Institute';
+      }
+
+      const branchYearEl = document.getElementById('confirmedBranchYear');
+      if (branchYearEl) {
+        const bText = record.branch || 'CSE';
+        const yText = record.year === '2026' ? 'Final Year (2026)' : (record.year || '2026');
+        branchYearEl.textContent = `${bText} • ${yText}`;
+      }
+
+      const phoneEl = document.getElementById('confirmedPhoneDisplay');
+      if (phoneEl) {
+        phoneEl.textContent = record.phone ? `+91 ${record.phone}` : '+91 98765 43210';
+      }
+
+      // 3. Populate Referral Link
+      const refLinkEl = document.getElementById('refLinkText');
+      if (refLinkEl && record.ticketId) {
+        refLinkEl.textContent = `nxtwave.io/ai60?ref=${record.ticketId}`;
+      }
+
+      // 4. Attribution Banner
+      const referrerPill = document.getElementById('referrerAttributionPill');
+      if (referrerPill) {
+        if (record.refCode) {
+          referrerPill.textContent = `Referred via ${record.refCode} • Starter Pack perks activated`;
+          referrerPill.style.display = 'inline-block';
+        } else {
+          referrerPill.style.display = 'none';
+        }
+      }
+
+      // 5. Update Project Architect CTA
+      const genBtn = document.getElementById('generateBtn');
+      if (genBtn) {
+        genBtn.innerHTML = '<span>Explore My AI Project & Resume Spec</span> ➔';
+      }
+
+      // Sync Branch in Architect if matching
+      const branchSelect = document.getElementById('branchSelect');
+      if (branchSelect && record.branch) {
+        const bLower = record.branch.toLowerCase();
+        if (bLower.includes('cs') || bLower.includes('it')) branchSelect.value = 'cs';
+        else if (bLower.includes('ec') || bLower.includes('ee')) branchSelect.value = 'ece';
+        else if (bLower.includes('mech')) branchSelect.value = 'mech';
+        else if (bLower.includes('civil')) branchSelect.value = 'civil';
+        if (typeof updateProjectPreview === 'function') {
+          updateProjectPreview();
+        }
+      }
+
+      // 6. View Visibility Switching
+      const unreg = document.getElementById('unregisteredState');
+      const reg = document.getElementById('registeredState');
+      if (unreg) unreg.style.display = 'none';
+      if (reg) {
+        reg.style.display = 'block';
+        if (isNew) {
+          reg.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    }
+
+    // Check Session Registration on Page Load
+    function checkSessionRegistration() {
+      try {
+        const saved = sessionStorage.getItem('nxw_registered_user');
+        if (saved) {
+          const record = JSON.parse(saved);
+          if (record && record.ticketId) {
+            if (record.phone) registeredPhones.add(record.phone);
+            renderRegisteredState(record, false);
+          }
+        }
+      } catch (err) {
+        console.warn('Session registration load failed:', err);
+      }
+    }
+
     function processRegistration(e) {
       e.preventDefault();
       
@@ -6439,38 +7249,55 @@
       const branchEl = document.getElementById('studentBranch');
       const yearEl = document.getElementById('studentYear');
       const duplicateNotice = document.getElementById('duplicateRegistrationNotice');
+      const submitBtn = document.getElementById('reserveSubmitBtn');
       
       let valid = true;
+      let firstInvalidEl = null;
 
       // 1. Name validation (Required, min 2 characters)
       const nameVal = nameEl ? nameEl.value.trim() : '';
+      const nameError = document.getElementById('nameError');
       if (!nameVal || nameVal.length < 2) {
-        document.getElementById('nameError').style.display = 'block';
+        if (nameError) nameError.style.display = 'block';
+        if (nameEl) nameEl.classList.add('input-error-border');
         valid = false;
+        if (!firstInvalidEl) firstInvalidEl = nameEl;
       } else {
-        document.getElementById('nameError').style.display = 'none';
+        if (nameError) nameError.style.display = 'none';
+        if (nameEl) nameEl.classList.remove('input-error-border');
       }
 
       // 2. WhatsApp Phone validation (Indian 10-digit mobile starting with 6-9)
       const rawPhone = phoneEl ? phoneEl.value.trim().replace(/\D/g, '') : '';
       const phonePattern = /^[6-9]\d{9}$/;
+      const phoneError = document.getElementById('phoneError');
       if (!phonePattern.test(rawPhone)) {
-        document.getElementById('phoneError').style.display = 'block';
+        if (phoneError) phoneError.style.display = 'block';
+        if (phoneEl) phoneEl.classList.add('input-error-border');
         valid = false;
+        if (!firstInvalidEl) firstInvalidEl = phoneEl;
       } else {
-        document.getElementById('phoneError').style.display = 'none';
+        if (phoneError) phoneError.style.display = 'none';
+        if (phoneEl) phoneEl.classList.remove('input-error-border');
       }
 
       // 3. College validation (Required, min 2 characters)
       const collegeVal = collegeEl ? collegeEl.value.trim() : '';
+      const collegeError = document.getElementById('collegeError');
       if (!collegeVal || collegeVal.length < 2) {
-        document.getElementById('collegeError').style.display = 'block';
+        if (collegeError) collegeError.style.display = 'block';
+        if (collegeEl) collegeEl.classList.add('input-error-border');
         valid = false;
+        if (!firstInvalidEl) firstInvalidEl = collegeEl;
       } else {
-        document.getElementById('collegeError').style.display = 'none';
+        if (collegeError) collegeError.style.display = 'none';
+        if (collegeEl) collegeEl.classList.remove('input-error-border');
       }
 
-      if (!valid) return;
+      if (!valid) {
+        if (firstInvalidEl) firstInvalidEl.focus();
+        return;
+      }
 
       // 4. Duplicate Check (Prevent duplicate submissions by phone)
       if (registeredPhones.has(rawPhone)) {
@@ -6478,115 +7305,141 @@
           duplicateNotice.textContent = 'ℹ️ You already have a reserved seat with this WhatsApp number! Displaying your confirmed ticket below:';
           duplicateNotice.style.display = 'block';
         }
-        document.getElementById('unregisteredState').style.display = 'none';
-        document.getElementById('registeredState').style.display = 'block';
-        document.getElementById('registeredState').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        let existingRecord = dynamicRegistrations.find(r => r.phone === rawPhone);
+        if (!existingRecord) {
+          try {
+            const saved = JSON.parse(sessionStorage.getItem('nxw_registered_user') || '{}');
+            if (saved && saved.phone === rawPhone) existingRecord = saved;
+          } catch (err) {}
+        }
+        if (!existingRecord) {
+          const firstName = nameVal.split(' ')[0].replace(/[^A-Za-z]/g, '').toUpperCase() || "HERO";
+          existingRecord = {
+            ticketId: `NXW-${firstName}-8491`,
+            name: nameVal + ' [DEMO]',
+            college: collegeVal,
+            branch: branchEl ? branchEl.value : 'CSE',
+            year: yearEl ? yearEl.value : '2026',
+            phone: rawPhone,
+            channel: 'Direct RSVP',
+            timestamp: 'Active'
+          };
+        }
+        renderRegisteredState(existingRecord, true);
         return;
       }
 
-      // Mark phone as registered
-      registeredPhones.add(rawPhone);
+      // 5. Button Loading Feedback (750ms realistic verification)
+      if (submitBtn) {
+        submitBtn.classList.add('loading');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span><span>Securing Your Seat...</span>';
+      }
 
-      // 5. Automatic Growth Attribution Capture
-      const attribution = getGrowthAttribution();
-      const branchVal = (branchEl && branchEl.value) ? branchEl.value : 'CSE';
-      const yearVal = (yearEl && yearEl.value) ? yearEl.value : '2026';
-
-      // 6. Generate Unique Ticket ID
-      const firstName = nameVal.split(' ')[0].replace(/[^A-Za-z]/g, '').toUpperCase() || "HERO";
-      const randomTicket = Math.floor(1000 + Math.random() * 9000);
-      const ticketCode = `NXW-${firstName}-${randomTicket}`;
-
-      // 7. Store Registration Record with full growth metadata
-      const record = {
-        ticketId: ticketCode,
-        name: nameVal + ' [DEMO]',
-        college: collegeVal,
-        branch: branchVal,
-        year: yearVal,
-        phone: rawPhone,
-        channel: attribution.channelName,
-        channelKey: attribution.channelKey,
-        unitCost: attribution.unitCost,
-        refCode: attribution.refCode,
-        utmSource: attribution.utmSource,
-        utmCampaign: attribution.utmCampaign,
-        utmContent: attribution.utmContent,
-        timestamp: "Just now"
-      };
-      dynamicRegistrations.push(record);
-      generatedSimLeadIds.add(ticketCode);
-
-      // 8. Update Confirmation State
-      document.getElementById('ticketId').textContent = ticketCode;
-      document.getElementById('refLinkText').textContent = `nxtwave.io/ai60?ref=${ticketCode}`;
-
-      const referrerPill = document.getElementById('referrerAttributionPill');
-      if (referrerPill) {
-        if (attribution.refCode) {
-          referrerPill.textContent = `Referred via ${attribution.refCode} • Starter Pack perks activated`;
-          referrerPill.style.display = 'block';
-        } else {
-          referrerPill.style.display = 'none';
+      setTimeout(() => {
+        // Reset button state
+        if (submitBtn) {
+          submitBtn.classList.remove('loading');
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span>Reserve My Free Seat →</span>';
         }
-      }
 
-      // Smooth State Transition
-      document.getElementById('unregisteredState').style.display = 'none';
-      document.getElementById('registeredState').style.display = 'block';
+        // Mark phone as registered
+        registeredPhones.add(rawPhone);
 
-      // 9. Increment Campaign Counters
-      currentRegCount++;
-      const seatCounter = document.getElementById('seatCounterDisplay');
-      if (seatCounter) seatCounter.textContent = currentRegCount;
-      const opsRegs = document.getElementById('opsTotalRegs');
-      if (opsRegs) opsRegs.textContent = currentRegCount;
-      const progressBar = document.getElementById('seatProgressBar');
-      if (progressBar) progressBar.style.width = `${Math.min(100, (currentRegCount / 500) * 100)}%`;
+        // Automatic Growth Attribution Capture
+        const attribution = getGrowthAttribution();
+        const branchVal = (branchEl && branchEl.value) ? branchEl.value : 'CSE';
+        const yearVal = (yearEl && yearEl.value) ? yearEl.value : '2026';
 
-      // 10. Prepend to Lead Stream Feed
-      const stream = document.getElementById('leadStream');
-      if (stream) {
-        const newLead = document.createElement('div');
-        newLead.className = 'stream-entry-pill lead-entry-slidein';
-        newLead.setAttribute('data-lead-id', ticketCode);
-        newLead.style.borderLeftColor = attribution.channelKey === 'referral' ? 'var(--accent-emerald)' : (attribution.channelKey === 'campus' ? 'var(--accent-indigo)' : 'var(--accent-cyan)');
-        newLead.innerHTML = `<strong>${nameVal} [DEMO]</strong> (${collegeVal} • ${branchVal}) <br><span style="color: var(--text-tertiary);">Source: ${attribution.channelName} • Just now</span>`;
-        stream.insertBefore(newLead, stream.firstChild);
+        // Generate Unique Ticket ID
+        const firstName = nameVal.split(' ')[0].replace(/[^A-Za-z]/g, '').toUpperCase() || "HERO";
+        const randomTicket = Math.floor(1000 + Math.random() * 9000);
+        const ticketCode = `NXW-${firstName}-${randomTicket}`;
 
-        while (stream.children.length > 10) {
-          stream.removeChild(stream.lastChild);
+        // Store Registration Record
+        const record = {
+          ticketId: ticketCode,
+          name: nameVal + ' [DEMO]',
+          college: collegeVal,
+          branch: branchVal,
+          year: yearVal,
+          phone: rawPhone,
+          channel: attribution.channelName,
+          channelKey: attribution.channelKey,
+          unitCost: attribution.unitCost,
+          refCode: attribution.refCode,
+          utmSource: attribution.utmSource,
+          utmCampaign: attribution.utmCampaign,
+          utmContent: attribution.utmContent,
+          timestamp: "Just now"
+        };
+        dynamicRegistrations.push(record);
+        generatedSimLeadIds.add(ticketCode);
+
+        // Save to session storage for refresh persistence
+        try {
+          sessionStorage.setItem('nxw_registered_user', JSON.stringify(record));
+        } catch (err) {
+          console.warn('sessionStorage write error:', err);
         }
-      }
 
-      // 11. Dynamically Add to Registration Intelligence Table (#regTable)
-      const regTableBody = document.querySelector('#regTable tbody');
-      if (regTableBody) {
-        const newRow = document.createElement('tr');
-        newRow.setAttribute('data-channel', attribution.channelKey);
-        const pillBg = attribution.channelKey === 'referral' ? 'rgba(16, 185, 129, 0.12)' : (attribution.channelKey === 'campus' ? 'rgba(99, 102, 241, 0.12)' : 'rgba(56, 189, 248, 0.12)');
-        const pillColor = attribution.channelKey === 'referral' ? 'var(--accent-emerald)' : (attribution.channelKey === 'campus' ? 'var(--accent-indigo)' : 'var(--accent-cyan)');
-        newRow.innerHTML = `
-          <td><code>${ticketCode}</code></td>
-          <td><strong>${nameVal} [DEMO]</strong></td>
-          <td>${collegeVal}</td>
-          <td>${branchVal}</td>
-          <td><span class="status-pill" style="background: ${pillBg}; color: ${pillColor}; border-color: ${pillColor};">${attribution.channelName}</span></td>
-          <td>${attribution.unitCost}</td>
-          <td style="color: var(--text-tertiary); font-size: 0.75rem;">Just now</td>
-        `;
-        regTableBody.insertBefore(newRow, regTableBody.firstChild);
+        // Render Confirmed Ticket State
+        renderRegisteredState(record, true);
 
-        const visibleRegCount = document.getElementById('visibleRegCount');
-        if (visibleRegCount) {
-          visibleRegCount.textContent = regTableBody.querySelectorAll('tr').length;
+        // Increment Campaign Counters
+        currentRegCount++;
+        const seatCounter = document.getElementById('seatCounterDisplay');
+        if (seatCounter) seatCounter.textContent = currentRegCount;
+        const opsRegs = document.getElementById('opsTotalRegs');
+        if (opsRegs) opsRegs.textContent = currentRegCount;
+        const progressBar = document.getElementById('seatProgressBar');
+        if (progressBar) progressBar.style.width = `${Math.min(100, (currentRegCount / 500) * 100)}%`;
+
+        // Prepend to Lead Stream Feed
+        const stream = document.getElementById('leadStream');
+        if (stream) {
+          const newLead = document.createElement('div');
+          newLead.className = 'stream-entry-pill lead-entry-slidein';
+          newLead.setAttribute('data-lead-id', ticketCode);
+          newLead.style.borderLeftColor = attribution.channelKey === 'referral' ? 'var(--accent-emerald)' : (attribution.channelKey === 'campus' ? 'var(--accent-indigo)' : 'var(--accent-cyan)');
+          newLead.innerHTML = `<strong>${nameVal} [DEMO]</strong> (${collegeVal} • ${branchVal}) <br><span style="color: var(--text-tertiary);">Source: ${attribution.channelName} • Just now</span>`;
+          stream.insertBefore(newLead, stream.firstChild);
+
+          while (stream.children.length > 10) {
+            stream.removeChild(stream.lastChild);
+          }
         }
-      }
 
-      // 12. Pulse 3D Registration Node
-      if (typeof focusAmbientNode === 'function') {
-        focusAmbientNode(1);
-      }
+        // Dynamically Add to Registration Intelligence Table (#regTable)
+        const regTableBody = document.querySelector('#regTable tbody');
+        if (regTableBody) {
+          const newRow = document.createElement('tr');
+          newRow.setAttribute('data-channel', attribution.channelKey);
+          const pillBg = attribution.channelKey === 'referral' ? 'rgba(16, 185, 129, 0.12)' : (attribution.channelKey === 'campus' ? 'rgba(99, 102, 241, 0.12)' : 'rgba(56, 189, 248, 0.12)');
+          const pillColor = attribution.channelKey === 'referral' ? 'var(--accent-emerald)' : (attribution.channelKey === 'campus' ? 'var(--accent-indigo)' : 'var(--accent-cyan)');
+          newRow.innerHTML = `
+            <td><code>${ticketCode}</code></td>
+            <td><strong>${nameVal} [DEMO]</strong></td>
+            <td>${collegeVal}</td>
+            <td>${branchVal}</td>
+            <td><span class="status-pill" style="background: ${pillBg}; color: ${pillColor}; border-color: ${pillColor};">${attribution.channelName}</span></td>
+            <td>${attribution.unitCost}</td>
+            <td style="color: var(--text-tertiary); font-size: 0.75rem;">Just now</td>
+          `;
+          regTableBody.insertBefore(newRow, regTableBody.firstChild);
+
+          const visibleRegCount = document.getElementById('visibleRegCount');
+          if (visibleRegCount) {
+            visibleRegCount.textContent = regTableBody.querySelectorAll('tr').length;
+          }
+        }
+
+        // Pulse 3D Registration Node
+        if (typeof focusAmbientNode === 'function') {
+          focusAmbientNode(1);
+        }
+      }, 750);
     }
 
     function copyReferralLink() {
@@ -6723,11 +7576,40 @@
         t2Badge.textContent = '🔒 Locked';
       }
 
-      // Reset form states
+      // Reset form states & session storage
+      try {
+        sessionStorage.removeItem('nxw_registered_user');
+      } catch (e) {}
+
       const rsvpForm = document.getElementById('rsvpForm');
       if (rsvpForm) rsvpForm.reset();
       const dup = document.getElementById('duplicateRegistrationNotice');
       if (dup) dup.style.display = 'none';
+
+      // Clear input error borders and hints
+      ['studentName', 'studentPhone', 'collegeName'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.remove('input-error-border');
+      });
+      ['nameError', 'phoneError', 'collegeError'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+      });
+
+      // Reset submit button state
+      const submitBtn = document.getElementById('reserveSubmitBtn');
+      if (submitBtn) {
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>Reserve My Free Seat →</span>';
+      }
+
+      // Reset Project Architect CTA
+      const genBtn = document.getElementById('generateBtn');
+      if (genBtn) {
+        genBtn.innerHTML = '<span>Preview My 60-Minute AI Project & Resume Bullet</span> ➔';
+      }
+
       const unreg = document.getElementById('unregisteredState');
       const reg = document.getElementById('registeredState');
       if (unreg) unreg.style.display = 'block';
@@ -7104,6 +7986,7 @@
       initGrowthAttribution();
       updateProjectPreview();
       updateCampaignSimulation();
+      checkSessionRegistration();
     });
   </script>
 </body>
