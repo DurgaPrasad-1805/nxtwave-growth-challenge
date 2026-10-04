@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Theme Initialization: Prevents Flash of Incorrect Theme (FOUC) -->
+  <script>
+    (function() {
+      try {
+        const storedTheme = localStorage.getItem('nxtwave-theme') || 'system';
+        const effectiveTheme = storedTheme === 'system'
+          ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+          : storedTheme;
+        document.documentElement.setAttribute('data-theme', effectiveTheme);
+        document.documentElement.setAttribute('data-theme-setting', storedTheme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.documentElement.setAttribute('data-theme-setting', 'system');
+      }
+    })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NxtWave Growth Engine — Interactive 3D Growth Simulation & Product Prototype</title>
@@ -50,17 +66,23 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
   <style>
+
     /* ==========================================================================
-       NEXT-GEN SYSTEM DESIGN TOKENS
+       THEME SYSTEM TOKENS (LIGHT, DARK, SYSTEM)
        ========================================================================== */
-    :root {
+    :root, [data-theme="dark"] {
       --bg-dark: #060913;
       --bg-surface: #0a0f1e;
-      --bg-glass: rgba(13, 20, 36, 0.7);
-      --bg-glass-elevated: rgba(18, 28, 50, 0.8);
+      --bg-surface-elevated: #0f172a;
+      --bg-glass: rgba(13, 20, 36, 0.72);
+      --bg-glass-elevated: rgba(18, 28, 50, 0.82);
+      --bg-dock: rgba(13, 20, 36, 0.85);
+      --bg-header: rgba(7, 11, 22, 0.8);
+      --bg-footer: rgba(6, 9, 17, 0.95);
+      --bg-banner: rgba(10, 15, 29, 0.88);
       
-      --border-subtle: rgba(255, 255, 255, 0.07);
-      --border-glass: rgba(56, 189, 248, 0.16);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-glass: rgba(56, 189, 248, 0.18);
       --border-focus: #38bdf8;
       
       --accent-cyan: #38bdf8;
@@ -68,13 +90,18 @@
       --accent-emerald: #10b981;
       --accent-amber: #f59e0b;
       --accent-rose: #f43f5e;
+      --accent-purple: #c084fc;
       
       --text-primary: #f8fafc;
+      --text-heading: #ffffff;
       --text-secondary: #94a3b8;
       --text-tertiary: #64748b;
       
       --gradient-brand: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
       --gradient-metal: linear-gradient(145deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
+      --gradient-hero-vignette: radial-gradient(ellipse at center, rgba(6, 9, 19, 0.88) 0%, rgba(6, 9, 19, 0.6) 60%, transparent 100%);
+      --gradient-atmosphere: radial-gradient(ellipse at 50% 15%, rgba(6, 9, 19, 0.3) 0%, rgba(6, 9, 19, 0.85) 65%, #060913 100%), linear-gradient(180deg, rgba(6, 9, 19, 0.2) 0%, rgba(6, 9, 19, 0.95) 100%);
+      --gradient-conversion-strip: linear-gradient(135deg, rgba(14, 22, 42, 0.95) 0%, rgba(20, 32, 60, 0.85) 100%);
       
       --radius-sm: 8px;
       --radius-md: 14px;
@@ -88,9 +115,476 @@
       --font-mono: 'JetBrains Mono', monospace;
       
       --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+      --webgl-opacity: 0.65;
     }
 
-    /* Accessibility: Reduced Motion */
+    /* Light Mode Tokens: Clean, Lavender / Soft White / Slate Aesthetic */
+    [data-theme="light"] {
+      --bg-dark: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-surface-elevated: #f1f5f9;
+      --bg-glass: rgba(255, 255, 255, 0.85);
+      --bg-glass-elevated: rgba(255, 255, 255, 0.95);
+      --bg-dock: rgba(241, 245, 249, 0.95);
+      --bg-header: rgba(255, 255, 255, 0.88);
+      --bg-footer: #f1f5f9;
+      --bg-banner: rgba(241, 245, 249, 0.92);
+      
+      --border-subtle: rgba(148, 163, 184, 0.25);
+      --border-glass: rgba(99, 102, 241, 0.2);
+      --border-focus: #6366f1;
+      
+      --accent-cyan: #0284c7;
+      --accent-indigo: #4f46e5;
+      --accent-emerald: #059669;
+      --accent-amber: #d97706;
+      --accent-rose: #e11d48;
+      --accent-purple: #7c3aed;
+      
+      --text-primary: #0f172a;
+      --text-heading: #090d16;
+      --text-secondary: #475569;
+      --text-tertiary: #64748b;
+      
+      --gradient-brand: linear-gradient(135deg, #0284c7 0%, #6366f1 50%, #8b5cf6 100%);
+      --gradient-metal: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(241, 245, 249, 0.7) 100%);
+      --gradient-hero-vignette: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.7) 60%, transparent 100%);
+      --gradient-atmosphere: radial-gradient(ellipse at 50% 15%, rgba(224, 231, 255, 0.55) 0%, rgba(248, 250, 252, 0.85) 65%, #f8fafc 100%), linear-gradient(180deg, rgba(241, 245, 249, 0.4) 0%, rgba(248, 250, 252, 0.98) 100%);
+      --gradient-conversion-strip: linear-gradient(135deg, rgba(245, 243, 255, 0.95) 0%, rgba(238, 242, 255, 0.9) 100%);
+      
+      --shadow-ambient: 0 16px 36px -12px rgba(99, 102, 241, 0.12), 0 4px 12px -2px rgba(15, 23, 42, 0.06);
+      --shadow-fresnel: inset 0 1px 1px 0 rgba(255, 255, 255, 0.9), 0 1px 3px rgba(0, 0, 0, 0.05);
+      --webgl-opacity: 0.52;
+    }
+
+    /* Smooth Transitions for Color Theming */
+    body, header, main, footer, section, div, button, input, select, textarea, table, aside {
+      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.2s ease, box-shadow 0.25s ease;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body, header, main, footer, section, div, button, input, select, textarea, table, aside {
+        transition: none !important;
+      }
+    }
+
+    /* ==========================================================================
+       THEME SWITCHER SEGMENTED CONTROL
+       ========================================================================== */
+    .theme-switch-dock {
+      display: inline-flex;
+      background: var(--bg-dock);
+      border: 1px solid var(--border-glass);
+      padding: 3px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-fresnel);
+      gap: 3px;
+      align-items: center;
+    }
+
+    .theme-toggle-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-sans);
+      transition: all 0.2s var(--ease-cinematic);
+    }
+
+    .theme-toggle-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .theme-toggle-btn:focus-visible {
+      outline: 2px solid var(--border-focus);
+      outline-offset: 2px;
+    }
+
+    .theme-toggle-btn.active {
+      background: rgba(56, 189, 248, 0.18);
+      color: var(--text-primary);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+      font-weight: 700;
+    }
+
+    [data-theme="light"] .theme-toggle-btn.active {
+      background: #ffffff;
+      color: var(--accent-indigo);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      box-shadow: 0 2px 6px rgba(99, 102, 241, 0.15);
+    }
+
+    @media (max-width: 768px) {
+      .theme-toggle-btn .theme-text {
+        display: none;
+      }
+      .theme-toggle-btn {
+        padding: 5px 8px;
+        font-size: 0.85rem;
+      }
+    }
+
+    /* ==========================================================================
+       LIGHT THEME COMPONENT OVERRIDES (WCAG 2.2 AA COMPLIANT)
+       ========================================================================== */
+    [data-theme="light"] h1,
+    [data-theme="light"] h2,
+    [data-theme="light"] h3,
+    [data-theme="light"] h4 {
+      color: var(--text-heading);
+    }
+
+    [data-theme="light"] .brand-text-title {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .brand-cube {
+      color: #ffffff;
+    }
+
+    [data-theme="light"] .global-disclaimer-strip {
+      background: rgba(241, 245, 249, 0.95);
+      border-bottom: 1px solid rgba(99, 102, 241, 0.18);
+      color: var(--text-secondary);
+    }
+
+    [data-theme="light"] .product-header {
+      background: rgba(255, 255, 255, 0.88);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+    }
+
+    [data-theme="light"] .mode-tab-btn {
+      color: var(--text-secondary);
+    }
+
+    [data-theme="light"] .mode-tab-btn.active {
+      background: #ffffff;
+      color: #0f172a;
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.12);
+    }
+
+    [data-theme="light"] .camera-hud-badge {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      color: var(--text-secondary);
+    }
+
+    [data-theme="light"] .hero-live-pill {
+      background: rgba(99, 102, 241, 0.08);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      color: var(--accent-indigo);
+    }
+
+    [data-theme="light"] .capacity-dock {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(203, 213, 225, 0.7);
+      color: var(--text-primary);
+    }
+
+    [data-theme="light"] .stat-progress-track {
+      background: #e2e8f0;
+      border-color: #cbd5e1;
+    }
+
+    [data-theme="light"] .growth-loop-strip {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: rgba(203, 213, 225, 0.75);
+    }
+
+    [data-theme="light"] .loop-node-item {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+      color: #334155;
+    }
+
+    [data-theme="light"] .loop-node-item.active {
+      background: #ffffff;
+      border-color: rgba(99, 102, 241, 0.45);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.12);
+    }
+
+    [data-theme="light"] .loop-node-name {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .surface-card {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(203, 213, 225, 0.75);
+      box-shadow: var(--shadow-ambient);
+    }
+
+    [data-theme="light"] .card-heading-title {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .input-text-field,
+    [data-theme="light"] .select-dropdown {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .input-text-field:focus,
+    [data-theme="light"] .select-dropdown:focus {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    }
+
+    [data-theme="light"] .project-card-3d-box {
+      background: #f8fafc;
+      border-color: rgba(99, 102, 241, 0.25);
+    }
+
+    [data-theme="light"] .card-project-name {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .resume-bullet-shell {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      color: #1e293b;
+    }
+
+    [data-theme="light"] .hologram-ticket-stub {
+      background: linear-gradient(135deg, rgba(238, 242, 255, 0.95) 0%, rgba(245, 243, 255, 0.95) 100%);
+      border-color: rgba(99, 102, 241, 0.35);
+    }
+
+    [data-theme="light"] .ticket-id-display {
+      color: var(--accent-indigo);
+    }
+
+    [data-theme="light"] .link-copy-shelf {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+      color: #334155;
+    }
+
+    [data-theme="light"] .milestone-tier-row {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+      color: #334155;
+    }
+
+    [data-theme="light"] .milestone-tier-row.unlocked {
+      background: rgba(5, 150, 105, 0.08);
+      border-color: rgba(5, 150, 105, 0.4);
+    }
+
+    [data-theme="light"] .product-demo-bench {
+      background: rgba(255, 255, 255, 0.92);
+      border-color: rgba(203, 213, 225, 0.75);
+    }
+
+    [data-theme="light"] .demo-browser-chrome {
+      background: #f1f5f9;
+      border-bottom-color: #e2e8f0;
+    }
+
+    [data-theme="light"] .demo-browser-url {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      color: #334155;
+    }
+
+    [data-theme="light"] .demo-preset-btn {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      color: #475569;
+    }
+
+    [data-theme="light"] .demo-preset-btn.active {
+      background: #ffffff;
+      border-color: var(--accent-indigo);
+      color: var(--accent-indigo);
+      box-shadow: 0 2px 6px rgba(99, 102, 241, 0.15);
+    }
+
+    [data-theme="light"] .demo-input-box {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .demo-output-terminal {
+      background: #0f172a;
+      color: #f8fafc;
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    [data-theme="light"] .demo-cta-footer {
+      background: #f8fafc;
+      border-top-color: #e2e8f0;
+    }
+
+    [data-theme="light"] .walkaway-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: rgba(203, 213, 225, 0.75);
+    }
+
+    [data-theme="light"] .walkaway-title {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .walkaway-icon-shell {
+      background: rgba(99, 102, 241, 0.08);
+      border-color: rgba(99, 102, 241, 0.2);
+    }
+
+    [data-theme="light"] .walkaway-tag {
+      background: #eef2ff;
+      border-color: rgba(99, 102, 241, 0.2);
+      color: var(--accent-indigo);
+    }
+
+    [data-theme="light"] .how-step-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: rgba(203, 213, 225, 0.75);
+    }
+
+    [data-theme="light"] .step-title {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .step-num-pill {
+      background: rgba(99, 102, 241, 0.1);
+      border-color: rgba(99, 102, 241, 0.25);
+      color: var(--accent-indigo);
+    }
+
+    [data-theme="light"] .contrast-traditional {
+      background: #fff5f5;
+      border-color: rgba(225, 29, 72, 0.25);
+      color: #1e293b;
+    }
+
+    [data-theme="light"] .contrast-nxtwave {
+      background: #f0fdf4;
+      border-color: rgba(5, 150, 105, 0.35);
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .recruiter-note-strip {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+      color: #334155;
+    }
+
+    [data-theme="light"] .prereq-col {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: rgba(203, 213, 225, 0.75);
+    }
+
+    [data-theme="light"] .exp-spec-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: rgba(203, 213, 225, 0.75);
+    }
+
+    [data-theme="light"] .exp-name-title {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .exp-metrics-strip {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      color: var(--accent-indigo);
+    }
+
+    [data-theme="light"] .exp-row-lead {
+      color: #334155;
+    }
+
+    [data-theme="light"] .faq-item-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: #e2e8f0;
+    }
+
+    [data-theme="light"] .faq-trigger-btn {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .faq-item-card.open {
+      border-color: var(--accent-indigo);
+    }
+
+    [data-theme="light"] .faq-drawer-content {
+      color: #475569;
+    }
+
+    [data-theme="light"] .final-conversion-strip {
+      background: var(--gradient-conversion-strip);
+      border-color: rgba(99, 102, 241, 0.3);
+      box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.15);
+    }
+
+    [data-theme="light"] .final-conversion-strip h2 {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .ops-notice-callout {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid var(--accent-amber);
+      color: #1e293b;
+    }
+
+    [data-theme="light"] .hud-metric-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: #e2e8f0;
+    }
+
+    [data-theme="light"] .hud-label-text {
+      color: #64748b;
+    }
+
+    [data-theme="light"] .hud-subtext-note {
+      color: #64748b;
+    }
+
+    [data-theme="light"] .hud-data-table th,
+    [data-theme="light"] .hud-data-table td {
+      border-bottom-color: #e2e8f0;
+      color: #1e293b;
+    }
+
+    [data-theme="light"] .stream-entry-pill {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 3px solid var(--accent-cyan);
+      color: #1e293b;
+    }
+
+    [data-theme="light"] .ops-button-shelf {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+    }
+
+    [data-theme="light"] .sim-btn-pill {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .sim-btn-pill:hover {
+      background: #f1f5f9;
+    }
+
+    [data-theme="light"] footer {
+      background: #f1f5f9;
+      border-top-color: #e2e8f0;
+      color: #64748b;
+    }
+
+        /* Accessibility: Reduced Motion */
     @media (prefers-reduced-motion: reduce) {
       *, ::before, ::after {
         animation-duration: 0.001ms !important;
@@ -1606,9 +2100,30 @@
           </button>
         </nav>
 
-        <div class="camera-hud-badge" aria-hidden="true">
-          <span class="camera-dot"></span>
-          <span>Ambient 3D Ecosystem: Calibrated</span>
+        <!-- Right Cluster: 3-Mode Theme Switcher & 3D HUD Badge -->
+        <div class="nav-right-cluster" style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+          
+          <!-- Premium 3-Mode Theme Switcher -->
+          <div class="theme-switch-dock" role="radiogroup" aria-label="Color Theme">
+            <button type="button" class="theme-toggle-btn" id="themeBtnLight" role="radio" aria-checked="false" aria-label="Light Mode" title="Light Mode" onclick="setThemeMode('light')">
+              <span class="theme-icon" aria-hidden="true">☀️</span>
+              <span class="theme-text">Light</span>
+            </button>
+            <button type="button" class="theme-toggle-btn" id="themeBtnDark" role="radio" aria-checked="false" aria-label="Dark Mode" title="Dark Mode" onclick="setThemeMode('dark')">
+              <span class="theme-icon" aria-hidden="true">🌙</span>
+              <span class="theme-text">Dark</span>
+            </button>
+            <button type="button" class="theme-toggle-btn active" id="themeBtnSystem" role="radio" aria-checked="true" aria-label="System Default" title="System Default" onclick="setThemeMode('system')">
+              <span class="theme-icon" aria-hidden="true">💻</span>
+              <span class="theme-text">System</span>
+            </button>
+          </div>
+
+          <div class="camera-hud-badge" aria-hidden="true">
+            <span class="camera-dot"></span>
+            <span>Ambient 3D Ecosystem</span>
+          </div>
+
         </div>
 
       </div>
@@ -2593,6 +3108,7 @@
        1. AMBIENT 3D SCENE: ARCHITECTURAL TRANSLUCENT GLASS & RESTFUL HARMONY
        ========================================================================== */
     let scene, camera, renderer;
+    let ambientLight, keyLight, rimLight;
     let ambientNodes = [];
     let splineCurves = [];
     let splineLineMesh;
@@ -2637,16 +3153,16 @@
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
 
         // Restrained Studio Lighting
-        const ambientLight = new THREE.AmbientLight(0x0a1020, 1.4);
+        ambientLight = new THREE.AmbientLight(0x0a1020, 1.4);
         scene.add(ambientLight);
 
         // Soft cool key light from upper-left
-        const keyLight = new THREE.DirectionalLight(0xe2e8f0, 1.2);
+        keyLight = new THREE.DirectionalLight(0xe2e8f0, 1.2);
         keyLight.position.set(-25, 35, 30);
         scene.add(keyLight);
 
         // Soft slate rim light from lower-right
-        const rimLight = new THREE.DirectionalLight(0x38bdf8, 0.9);
+        rimLight = new THREE.DirectionalLight(0x38bdf8, 0.9);
         rimLight.position.set(30, -25, -15);
         scene.add(rimLight);
 
@@ -2655,6 +3171,10 @@
 
         // Build Subtle Spline Data Pathways connecting the 5 nodes
         buildSubtleDataPathways();
+
+        // Synchronize 3D scene with current effective theme
+        const initIsLight = document.documentElement.getAttribute('data-theme') === 'light';
+        update3DTheme(initIsLight);
 
         // Window & Interaction Listeners
         window.addEventListener('resize', onResize, false);
@@ -3379,8 +3899,151 @@
       }
     }
 
-    // Initialize Ambient WebGL and Project Preview on Load
+
+    /* ==========================================================================
+       6. THREE-MODE THEME ENGINE (LIGHT, DARK, SYSTEM)
+       ========================================================================== */
+    let currentThemeSetting = 'system';
+
+    function getEffectiveTheme(setting) {
+      if (setting === 'system') {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      return setting;
+    }
+
+    function update3DTheme(isLight) {
+      if (!scene) return;
+
+      if (isLight) {
+        if (scene.fog) {
+          scene.fog.color.setHex(0xf8fafc);
+          scene.fog.density = 0.012;
+        }
+        if (ambientLight) {
+          ambientLight.color.setHex(0xe2e8f0);
+          ambientLight.intensity = 1.8;
+        }
+        if (keyLight) {
+          keyLight.color.setHex(0x6366f1);
+          keyLight.intensity = 1.4;
+        }
+        if (rimLight) {
+          rimLight.color.setHex(0x0284c7);
+          rimLight.intensity = 1.1;
+        }
+        if (splineLineMesh && splineLineMesh.material) {
+          splineLineMesh.material.color.setHex(0x6366f1);
+          splineLineMesh.material.opacity = 0.22;
+        }
+        dataPulses.forEach(pulse => {
+          if (pulse.mesh && pulse.mesh.material) {
+            pulse.mesh.material.color.setHex(0x4f46e5);
+            pulse.mesh.material.opacity = 0.7;
+          }
+        });
+        ambientNodes.forEach((node, idx) => {
+          if (node.outerMesh && node.outerMesh.material) {
+            node.outerMesh.material.color.setHex(0x818cf8);
+            node.outerMesh.material.roughness = 0.22;
+            node.outerMesh.material.transmission = 0.88;
+            node.outerMesh.material.opacity = 0.55;
+          }
+          if (node.innerMesh && node.innerMesh.material) {
+            const c = idx === 2 ? 0x059669 : (idx === 3 ? 0xd97706 : 0x4f46e5);
+            node.innerMesh.material.color.setHex(c);
+            node.innerMesh.material.emissive.setHex(c);
+            node.innerMesh.material.emissiveIntensity = 0.35;
+          }
+        });
+      } else {
+        // Dark mode
+        if (scene.fog) {
+          scene.fog.color.setHex(0x060913);
+          scene.fog.density = 0.016;
+        }
+        if (ambientLight) {
+          ambientLight.color.setHex(0x0a1020);
+          ambientLight.intensity = 1.4;
+        }
+        if (keyLight) {
+          keyLight.color.setHex(0xe2e8f0);
+          keyLight.intensity = 1.2;
+        }
+        if (rimLight) {
+          rimLight.color.setHex(0x38bdf8);
+          rimLight.intensity = 0.9;
+        }
+        if (splineLineMesh && splineLineMesh.material) {
+          splineLineMesh.material.color.setHex(0x38bdf8);
+          splineLineMesh.material.opacity = 0.12;
+        }
+        dataPulses.forEach(pulse => {
+          if (pulse.mesh && pulse.mesh.material) {
+            pulse.mesh.material.color.setHex(0x38bdf8);
+            pulse.mesh.material.opacity = 0.45;
+          }
+        });
+        ambientNodes.forEach((node, idx) => {
+          if (node.outerMesh && node.outerMesh.material) {
+            node.outerMesh.material.color.setHex(0x1b263b);
+            node.outerMesh.material.roughness = 0.32;
+            node.outerMesh.material.transmission = 0.92;
+            node.outerMesh.material.opacity = 0.78;
+          }
+          if (node.innerMesh && node.innerMesh.material) {
+            const c = idx === 2 ? 0x10b981 : (idx === 3 ? 0xf59e0b : 0x38bdf8);
+            node.innerMesh.material.color.setHex(c);
+            node.innerMesh.material.emissive.setHex(c);
+            node.innerMesh.material.emissiveIntensity = 0.2;
+          }
+        });
+      }
+    }
+
+    function applyTheme(setting) {
+      currentThemeSetting = setting;
+      const effectiveTheme = getEffectiveTheme(setting);
+      
+      document.documentElement.setAttribute('data-theme', effectiveTheme);
+      document.documentElement.setAttribute('data-theme-setting', setting);
+      
+      ['light', 'dark', 'system'].forEach(mode => {
+        const btn = document.getElementById(`themeBtn${mode.charAt(0).toUpperCase() + mode.slice(1)}`);
+        if (btn) {
+          if (mode === setting) {
+            btn.classList.add('active');
+            btn.setAttribute('aria-checked', 'true');
+          } else {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-checked', 'false');
+          }
+        }
+      });
+
+      update3DTheme(effectiveTheme === 'light');
+    }
+
+    function setThemeMode(mode) {
+      try {
+        localStorage.setItem('nxtwave-theme', mode);
+      } catch (e) {}
+      applyTheme(mode);
+    }
+
+    // Dynamic OS preference listener
+    const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)');
+    mediaQueryDark.addEventListener('change', () => {
+      const saved = localStorage.getItem('nxtwave-theme') || 'system';
+      if (saved === 'system') {
+        applyTheme('system');
+      }
+    });
+
+    // Initialize Ambient WebGL, Theme & Project Preview on Load
     window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('nxtwave-theme') || 'system';
+      applyTheme(savedTheme);
       initAmbient3D();
       updateProjectPreview();
     });
