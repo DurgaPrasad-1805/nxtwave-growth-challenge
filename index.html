@@ -54,13 +54,13 @@
        NEXT-GEN SYSTEM DESIGN TOKENS
        ========================================================================== */
     :root {
-      --bg-dark: #060911;
-      --bg-surface: #0a0f1d;
-      --bg-glass: rgba(14, 22, 40, 0.65);
-      --bg-glass-elevated: rgba(20, 32, 58, 0.75);
+      --bg-dark: #060913;
+      --bg-surface: #0a0f1e;
+      --bg-glass: rgba(13, 20, 36, 0.7);
+      --bg-glass-elevated: rgba(18, 28, 50, 0.8);
       
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-glass: rgba(56, 189, 248, 0.18);
+      --border-subtle: rgba(255, 255, 255, 0.07);
+      --border-glass: rgba(56, 189, 248, 0.16);
       --border-focus: #38bdf8;
       
       --accent-cyan: #38bdf8;
@@ -74,7 +74,7 @@
       --text-tertiary: #64748b;
       
       --gradient-brand: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
-      --gradient-metal: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+      --gradient-metal: linear-gradient(145deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
       
       --radius-sm: 8px;
       --radius-md: 14px;
@@ -82,7 +82,7 @@
       --radius-full: 9999px;
       
       --shadow-ambient: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
-      --shadow-fresnel: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
+      --shadow-fresnel: inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
       
       --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
@@ -98,10 +98,7 @@
         transition-duration: 0.001ms !important;
       }
       #webglCanvas {
-        display: none !important;
-      }
-      .fallback-3d-bg {
-        display: block !important;
+        opacity: 0.45 !important;
       }
     }
 
@@ -124,7 +121,7 @@
       position: relative;
     }
 
-    /* 3D WebGL Canvas Layer */
+    /* 3D WebGL Canvas Layer (Sophisticated Ambient Backdrop) */
     #webglCanvas {
       position: fixed;
       top: 0;
@@ -133,21 +130,21 @@
       height: 100vh;
       z-index: 1;
       pointer-events: none;
-      opacity: 0.85;
-      transition: opacity 0.5s ease;
+      opacity: 0.65;
+      transition: opacity 0.6s ease;
     }
 
-    /* Fallback Atmospheric Gradient */
-    .fallback-3d-bg {
+    /* Atmospheric Vignette & Depth Layer */
+    .ambient-atmosphere-layer {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      z-index: 0;
+      z-index: 2;
       pointer-events: none;
-      background: radial-gradient(circle at 50% 20%, rgba(30, 58, 138, 0.25) 0%, rgba(6, 9, 17, 0.95) 75%),
-                  radial-gradient(circle at 85% 60%, rgba(56, 189, 248, 0.08) 0%, transparent 50%);
+      background: radial-gradient(ellipse at 50% 15%, rgba(6, 9, 19, 0.3) 0%, rgba(6, 9, 19, 0.85) 65%, #060913 100%),
+                  linear-gradient(180deg, rgba(6, 9, 19, 0.2) 0%, rgba(6, 9, 19, 0.95) 100%);
     }
 
     /* Content Foreground Layer */
@@ -193,10 +190,10 @@
        TOP GLOBAL BANNER: SIMULATION & METHODOLOGY NOTICE
        ========================================================================== */
     .global-disclaimer-strip {
-      background: rgba(10, 15, 29, 0.9);
+      background: rgba(10, 15, 29, 0.85);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(56, 189, 248, 0.2);
-      padding: 9px 16px;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+      padding: 8px 16px;
       font-size: 0.8rem;
       color: #cbd5e1;
       display: flex;
@@ -211,7 +208,7 @@
       background: rgba(245, 158, 11, 0.12);
       color: var(--accent-amber);
       border: 1px solid rgba(245, 158, 11, 0.35);
-      padding: 3px 10px;
+      padding: 2px 10px;
       border-radius: var(--radius-full);
       font-weight: 700;
       font-size: 0.72rem;
@@ -223,7 +220,7 @@
        PRODUCT NAVIGATION & VIEW SWITCHER
        ========================================================================== */
     .product-header {
-      background: rgba(8, 13, 24, 0.7);
+      background: rgba(7, 11, 22, 0.75);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-subtle);
@@ -260,7 +257,7 @@
       font-weight: 800;
       color: #060911;
       font-size: 1.15rem;
-      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
     }
 
     .brand-text-title {
@@ -281,7 +278,7 @@
 
     .view-control-dock {
       display: inline-flex;
-      background: rgba(14, 22, 38, 0.85);
+      background: rgba(13, 20, 36, 0.85);
       border: 1px solid var(--border-glass);
       padding: 4px;
       border-radius: var(--radius-md);
@@ -315,12 +312,11 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     }
 
-    /* 3D Camera Focus Controls HUD */
     .camera-hud-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(15, 23, 42, 0.6);
+      background: rgba(14, 22, 38, 0.6);
       border: 1px solid var(--border-subtle);
       padding: 4px 10px;
       border-radius: var(--radius-full);
@@ -345,12 +341,27 @@
       position: relative;
     }
 
+    /* Dedicated Optical Backdrop for Text Legibility */
+    .hero-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 960px;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(6, 9, 19, 0.88) 0%, rgba(6, 9, 19, 0.6) 60%, transparent 100%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
     .hero-live-pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       background: rgba(56, 189, 248, 0.08);
-      border: 1px solid rgba(56, 189, 248, 0.3);
+      border: 1px solid rgba(56, 189, 248, 0.25);
       padding: 6px 16px;
       border-radius: var(--radius-full);
       font-size: 0.84rem;
@@ -365,13 +376,13 @@
       height: 8px;
       background: var(--accent-emerald);
       border-radius: 50%;
-      box-shadow: 0 0 10px var(--accent-emerald);
-      animation: pulse-ring 2s infinite;
+      box-shadow: 0 0 8px var(--accent-emerald);
+      animation: pulse-ring 3s infinite;
     }
 
     @keyframes pulse-ring {
       0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.2); opacity: 0.5; }
+      50% { transform: scale(1.15); opacity: 0.6; }
     }
 
     h1 {
@@ -480,7 +491,7 @@
     }
 
     .loop-node-item {
-      background: rgba(9, 14, 26, 0.7);
+      background: rgba(8, 14, 26, 0.75);
       border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: var(--radius-sm);
       padding: 12px 14px;
@@ -491,9 +502,9 @@
     }
 
     .loop-node-item:hover, .loop-node-item.active {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
       border-color: var(--accent-cyan);
-      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.15);
     }
 
     .loop-node-step {
@@ -539,12 +550,12 @@
       border-radius: var(--radius-lg);
       padding: 28px;
       box-shadow: var(--shadow-ambient), var(--shadow-fresnel);
-      transition: transform 0.3s var(--ease-cinematic), border-color 0.3s;
+      transition: border-color 0.3s;
       position: relative;
     }
 
     .surface-card:hover {
-      border-color: rgba(56, 189, 248, 0.35);
+      border-color: rgba(56, 189, 248, 0.3);
     }
 
     .card-top-bar {
@@ -558,13 +569,13 @@
       width: 44px;
       height: 44px;
       border-radius: var(--radius-md);
-      background: rgba(56, 189, 248, 0.12);
-      border: 1px solid rgba(56, 189, 248, 0.25);
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.22);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.3rem;
-      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.15);
+      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.12);
     }
 
     .card-heading-title {
@@ -594,7 +605,7 @@
 
     .select-dropdown, .input-text-field {
       width: 100%;
-      background: rgba(7, 11, 20, 0.85);
+      background: rgba(6, 10, 18, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: var(--radius-md);
       padding: 12px 16px;
@@ -607,7 +618,7 @@
 
     .select-dropdown:focus, .input-text-field:focus {
       border-color: var(--accent-cyan);
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18);
     }
 
     .field-error-hint {
@@ -637,12 +648,12 @@
     .btn-gradient-glow {
       background: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%);
       color: #ffffff;
-      box-shadow: 0 6px 20px -4px rgba(56, 189, 248, 0.45);
+      box-shadow: 0 6px 20px -4px rgba(56, 189, 248, 0.4);
     }
 
     .btn-gradient-glow:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 25px -4px rgba(56, 189, 248, 0.65);
+      box-shadow: 0 10px 25px -4px rgba(56, 189, 248, 0.55);
     }
 
     .btn-whatsapp-action {
@@ -657,16 +668,14 @@
       transform: translateY(-2px);
     }
 
-    /* Interactive 3D Card Tilt Output */
+    /* Interactive Output */
     .project-card-3d-box {
       margin-top: 20px;
-      background: rgba(7, 12, 22, 0.9);
+      background: rgba(6, 11, 20, 0.9);
       border: 1px solid var(--border-glass);
       border-radius: var(--radius-md);
       padding: 20px;
       display: none;
-      transform-style: preserve-3d;
-      perspective: 1000px;
       animation: fadeInSlide 0.3s var(--ease-cinematic);
     }
 
@@ -734,7 +743,7 @@
       padding: 16px;
       text-align: center;
       margin-bottom: 18px;
-      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.15);
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.12);
     }
 
     .ticket-id-display {
@@ -857,8 +866,8 @@
     }
 
     .exp-spec-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateY(-3px);
+      border-color: rgba(56, 189, 248, 0.35);
     }
 
     .exp-meta-header {
@@ -967,7 +976,7 @@
     }
 
     .ops-notice-callout {
-      background: rgba(14, 22, 40, 0.85);
+      background: rgba(13, 20, 36, 0.85);
       border-left: 4px solid var(--accent-amber);
       padding: 14px 18px;
       border-radius: var(--radius-sm);
@@ -1105,7 +1114,7 @@
     /* Footer */
     footer {
       border-top: 1px solid var(--border-subtle);
-      background: rgba(6, 9, 17, 0.9);
+      background: rgba(6, 9, 17, 0.95);
       padding: 28px 0;
       text-align: center;
       font-size: 0.82rem;
@@ -1121,9 +1130,9 @@
   <!-- Accessible Skip Link -->
   <a href="#mainAppContent" class="skip-link">Skip to main content</a>
 
-  <!-- WebGL 3D Canvas Layer -->
+  <!-- Ambient 3D WebGL Canvas Layer (Sophisticated & Calm) -->
   <canvas id="webglCanvas" aria-hidden="true"></canvas>
-  <div class="fallback-3d-bg" aria-hidden="true"></div>
+  <div class="ambient-atmosphere-layer" aria-hidden="true"></div>
 
   <div class="app-viewport">
     
@@ -1157,7 +1166,7 @@
 
         <div class="camera-hud-badge" aria-hidden="true">
           <span class="camera-dot"></span>
-          <span>3D WebGL Ecosystem: Active</span>
+          <span>Ambient 3D Ecosystem: Calibrated</span>
         </div>
 
       </div>
@@ -1211,27 +1220,27 @@
               <span style="color: var(--text-tertiary); font-size: 0.74rem;">Organic High-Leverage Loop</span>
             </div>
             <div class="loop-node-grid">
-              <div class="loop-node-item active" onclick="focus3DNode(0)">
+              <div class="loop-node-item active" onclick="focusAmbientNode(0)">
                 <div class="loop-node-step">01. ACQUIRE</div>
                 <div class="loop-node-name">CR WhatsApp</div>
                 <div class="loop-node-detail">35 College Guilds</div>
               </div>
-              <div class="loop-node-item" onclick="focus3DNode(1)">
+              <div class="loop-node-item" onclick="focusAmbientNode(1)">
                 <div class="loop-node-step">02. REGISTER</div>
                 <div class="loop-node-name">1-Click RSVP</div>
                 <div class="loop-node-detail">Zero Form Friction</div>
               </div>
-              <div class="loop-node-item" onclick="focus3DNode(2)">
+              <div class="loop-node-item" onclick="focusAmbientNode(2)">
                 <div class="loop-node-step">03. REFER</div>
                 <div class="loop-node-name">WhatsApp Share</div>
                 <div class="loop-node-detail">Peer Invite Links</div>
               </div>
-              <div class="loop-node-item" onclick="focus3DNode(3)">
+              <div class="loop-node-item" onclick="focusAmbientNode(3)">
                 <div class="loop-node-step">04. UNLOCK</div>
                 <div class="loop-node-name">Capstone Vault</div>
                 <div class="loop-node-detail">K=0.32 Multiplier</div>
               </div>
-              <div class="loop-node-item" onclick="focus3DNode(4)">
+              <div class="loop-node-item" onclick="focusAmbientNode(4)">
                 <div class="loop-node-step">05. MEASURE</div>
                 <div class="loop-node-name">Ops Console</div>
                 <div class="loop-node-detail">Live CAC & Velocity</div>
@@ -1279,7 +1288,7 @@
                 </button>
               </form>
 
-              <!-- Dynamic 3D Perspective Card Output -->
+              <!-- Dynamic Project Output -->
               <div class="project-card-3d-box" id="projectPreview" role="region" aria-live="polite">
                 <span class="tag-category-badge" id="previewTag">CUSTOMIZED FOR CSE/IT</span>
                 <h3 class="card-project-name" id="previewTitle">AI Technical Interviewer with Real-time Code & Voice Evaluation</h3>
@@ -1501,7 +1510,7 @@
       </section>
 
       <!-- ==========================================================================
-           VIEW 2: GROWTH OPERATIONS CONSOLE (TELEMETRY & BUDGET)
+           VIEW 2: GROWTH OPERATIONS CONSOLE (3D DATA DASHBOARD)
            ========================================================================== -->
       <section id="opsTelemetryView" class="ops-console-stage" role="tabpanel" aria-labelledby="tabOps">
         <div class="container">
@@ -1667,263 +1676,297 @@
   </div>
 
   <!-- ==========================================================================
-       THREE.JS PHOTOREALISTIC 3D GROWTH ECOSYSTEM & INTERACTIVE CONTROLS
-       ========================================================================== */ -->
+       THREE.JS CALM, PHOTOREALISTIC AMBIENT 3D GROWTH ECOSYSTEM
+       ========================================================================== -->
   <script>
     /* ==========================================================================
-       1. PHOTOREALISTIC THREE.JS 3D SCENE SETUP
+       1. AMBIENT 3D SCENE: ARCHITECTURAL TRANSLUCENT GLASS & RESTFUL HARMONY
        ========================================================================== */
-    let scene, camera, renderer, nodesGroup, connectionsGroup, particlesGroup;
-    let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
-    const canvas = document.getElementById('webglCanvas');
+    let scene, camera, renderer;
+    let ambientNodes = [];
+    let splineCurves = [];
+    let splineLineMesh;
+    let dataPulses = [];
+    let mouseX = 0, mouseY = 0;
+    let currentCamX = 0, currentCamY = 0;
+    let scrollYOffset = 0;
     let isOpsMode = false;
-    let nodeMeshes = [];
+    let isReducedMotion = false;
+    const canvas = document.getElementById('webglCanvas');
 
-    function init3D() {
-      // Check WebGL availability
+    // 5 Carefully Composed Nodes: Deep in Negative Space, Perimeter-Framed
+    // No central clutter! The center reading window is completely open.
+    const nodeArchitectures = [
+      { name: "CR WhatsApp Guilds (Acquire)", basePos: [-25, 11, -18], radius: 4.2, speed: 0.0006, phase: 0.0 },
+      { name: "1-Click RSVP Gateway (Register)", basePos: [-22, -15, -10], radius: 3.5, speed: 0.0005, phase: 1.8 },
+      { name: "Viral Peer Multiplier (Refer)", basePos: [26, 12, -22], radius: 4.6, speed: 0.0007, phase: 3.4 },
+      { name: "2026 Capstone Vault (Unlock)", basePos: [23, -14, -12], radius: 3.8, speed: 0.0005, phase: 5.1 },
+      { name: "Telemetry Matrix (Measure)", basePos: [0, 24, -36], radius: 5.8, speed: 0.0004, phase: 2.2 }
+    ];
+
+    function initAmbient3D() {
       if (!window.WebGLRenderingContext || !canvas) return;
+
+      isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       try {
         scene = new THREE.Scene();
-        scene.fog = new THREE.FogExp2(0x060911, 0.015);
+        // Atmospheric deep falloff fog
+        scene.fog = new THREE.FogExp2(0x060913, 0.016);
 
-        camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.set(0, 0, 48);
+        camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.5, 300);
+        camera.position.set(0, 0, 46);
 
-        renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+        renderer = new THREE.WebGLRenderer({
+          canvas: canvas,
+          alpha: true,
+          antialias: true,
+          powerPreference: "high-performance"
+        });
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
 
-        // Believable Lighting (Key, Fill, Rim)
-        const ambientLight = new THREE.AmbientLight(0x0f172a, 1.2);
+        // Restrained Studio Lighting
+        const ambientLight = new THREE.AmbientLight(0x0a1020, 1.4);
         scene.add(ambientLight);
 
-        const keyLight = new THREE.DirectionalLight(0x38bdf8, 2.2);
-        keyLight.position.set(20, 30, 25);
+        // Soft cool key light from upper-left
+        const keyLight = new THREE.DirectionalLight(0xe2e8f0, 1.2);
+        keyLight.position.set(-25, 35, 30);
         scene.add(keyLight);
 
-        const rimLight = new THREE.DirectionalLight(0x818cf8, 1.8);
-        rimLight.position.set(-25, -20, -10);
+        // Soft slate rim light from lower-right
+        const rimLight = new THREE.DirectionalLight(0x38bdf8, 0.9);
+        rimLight.position.set(30, -25, -15);
         scene.add(rimLight);
 
-        const pointLight = new THREE.PointLight(0x10b981, 1.5, 50);
-        pointLight.position.set(0, 0, 10);
-        scene.add(pointLight);
+        // Build the 5 Physical Glass Nodes
+        buildTranslucentNodes();
 
-        // Core Hub & Orbital Ecosystem Group
-        nodesGroup = new THREE.Group();
-        connectionsGroup = new THREE.Group();
-        particlesGroup = new THREE.Group();
+        // Build Subtle Spline Data Pathways connecting the 5 nodes
+        buildSubtleDataPathways();
 
-        scene.add(nodesGroup);
-        scene.add(connectionsGroup);
-        scene.add(particlesGroup);
+        // Window & Interaction Listeners
+        window.addEventListener('resize', onResize, false);
+        window.addEventListener('mousemove', onMouseMove, { passive: true });
+        window.addEventListener('scroll', onScroll, { passive: true });
 
-        buildEcosystemNodes();
-        buildDataParticles();
+        // Responsive position adjustment for smaller screens
+        adjustNodesForViewport();
 
-        window.addEventListener('resize', onWindowResize, false);
-        window.addEventListener('mousemove', onMouseMove, false);
-        window.addEventListener('touchmove', onTouchMove, { passive: true });
-
-        animate3D();
+        if (isReducedMotion) {
+          // Render once for static composition
+          renderer.render(scene, camera);
+        } else {
+          animateAmbientScene();
+        }
       } catch (err) {
-        console.warn("3D initialization fallback activated:", err);
+        console.warn("Ambient 3D fallback initialized:", err);
       }
     }
 
-    function buildEcosystemNodes() {
-      // Central Glass Core: The 60-Minute Workshop Engine
-      const coreGeo = new THREE.IcosahedronGeometry(4.2, 2);
-      const coreMat = new THREE.MeshPhysicalMaterial({
-        color: 0x38bdf8,
-        metalness: 0.1,
-        roughness: 0.15,
-        transmission: 0.7,
-        thickness: 2.0,
-        transparent: true,
-        opacity: 0.85,
-        wireframe: false
-      });
-      const coreMesh = new THREE.Mesh(coreGeo, coreMat);
-      coreMesh.userData = { name: "Workshop Engine", index: -1 };
-      nodesGroup.add(coreMesh);
-      nodeMeshes.push(coreMesh);
+    function buildTranslucentNodes() {
+      nodeArchitectures.forEach((spec, idx) => {
+        const group = new THREE.Group();
 
-      // Inner Wireframe Core for High-Tech Holographic Depth
-      const innerWireGeo = new THREE.IcosahedronGeometry(4.35, 1);
-      const innerWireMat = new THREE.MeshBasicMaterial({
-        color: 0x38bdf8,
-        wireframe: true,
-        transparent: true,
-        opacity: 0.25
-      });
-      const innerWire = new THREE.Mesh(innerWireGeo, innerWireMat);
-      nodesGroup.add(innerWire);
-
-      // Orbital Nodes representing the 5 Core Stages:
-      // 0: CR WhatsApp (Acquire)
-      // 1: 1-Click RSVP (Register)
-      // 2: Peer Share (Refer)
-      // 3: Capstone Vault (Unlock)
-      // 4: Ops Telemetry (Measure)
-      const nodeConfigs = [
-        { name: "CR WhatsApp Guilds", color: 0x38bdf8, pos: [-16, 6, 4], size: 1.6 },
-        { name: "1-Click Registration", color: 0x818cf8, pos: [-7, -12, 6], size: 1.5 },
-        { name: "Viral Peer Referral", color: 0x10b981, pos: [8, -11, 5], size: 1.5 },
-        { name: "2026 Capstone Vault", color: 0xf59e0b, pos: [17, 5, 3], size: 1.7 },
-        { name: "Ops Telemetry", color: 0xc084fc, pos: [0, 15, -4], size: 1.6 }
-      ];
-
-      nodeConfigs.forEach((cfg, idx) => {
-        const geo = new THREE.SphereGeometry(cfg.size, 32, 32);
-        const mat = new THREE.MeshStandardMaterial({
-          color: cfg.color,
-          metalness: 0.6,
-          roughness: 0.2,
-          emissive: cfg.color,
-          emissiveIntensity: 0.25
-        });
-        const mesh = new THREE.Mesh(geo, mat);
-        mesh.position.set(...cfg.pos);
-        mesh.userData = { name: cfg.name, index: idx, baseColor: cfg.color };
-        nodesGroup.add(mesh);
-        nodeMeshes.push(mesh);
-
-        // Orbital Ring around each node
-        const ringGeo = new THREE.RingGeometry(cfg.size * 1.35, cfg.size * 1.48, 32);
-        const ringMat = new THREE.MeshBasicMaterial({
-          color: cfg.color,
-          side: THREE.DoubleSide,
+        // Outer Frosted Glass Sphere (Photorealistic Physical Material)
+        const outerGeo = new THREE.SphereGeometry(spec.radius, 48, 48);
+        const outerMat = new THREE.MeshPhysicalMaterial({
+          color: 0x1b263b,
+          metalness: 0.12,
+          roughness: 0.32,
+          transmission: 0.92,
+          thickness: 3.2,
+          ior: 1.46,
+          reflectivity: 0.45,
+          clearcoat: 0.6,
+          clearcoatRoughness: 0.25,
           transparent: true,
-          opacity: 0.35
+          opacity: 0.78
         });
-        const ringMesh = new THREE.Mesh(ringGeo, ringMat);
-        ringMesh.position.set(...cfg.pos);
-        ringMesh.rotation.x = Math.PI / 2.5;
-        nodesGroup.add(ringMesh);
+        const outerMesh = new THREE.Mesh(outerGeo, outerMat);
+        group.add(outerMesh);
 
-        // Connection Line to Core
-        const points = [
-          new THREE.Vector3(0, 0, 0),
-          new THREE.Vector3(...cfg.pos)
-        ];
-        const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
-        const lineMat = new THREE.LineBasicMaterial({
-          color: cfg.color,
+        // Inner Luminous Core (Subtle glowing core inside the glass, like an optical prism)
+        const innerGeo = new THREE.SphereGeometry(spec.radius * 0.42, 24, 24);
+        const innerMat = new THREE.MeshStandardMaterial({
+          color: idx === 2 ? 0x10b981 : (idx === 3 ? 0xf59e0b : 0x38bdf8),
+          emissive: idx === 2 ? 0x10b981 : (idx === 3 ? 0xf59e0b : 0x38bdf8),
+          emissiveIntensity: 0.2,
+          roughness: 0.6,
           transparent: true,
-          opacity: 0.25
+          opacity: 0.45
         });
-        const line = new THREE.Line(lineGeo, lineMat);
-        connectionsGroup.add(line);
+        const innerMesh = new THREE.Mesh(innerGeo, innerMat);
+        group.add(innerMesh);
+
+        // Position at configured base position
+        group.position.set(...spec.basePos);
+        scene.add(group);
+
+        ambientNodes.push({
+          group: group,
+          outerMesh: outerMesh,
+          innerMesh: innerMesh,
+          spec: spec
+        });
       });
     }
 
-    function buildDataParticles() {
-      // 300 Floating Student Data Particles Stream
-      const count = 350;
-      const geo = new THREE.BufferGeometry();
-      const positions = new Float32Array(count * 3);
-      const colors = new Float32Array(count * 3);
+    function buildSubtleDataPathways() {
+      // Connect nodes in flow: Node 0 (Acquire) -> 1 (Register) -> 2 (Refer) -> 3 (Unlock) -> 4 (Measure)
+      const points = ambientNodes.map(n => new THREE.Vector3(...n.spec.basePos));
+      points.push(new THREE.Vector3(...ambientNodes[0].spec.basePos)); // Close the loop
 
-      const colorPalette = [
-        new THREE.Color(0x38bdf8),
-        new THREE.Color(0x818cf8),
-        new THREE.Color(0x10b981)
-      ];
+      const spline = new THREE.CatmullRomCurve3(points);
+      spline.curveType = 'catmullrom';
+      spline.tension = 0.5;
 
-      for (let i = 0; i < count; i++) {
-        positions[i * 3] = (Math.random() - 0.5) * 80;
-        positions[i * 3 + 1] = (Math.random() - 0.5) * 60;
-        positions[i * 3 + 2] = (Math.random() - 0.5) * 40;
+      const pathPoints = spline.getPoints(120);
+      const lineGeo = new THREE.BufferGeometry().setFromPoints(pathPoints);
+      
+      // Extremely faint illuminated pathway
+      const lineMat = new THREE.LineBasicMaterial({
+        color: 0x38bdf8,
+        transparent: true,
+        opacity: 0.12
+      });
 
-        const col = colorPalette[Math.floor(Math.random() * colorPalette.length)];
-        colors[i * 3] = col.r;
-        colors[i * 3 + 1] = col.g;
-        colors[i * 3 + 2] = col.b;
+      splineLineMesh = new THREE.Line(lineGeo, lineMat);
+      scene.add(splineLineMesh);
+
+      // 4 Slow Data Pulses Traveling Along the Spline Pathway
+      const pulseGeo = new THREE.SphereGeometry(0.3, 12, 12);
+      const pulseMat = new THREE.MeshBasicMaterial({
+        color: 0x38bdf8,
+        transparent: true,
+        opacity: 0.45
+      });
+
+      for (let i = 0; i < 4; i++) {
+        const pulse = new THREE.Mesh(pulseGeo, pulseMat);
+        scene.add(pulse);
+        dataPulses.push({
+          mesh: pulse,
+          progress: i * 0.25,
+          speed: 0.00035, // Takes ~50 seconds to complete loop
+          spline: spline
+        });
       }
-
-      geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-      geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-      const mat = new THREE.PointsMaterial({
-        size: 0.45,
-        vertexColors: true,
-        transparent: true,
-        opacity: 0.65
-      });
-
-      const pSystem = new THREE.Points(geo, mat);
-      particlesGroup.add(pSystem);
     }
 
-    function onWindowResize() {
+    function adjustNodesForViewport() {
+      const width = window.innerWidth;
+      const isMobile = width < 768;
+      const isTablet = width >= 768 && width < 1024;
+
+      ambientNodes.forEach((node, idx) => {
+        let [x, y, z] = node.spec.basePos;
+
+        if (isMobile) {
+          // Push outward and scale down on mobile so the center reading column is 100% unobstructed
+          x = x < 0 ? -18 : (x > 0 ? 18 : 0);
+          z -= 8;
+          node.group.scale.set(0.75, 0.75, 0.75);
+        } else if (isTablet) {
+          x = x * 0.9;
+          node.group.scale.set(0.9, 0.9, 0.9);
+        } else {
+          node.group.scale.set(1, 1, 1);
+        }
+
+        node.group.position.set(x, y, z);
+      });
+    }
+
+    function onResize() {
       if (!camera || !renderer) return;
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
+      adjustNodesForViewport();
     }
 
     function onMouseMove(e) {
-      mouseX = (e.clientX - window.innerWidth / 2) * 0.0008;
-      mouseY = (e.clientY - window.innerHeight / 2) * 0.0008;
+      // Strictly clamped subtle mouse parallax (max ±0.8 units)
+      const normX = (e.clientX / window.innerWidth) * 2 - 1;
+      const normY = -(e.clientY / window.innerHeight) * 2 + 1;
+      mouseX = normX * 0.75;
+      mouseY = normY * 0.45;
     }
 
-    function onTouchMove(e) {
-      if (e.touches.length > 0) {
-        mouseX = (e.touches[0].clientX - window.innerWidth / 2) * 0.0008;
-        mouseY = (e.touches[0].clientY - window.innerHeight / 2) * 0.0008;
-      }
+    function onScroll() {
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      scrollYOffset = -scrollY * 0.006;
     }
 
-    function focus3DNode(idx) {
-      if (!nodesGroup) return;
-      const targetMesh = nodeMeshes[idx + 1]; // Offset 1 because core is 0
-      if (targetMesh) {
-        targetMesh.scale.set(1.4, 1.4, 1.4);
-        setTimeout(() => {
-          targetMesh.scale.set(1, 1, 1);
-        }, 600);
-      }
-    }
-
-    function animate3D() {
-      requestAnimationFrame(animate3D);
-
-      targetX += (mouseX - targetX) * 0.05;
-      targetY += (mouseY - targetY) * 0.05;
-
-      if (nodesGroup) {
-        nodesGroup.rotation.y += 0.002;
-        nodesGroup.rotation.x = targetY * 0.5;
-        nodesGroup.rotation.y += targetX * 0.5;
-      }
-
-      if (particlesGroup) {
-        particlesGroup.rotation.y -= 0.001;
-      }
-
-      // Smooth camera transition between views
-      if (camera) {
-        if (isOpsMode) {
-          camera.position.x += (12 - camera.position.x) * 0.04;
-          camera.position.y += (10 - camera.position.y) * 0.04;
-          camera.position.z += (54 - camera.position.z) * 0.04;
-        } else {
-          camera.position.x += (0 - camera.position.x) * 0.04;
-          camera.position.y += (0 - camera.position.y) * 0.04;
-          camera.position.z += (48 - camera.position.z) * 0.04;
-        }
-        camera.lookAt(0, 0, 0);
-      }
-
-      if (renderer && scene && camera) {
-        renderer.render(scene, camera);
-      }
+    function focusAmbientNode(idx) {
+      if (!ambientNodes[idx]) return;
+      const node = ambientNodes[idx];
+      
+      // Gentle subtle pulse illumination
+      node.innerMesh.material.emissiveIntensity = 0.55;
+      setTimeout(() => {
+        node.innerMesh.material.emissiveIntensity = 0.2;
+      }, 700);
     }
 
     /* ==========================================================================
-       2. VIEW SWITCHING & PRODUCT LOGIC
+       CINEMATIC ANIMATION LOOP: SLOW HARMONIC DRIFT (40–60 SECONDS CYCLE)
+       ========================================================================== */
+    let clock = new THREE.Clock();
+
+    function animateAmbientScene() {
+      if (isReducedMotion) return;
+      requestAnimationFrame(animateAmbientScene);
+
+      const elapsedTime = clock.getElapsedTime();
+
+      // Slow Harmonic Floating for Each Node (Independent Sinusoidal Drift)
+      ambientNodes.forEach(node => {
+        const spec = node.spec;
+        const [baseX, baseY, baseZ] = spec.basePos;
+
+        // Extremely slow cycle: ~45-60 seconds
+        const floatY = Math.sin(elapsedTime * spec.speed * 60 + spec.phase) * 0.9;
+        const floatX = Math.cos(elapsedTime * spec.speed * 45 + spec.phase) * 0.5;
+        const floatZ = Math.sin(elapsedTime * spec.speed * 30 + spec.phase) * 0.4;
+
+        node.group.position.y = baseY + floatY;
+        node.group.position.x = baseX + floatX;
+        node.group.position.z = baseZ + floatZ;
+
+        // Barely perceptible micro-rotation (0.0001 rad/frame)
+        node.group.rotation.y += 0.00015;
+        node.group.rotation.x += 0.00008;
+      });
+
+      // Data Pulses Traveling Along the Pathway
+      dataPulses.forEach(pulse => {
+        pulse.progress += pulse.speed;
+        if (pulse.progress > 1) pulse.progress = 0;
+        const pos = pulse.spline.getPointAt(pulse.progress);
+        pulse.mesh.position.copy(pos);
+      });
+
+      // Smooth Clamped Camera Parallax + Scroll Response
+      currentCamX += (mouseX - currentCamX) * 0.025;
+      currentCamY += (mouseY + scrollYOffset - currentCamY) * 0.025;
+
+      let targetCamZ = isOpsMode ? 52 : 46;
+      let targetCamXOffset = isOpsMode ? 6 : 0;
+
+      camera.position.x = targetCamXOffset + currentCamX;
+      camera.position.y = currentCamY;
+      camera.position.z += (targetCamZ - camera.position.z) * 0.03;
+
+      camera.lookAt(0, scrollYOffset * 0.3, 0);
+
+      renderer.render(scene, camera);
+    }
+
+    /* ==========================================================================
+       2. PRODUCT VIEW SWITCHER
        ========================================================================== */
     function switchViewMode(mode) {
       const studentView = document.getElementById('studentFunnelView');
@@ -2096,13 +2139,6 @@
       document.getElementById('previewDesc').textContent = data.desc;
       document.getElementById('resumeBulletText').textContent = data.bullet;
       document.getElementById('projectPreview').style.display = 'block';
-
-      // Interactive 3D Perspective Card Tilt Reaction
-      const card = document.getElementById('projectArchitectCard');
-      if (card) {
-        card.style.transform = "perspective(1000px) rotateX(2deg) rotateY(-2deg)";
-        setTimeout(() => { card.style.transform = "none"; }, 400);
-      }
     }
 
     /* ==========================================================================
@@ -2169,7 +2205,7 @@
       stream.insertBefore(newLead, stream.firstChild);
 
       // Pulse 3D Registration Node
-      focus3DNode(1);
+      focusAmbientNode(1);
     }
 
     function copyReferralLink() {
@@ -2187,7 +2223,7 @@
         `🚨 Final Year Engineers: Instead of regular theoretical webinars, NxtWave is hosting a FREE 60-Minute sprint where we build and deploy a live AI project directly to our GitHub with ATS-ready resume bullets for campus placements.\n\nOnly 500 seats available. Register using my invite link:\nhttps://${linkText}`
       );
       window.open(`https://api.whatsapp.com/send?text=${viralMessage}`, '_blank');
-      focus3DNode(2); // Pulse referral 3D node
+      focusAmbientNode(2);
     }
 
     function simulateReferredFriend() {
@@ -2202,13 +2238,13 @@
         t1Badge.className = 'badge-lock-status badge-unlocked';
         t1Badge.textContent = '✅ Unlocked! (Starters)';
         alert("🎉 Milestone 1 Reached: 1 Friend Registered! You unlocked the GitHub Starter Pack.");
-        focus3DNode(3);
+        focusAmbientNode(3);
       } else if (referredCount >= 2) {
         t2.classList.add('unlocked');
         t2Badge.className = 'badge-lock-status badge-unlocked';
         t2Badge.textContent = '🎉 Fully Unlocked! (Vault)';
         alert("🔥 Milestone 2 Reached: 2 Friends Registered! The entire 2026 AI Capstone & Interview Vault is now unlocked!");
-        focus3DNode(3);
+        focusAmbientNode(3);
       }
     }
 
@@ -2230,7 +2266,7 @@
       newLead.innerHTML = `<strong>${rName}</strong> (${rCollege}) <br><span style="color: var(--text-tertiary);">Source: Simulated CR WhatsApp Broadcast • Just now</span>`;
       stream.insertBefore(newLead, stream.firstChild);
 
-      focus3DNode(0);
+      focusAmbientNode(0);
     }
 
     function resetCampaignData() {
@@ -2267,9 +2303,9 @@
       document.body.removeChild(link);
     }
 
-    // Initialize WebGL and Project Preview on Load
+    // Initialize Ambient WebGL and Project Preview on Load
     window.addEventListener('DOMContentLoaded', () => {
-      init3D();
+      initAmbient3D();
       updateProjectPreview();
     });
   </script>
