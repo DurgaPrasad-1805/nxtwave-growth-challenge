@@ -3,105 +3,108 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NxtWave Growth Challenge — AI Workshop Acquisition & Viral Engine</title>
+  <title>NxtWave Growth Engine — Interactive 3D Growth Simulation & Product Prototype</title>
   
   <!-- Primary SEO Meta Tags -->
-  <meta name="description" content="NxtWave Growth Intern Challenge Round 1: Acquisition model, viral growth loop, and interactive AI Project Architect to acquire 500 final-year engineering students for 'Build Your First AI Project in 60 Minutes' on a ₹2,000 budget.">
-  <meta name="keywords" content="NxtWave, Growth Challenge, AI Workshop, Student Acquisition, Viral Loops, Growth Marketing, Engineering Placements">
+  <meta name="description" content="Next-generation interactive 3D growth prototype & simulation for NxtWave: 'Build Your First AI Project in 60 Minutes'. Acquires 500+ final-year engineering students in 7 days on ₹2,000 budget.">
+  <meta name="keywords" content="NxtWave, Growth Marketing, 3D WebGL, Product Prototype, AI Workshop, Student Acquisition, Viral Loops, Growth Experiments">
   <meta name="author" content="Durga Prasad">
   <link rel="canonical" href="https://durgaprasad-1805.github.io/nxtwave-growth-challenge/">
 
-  <!-- Open Graph / Facebook / LinkedIn -->
+  <!-- Open Graph / LinkedIn / Meta -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://durgaprasad-1805.github.io/nxtwave-growth-challenge/">
-  <meta property="og:title" content="NxtWave Growth Sprint — Build Your First AI Project in 60 Minutes">
-  <meta property="og:description" content="A comprehensive growth simulation acquiring 500+ final-year engineering students in 7 days with ₹2,000 budget using CR WhatsApp networks and in-product viral referral loops.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80">
+  <meta property="og:title" content="NxtWave Growth Engine — Interactive 3D Product & Acquisition Prototype">
+  <meta property="og:description" content="Photorealistic 3D student growth ecosystem, AI Project Architect, K-factor viral loop, and Growth Ops Console for NxtWave Growth Intern Challenge.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80">
 
-  <!-- Twitter Meta -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="NxtWave Growth Sprint — Build Your First AI Project in 60 Minutes">
-  <meta name="twitter:description" content="Comprehensive student acquisition engine and growth ops console for NxtWave Growth Intern Challenge.">
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80">
+  <meta name="twitter:title" content="NxtWave Growth Engine — Interactive 3D Product Prototype">
+  <meta name="twitter:description" content="Simulated 500-student acquisition sprint with ₹2,000 budget ledger and 3 growth experiments.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80">
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "EducationEvent",
-    "name": "Build Your First AI Project in 60 Minutes",
-    "description": "Free live workshop for final-year engineering students to build and deploy a Generative AI application with live GitHub repos and ATS resume bullets.",
-    "eventStatus": "https://schema.org/EventScheduled",
-    "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
-    "organizer": {
-      "@type": "Organization",
-      "name": "NxtWave",
-      "url": "https://www.ccbp.in"
-    },
-    "isAccessibleForFree": true,
+    "@type": "SoftwareApplication",
+    "name": "NxtWave Growth Engine Prototype",
+    "operatingSystem": "Web Browser",
+    "applicationCategory": "BusinessApplication",
     "offers": {
       "@type": "Offer",
       "price": "0",
-      "priceCurrency": "INR",
-      "availability": "https://schema.org/InStock"
-    }
+      "priceCurrency": "INR"
+    },
+    "description": "Interactive 3D Growth Simulation & Pre-workshop AI Project Architect for final-year engineering students."
   }
   </script>
 
-  <!-- Typography -->
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Three.js (CDN for photorealistic WebGL 3D rendering) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
   <style>
     /* ==========================================================================
-       DESIGN TOKENS & SYSTEM VARIABLES
+       NEXT-GEN SYSTEM DESIGN TOKENS
        ========================================================================== */
     :root {
-      --bg: #070b14;
-      --card-bg: #0f1626;
-      --card-bg-elevated: #162035;
-      --card-border: #1e2b45;
-      --card-border-focus: #38bdf8;
+      --bg-dark: #060911;
+      --bg-surface: #0a0f1d;
+      --bg-glass: rgba(14, 22, 40, 0.65);
+      --bg-glass-elevated: rgba(20, 32, 58, 0.75);
       
-      --accent-blue: #38bdf8;
-      --accent-blue-rgb: 56, 189, 248;
-      --accent-purple: #818cf8;
-      --accent-green: #10b981;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-glass: rgba(56, 189, 248, 0.18);
+      --border-focus: #38bdf8;
+      
+      --accent-cyan: #38bdf8;
+      --accent-indigo: #818cf8;
+      --accent-emerald: #10b981;
       --accent-amber: #f59e0b;
       --accent-rose: #f43f5e;
       
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-dim: #64748b;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-tertiary: #64748b;
       
       --gradient-brand: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
-      --gradient-card: linear-gradient(180deg, rgba(22, 32, 53, 0.7) 0%, rgba(15, 22, 38, 0.95) 100%);
+      --gradient-metal: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
       
       --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 18px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
       --radius-full: 9999px;
       
-      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
-      --shadow-glow: 0 0 25px rgba(56, 189, 248, 0.15);
+      --shadow-ambient: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+      --shadow-fresnel: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
       
-      --transition-fast: 0.18s ease;
-      --transition-normal: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* Accessibility: High Contrast & Reduced Motion */
+    /* Accessibility: Reduced Motion */
     @media (prefers-reduced-motion: reduce) {
       *, ::before, ::after {
-        animation-duration: 0.01ms !important;
+        animation-duration: 0.001ms !important;
         animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+      #webglCanvas {
+        display: none !important;
+      }
+      .fallback-3d-bg {
+        display: block !important;
       }
     }
 
-    /* Global Reset & Base */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -109,57 +112,91 @@
     }
 
     body {
-      background-color: var(--bg);
-      color: var(--text-main);
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      position: relative;
+    }
+
+    /* 3D WebGL Canvas Layer */
+    #webglCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.85;
+      transition: opacity 0.5s ease;
+    }
+
+    /* Fallback Atmospheric Gradient */
+    .fallback-3d-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at 50% 20%, rgba(30, 58, 138, 0.25) 0%, rgba(6, 9, 17, 0.95) 75%),
+                  radial-gradient(circle at 85% 60%, rgba(56, 189, 248, 0.08) 0%, transparent 50%);
+    }
+
+    /* Content Foreground Layer */
+    .app-viewport {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
     }
 
     /* Accessible Skip Link */
     .skip-link {
       position: absolute;
-      top: -40px;
+      top: -50px;
       left: 16px;
-      background: var(--accent-blue);
+      background: var(--accent-cyan);
       color: #000;
-      padding: 8px 16px;
+      padding: 10px 18px;
       font-weight: 700;
       border-radius: var(--radius-sm);
       z-index: 1000;
-      transition: top var(--transition-fast);
+      transition: top 0.2s;
       text-decoration: none;
     }
     .skip-link:focus {
       top: 16px;
     }
 
-    /* Visible Focus Rings (WCAG 2.2 AA) */
     :focus-visible {
-      outline: 2px solid var(--accent-blue) !important;
+      outline: 2px solid var(--accent-cyan) !important;
       outline-offset: 3px !important;
-    }
-
-    /* Layout Containers */
-    .container {
-      width: 100%;
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 0 24px;
     }
 
     /* ==========================================================================
        TOP GLOBAL BANNER: SIMULATION & METHODOLOGY NOTICE
        ========================================================================== */
-    .global-disclaimer-banner {
-      background: rgba(15, 23, 42, 0.95);
+    .global-disclaimer-strip {
+      background: rgba(10, 15, 29, 0.9);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(56, 189, 248, 0.2);
-      padding: 8px 16px;
+      padding: 9px 16px;
       font-size: 0.8rem;
       color: #cbd5e1;
       display: flex;
@@ -170,33 +207,33 @@
       text-align: center;
     }
 
-    .disclaimer-badge {
-      background: rgba(245, 158, 11, 0.15);
+    .status-pill {
+      background: rgba(245, 158, 11, 0.12);
       color: var(--accent-amber);
-      border: 1px solid rgba(245, 158, 11, 0.3);
-      padding: 2px 8px;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      padding: 3px 10px;
       border-radius: var(--radius-full);
       font-weight: 700;
       font-size: 0.72rem;
-      text-transform: uppercase;
       letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
     /* ==========================================================================
-       NAVIGATION & DUAL-MODE TOGGLE
+       PRODUCT NAVIGATION & VIEW SWITCHER
        ========================================================================== */
-    .site-nav {
-      background: rgba(10, 16, 28, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--card-border);
+    .product-header {
+      background: rgba(8, 13, 24, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
       position: sticky;
       top: 0;
-      z-index: 90;
+      z-index: 100;
       padding: 14px 0;
     }
 
-    .nav-inner {
+    .nav-flex {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -204,56 +241,58 @@
       flex-wrap: wrap;
     }
 
-    .brand-group {
+    .brand-mark {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       text-decoration: none;
       color: #fff;
     }
 
-    .brand-logo-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
+    .brand-cube {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
       background: var(--gradient-brand);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
-      color: #0b1120;
-      font-size: 1.1rem;
+      color: #060911;
+      font-size: 1.15rem;
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
     }
 
-    .brand-title {
+    .brand-text-title {
       font-weight: 800;
       font-size: 1.15rem;
       letter-spacing: -0.02em;
     }
 
-    .brand-subtitle {
-      font-size: 0.75rem;
-      color: var(--accent-blue);
-      font-weight: 600;
+    .brand-tag-pill {
+      font-size: 0.72rem;
+      color: var(--accent-cyan);
+      font-weight: 700;
       background: rgba(56, 189, 248, 0.1);
       padding: 2px 8px;
       border-radius: 4px;
       border: 1px solid rgba(56, 189, 248, 0.25);
     }
 
-    .view-switcher-pill {
+    .view-control-dock {
       display: inline-flex;
-      background: #111a2d;
-      border: 1px solid var(--card-border);
+      background: rgba(14, 22, 38, 0.85);
+      border: 1px solid var(--border-glass);
       padding: 4px;
       border-radius: var(--radius-md);
+      box-shadow: var(--shadow-fresnel);
       gap: 4px;
     }
 
-    .tab-toggle-btn {
+    .mode-tab-btn {
       border: none;
       background: transparent;
-      color: var(--text-muted);
+      color: var(--text-secondary);
       font-size: 0.82rem;
       font-weight: 600;
       padding: 7px 16px;
@@ -262,41 +301,51 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      transition: all var(--transition-fast);
-      position: relative;
+      transition: all 0.2s var(--ease-cinematic);
     }
 
-    .tab-toggle-btn:hover {
+    .mode-tab-btn:hover {
       color: #fff;
     }
 
-    .tab-toggle-btn.active {
-      background: #1e2b45;
+    .mode-tab-btn.active {
+      background: rgba(56, 189, 248, 0.15);
       color: #fff;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     }
 
-    .tab-toggle-btn.active::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 16px;
-      height: 2px;
-      background: var(--accent-blue);
-      border-radius: 2px;
+    /* 3D Camera Focus Controls HUD */
+    .camera-hud-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-subtle);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+    }
+
+    .camera-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      box-shadow: 0 0 8px var(--accent-emerald);
     }
 
     /* ==========================================================================
-       HERO & VALUE PROPOSITION SECTION
+       CINEMATIC HERO & STRATEGIC VALUE PROPOSITION
        ========================================================================== */
-    .hero-section {
+    .hero-container {
       text-align: center;
-      padding: 40px 0 32px;
+      padding: 44px 0 28px;
+      position: relative;
     }
 
-    .pill-badge {
+    .hero-live-pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -306,112 +355,117 @@
       border-radius: var(--radius-full);
       font-size: 0.84rem;
       font-weight: 600;
-      color: var(--accent-blue);
-      margin-bottom: 16px;
+      color: var(--accent-cyan);
+      margin-bottom: 18px;
+      box-shadow: var(--shadow-fresnel);
     }
 
-    .live-dot {
+    .pulse-core {
       width: 8px;
       height: 8px;
-      background: var(--accent-green);
+      background: var(--accent-emerald);
       border-radius: 50%;
-      box-shadow: 0 0 10px var(--accent-green);
+      box-shadow: 0 0 10px var(--accent-emerald);
       animation: pulse-ring 2s infinite;
     }
 
     @keyframes pulse-ring {
       0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.15); opacity: 0.6; }
+      50% { transform: scale(1.2); opacity: 0.5; }
     }
 
     h1 {
-      font-size: clamp(2.1rem, 5vw, 3.4rem);
+      font-size: clamp(2.2rem, 5.2vw, 3.6rem);
       font-weight: 800;
-      line-height: 1.16;
-      letter-spacing: -0.03em;
-      max-width: 900px;
+      line-height: 1.15;
+      letter-spacing: -0.035em;
+      max-width: 920px;
       margin: 0 auto;
     }
 
-    .gradient-text {
+    .gradient-hero-text {
       background: var(--gradient-brand);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .hero-lead {
+    .hero-subhead {
       font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--text-muted);
+      color: var(--text-secondary);
       max-width: 780px;
-      margin: 16px auto 0;
+      margin: 18px auto 0;
       font-weight: 400;
     }
 
-    /* Target vs Projected Banner */
-    .capacity-banner {
+    /* Capacity vs Buffer Pill Component */
+    .capacity-dock {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 20px;
-      background: #0f182a;
-      border: 1px solid var(--card-border);
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-glass);
       padding: 12px 24px;
       border-radius: var(--radius-md);
       margin-top: 24px;
       flex-wrap: wrap;
       font-size: 0.88rem;
+      box-shadow: var(--shadow-ambient);
     }
 
-    .capacity-item {
+    .dock-stat {
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .progress-bar-wrap {
+    .stat-progress-track {
       width: 140px;
       height: 8px;
-      background: #1e293b;
-      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-full);
       overflow: hidden;
-      border: 1px solid #334155;
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
-    .progress-bar-fill {
+    .stat-progress-val {
       width: 82.4%;
       height: 100%;
       background: linear-gradient(90deg, #38bdf8, #10b981);
-      transition: width var(--transition-normal);
+      transition: width 0.4s var(--ease-cinematic);
     }
 
-    .tag-buffer {
+    .buffer-tag-chip {
       background: rgba(16, 185, 129, 0.12);
-      color: var(--accent-green);
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--accent-emerald);
+      border: 1px solid rgba(16, 185, 129, 0.35);
       padding: 2px 8px;
-      border-radius: var(--radius-sm);
-      font-size: 0.75rem;
+      border-radius: 4px;
+      font-size: 0.74rem;
       font-weight: 700;
     }
 
     /* ==========================================================================
-       GROWTH LOOP PROCESS BAR: ACQUIRE -> REGISTER -> REFER -> MEASURE
+       GROWTH LOOP VISUAL PIPELINE (Acquire -> Scale)
        ========================================================================== */
-    .growth-loop-flow {
+    .growth-loop-strip {
       margin: 32px 0 40px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-glass);
       border-radius: var(--radius-lg);
       padding: 18px 24px;
+      box-shadow: var(--shadow-ambient), var(--shadow-fresnel);
     }
 
-    .loop-flow-header {
+    .loop-strip-header {
       font-size: 0.82rem;
       font-weight: 700;
-      color: var(--accent-blue);
+      color: var(--accent-cyan);
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -419,50 +473,52 @@
       gap: 8px;
     }
 
-    .loop-flow-steps {
+    .loop-node-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
       gap: 12px;
-      position: relative;
     }
 
-    .loop-step {
-      background: #090e1a;
-      border: 1px solid #1c273e;
+    .loop-node-item {
+      background: rgba(9, 14, 26, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: var(--radius-sm);
-      padding: 10px 12px;
+      padding: 12px 14px;
       text-align: center;
-      transition: transform var(--transition-fast), border-color var(--transition-fast);
+      transition: all 0.25s var(--ease-cinematic);
+      position: relative;
+      cursor: pointer;
     }
 
-    .loop-step:hover {
-      transform: translateY(-2px);
-      border-color: var(--accent-blue);
+    .loop-node-item:hover, .loop-node-item.active {
+      transform: translateY(-3px);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
     }
 
-    .loop-step-num {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--text-dim);
+    .loop-node-step {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-tertiary);
       font-weight: 700;
     }
 
-    .loop-step-title {
-      font-size: 0.82rem;
+    .loop-node-name {
+      font-size: 0.84rem;
       font-weight: 700;
       color: #fff;
       margin: 2px 0;
     }
 
-    .loop-step-sub {
+    .loop-node-detail {
       font-size: 0.72rem;
-      color: var(--text-muted);
+      color: var(--text-secondary);
     }
 
     /* ==========================================================================
-       TWO-COLUMN MAIN GRID: PROJECT GENERATOR & REGISTRATION/VIRAL ENGINE
+       TWO-COLUMN PRODUCT INTERACTION: ARCHITECT & VIRAL REGISTRATION
        ========================================================================== */
-    .main-sprint-grid {
+    .product-stage-grid {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
       gap: 28px;
@@ -470,28 +526,35 @@
     }
 
     @media (max-width: 900px) {
-      .main-sprint-grid {
+      .product-stage-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    .card-panel {
-      background: var(--gradient-card);
-      border: 1px solid var(--card-border);
+    .surface-card {
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-glass);
       border-radius: var(--radius-lg);
       padding: 28px;
-      box-shadow: var(--shadow-md);
+      box-shadow: var(--shadow-ambient), var(--shadow-fresnel);
+      transition: transform 0.3s var(--ease-cinematic), border-color 0.3s;
       position: relative;
     }
 
-    .panel-header {
+    .surface-card:hover {
+      border-color: rgba(56, 189, 248, 0.35);
+    }
+
+    .card-top-bar {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       margin-bottom: 20px;
     }
 
-    .panel-icon-badge {
+    .surface-icon {
       width: 44px;
       height: 44px;
       border-radius: var(--radius-md);
@@ -501,60 +564,61 @@
       align-items: center;
       justify-content: center;
       font-size: 1.3rem;
+      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.15);
     }
 
-    .panel-title {
+    .card-heading-title {
       font-size: 1.25rem;
       font-weight: 700;
     }
 
-    .panel-subtitle {
+    .card-heading-sub {
       font-size: 0.82rem;
-      color: var(--text-muted);
+      color: var(--text-secondary);
     }
 
-    /* Form Fields */
-    .form-field {
+    /* Controls & Inputs */
+    .form-group-wrap {
       margin-bottom: 16px;
     }
 
-    .form-label {
+    .field-caption {
       display: block;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
-      color: var(--text-muted);
+      color: var(--text-secondary);
       margin-bottom: 6px;
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
 
-    .form-select, .form-input {
+    .select-dropdown, .input-text-field {
       width: 100%;
-      background: #090e1a;
-      border: 1px solid #22304b;
+      background: rgba(7, 11, 20, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: var(--radius-md);
       padding: 12px 16px;
       color: #fff;
       font-size: 0.94rem;
       font-family: inherit;
       outline: none;
-      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
-    .form-select:focus, .form-input:focus {
-      border-color: var(--accent-blue);
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18);
+    .select-dropdown:focus, .input-text-field:focus {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
     }
 
-    .form-error-msg {
+    .field-error-hint {
       font-size: 0.78rem;
       color: var(--accent-rose);
       margin-top: 4px;
       display: none;
     }
 
-    /* Buttons */
-    .btn {
+    /* Action Buttons */
+    .action-btn {
       width: 100%;
       padding: 13px 20px;
       border-radius: var(--radius-md);
@@ -566,42 +630,44 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      transition: all var(--transition-fast);
+      transition: all 0.2s var(--ease-cinematic);
       text-decoration: none;
     }
 
-    .btn-primary {
+    .btn-gradient-glow {
       background: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%);
       color: #ffffff;
       box-shadow: 0 6px 20px -4px rgba(56, 189, 248, 0.45);
     }
 
-    .btn-primary:hover {
+    .btn-gradient-glow:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 25px -4px rgba(56, 189, 248, 0.65);
     }
 
-    .btn-whatsapp {
+    .btn-whatsapp-action {
       background: #25d366;
-      color: #05140b;
+      color: #041208;
       font-weight: 700;
       margin-top: 10px;
     }
 
-    .btn-whatsapp:hover {
+    .btn-whatsapp-action:hover {
       background: #20ba59;
       transform: translateY(-2px);
     }
 
-    /* Dynamic AI Project Preview Box */
-    .project-preview-card {
+    /* Interactive 3D Card Tilt Output */
+    .project-card-3d-box {
       margin-top: 20px;
-      background: #080d17;
-      border: 1px solid #1e2c47;
+      background: rgba(7, 12, 22, 0.9);
+      border: 1px solid var(--border-glass);
       border-radius: var(--radius-md);
       padding: 20px;
       display: none;
-      animation: fadeInSlide 0.3s ease;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+      animation: fadeInSlide 0.3s var(--ease-cinematic);
     }
 
     @keyframes fadeInSlide {
@@ -609,11 +675,11 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .preview-pill {
+    .tag-category-badge {
       display: inline-block;
       font-size: 0.72rem;
       font-weight: 700;
-      color: var(--accent-green);
+      color: var(--accent-emerald);
       background: rgba(16, 185, 129, 0.12);
       border: 1px solid rgba(16, 185, 129, 0.3);
       padding: 3px 10px;
@@ -621,78 +687,79 @@
       margin-bottom: 8px;
     }
 
-    .preview-project-name {
+    .card-project-name {
       font-size: 1.1rem;
       font-weight: 700;
       color: #fff;
       margin-bottom: 6px;
     }
 
-    .preview-project-summary {
+    .card-project-summary {
       font-size: 0.86rem;
-      color: var(--text-muted);
+      color: var(--text-secondary);
       margin-bottom: 14px;
     }
 
-    .resume-bullet-container {
-      background: #030712;
-      border-left: 3px solid var(--accent-purple);
+    .resume-bullet-shell {
+      background: #020610;
+      border-left: 3px solid var(--accent-indigo);
       padding: 12px 14px;
       border-radius: 4px;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 0.8rem;
       color: #e2e8f0;
       line-height: 1.5;
     }
 
-    .resume-bullet-title {
+    .bullet-label-hdr {
       font-size: 0.7rem;
-      color: var(--accent-purple);
+      color: var(--accent-indigo);
       font-weight: 700;
       text-transform: uppercase;
       margin-bottom: 4px;
       display: block;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: var(--font-sans);
     }
 
-    /* Registration & Viral Reward Component */
-    .confirmed-ticket-panel {
+    /* Ticket Confirmation & Viral Engine */
+    .ticket-view-wrapper {
       display: none;
       animation: fadeInSlide 0.35s ease;
     }
 
-    .ticket-stub {
-      background: #090e1a;
-      border: 1px dashed var(--accent-blue);
+    .hologram-ticket-stub {
+      background: rgba(8, 14, 26, 0.8);
+      border: 1px dashed var(--accent-cyan);
       border-radius: var(--radius-md);
       padding: 16px;
       text-align: center;
       margin-bottom: 18px;
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.15);
     }
 
-    .ticket-id-text {
-      font-family: 'JetBrains Mono', monospace;
+    .ticket-id-display {
+      font-family: var(--font-mono);
       font-size: 1.3rem;
       font-weight: 700;
-      color: var(--accent-blue);
+      color: var(--accent-cyan);
       letter-spacing: 0.05em;
     }
 
-    .referral-engine-box {
-      background: #090e1a;
-      border: 1px solid var(--card-border);
+    .viral-referral-shell {
+      background: rgba(8, 14, 26, 0.7);
+      border: 1px solid var(--border-glass);
       border-radius: var(--radius-md);
       padding: 18px;
     }
 
-    .referral-share-url-box {
-      background: #030712;
-      border: 1px solid #1f2c45;
+    .link-copy-shelf {
+      background: #020610;
+      border: 1px solid rgba(255, 255, 255, 0.1);
       padding: 8px 12px;
       border-radius: var(--radius-sm);
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 0.82rem;
-      color: var(--accent-blue);
+      color: var(--accent-cyan);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -700,7 +767,7 @@
       word-break: break-all;
     }
 
-    .btn-copy {
+    .btn-copy-chip {
       background: #1c273e;
       border: 1px solid #2d3e5e;
       color: #fff;
@@ -710,103 +777,98 @@
       cursor: pointer;
       font-weight: 600;
     }
-
-    .btn-copy:hover {
+    .btn-copy-chip:hover {
       background: #2b3b5c;
     }
 
-    /* Milestone Lockers */
-    .milestone-track-list {
+    .milestone-track-stack {
       margin-top: 14px;
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
 
-    .milestone-row {
+    .milestone-tier-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 9px 12px;
-      background: #0b1220;
-      border: 1px solid var(--card-border);
+      background: #080e1b;
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
       font-size: 0.82rem;
-      transition: border-color var(--transition-fast), background var(--transition-fast);
+      transition: all 0.2s ease;
     }
 
-    .milestone-row.unlocked {
+    .milestone-tier-row.unlocked {
       border-color: rgba(16, 185, 129, 0.45);
-      background: rgba(16, 185, 129, 0.06);
+      background: rgba(16, 185, 129, 0.08);
     }
 
-    .milestone-badge {
+    .badge-lock-status {
       font-weight: 700;
       font-size: 0.76rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
     }
-
     .badge-locked { color: var(--accent-rose); }
-    .badge-unlocked { color: var(--accent-green); }
+    .badge-unlocked { color: var(--accent-emerald); }
 
     /* ==========================================================================
-       SECTION: 3 CONTROLLED GROWTH EXPERIMENTS (A/B TESTING SUITE)
+       SECTION: 3 CONTROLLED GROWTH EXPERIMENTS (INTERACTIVE SUITE)
        ========================================================================== */
-    .experiments-section {
-      margin: 40px 0 54px;
+    .growth-experiments-container {
+      margin: 44px 0 54px;
     }
 
-    .section-title-wrap {
+    .section-headline-box {
       text-align: center;
-      margin-bottom: 28px;
+      margin-bottom: 30px;
     }
 
-    .section-title {
-      font-size: 1.8rem;
+    .sec-title {
+      font-size: 1.85rem;
       font-weight: 800;
       letter-spacing: -0.02em;
     }
 
-    .section-subtitle {
+    .sec-desc {
       font-size: 0.9rem;
-      color: var(--text-muted);
+      color: var(--text-secondary);
       max-width: 680px;
       margin: 6px auto 0;
     }
 
-    .experiments-grid {
+    .experiments-card-deck {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 20px;
+      gap: 22px;
     }
 
-    .experiment-card {
-      background: var(--gradient-card);
-      border: 1px solid var(--card-border);
+    .exp-spec-card {
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-glass);
       border-radius: var(--radius-lg);
       padding: 24px;
       display: flex;
       flex-direction: column;
       position: relative;
-      transition: transform var(--transition-fast), border-color var(--transition-fast);
+      transition: transform 0.25s var(--ease-cinematic), border-color 0.25s;
+      box-shadow: var(--shadow-ambient);
     }
 
-    .experiment-card:hover {
-      transform: translateY(-3px);
+    .exp-spec-card:hover {
+      transform: translateY(-4px);
       border-color: rgba(56, 189, 248, 0.4);
     }
 
-    .exp-header {
+    .exp-meta-header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
       margin-bottom: 12px;
-      gap: 8px;
     }
 
-    .exp-tag {
+    .exp-category-pill {
       font-size: 0.7rem;
       font-weight: 800;
       text-transform: uppercase;
@@ -814,99 +876,98 @@
       border-radius: 4px;
       letter-spacing: 0.04em;
     }
+    .tag-message-hook { background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.3); }
+    .tag-channel-dist { background: rgba(129, 140, 248, 0.15); color: var(--accent-indigo); border: 1px solid rgba(129, 140, 248, 0.3); }
+    .tag-referral-k { background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald); border: 1px solid rgba(16, 185, 129, 0.3); }
 
-    .exp-tag-message { background: rgba(56, 189, 248, 0.15); color: var(--accent-blue); border: 1px solid rgba(56, 189, 248, 0.3); }
-    .exp-tag-channel { background: rgba(129, 140, 248, 0.15); color: var(--accent-purple); border: 1px solid rgba(129, 140, 248, 0.3); }
-    .exp-tag-referral { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3); }
-
-    .exp-number {
-      font-family: 'JetBrains Mono', monospace;
+    .exp-num-label {
+      font-family: var(--font-mono);
       font-size: 0.8rem;
-      color: var(--text-dim);
+      color: var(--text-tertiary);
       font-weight: 700;
     }
 
-    .exp-title {
-      font-size: 1.12rem;
+    .exp-name-title {
+      font-size: 1.15rem;
       font-weight: 700;
       color: #fff;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
-    .exp-block {
+    .exp-text-row {
       margin-bottom: 10px;
       font-size: 0.83rem;
       line-height: 1.5;
     }
 
-    .exp-label {
+    .exp-row-lead {
       font-weight: 700;
       color: #cbd5e1;
       display: inline-block;
       min-width: 90px;
     }
 
-    .exp-metric-badge {
-      background: #080e1b;
-      border: 1px solid #1c273e;
+    .exp-metrics-strip {
+      background: #040813;
+      border: 1px solid rgba(255, 255, 255, 0.08);
       padding: 8px 12px;
       border-radius: var(--radius-sm);
       margin: 10px 0;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 0.78rem;
+      color: var(--accent-cyan);
     }
 
-    .exp-decision-box {
+    .exp-decision-footer {
       margin-top: auto;
       padding-top: 10px;
-      border-top: 1px solid #1b263b;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
       font-size: 0.79rem;
-      color: var(--text-muted);
+      color: var(--text-secondary);
     }
 
-    /* ==========================================================================
-       DELIVERABLES GRID
-       ========================================================================== */
-    .deliverables-summary {
+    /* Deliverables Featurette */
+    .deliverables-tray {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 18px;
       margin-bottom: 54px;
     }
 
-    .deliverable-box {
-      background: #0c1322;
-      border: 1px solid var(--card-border);
+    .deliverable-tile {
+      background: var(--bg-glass);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
       padding: 20px;
+      box-shadow: var(--shadow-ambient);
     }
 
-    .deliverable-icon {
+    .deliverable-tile-icon {
       font-size: 1.6rem;
       margin-bottom: 8px;
     }
 
-    .deliverable-heading {
+    .deliverable-tile-name {
       font-size: 1rem;
       font-weight: 700;
       margin-bottom: 4px;
     }
 
-    .deliverable-text {
+    .deliverable-tile-desc {
       font-size: 0.84rem;
-      color: var(--text-muted);
+      color: var(--text-secondary);
     }
 
     /* ==========================================================================
-       VIEW 2: GROWTH OPERATIONS CONSOLE
+       VIEW 2: GROWTH OPERATIONS CONSOLE (3D DATA DASHBOARD)
        ========================================================================== */
-    .ops-dashboard-wrapper {
+    .ops-console-stage {
       display: none;
       padding: 24px 0 54px;
     }
 
-    .ops-disclaimer-callout {
-      background: rgba(15, 23, 42, 0.9);
+    .ops-notice-callout {
+      background: rgba(14, 22, 40, 0.85);
       border-left: 4px solid var(--accent-amber);
       padding: 14px 18px;
       border-radius: var(--radius-sm);
@@ -918,45 +979,47 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 10px;
+      box-shadow: var(--shadow-ambient);
     }
 
-    .ops-metrics-grid {
+    .metric-cards-quad {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 16px;
       margin-bottom: 24px;
     }
 
-    .metric-summary-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
+    .hud-metric-card {
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-glass);
       border-radius: var(--radius-md);
       padding: 20px;
       position: relative;
+      box-shadow: var(--shadow-ambient), var(--shadow-fresnel);
     }
 
-    .metric-label-text {
+    .hud-label-text {
       font-size: 0.76rem;
       text-transform: uppercase;
       font-weight: 700;
       letter-spacing: 0.05em;
-      color: var(--text-muted);
+      color: var(--text-secondary);
     }
 
-    .metric-value-num {
-      font-family: 'JetBrains Mono', monospace;
+    .hud-number-readout {
+      font-family: var(--font-mono);
       font-size: 1.85rem;
       font-weight: 800;
       margin: 6px 0 2px;
     }
 
-    .metric-sub-note {
+    .hud-subtext-note {
       font-size: 0.74rem;
-      color: var(--text-dim);
+      color: var(--text-tertiary);
     }
 
-    /* Telemetry Two-Column Grid */
-    .telemetry-layout {
+    .telemetry-stage-split {
       display: grid;
       grid-template-columns: 1.25fr 0.75fr;
       gap: 24px;
@@ -964,38 +1027,38 @@
     }
 
     @media (max-width: 900px) {
-      .telemetry-layout {
+      .telemetry-stage-split {
         grid-template-columns: 1fr;
       }
     }
 
-    .table-container {
+    .table-scroll-wrap {
       width: 100%;
       overflow-x: auto;
     }
 
-    .telemetry-table {
+    .hud-data-table {
       width: 100%;
       border-collapse: collapse;
       font-size: 0.83rem;
       margin-top: 10px;
     }
 
-    .telemetry-table th, .telemetry-table td {
+    .hud-data-table th, .hud-data-table td {
       padding: 10px 12px;
       text-align: left;
-      border-bottom: 1px solid #1a253a;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    .telemetry-table th {
-      color: var(--text-muted);
+    .hud-data-table th {
+      color: var(--text-secondary);
       font-weight: 700;
       text-transform: uppercase;
       font-size: 0.72rem;
       letter-spacing: 0.04em;
     }
 
-    .stream-feed-box {
+    .stream-feed-deck {
       max-height: 380px;
       overflow-y: auto;
       display: flex;
@@ -1004,18 +1067,17 @@
       padding-right: 4px;
     }
 
-    .stream-lead-item {
+    .stream-entry-pill {
       font-size: 0.8rem;
       padding: 9px 12px;
-      background: #090e1a;
+      background: rgba(8, 14, 26, 0.8);
       border-radius: var(--radius-sm);
-      border-left: 3px solid var(--accent-blue);
+      border-left: 3px solid var(--accent-cyan);
     }
 
-    /* Simulation Controls */
-    .sim-controls-panel {
-      background: #0d1527;
-      border: 1px solid var(--card-border);
+    .ops-button-shelf {
+      background: rgba(10, 16, 29, 0.8);
+      border: 1px solid var(--border-glass);
       border-radius: var(--radius-md);
       padding: 16px 20px;
       display: flex;
@@ -1026,13 +1088,7 @@
       margin-top: 20px;
     }
 
-    .sim-controls-group {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .btn-sm-action {
+    .sim-btn-pill {
       background: #1c273e;
       border: 1px solid #2a3b5c;
       color: #fff;
@@ -1042,267 +1098,553 @@
       cursor: pointer;
       font-weight: 600;
     }
-
-    .btn-sm-action:hover {
+    .sim-btn-pill:hover {
       background: #283754;
     }
 
     /* Footer */
     footer {
-      border-top: 1px solid var(--card-border);
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(6, 9, 17, 0.9);
       padding: 28px 0;
       text-align: center;
       font-size: 0.82rem;
-      color: var(--text-dim);
+      color: var(--text-tertiary);
       margin-top: auto;
+      position: relative;
+      z-index: 10;
     }
   </style>
 </head>
 <body>
 
   <!-- Accessible Skip Link -->
-  <a href="#mainContent" class="skip-link">Skip to main content</a>
+  <a href="#mainAppContent" class="skip-link">Skip to main content</a>
 
-  <!-- Top Global Simulation Disclaimer Banner -->
-  <aside class="global-disclaimer-banner" aria-label="Simulation Notice">
-    <span class="disclaimer-badge">Demonstration Simulation</span>
-    <span>All telemetry metrics, lead streams, and spend logs represent simulated growth models for the <strong>NxtWave Growth Challenge Round 1</strong>.</span>
-  </aside>
+  <!-- WebGL 3D Canvas Layer -->
+  <canvas id="webglCanvas" aria-hidden="true"></canvas>
+  <div class="fallback-3d-bg" aria-hidden="true"></div>
 
-  <!-- Top Navigation & View Switcher -->
-  <header class="site-nav">
-    <div class="container nav-inner">
-      
-      <a href="https://durgaprasad-1805.github.io/nxtwave-growth-challenge/" class="brand-group" aria-label="NxtWave Growth Challenge Home">
-        <div class="brand-logo-icon">N</div>
-        <div>
-          <span class="brand-title">NxtWave</span>
-          <span class="brand-subtitle">GROWTH SPRINT</span>
-        </div>
-      </a>
+  <div class="app-viewport">
+    
+    <!-- Top Global Simulation Banner -->
+    <aside class="global-disclaimer-strip" aria-label="Simulation Notice">
+      <span class="status-pill">Interactive Growth Prototype</span>
+      <span>Live simulation demonstrating a 500-student acquisition sprint with ₹2,000 budget cap for the <strong>NxtWave Growth Challenge Round 1</strong>.</span>
+    </aside>
 
-      <!-- Accessible Dual-Mode Switcher -->
-      <nav class="view-switcher-pill" role="tablist" aria-label="View Switcher">
-        <button class="tab-toggle-btn active" id="btnStudentView" role="tab" aria-selected="true" aria-controls="studentExperienceView" onclick="switchView('student')">
-          <span>🎓</span> Student Acquisition View
-        </button>
-        <button class="tab-toggle-btn" id="btnOpsView" role="tab" aria-selected="false" aria-controls="opsDashboardView" onclick="switchView('ops')">
-          <span>📊</span> Growth Ops Console (500 Target)
-        </button>
-      </nav>
-
-    </div>
-  </header>
-
-  <main id="mainContent">
-
-    <!-- ==========================================================================
-         VIEW 1: STUDENT EXPERIENCE & CONVERSION FUNNEL
-         ========================================================================== -->
-    <section id="studentExperienceView" role="tabpanel" aria-labelledby="btnStudentView">
-      <div class="container">
+    <!-- Product Navigation Bar -->
+    <header class="product-header">
+      <div class="container nav-flex">
         
-        <!-- Hero Section -->
-        <div class="hero-section">
-          <div class="pill-badge">
-            <span class="live-dot" aria-hidden="true"></span>
-            <span>Live Placement Sprint • Strictly 500 Base Seats</span>
+        <a href="https://durgaprasad-1805.github.io/nxtwave-growth-challenge/" class="brand-mark" aria-label="NxtWave Growth Engine Home">
+          <div class="brand-cube">N</div>
+          <div>
+            <span class="brand-text-title">NxtWave</span>
+            <span class="brand-tag-pill">GROWTH ENGINE 3.0</span>
           </div>
+        </a>
 
-          <h1>Build Your First AI Project<br><span class="gradient-text">In Just 60 Minutes</span></h1>
-          
-          <p class="hero-lead">
-            Zero theory slides. Open your browser, construct an end-to-end Generative AI application, deploy it live on GitHub, and leave with 3 ATS-ready resume bullet points for your upcoming campus placement interviews.
-          </p>
+        <!-- Dual-Mode Switcher -->
+        <nav class="view-control-dock" role="tablist" aria-label="View Mode Switcher">
+          <button class="mode-tab-btn active" id="tabStudent" role="tab" aria-selected="true" aria-controls="studentFunnelView" onclick="switchViewMode('student')">
+            <span>🎓</span> Student Acquisition View
+          </button>
+          <button class="mode-tab-btn" id="tabOps" role="tab" aria-selected="false" aria-controls="opsTelemetryView" onclick="switchViewMode('ops')">
+            <span>📊</span> Growth Ops Console (500 Target)
+          </button>
+        </nav>
 
-          <!-- Capacity & Safety Buffer Bar -->
-          <div class="capacity-banner" role="region" aria-label="Seat Registration Capacity">
-            <div class="capacity-item">
-              <span>📅 Upcoming Sunday, 7:00 PM IST</span>
-            </div>
-            <div class="capacity-item">
-              <span>⏱ 60 Minutes Flat</span>
-            </div>
-            <div class="capacity-item">
-              <span>⚡ <strong><span id="seatCounterDisplay">412</span> / 500</strong> Base Target</span>
-              <div class="progress-bar-wrap" aria-hidden="true">
-                <div class="progress-bar-fill" id="seatProgressBar"></div>
-              </div>
-            </div>
-            <div class="capacity-item">
-              <span class="tag-buffer">+20 Buffer Model (520 Projected)</span>
-            </div>
-          </div>
+        <div class="camera-hud-badge" aria-hidden="true">
+          <span class="camera-dot"></span>
+          <span>3D WebGL Ecosystem: Active</span>
         </div>
 
-        <!-- The Complete Growth Loop Process Flowchart -->
-        <section class="growth-loop-flow" aria-labelledby="loopFlowTitle">
-          <div class="loop-flow-header">
-            <span id="loopFlowTitle">Strategic Growth Loop: Acquire → Register → Refer → Unlock → Measure</span>
-            <span style="color: var(--text-dim); font-size: 0.74rem;">Full-Funnel Organic Engine</span>
-          </div>
-          <div class="loop-flow-steps">
-            <div class="loop-step">
-              <div class="loop-step-num">01. ACQUIRE</div>
-              <div class="loop-step-title">CR WhatsApp</div>
-              <div class="loop-step-sub">35 College Guilds</div>
-            </div>
-            <div class="loop-step">
-              <div class="loop-step-num">02. REGISTER</div>
-              <div class="loop-step-title">1-Click RSVP</div>
-              <div class="loop-step-sub">Low-Friction Entry</div>
-            </div>
-            <div class="loop-step">
-              <div class="loop-step-num">03. REFER</div>
-              <div class="loop-step-title">Peer Invite</div>
-              <div class="loop-step-sub">WhatsApp 1-Tap Share</div>
-            </div>
-            <div class="loop-step">
-              <div class="loop-step-num">04. UNLOCK</div>
-              <div class="loop-step-title">Capstone Vault</div>
-              <div class="loop-step-sub">K=0.32 Multiplier</div>
-            </div>
-            <div class="loop-step">
-              <div class="loop-step-num">05. MEASURE</div>
-              <div class="loop-step-title">Ops Telemetry</div>
-              <div class="loop-step-sub">Live CAC & Velocity</div>
-            </div>
-          </div>
-        </section>
+      </div>
+    </header>
 
-        <!-- Main Interactive Sprint Grid -->
-        <div class="main-sprint-grid">
+    <main id="mainAppContent">
+
+      <!-- ==========================================================================
+           VIEW 1: STUDENT EXPERIENCE & VALUE ENGINE
+           ========================================================================== -->
+      <section id="studentFunnelView" role="tabpanel" aria-labelledby="tabStudent">
+        <div class="container">
           
-          <!-- LEFT: Interactive AI Project Architect -->
-          <div class="card-panel">
-            <div class="panel-header">
-              <div class="panel-icon-badge" aria-hidden="true">⚡</div>
-              <div>
-                <h2 class="panel-title">Interactive AI Project Architect</h2>
-                <p class="panel-subtitle">Discover your branch-specific 60-min capstone project & resume bullet</p>
-              </div>
+          <!-- Cinematic Hero -->
+          <div class="hero-container">
+            <div class="hero-live-pill">
+              <span class="pulse-core" aria-hidden="true"></span>
+              <span>Live Placement Sprint • Strictly 500 Base Seats</span>
             </div>
 
-            <form id="projectGeneratorForm" onsubmit="event.preventDefault(); updatePreview();">
-              <div class="form-field">
-                <label for="branchSelect" class="form-label">Your Engineering Branch</label>
-                <select id="branchSelect" class="form-select" onchange="updatePreview()">
-                  <option value="cs">Computer Science / IT (CSE, ISE, AI/ML)</option>
-                  <option value="ece">Electronics & Communication (ECE, EEE)</option>
-                  <option value="mech">Mechanical / Automation</option>
-                  <option value="civil">Civil / Structural Engineering</option>
-                  <option value="nontech">Non-CS / Open Branch</option>
-                </select>
+            <h1>Build Your First AI Project<br><span class="gradient-hero-text">In Just 60 Minutes</span></h1>
+            
+            <p class="hero-subhead">
+              Zero theory slides. Open your browser, construct an end-to-end Generative AI application, deploy it live on GitHub, and leave with 3 ATS-ready resume bullet points for your upcoming campus placement interviews.
+            </p>
+
+            <!-- Capacity vs Safety Buffer Pill -->
+            <div class="capacity-dock" role="region" aria-label="Seat Registration Capacity">
+              <div class="dock-stat">
+                <span>📅 Upcoming Sunday, 7:00 PM IST</span>
               </div>
-
-              <div class="form-field">
-                <label for="interestSelect" class="form-label">Preferred Project Domain</label>
-                <select id="interestSelect" class="form-select" onchange="updatePreview()">
-                  <option value="copilot">Autonomous Interview & Placement Copilot</option>
-                  <option value="docai">Multi-PDF Semantic Research Assistant</option>
-                  <option value="agent">Automated Web Task & Job Application Agent</option>
-                  <option value="vision">Multimodal Vision & Real-time Defect Detector</option>
-                </select>
+              <div class="dock-stat">
+                <span>⏱ 60 Minutes Flat</span>
               </div>
-
-              <button class="btn btn-primary" id="generateBtn" type="button" onclick="updatePreview()">
-                <span>Preview My 60-Minute AI Project & Resume Bullet</span> ➔
-              </button>
-            </form>
-
-            <!-- Dynamic Output Preview Box -->
-            <div class="project-preview-card" id="projectPreview" role="region" aria-live="polite">
-              <span class="preview-pill" id="previewTag">CUSTOMIZED FOR CSE/IT</span>
-              <h3 class="preview-project-name" id="previewTitle">AI Technical Interviewer with Real-time Code & Voice Evaluation</h3>
-              <p class="preview-project-summary" id="previewDesc">
-                Full-stack application using Gemini API and Streamlit that evaluates coding solutions, checks edge cases, and provides instant audio-style feedback.
-              </p>
-
-              <span class="resume-bullet-title">📄 Your Verified Post-Workshop ATS Resume Bullet:</span>
-              <div class="resume-bullet-container" id="resumeBulletText">
-                • Engineered an AI Technical Interview Platform using Gemini 1.5 Flash and Python; automated real-time test-case generation and code evaluation with &lt;1.2s response latency.
+              <div class="dock-stat">
+                <span>⚡ <strong><span id="seatCounterDisplay">412</span> / 500</strong> Base Target</span>
+                <div class="stat-progress-track" aria-hidden="true">
+                  <div class="stat-progress-val" id="seatProgressBar"></div>
+                </div>
+              </div>
+              <div class="dock-stat">
+                <span class="buffer-tag-chip">+20 Safety Buffer (520 Projected)</span>
               </div>
             </div>
           </div>
 
-          <!-- RIGHT: 1-Click Registration & Viral Referral Loop Engine -->
-          <div class="card-panel">
+          <!-- Central Growth Loop Process Pipeline -->
+          <section class="growth-loop-strip" aria-labelledby="loopHeading">
+            <div class="loop-strip-header">
+              <span id="loopHeading">Central Growth Loop: Acquire → Register → Refer → Unlock → Measure</span>
+              <span style="color: var(--text-tertiary); font-size: 0.74rem;">Organic High-Leverage Loop</span>
+            </div>
+            <div class="loop-node-grid">
+              <div class="loop-node-item active" onclick="focus3DNode(0)">
+                <div class="loop-node-step">01. ACQUIRE</div>
+                <div class="loop-node-name">CR WhatsApp</div>
+                <div class="loop-node-detail">35 College Guilds</div>
+              </div>
+              <div class="loop-node-item" onclick="focus3DNode(1)">
+                <div class="loop-node-step">02. REGISTER</div>
+                <div class="loop-node-name">1-Click RSVP</div>
+                <div class="loop-node-detail">Zero Form Friction</div>
+              </div>
+              <div class="loop-node-item" onclick="focus3DNode(2)">
+                <div class="loop-node-step">03. REFER</div>
+                <div class="loop-node-name">WhatsApp Share</div>
+                <div class="loop-node-detail">Peer Invite Links</div>
+              </div>
+              <div class="loop-node-item" onclick="focus3DNode(3)">
+                <div class="loop-node-step">04. UNLOCK</div>
+                <div class="loop-node-name">Capstone Vault</div>
+                <div class="loop-node-detail">K=0.32 Multiplier</div>
+              </div>
+              <div class="loop-node-item" onclick="focus3DNode(4)">
+                <div class="loop-node-step">05. MEASURE</div>
+                <div class="loop-node-name">Ops Console</div>
+                <div class="loop-node-detail">Live CAC & Velocity</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Main Interactive Stage Grid -->
+          <div class="product-stage-grid">
             
-            <!-- State 1: Quick RSVP Form -->
-            <div id="unregisteredState">
-              <div class="panel-header">
-                <div class="panel-icon-badge" aria-hidden="true">🎟️</div>
+            <!-- LEFT: Interactive AI Project Architect -->
+            <div class="surface-card" id="projectArchitectCard">
+              <div class="card-top-bar">
+                <div class="surface-icon" aria-hidden="true">⚡</div>
                 <div>
-                  <h2 class="panel-title">Free Registration</h2>
-                  <p class="panel-subtitle">1-Click Entry • Zero Spam • 100% Free</p>
+                  <h2 class="card-heading-title">Interactive AI Project Architect</h2>
+                  <p class="card-heading-sub">Discover your branch-tailored 60-min capstone project & resume bullet</p>
                 </div>
               </div>
 
-              <form id="regForm" novalidate onsubmit="handleRegistration(event)">
-                <div class="form-field">
-                  <label for="studentName" class="form-label">Full Name</label>
-                  <input type="text" id="studentName" class="form-input" placeholder="e.g. Rahul Sharma" required aria-required="true">
-                  <div class="form-error-msg" id="nameError">Please enter your full name.</div>
+              <form id="projectArchitectForm" onsubmit="event.preventDefault(); updateProjectPreview();">
+                <div class="form-group-wrap">
+                  <label for="branchSelect" class="field-caption">Your Engineering Branch</label>
+                  <select id="branchSelect" class="select-dropdown" onchange="updateProjectPreview()">
+                    <option value="cs">Computer Science / IT (CSE, ISE, AI/ML)</option>
+                    <option value="ece">Electronics & Communication (ECE, EEE)</option>
+                    <option value="mech">Mechanical / Automation</option>
+                    <option value="civil">Civil / Structural Engineering</option>
+                    <option value="nontech">Non-CS / Open Branch</option>
+                  </select>
                 </div>
 
-                <div class="form-field">
-                  <label for="studentPhone" class="form-label">WhatsApp Number</label>
-                  <input type="tel" id="studentPhone" class="form-input" placeholder="e.g. 9876543210" pattern="[6-9][0-9]{9}" required aria-required="true">
-                  <div class="form-error-msg" id="phoneError">Please enter a valid 10-digit Indian mobile number.</div>
+                <div class="form-group-wrap">
+                  <label for="interestSelect" class="field-caption">Preferred Project Domain</label>
+                  <select id="interestSelect" class="select-dropdown" onchange="updateProjectPreview()">
+                    <option value="copilot">Autonomous Interview & Placement Copilot</option>
+                    <option value="docai">Multi-PDF Semantic Research Assistant</option>
+                    <option value="agent">Automated Web Task & Job Application Agent</option>
+                    <option value="vision">Multimodal Vision & Real-time Defect Detector</option>
+                  </select>
                 </div>
 
-                <div class="form-field">
-                  <label for="collegeName" class="form-label">College / Institute Name</label>
-                  <input type="text" id="collegeName" class="form-input" placeholder="e.g. CBIT Hyderabad / SRM Chennai" required aria-required="true">
-                  <div class="form-error-msg" id="collegeError">Please enter your college name.</div>
-                </div>
-
-                <button type="submit" class="btn btn-primary" style="margin-top: 6px;">
-                  <span>Confirm 60-Min Workshop Seat</span> 🎟️
+                <button class="action-btn btn-gradient-glow" id="generateBtn" type="button" onclick="updateProjectPreview()">
+                  <span>Preview My 60-Minute AI Project & Resume Bullet</span> ➔
                 </button>
               </form>
-            </div>
 
-            <!-- State 2: Registered State (Viral Engine) -->
-            <div id="registeredState" class="confirmed-ticket-panel" aria-live="polite">
-              <div class="ticket-stub">
-                <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase;">Seat Confirmed • Ticket ID</div>
-                <div class="ticket-id-text" id="ticketId">NXW-2026-8491</div>
-                <div style="font-size: 0.8rem; color: var(--accent-green); margin-top: 4px;">Confirmation link dispatched to WhatsApp!</div>
-              </div>
-
-              <div class="referral-engine-box">
-                <h3 style="font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 4px;">
-                  🎁 Unlock the 2026 Final-Year AI Vault
-                </h3>
-                <p style="font-size: 0.8rem; color: var(--text-muted);">
-                  Invite <strong>2 batchmates</strong> with your unique link to unlock 50+ GitHub Starter Repos, Capstone Architecture diagrams, and ATS Templates!
+              <!-- Dynamic 3D Perspective Card Output -->
+              <div class="project-card-3d-box" id="projectPreview" role="region" aria-live="polite">
+                <span class="tag-category-badge" id="previewTag">CUSTOMIZED FOR CSE/IT</span>
+                <h3 class="card-project-name" id="previewTitle">AI Technical Interviewer with Real-time Code & Voice Evaluation</h3>
+                <p class="card-project-summary" id="previewDesc">
+                  Full-stack application using Gemini API and Streamlit that evaluates coding solutions, checks edge cases, and provides instant audio-style feedback.
                 </p>
 
-                <div class="referral-share-url-box">
-                  <span id="refLinkText">nxtwave.io/ai60?ref=NXW-HERO-1024</span>
-                  <button class="btn-copy" id="copyBtn" type="button" onclick="copyReferral()">Copy</button>
+                <span class="bullet-label-hdr">📄 Your Verified Post-Workshop ATS Resume Bullet:</span>
+                <div class="resume-bullet-shell" id="resumeBulletText">
+                  • Engineered an AI Technical Interview Platform using Gemini 1.5 Flash and Python; automated real-time test-case generation and code evaluation with &lt;1.2s response latency.
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT: 1-Click Registration & Viral Referral Loop Engine -->
+            <div class="surface-card">
+              
+              <!-- State 1: Quick RSVP Form -->
+              <div id="unregisteredState">
+                <div class="card-top-bar">
+                  <div class="surface-icon" aria-hidden="true">🎟️</div>
+                  <div>
+                    <h2 class="card-heading-title">Free Registration</h2>
+                    <p class="card-heading-sub">1-Click Entry • Zero Spam • 100% Free</p>
+                  </div>
                 </div>
 
-                <button class="btn btn-whatsapp" id="whatsappShareBtn" type="button" onclick="shareOnWhatsApp()">
-                  <span>Share to Batch WhatsApp Group</span> 📲
-                </button>
+                <form id="rsvpForm" novalidate onsubmit="processRegistration(event)">
+                  <div class="form-group-wrap">
+                    <label for="studentName" class="field-caption">Full Name</label>
+                    <input type="text" id="studentName" class="input-text-field" placeholder="e.g. Rahul Sharma" required aria-required="true">
+                    <div class="field-error-hint" id="nameError">Please enter your full name.</div>
+                  </div>
 
-                <!-- Dynamic Milestone Progress Track -->
-                <div class="milestone-track-list">
-                  <div class="milestone-row" id="m1">
-                    <span>1 Friend Registered (GitHub Starter Pack)</span>
-                    <span class="milestone-badge badge-locked" id="m1Badge">🔒 Locked</span>
+                  <div class="form-group-wrap">
+                    <label for="studentPhone" class="field-caption">WhatsApp Number</label>
+                    <input type="tel" id="studentPhone" class="input-text-field" placeholder="e.g. 9876543210" pattern="[6-9][0-9]{9}" required aria-required="true">
+                    <div class="field-error-hint" id="phoneError">Please enter a valid 10-digit Indian mobile number.</div>
                   </div>
-                  <div class="milestone-row" id="m2">
-                    <span>2 Friends Registered (Full Project Vault)</span>
-                    <span class="milestone-badge badge-locked" id="m2Badge">🔒 Locked</span>
+
+                  <div class="form-group-wrap">
+                    <label for="collegeName" class="field-caption">College / Institute Name</label>
+                    <input type="text" id="collegeName" class="input-text-field" placeholder="e.g. CBIT Hyderabad / SRM Chennai" required aria-required="true">
+                    <div class="field-error-hint" id="collegeError">Please enter your college name.</div>
                   </div>
+
+                  <button type="submit" class="action-btn btn-gradient-glow" style="margin-top: 6px;">
+                    <span>Confirm 60-Min Workshop Seat</span> 🎟️
+                  </button>
+                </form>
+              </div>
+
+              <!-- State 2: Registered State (Viral Engine) -->
+              <div id="registeredState" class="ticket-view-wrapper" aria-live="polite">
+                <div class="hologram-ticket-stub">
+                  <div style="font-size: 0.78rem; color: var(--text-secondary); text-transform: uppercase;">Seat Confirmed • Ticket ID</div>
+                  <div class="ticket-id-display" id="ticketId">NXW-2026-8491</div>
+                  <div style="font-size: 0.8rem; color: var(--accent-emerald); margin-top: 4px;">Confirmation link dispatched to WhatsApp!</div>
                 </div>
 
-                <div style="margin-top: 14px; text-align: center;">
-                  <button type="button" class="btn-sm-action" style="font-size: 0.75rem;" onclick="simulateReferral()">
-                    ⚡ Test Simulation: Add +1 Referred Friend
+                <div class="viral-referral-shell">
+                  <h3 style="font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 4px;">
+                    🎁 Unlock the 2026 Final-Year AI Vault
+                  </h3>
+                  <p style="font-size: 0.8rem; color: var(--text-secondary);">
+                    Invite <strong>2 batchmates</strong> with your unique link to unlock 50+ GitHub Starter Repos, Capstone Architecture diagrams, and ATS Templates!
+                  </p>
+
+                  <div class="link-copy-shelf">
+                    <span id="refLinkText">nxtwave.io/ai60?ref=NXW-HERO-1024</span>
+                    <button class="btn-copy-chip" id="copyBtn" type="button" onclick="copyReferralLink()">Copy</button>
+                  </div>
+
+                  <button class="action-btn btn-whatsapp-action" id="whatsappShareBtn" type="button" onclick="openWhatsAppShare()">
+                    <span>Share to Batch WhatsApp Group</span> 📲
+                  </button>
+
+                  <!-- Dynamic Milestone Tracker -->
+                  <div class="milestone-track-stack">
+                    <div class="milestone-tier-row" id="tier1">
+                      <span>1 Friend Registered (GitHub Starter Pack)</span>
+                      <span class="badge-lock-status badge-locked" id="t1Badge">🔒 Locked</span>
+                    </div>
+                    <div class="milestone-tier-row" id="tier2">
+                      <span>2 Friends Registered (Full Project Vault)</span>
+                      <span class="badge-lock-status badge-locked" id="t2Badge">🔒 Locked</span>
+                    </div>
+                  </div>
+
+                  <div style="margin-top: 14px; text-align: center;">
+                    <button type="button" class="sim-btn-pill" style="font-size: 0.75rem;" onclick="simulateReferredFriend()">
+                      ⚡ Test Simulation: Add +1 Referred Friend
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Section: 3 Controlled Growth Experiments -->
+          <section class="growth-experiments-container" aria-labelledby="experimentsTitle">
+            <div class="section-headline-box">
+              <h2 id="experimentsTitle" class="sec-title">3 Controlled Growth Experiments</h2>
+              <p class="sec-desc">
+                Empirical A/B tests designed to validate value proposition hooks, distribution channels, and viral referral mechanics.
+              </p>
+            </div>
+
+            <div class="experiments-card-deck">
+              
+              <!-- Experiment 1 -->
+              <article class="exp-spec-card">
+                <div class="exp-meta-header">
+                  <span class="exp-category-pill tag-message-hook">Message Hook</span>
+                  <span class="exp-num-label">TEST 01</span>
+                </div>
+                <h3 class="exp-name-title">Placement Armor vs. Tech Stack</h3>
+                <div class="exp-text-row">
+                  <span class="exp-row-lead">Hypothesis:</span> Positioning around "Placement Armor & 3 ATS Bullets" converts &ge;25% higher than "Learn Generative AI & LLMs".
+                </div>
+                <div class="exp-text-row">
+                  <span class="exp-row-lead">What We Test:</span> A/B test 2 WhatsApp broadcast copies across 20 college groups using dedicated UTM tags.
+                </div>
+                <div class="exp-metrics-strip">
+                  Primary: Form Conv % | Secondary: Link CTR
+                </div>
+                <div class="exp-text-row">
+                  <span class="exp-row-lead">Threshold:</span> &ge;25% relative conversion lift on Variant A.
+                </div>
+                <div class="exp-decision-footer">
+                  <strong>Decision:</strong> If Variant A wins, lock placement-first messaging for all retargeting pushes; if Variant B wins, emphasize technical LLM depth.
+                </div>
+              </article>
+
+              <!-- Experiment 2 -->
+              <article class="exp-spec-card">
+                <div class="exp-meta-header">
+                  <span class="exp-category-pill tag-channel-dist">Channel Authority</span>
+                  <span class="exp-num-label">TEST 02</span>
+                </div>
+                <h3 class="exp-name-title">CR Broadcasts vs. Open Discord/Telegram</h3>
+                <div class="exp-text-row">
+                  <span class="exp-row-lead">Hypothesis:</span> Official CR batch WhatsApp circulars deliver &ge;3&times; more verified signups per reach than open student Discord communities.
+                </div>
+                <div class="exp-text-row">
+                  <span class="exp-row-lead">What We Test:</span> 15 CR batch broadcasts vs. 5 regional Discord/Telegram placement communities (~1,500 reach each).
+                </div>
+                <div class="exp-metrics-strip">
+                  Primary: Verified Regs / 1k Reach | Secondary: Time-to-50-Signups
+                </div>
+                <div class="exp-text-row">
+                  <span class="exp-row-lead">Threshold:</span> &ge;3&times; higher registration rate on CR WhatsApp.
+                </div>
+                <div class="exp-decision-footer">
+                  <strong>Decision:</strong> If CR WhatsApp wins, allocate 100% of ₹1,200 bounty to CR leaderboard; if Discord performs, reallocate ₹400 to incentivize Discord moderators.
+                </div>
+              </article>
+
+              <!-- Experiment 3 -->
+              <article class="exp-spec-card">
+                <div class="exp-meta-header">
+                  <span class="exp-category-pill tag-referral-k">Referral Mechanics</span>
+                  <span class="exp-num-label">TEST 03</span>
+                </div>
+                <h3 class="exp-name-title">Digital Milestone Vault vs. Cash Lottery</h3>
+                <div class="exp-text-row">
+                  <span class="exp-row-lead">Hypothesis:</span> A guaranteed Milestone Digital Vault unlock (2 referrals) drives higher K-factor (&ge;0.30) than a probabilistic lottery raffle.
+                </div>
+                <div class="exp-text-row">
+                  <span class="exp-row-lead">What We Test:</span> 50/50 split on post-registration screen: Digital Capstone Vault vs. ₹500 Amazon Voucher Lucky Draw entry.
+                </div>
+                <div class="exp-metrics-strip">
+                  Primary: Viral K-Factor | Secondary: WhatsApp Share Button CTR
+                </div>
+                <div class="exp-text-row">
+                  <span class="exp-row-lead">Threshold:</span> Milestone Vault achieves K &ge; 0.30 (vs. lottery K &lt; 0.15).
+                </div>
+                <div class="exp-decision-footer">
+                  <strong>Decision:</strong> If Milestone Vault wins, lock all viral mechanics to digital asset gating; if lottery wins, shift referral rewards to cash vouchers.
+                </div>
+              </article>
+
+            </div>
+          </section>
+
+          <!-- Workshop Deliverables Featurette -->
+          <section aria-labelledby="takeawaysHeading">
+            <h2 id="takeawaysHeading" style="text-align: center; font-size: 1.6rem; margin-bottom: 24px; font-weight: 800;">
+              What You Walk Away With In <span class="gradient-hero-text">60 Minutes</span>
+            </h2>
+
+            <div class="deliverables-tray">
+              <div class="deliverable-tile">
+                <div class="deliverable-tile-icon" aria-hidden="true">🚀</div>
+                <h3 class="deliverable-tile-name">Live Deployed AI App</h3>
+                <p class="deliverable-tile-desc">A working public web link running your AI model that you can demo live to technical interviewers on your phone.</p>
+              </div>
+              <div class="deliverable-tile">
+                <div class="deliverable-tile-icon" aria-hidden="true">💻</div>
+                <h3 class="deliverable-tile-name">Clean GitHub Repository</h3>
+                <p class="deliverable-tile-desc">A professional README formatted with system architecture diagrams, environment configurations, and clean modular code.</p>
+              </div>
+              <div class="deliverable-tile">
+                <div class="deliverable-tile-icon" aria-hidden="true">📑</div>
+                <h3 class="deliverable-tile-name">3 ATS Resume Bullets</h3>
+                <p class="deliverable-tile-desc">Copy-paste resume bullets written with the industry-standard STAR format and quantifiable latency metrics.</p>
+              </div>
+              <div class="deliverable-tile">
+                <div class="deliverable-tile-icon" aria-hidden="true">🎯</div>
+                <h3 class="deliverable-tile-name">Zero Math Fluff</h3>
+                <p class="deliverable-tile-desc">No boring mathematical slides. 100% focused on modern APIs, LLM prompts, and deployment pipelines.</p>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           VIEW 2: GROWTH OPERATIONS CONSOLE (TELEMETRY & BUDGET)
+           ========================================================================== -->
+      <section id="opsTelemetryView" class="ops-console-stage" role="tabpanel" aria-labelledby="tabOps">
+        <div class="container">
+          
+          <!-- Simulation Notice -->
+          <aside class="ops-notice-callout" aria-label="Dashboard Methodology">
+            <div>
+              <strong>Operational Simulation Console:</strong> Live model demonstrating campaign measurement, channel attribution, budget burn, and registration telemetry.
+            </div>
+            <span class="buffer-tag-chip">Model: 500 Base Target | 520 Projected (+4% Safety Buffer)</span>
+          </aside>
+
+          <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <h2 style="font-size: 1.85rem; font-weight: 800;">Campaign Telemetry & Funnel Performance</h2>
+              <p style="color: var(--text-secondary); font-size: 0.86rem;">Tracking registration velocity, K-factor virality, and ₹2,000 budget ledger</p>
+            </div>
+            <button class="action-btn btn-gradient-glow" style="width: auto; padding: 8px 18px; font-size: 0.82rem;" type="button" onclick="exportSimulatedCSV()">
+              📥 Export Simulated Lead Telemetry (CSV)
+            </button>
+          </div>
+
+          <!-- Key Metrics Quad -->
+          <div class="metric-cards-quad">
+            
+            <div class="hud-metric-card">
+              <div class="hud-label-text">Simulated Registrations</div>
+              <div class="hud-number-readout" style="color: var(--accent-cyan);" id="opsTotalRegs">412</div>
+              <div class="hud-subtext-note">Base Target: 500 (82.4%) | Projected: 520 (+4% Buffer)</div>
+            </div>
+
+            <div class="hud-metric-card">
+              <div class="hud-label-text">Simulated Viral K-Factor</div>
+              <div class="hud-number-readout" style="color: var(--accent-emerald);" id="opsKFactor">0.34</div>
+              <div class="hud-subtext-note">Model Target: 0.32 (+6.2% above baseline assumption)</div>
+            </div>
+
+            <div class="hud-metric-card">
+              <div class="hud-label-text">Budget Burn & CAC</div>
+              <div class="hud-number-readout" style="color: var(--accent-amber);">₹3.84</div>
+              <div class="hud-subtext-note">Projected Blended CAC (₹2,000 Cap / 520 Regs)</div>
+            </div>
+
+            <div class="hud-metric-card">
+              <div class="hud-label-text">Active CR WhatsApp Guilds</div>
+              <div class="hud-number-readout" style="color: var(--accent-indigo);">36 / 35</div>
+              <div class="hud-subtext-note">Target: 35 Groups across 20 Engineering Colleges</div>
+            </div>
+
+          </div>
+
+          <!-- Telemetry Two-Column Layout -->
+          <div class="telemetry-stage-split">
+            
+            <!-- Channel Attribution Table -->
+            <div class="surface-card">
+              <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">Channel Attribution & Conversion Model</h3>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 12px;">Unit economics and volume breakdown across prioritized growth loops</p>
+              
+              <div class="table-scroll-wrap">
+                <table class="hud-data-table" aria-label="Channel Attribution Data">
+                  <thead>
+                    <tr>
+                      <th>Channel Vector</th>
+                      <th>Reach</th>
+                      <th>Conv %</th>
+                      <th>Regs</th>
+                      <th>CAC</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong style="color: var(--accent-cyan);">Channel 1: CR WhatsApp Guilds</strong></td>
+                      <td>2,800</td>
+                      <td>10.0%</td>
+                      <td><strong>280</strong></td>
+                      <td>₹4.28</td>
+                    </tr>
+                    <tr>
+                      <td><strong style="color: var(--accent-emerald);">Channel 2: Peer Referral (K=0.32)</strong></td>
+                      <td>1,120</td>
+                      <td>14.2%</td>
+                      <td><strong>160</strong></td>
+                      <td>₹0.00</td>
+                    </tr>
+                    <tr>
+                      <td><strong style="color: var(--accent-indigo);">Channel 3: Campus Micro-Bounties</strong></td>
+                      <td>650</td>
+                      <td>12.3%</td>
+                      <td><strong>80</strong></td>
+                      <td>₹10.00</td>
+                    </tr>
+                    <tr style="background: rgba(56, 189, 248, 0.06); font-weight: 700;">
+                      <td>Projected Funnel Output</td>
+                      <td>4,570</td>
+                      <td>11.3%</td>
+                      <td style="color: var(--accent-emerald);">520</td>
+                      <td style="color: var(--accent-cyan);">₹3.84</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Budget Ledger -->
+              <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+                <h4 style="font-size: 0.88rem; font-weight: 700; margin-bottom: 6px;">₹2,000 Budget Ledger & Allocation Logic</h4>
+                <ul style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.8; list-style-type: disc; padding-left: 20px;">
+                  <li><strong>₹1,200 (60%):</strong> Top 3 Class Representative Performance Bounties (1st: ₹600, 2nd: ₹400, 3rd: ₹200 Amazon vouchers).</li>
+                  <li><strong>₹800 (40%):</strong> Live Attendance Retention Raffle (Two ₹400 cards drawn live at minute 50 to incentivize &gt;70% attendance).</li>
+                  <li><strong>₹0 (0%):</strong> Paid Meta/Google Ads (deliberately scrapped due to unviable ₹40+ EdTech CPL).</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Live Registration Stream (Simulated) -->
+            <div class="surface-card">
+              <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">Simulated Lead Telemetry Stream</h3>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 12px;">Real-time feed showing lead ingestion and attribution</p>
+              
+              <div class="stream-feed-deck" id="leadStream" role="log" aria-live="polite">
+                <div class="stream-entry-pill">
+                  <strong>Karthik R.</strong> (CBIT Hyderabad • CSE) <br>
+                  <span style="color: var(--text-tertiary);">Source: CR Group #04 • 3 mins ago</span>
+                </div>
+                <div class="stream-entry-pill" style="border-left-color: var(--accent-emerald);">
+                  <strong>Ananya S.</strong> (SRM Chennai • ECE) <br>
+                  <span style="color: var(--text-tertiary);">Source: Referral (ref=NXW-PRIYA) • 7 mins ago</span>
+                </div>
+                <div class="stream-entry-pill" style="border-left-color: var(--accent-indigo);">
+                  <strong>Siddharth M.</strong> (VNR VJIET • Mech) <br>
+                  <span style="color: var(--text-tertiary);">Source: CR Group #12 • 14 mins ago</span>
+                </div>
+              </div>
+
+              <!-- Interactive Simulation Controls -->
+              <div class="ops-button-shelf">
+                <span style="font-size: 0.78rem; color: var(--text-secondary); font-weight: 600;">Simulation Tools:</span>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                  <button type="button" class="sim-btn-pill" onclick="triggerSimulatedLead()">
+                    +1 Simulated Lead
+                  </button>
+                  <button type="button" class="sim-btn-pill" onclick="resetCampaignData()">
+                    Reset Metrics
                   </button>
                 </div>
               </div>
@@ -1311,320 +1653,307 @@
           </div>
 
         </div>
+      </section>
 
-        <!-- Controlled Growth Experiments Section -->
-        <section class="experiments-section" aria-labelledby="experimentsTitle">
-          <div class="section-title-wrap">
-            <h2 id="experimentsTitle" class="section-title">3 Controlled Growth Experiments</h2>
-            <p class="section-subtitle">
-              Empirical A/B tests designed to validate value proposition hooks, distribution channels, and viral referral mechanics.
-            </p>
-          </div>
+    </main>
 
-          <div class="experiments-grid">
-            
-            <!-- Experiment 1 -->
-            <article class="experiment-card">
-              <div class="exp-header">
-                <span class="exp-tag exp-tag-message">Message Hook</span>
-                <span class="exp-number">TEST 01</span>
-              </div>
-              <h3 class="exp-title">Placement Armor vs. Tech Stack</h3>
-              <div class="exp-block">
-                <span class="exp-label">Hypothesis:</span> Positioning around "Placement Armor & 3 ATS Bullets" converts &ge;25% higher than "Learn Generative AI & LLMs".
-              </div>
-              <div class="exp-block">
-                <span class="exp-label">What We Test:</span> A/B test 2 WhatsApp broadcast copies across 20 college groups using dedicated UTM tags.
-              </div>
-              <div class="exp-metric-badge">
-                Primary: Form Conv % | Secondary: Link CTR
-              </div>
-              <div class="exp-block">
-                <span class="exp-label">Threshold:</span> &ge;25% relative conversion lift on Variant A.
-              </div>
-              <div class="exp-decision-box">
-                <strong>Decision:</strong> If Variant A wins, lock placement-first messaging for all retargeting pushes; if Variant B wins, emphasize technical LLM depth.
-              </div>
-            </article>
-
-            <!-- Experiment 2 -->
-            <article class="experiment-card">
-              <div class="exp-header">
-                <span class="exp-tag exp-tag-channel">Channel Authority</span>
-                <span class="exp-number">TEST 02</span>
-              </div>
-              <h3 class="exp-title">CR Broadcasts vs. Open Discord/Telegram</h3>
-              <div class="exp-block">
-                <span class="exp-label">Hypothesis:</span> Official CR batch WhatsApp circulars deliver &ge;3&times; more verified signups per reach than open student Discord communities.
-              </div>
-              <div class="exp-block">
-                <span class="exp-label">What We Test:</span> 15 CR batch broadcasts vs. 5 regional Discord/Telegram placement communities (~1,500 reach each).
-              </div>
-              <div class="exp-metric-badge">
-                Primary: Verified Regs / 1k Reach | Secondary: Time-to-50-Signups
-              </div>
-              <div class="exp-block">
-                <span class="exp-label">Threshold:</span> &ge;3&times; higher registration rate on CR WhatsApp.
-              </div>
-              <div class="exp-decision-box">
-                <strong>Decision:</strong> If CR WhatsApp wins, allocate 100% of ₹1,200 bounty to CR leaderboard; if Discord performs, reallocate ₹400 to incentivize Discord moderators.
-              </div>
-            </article>
-
-            <!-- Experiment 3 -->
-            <article class="experiment-card">
-              <div class="exp-header">
-                <span class="exp-tag exp-tag-referral">Referral Mechanics</span>
-                <span class="exp-number">TEST 03</span>
-              </div>
-              <h3 class="exp-title">Digital Milestone Vault vs. Cash Lottery</h3>
-              <div class="exp-block">
-                <span class="exp-label">Hypothesis:</span> A guaranteed Milestone Digital Vault unlock (2 referrals) drives higher K-factor (&ge;0.30) than a probabilistic lottery raffle.
-              </div>
-              <div class="exp-block">
-                <span class="exp-label">What We Test:</span> 50/50 split on post-registration screen: Digital Capstone Vault vs. ₹500 Amazon Voucher Lucky Draw entry.
-              </div>
-              <div class="exp-metric-badge">
-                Primary: Viral K-Factor | Secondary: WhatsApp Share Button CTR
-              </div>
-              <div class="exp-block">
-                <span class="exp-label">Threshold:</span> Milestone Vault achieves K &ge; 0.30 (vs. lottery K &lt; 0.15).
-              </div>
-              <div class="exp-decision-box">
-                <strong>Decision:</strong> If Milestone Vault wins, lock all viral mechanics to digital asset gating; if lottery wins, shift referral rewards to cash vouchers.
-              </div>
-            </article>
-
-          </div>
-        </section>
-
-        <!-- What Students Walk Away With -->
-        <section aria-labelledby="deliverablesHeading">
-          <h2 id="deliverablesHeading" style="text-align: center; font-size: 1.6rem; margin-bottom: 24px; font-weight: 800;">
-            What You Walk Away With In <span class="gradient-text">60 Minutes</span>
-          </h2>
-
-          <div class="deliverables-summary">
-            <div class="deliverable-box">
-              <div class="deliverable-icon" aria-hidden="true">🚀</div>
-              <h3 class="deliverable-heading">Live Deployed AI App</h3>
-              <p class="deliverable-text">A working public web link running your AI model that you can demo live to technical interviewers on your phone.</p>
-            </div>
-            <div class="deliverable-box">
-              <div class="deliverable-icon" aria-hidden="true">💻</div>
-              <h3 class="deliverable-heading">Clean GitHub Repository</h3>
-              <p class="deliverable-text">A professional README formatted with system architecture diagrams, environment configurations, and clean modular code.</p>
-            </div>
-            <div class="deliverable-box">
-              <div class="deliverable-icon" aria-hidden="true">📑</div>
-              <h3 class="deliverable-heading">3 ATS Resume Bullets</h3>
-              <p class="deliverable-text">Copy-paste resume bullets written with the industry-standard STAR format and quantifiable latency metrics.</p>
-            </div>
-            <div class="deliverable-box">
-              <div class="deliverable-icon" aria-hidden="true">🎯</div>
-              <h3 class="deliverable-heading">Zero Math Fluff</h3>
-              <p class="deliverable-text">No boring mathematical slides. 100% focused on modern APIs, LLM prompts, and deployment pipelines.</p>
-            </div>
-          </div>
-        </section>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         VIEW 2: GROWTH OPERATIONS CONSOLE (TELEMETRY & BUDGET)
-         ========================================================================== -->
-    <section id="opsDashboardView" class="ops-dashboard-wrapper" role="tabpanel" aria-labelledby="btnOpsView">
+    <footer>
       <div class="container">
-        
-        <!-- Simulation Notice Callout -->
-        <aside class="ops-disclaimer-callout" aria-label="Dashboard Methodology">
-          <div>
-            <strong>Operational Simulation Console:</strong> Live model demonstrating campaign measurement, channel attribution, budget burn, and registration telemetry.
-          </div>
-          <span class="tag-buffer">Model: 500 Base Target | 520 Projected (+4% Safety Buffer)</span>
-        </aside>
-
-        <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px;">
-          <div>
-            <h2 style="font-size: 1.8rem; font-weight: 800;">Campaign Telemetry & Funnel Performance</h2>
-            <p style="color: var(--text-muted); font-size: 0.86rem;">Tracking registration velocity, K-factor virality, and ₹2,000 budget ledger</p>
-          </div>
-          <button class="btn btn-primary" style="width: auto; padding: 8px 16px; font-size: 0.82rem;" type="button" onclick="exportRegistrationsCSV()">
-            📥 Export Simulated Lead Telemetry (CSV)
-          </button>
-        </div>
-
-        <!-- Key Metrics Row -->
-        <div class="ops-metrics-grid">
-          
-          <div class="metric-summary-card">
-            <div class="metric-label-text">Simulated Registrations</div>
-            <div class="metric-value-num" style="color: var(--accent-blue);" id="opsTotalRegs">412</div>
-            <div class="metric-sub-note">Base Target: 500 (82.4%) | Projected: 520 (+4% Buffer)</div>
-          </div>
-
-          <div class="metric-summary-card">
-            <div class="metric-label-text">Simulated Viral K-Factor</div>
-            <div class="metric-value-num" style="color: var(--accent-green);" id="opsKFactor">0.34</div>
-            <div class="metric-sub-note">Model Target: 0.32 (+6.2% above baseline assumption)</div>
-          </div>
-
-          <div class="metric-summary-card">
-            <div class="metric-label-text">Budget Burn & CAC</div>
-            <div class="metric-value-num" style="color: var(--accent-amber);">₹3.84</div>
-            <div class="metric-sub-note">Projected Blended CAC (₹2,000 Cap / 520 Regs)</div>
-          </div>
-
-          <div class="metric-summary-card">
-            <div class="metric-label-text">Active CR WhatsApp Guilds</div>
-            <div class="metric-value-num" style="color: var(--accent-purple);">36 / 35</div>
-            <div class="metric-sub-note">Target: 35 Groups across 20 Engineering Colleges</div>
-          </div>
-
-        </div>
-
-        <!-- Telemetry Two-Column Layout -->
-        <div class="telemetry-layout">
-          
-          <!-- Channel Attribution Breakdown -->
-          <div class="card-panel">
-            <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">Channel Attribution & Conversion Model</h3>
-            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Unit economics and volume breakdown across prioritized growth loops</p>
-            
-            <div class="table-container">
-              <table class="telemetry-table" aria-label="Channel Attribution Data">
-                <thead>
-                  <tr>
-                    <th>Channel Vector</th>
-                    <th>Reach</th>
-                    <th>Conv %</th>
-                    <th>Regs</th>
-                    <th>CAC</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong style="color: var(--accent-blue);">Channel 1: CR WhatsApp Guilds</strong></td>
-                    <td>2,800</td>
-                    <td>10.0%</td>
-                    <td><strong>280</strong></td>
-                    <td>₹4.28</td>
-                  </tr>
-                  <tr>
-                    <td><strong style="color: var(--accent-green);">Channel 2: Peer Referral (K=0.32)</strong></td>
-                    <td>1,120</td>
-                    <td>14.2%</td>
-                    <td><strong>160</strong></td>
-                    <td>₹0.00</td>
-                  </tr>
-                  <tr>
-                    <td><strong style="color: var(--accent-purple);">Channel 3: Campus Micro-Bounties</strong></td>
-                    <td>650</td>
-                    <td>12.3%</td>
-                    <td><strong>80</strong></td>
-                    <td>₹10.00</td>
-                  </tr>
-                  <tr style="background: rgba(56, 189, 248, 0.06); font-weight: 700;">
-                    <td>Projected Funnel Output</td>
-                    <td>4,570</td>
-                    <td>11.3%</td>
-                    <td style="color: var(--accent-green);">520</td>
-                    <td style="color: var(--accent-blue);">₹3.84</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <!-- ₹2,000 Budget Allocation Breakdown -->
-            <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid #1a253a;">
-              <h4 style="font-size: 0.88rem; font-weight: 700; margin-bottom: 6px;">₹2,000 Budget Ledger & Allocation Logic</h4>
-              <ul style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.8; list-style-type: disc; padding-left: 20px;">
-                <li><strong>₹1,200 (60%):</strong> Top 3 Class Representative Performance Bounties (1st: ₹600, 2nd: ₹400, 3rd: ₹200 Amazon vouchers).</li>
-                <li><strong>₹800 (40%):</strong> Live Attendance Retention Raffle (Two ₹400 cards drawn live at minute 50 to incentivize &gt;70% attendance).</li>
-                <li><strong>₹0 (0%):</strong> Paid Meta/Google Ads (deliberately scrapped due to unviable ₹40+ EdTech CPL).</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Live Registration Stream (Simulated) -->
-          <div class="card-panel">
-            <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">Simulated Lead Telemetry Stream</h3>
-            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Real-time feed showing lead ingestion and attribution</p>
-            
-            <div class="stream-feed-box" id="leadStream" role="log" aria-live="polite">
-              <div class="stream-lead-item">
-                <strong>Karthik R.</strong> (CBIT Hyderabad • CSE) <br>
-                <span style="color: var(--text-dim);">Source: CR Group #04 • 3 mins ago</span>
-              </div>
-              <div class="stream-lead-item" style="border-left-color: var(--accent-green);">
-                <strong>Ananya S.</strong> (SRM Chennai • ECE) <br>
-                <span style="color: var(--text-dim);">Source: Referral (ref=NXW-PRIYA) • 7 mins ago</span>
-              </div>
-              <div class="stream-lead-item" style="border-left-color: var(--accent-purple);">
-                <strong>Siddharth M.</strong> (VNR VJIET • Mech) <br>
-                <span style="color: var(--text-dim);">Source: CR Group #12 • 14 mins ago</span>
-              </div>
-            </div>
-
-            <!-- Interactive Simulation Controls -->
-            <div class="sim-controls-panel">
-              <span style="font-size: 0.78rem; color: var(--text-muted); font-weight: 600;">Simulation Tools:</span>
-              <div class="sim-controls-group">
-                <button type="button" class="btn-sm-action" onclick="addSimulatedLead()">
-                  +1 Simulated Lead
-                </button>
-                <button type="button" class="btn-sm-action" onclick="resetSimulatedData()">
-                  Reset Metrics
-                </button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
+        <p>NxtWave Growth Intern Challenge (Round 1) • Strategy & Interactive 3D Asset Built by <strong>Durga Prasad</strong></p>
+        <p style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 4px;">Simulation model for 500-student workshop acquisition sprint with ₹2,000 budget cap.</p>
       </div>
-    </section>
+    </footer>
 
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>NxtWave Growth Intern Challenge (Round 1) • Strategy & Working Asset Built by <strong>Durga Prasad</strong></p>
-      <p style="font-size: 0.75rem; color: #475569; margin-top: 4px;">Simulation model for 500-student workshop acquisition sprint with ₹2,000 budget cap.</p>
-    </div>
-  </footer>
+  </div>
 
   <!-- ==========================================================================
-       CLIENT-SIDE INTERACTIVITY & LOGIC
-       ========================================================================== -->
+       THREE.JS PHOTOREALISTIC 3D GROWTH ECOSYSTEM & INTERACTIVE CONTROLS
+       ========================================================================== */ -->
   <script>
-    // Tab Navigation State
-    function switchView(view) {
-      const studentView = document.getElementById('studentExperienceView');
-      const opsView = document.getElementById('opsDashboardView');
-      const btnStudent = document.getElementById('btnStudentView');
-      const btnOps = document.getElementById('btnOpsView');
+    /* ==========================================================================
+       1. PHOTOREALISTIC THREE.JS 3D SCENE SETUP
+       ========================================================================== */
+    let scene, camera, renderer, nodesGroup, connectionsGroup, particlesGroup;
+    let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
+    const canvas = document.getElementById('webglCanvas');
+    let isOpsMode = false;
+    let nodeMeshes = [];
 
-      if (view === 'student') {
-        studentView.style.display = 'block';
-        opsView.style.display = 'none';
-        btnStudent.classList.add('active');
-        btnOps.classList.remove('active');
-        btnStudent.setAttribute('aria-selected', 'true');
-        btnOps.setAttribute('aria-selected', 'false');
-      } else {
-        studentView.style.display = 'none';
-        opsView.style.display = 'block';
-        btnOps.classList.add('active');
-        btnStudent.classList.remove('active');
-        btnOps.setAttribute('aria-selected', 'true');
-        btnStudent.setAttribute('aria-selected', 'false');
+    function init3D() {
+      // Check WebGL availability
+      if (!window.WebGLRenderingContext || !canvas) return;
+
+      try {
+        scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x060911, 0.015);
+
+        camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 0, 48);
+
+        renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        // Believable Lighting (Key, Fill, Rim)
+        const ambientLight = new THREE.AmbientLight(0x0f172a, 1.2);
+        scene.add(ambientLight);
+
+        const keyLight = new THREE.DirectionalLight(0x38bdf8, 2.2);
+        keyLight.position.set(20, 30, 25);
+        scene.add(keyLight);
+
+        const rimLight = new THREE.DirectionalLight(0x818cf8, 1.8);
+        rimLight.position.set(-25, -20, -10);
+        scene.add(rimLight);
+
+        const pointLight = new THREE.PointLight(0x10b981, 1.5, 50);
+        pointLight.position.set(0, 0, 10);
+        scene.add(pointLight);
+
+        // Core Hub & Orbital Ecosystem Group
+        nodesGroup = new THREE.Group();
+        connectionsGroup = new THREE.Group();
+        particlesGroup = new THREE.Group();
+
+        scene.add(nodesGroup);
+        scene.add(connectionsGroup);
+        scene.add(particlesGroup);
+
+        buildEcosystemNodes();
+        buildDataParticles();
+
+        window.addEventListener('resize', onWindowResize, false);
+        window.addEventListener('mousemove', onMouseMove, false);
+        window.addEventListener('touchmove', onTouchMove, { passive: true });
+
+        animate3D();
+      } catch (err) {
+        console.warn("3D initialization fallback activated:", err);
       }
     }
 
-    // AI Project Architect Database
-    const projects = {
+    function buildEcosystemNodes() {
+      // Central Glass Core: The 60-Minute Workshop Engine
+      const coreGeo = new THREE.IcosahedronGeometry(4.2, 2);
+      const coreMat = new THREE.MeshPhysicalMaterial({
+        color: 0x38bdf8,
+        metalness: 0.1,
+        roughness: 0.15,
+        transmission: 0.7,
+        thickness: 2.0,
+        transparent: true,
+        opacity: 0.85,
+        wireframe: false
+      });
+      const coreMesh = new THREE.Mesh(coreGeo, coreMat);
+      coreMesh.userData = { name: "Workshop Engine", index: -1 };
+      nodesGroup.add(coreMesh);
+      nodeMeshes.push(coreMesh);
+
+      // Inner Wireframe Core for High-Tech Holographic Depth
+      const innerWireGeo = new THREE.IcosahedronGeometry(4.35, 1);
+      const innerWireMat = new THREE.MeshBasicMaterial({
+        color: 0x38bdf8,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.25
+      });
+      const innerWire = new THREE.Mesh(innerWireGeo, innerWireMat);
+      nodesGroup.add(innerWire);
+
+      // Orbital Nodes representing the 5 Core Stages:
+      // 0: CR WhatsApp (Acquire)
+      // 1: 1-Click RSVP (Register)
+      // 2: Peer Share (Refer)
+      // 3: Capstone Vault (Unlock)
+      // 4: Ops Telemetry (Measure)
+      const nodeConfigs = [
+        { name: "CR WhatsApp Guilds", color: 0x38bdf8, pos: [-16, 6, 4], size: 1.6 },
+        { name: "1-Click Registration", color: 0x818cf8, pos: [-7, -12, 6], size: 1.5 },
+        { name: "Viral Peer Referral", color: 0x10b981, pos: [8, -11, 5], size: 1.5 },
+        { name: "2026 Capstone Vault", color: 0xf59e0b, pos: [17, 5, 3], size: 1.7 },
+        { name: "Ops Telemetry", color: 0xc084fc, pos: [0, 15, -4], size: 1.6 }
+      ];
+
+      nodeConfigs.forEach((cfg, idx) => {
+        const geo = new THREE.SphereGeometry(cfg.size, 32, 32);
+        const mat = new THREE.MeshStandardMaterial({
+          color: cfg.color,
+          metalness: 0.6,
+          roughness: 0.2,
+          emissive: cfg.color,
+          emissiveIntensity: 0.25
+        });
+        const mesh = new THREE.Mesh(geo, mat);
+        mesh.position.set(...cfg.pos);
+        mesh.userData = { name: cfg.name, index: idx, baseColor: cfg.color };
+        nodesGroup.add(mesh);
+        nodeMeshes.push(mesh);
+
+        // Orbital Ring around each node
+        const ringGeo = new THREE.RingGeometry(cfg.size * 1.35, cfg.size * 1.48, 32);
+        const ringMat = new THREE.MeshBasicMaterial({
+          color: cfg.color,
+          side: THREE.DoubleSide,
+          transparent: true,
+          opacity: 0.35
+        });
+        const ringMesh = new THREE.Mesh(ringGeo, ringMat);
+        ringMesh.position.set(...cfg.pos);
+        ringMesh.rotation.x = Math.PI / 2.5;
+        nodesGroup.add(ringMesh);
+
+        // Connection Line to Core
+        const points = [
+          new THREE.Vector3(0, 0, 0),
+          new THREE.Vector3(...cfg.pos)
+        ];
+        const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
+        const lineMat = new THREE.LineBasicMaterial({
+          color: cfg.color,
+          transparent: true,
+          opacity: 0.25
+        });
+        const line = new THREE.Line(lineGeo, lineMat);
+        connectionsGroup.add(line);
+      });
+    }
+
+    function buildDataParticles() {
+      // 300 Floating Student Data Particles Stream
+      const count = 350;
+      const geo = new THREE.BufferGeometry();
+      const positions = new Float32Array(count * 3);
+      const colors = new Float32Array(count * 3);
+
+      const colorPalette = [
+        new THREE.Color(0x38bdf8),
+        new THREE.Color(0x818cf8),
+        new THREE.Color(0x10b981)
+      ];
+
+      for (let i = 0; i < count; i++) {
+        positions[i * 3] = (Math.random() - 0.5) * 80;
+        positions[i * 3 + 1] = (Math.random() - 0.5) * 60;
+        positions[i * 3 + 2] = (Math.random() - 0.5) * 40;
+
+        const col = colorPalette[Math.floor(Math.random() * colorPalette.length)];
+        colors[i * 3] = col.r;
+        colors[i * 3 + 1] = col.g;
+        colors[i * 3 + 2] = col.b;
+      }
+
+      geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+      const mat = new THREE.PointsMaterial({
+        size: 0.45,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.65
+      });
+
+      const pSystem = new THREE.Points(geo, mat);
+      particlesGroup.add(pSystem);
+    }
+
+    function onWindowResize() {
+      if (!camera || !renderer) return;
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    function onMouseMove(e) {
+      mouseX = (e.clientX - window.innerWidth / 2) * 0.0008;
+      mouseY = (e.clientY - window.innerHeight / 2) * 0.0008;
+    }
+
+    function onTouchMove(e) {
+      if (e.touches.length > 0) {
+        mouseX = (e.touches[0].clientX - window.innerWidth / 2) * 0.0008;
+        mouseY = (e.touches[0].clientY - window.innerHeight / 2) * 0.0008;
+      }
+    }
+
+    function focus3DNode(idx) {
+      if (!nodesGroup) return;
+      const targetMesh = nodeMeshes[idx + 1]; // Offset 1 because core is 0
+      if (targetMesh) {
+        targetMesh.scale.set(1.4, 1.4, 1.4);
+        setTimeout(() => {
+          targetMesh.scale.set(1, 1, 1);
+        }, 600);
+      }
+    }
+
+    function animate3D() {
+      requestAnimationFrame(animate3D);
+
+      targetX += (mouseX - targetX) * 0.05;
+      targetY += (mouseY - targetY) * 0.05;
+
+      if (nodesGroup) {
+        nodesGroup.rotation.y += 0.002;
+        nodesGroup.rotation.x = targetY * 0.5;
+        nodesGroup.rotation.y += targetX * 0.5;
+      }
+
+      if (particlesGroup) {
+        particlesGroup.rotation.y -= 0.001;
+      }
+
+      // Smooth camera transition between views
+      if (camera) {
+        if (isOpsMode) {
+          camera.position.x += (12 - camera.position.x) * 0.04;
+          camera.position.y += (10 - camera.position.y) * 0.04;
+          camera.position.z += (54 - camera.position.z) * 0.04;
+        } else {
+          camera.position.x += (0 - camera.position.x) * 0.04;
+          camera.position.y += (0 - camera.position.y) * 0.04;
+          camera.position.z += (48 - camera.position.z) * 0.04;
+        }
+        camera.lookAt(0, 0, 0);
+      }
+
+      if (renderer && scene && camera) {
+        renderer.render(scene, camera);
+      }
+    }
+
+    /* ==========================================================================
+       2. VIEW SWITCHING & PRODUCT LOGIC
+       ========================================================================== */
+    function switchViewMode(mode) {
+      const studentView = document.getElementById('studentFunnelView');
+      const opsView = document.getElementById('opsTelemetryView');
+      const tabStudent = document.getElementById('tabStudent');
+      const tabOps = document.getElementById('tabOps');
+
+      if (mode === 'student') {
+        studentView.style.display = 'block';
+        opsView.style.display = 'none';
+        tabStudent.classList.add('active');
+        tabOps.classList.remove('active');
+        tabStudent.setAttribute('aria-selected', 'true');
+        tabOps.setAttribute('aria-selected', 'false');
+        isOpsMode = false;
+      } else {
+        studentView.style.display = 'none';
+        opsView.style.display = 'block';
+        tabOps.classList.add('active');
+        tabStudent.classList.remove('active');
+        tabOps.setAttribute('aria-selected', 'true');
+        tabStudent.setAttribute('aria-selected', 'false');
+        isOpsMode = true;
+      }
+    }
+
+    /* ==========================================================================
+       3. AI PROJECT ARCHITECT & RESUME GENERATOR
+       ========================================================================== */
+    const projectCatalog = {
       cs: {
         copilot: {
           tag: "OPTIMIZED FOR CS/IT • PLACEMENTS",
@@ -1757,123 +2086,137 @@
       }
     };
 
-    function updatePreview() {
+    function updateProjectPreview() {
       const branch = document.getElementById('branchSelect').value;
       const interest = document.getElementById('interestSelect').value;
-      const data = (projects[branch] && projects[branch][interest]) || projects.cs.copilot;
+      const data = (projectCatalog[branch] && projectCatalog[branch][interest]) || projectCatalog.cs.copilot;
 
       document.getElementById('previewTag').textContent = data.tag;
       document.getElementById('previewTitle').textContent = data.title;
       document.getElementById('previewDesc').textContent = data.desc;
       document.getElementById('resumeBulletText').textContent = data.bullet;
       document.getElementById('projectPreview').style.display = 'block';
+
+      // Interactive 3D Perspective Card Tilt Reaction
+      const card = document.getElementById('projectArchitectCard');
+      if (card) {
+        card.style.transform = "perspective(1000px) rotateX(2deg) rotateY(-2deg)";
+        setTimeout(() => { card.style.transform = "none"; }, 400);
+      }
     }
 
-    // Dynamic Lead & State Management
-    let totalRegCount = 412;
-    let simulatedFriends = 0;
+    /* ==========================================================================
+       4. REGISTRATION ENGINE & VIRAL K-FACTOR TRACKER
+       ========================================================================== */
+    let currentRegCount = 412;
+    let referredCount = 0;
 
-    function handleRegistration(e) {
+    function processRegistration(e) {
       e.preventDefault();
       
-      const nameInput = document.getElementById('studentName');
-      const phoneInput = document.getElementById('studentPhone');
-      const collegeInput = document.getElementById('collegeName');
+      const nameEl = document.getElementById('studentName');
+      const phoneEl = document.getElementById('studentPhone');
+      const collegeEl = document.getElementById('collegeName');
       
-      let isValid = true;
+      let valid = true;
 
-      // Validation
-      if (!nameInput.value.trim()) {
+      if (!nameEl.value.trim()) {
         document.getElementById('nameError').style.display = 'block';
-        isValid = false;
+        valid = false;
       } else {
         document.getElementById('nameError').style.display = 'none';
       }
 
-      const phoneRegex = /^[6-9]\d{9}$/;
-      if (!phoneRegex.test(phoneInput.value.trim())) {
+      const phonePattern = /^[6-9]\d{9}$/;
+      if (!phonePattern.test(phoneEl.value.trim())) {
         document.getElementById('phoneError').style.display = 'block';
-        isValid = false;
+        valid = false;
       } else {
         document.getElementById('phoneError').style.display = 'none';
       }
 
-      if (!collegeInput.value.trim()) {
+      if (!collegeEl.value.trim()) {
         document.getElementById('collegeError').style.display = 'block';
-        isValid = false;
+        valid = false;
       } else {
         document.getElementById('collegeError').style.display = 'none';
       }
 
-      if (!isValid) return;
+      if (!valid) return;
 
-      const cleanName = nameInput.value.trim().split(' ')[0].toUpperCase() || "HERO";
-      const randomNum = Math.floor(1000 + Math.random() * 9000);
-      const code = `NXW-${cleanName}-${randomNum}`;
+      const firstName = nameEl.value.trim().split(' ')[0].toUpperCase() || "HERO";
+      const randomTicket = Math.floor(1000 + Math.random() * 9000);
+      const ticketCode = `NXW-${firstName}-${randomTicket}`;
 
-      document.getElementById('ticketId').textContent = code;
-      document.getElementById('refLinkText').textContent = `nxtwave.io/ai60?ref=${code}`;
+      document.getElementById('ticketId').textContent = ticketCode;
+      document.getElementById('refLinkText').textContent = `nxtwave.io/ai60?ref=${ticketCode}`;
 
       document.getElementById('unregisteredState').style.display = 'none';
       document.getElementById('registeredState').style.display = 'block';
 
-      // Increment counters
-      totalRegCount++;
-      document.getElementById('seatCounterDisplay').textContent = totalRegCount;
-      document.getElementById('opsTotalRegs').textContent = totalRegCount;
-      document.getElementById('seatProgressBar').style.width = `${Math.min(100, (totalRegCount / 500) * 100)}%`;
+      // Increment Counters
+      currentRegCount++;
+      document.getElementById('seatCounterDisplay').textContent = currentRegCount;
+      document.getElementById('opsTotalRegs').textContent = currentRegCount;
+      document.getElementById('seatProgressBar').style.width = `${Math.min(100, (currentRegCount / 500) * 100)}%`;
 
-      // Prepend to telemetry stream
+      // Prepend to Lead Stream
       const stream = document.getElementById('leadStream');
       const newLead = document.createElement('div');
-      newLead.className = 'stream-lead-item';
-      newLead.style.borderLeftColor = 'var(--accent-green)';
-      newLead.innerHTML = `<strong>${nameInput.value.trim()}</strong> (${collegeInput.value.trim()}) <br><span style="color: var(--text-dim);">Source: Direct RSVP Form • Just now</span>`;
+      newLead.className = 'stream-entry-pill';
+      newLead.style.borderLeftColor = 'var(--accent-emerald)';
+      newLead.innerHTML = `<strong>${nameEl.value.trim()}</strong> (${collegeEl.value.trim()}) <br><span style="color: var(--text-tertiary);">Source: Direct RSVP Form • Just now</span>`;
       stream.insertBefore(newLead, stream.firstChild);
+
+      // Pulse 3D Registration Node
+      focus3DNode(1);
     }
 
-    function copyReferral() {
-      const text = document.getElementById('refLinkText').textContent;
-      navigator.clipboard.writeText(text).then(() => {
+    function copyReferralLink() {
+      const linkText = document.getElementById('refLinkText').textContent;
+      navigator.clipboard.writeText(linkText).then(() => {
         const btn = document.getElementById('copyBtn');
         btn.textContent = 'Copied!';
-        setTimeout(() => btn.textContent = 'Copy', 2000);
+        setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
       });
     }
 
-    function shareOnWhatsApp() {
-      const link = document.getElementById('refLinkText').textContent;
-      const msg = encodeURIComponent(
-        `🚨 Final Year Engineers: Instead of regular theoretical webinars, NxtWave is hosting a FREE 60-Minute sprint where we build and deploy a live AI project directly to our GitHub with ATS-ready resume bullets for campus placements.\n\nOnly 500 seats available. Register using my invite link:\nhttps://${link}`
+    function openWhatsAppShare() {
+      const linkText = document.getElementById('refLinkText').textContent;
+      const viralMessage = encodeURIComponent(
+        `🚨 Final Year Engineers: Instead of regular theoretical webinars, NxtWave is hosting a FREE 60-Minute sprint where we build and deploy a live AI project directly to our GitHub with ATS-ready resume bullets for campus placements.\n\nOnly 500 seats available. Register using my invite link:\nhttps://${linkText}`
       );
-      window.open(`https://api.whatsapp.com/send?text=${msg}`, '_blank');
+      window.open(`https://api.whatsapp.com/send?text=${viralMessage}`, '_blank');
+      focus3DNode(2); // Pulse referral 3D node
     }
 
-    function simulateReferral() {
-      simulatedFriends++;
-      const m1 = document.getElementById('m1');
-      const m2 = document.getElementById('m2');
-      const m1Badge = document.getElementById('m1Badge');
-      const m2Badge = document.getElementById('m2Badge');
+    function simulateReferredFriend() {
+      referredCount++;
+      const t1 = document.getElementById('tier1');
+      const t2 = document.getElementById('tier2');
+      const t1Badge = document.getElementById('t1Badge');
+      const t2Badge = document.getElementById('t2Badge');
 
-      if (simulatedFriends === 1) {
-        m1.classList.add('unlocked');
-        m1Badge.className = 'milestone-badge badge-unlocked';
-        m1Badge.textContent = '✅ Unlocked! (Starters)';
+      if (referredCount === 1) {
+        t1.classList.add('unlocked');
+        t1Badge.className = 'badge-lock-status badge-unlocked';
+        t1Badge.textContent = '✅ Unlocked! (Starters)';
         alert("🎉 Milestone 1 Reached: 1 Friend Registered! You unlocked the GitHub Starter Pack.");
-      } else if (simulatedFriends >= 2) {
-        m2.classList.add('unlocked');
-        m2Badge.className = 'milestone-badge badge-unlocked';
-        m2Badge.textContent = '🎉 Fully Unlocked! (Vault)';
-        alert("🔥 Milestone 2 Reached: 2 Friends Registered! The 2026 AI Capstone & Interview Vault is now unlocked!");
+        focus3DNode(3);
+      } else if (referredCount >= 2) {
+        t2.classList.add('unlocked');
+        t2Badge.className = 'badge-lock-status badge-unlocked';
+        t2Badge.textContent = '🎉 Fully Unlocked! (Vault)';
+        alert("🔥 Milestone 2 Reached: 2 Friends Registered! The entire 2026 AI Capstone & Interview Vault is now unlocked!");
+        focus3DNode(3);
       }
     }
 
-    function addSimulatedLead() {
-      totalRegCount++;
-      document.getElementById('seatCounterDisplay').textContent = totalRegCount;
-      document.getElementById('opsTotalRegs').textContent = totalRegCount;
-      document.getElementById('seatProgressBar').style.width = `${Math.min(100, (totalRegCount / 500) * 100)}%`;
+    function triggerSimulatedLead() {
+      currentRegCount++;
+      document.getElementById('seatCounterDisplay').textContent = currentRegCount;
+      document.getElementById('opsTotalRegs').textContent = currentRegCount;
+      document.getElementById('seatProgressBar').style.width = `${Math.min(100, (currentRegCount / 500) * 100)}%`;
 
       const names = ["Vikas K.", "Pooja M.", "Rohan S.", "Kavya T.", "Aditya P."];
       const colleges = ["CBIT", "SRM", "VNR VJIET", "MIT Manipal", "VIT Vellore"];
@@ -1882,38 +2225,40 @@
 
       const stream = document.getElementById('leadStream');
       const newLead = document.createElement('div');
-      newLead.className = 'stream-lead-item';
-      newLead.style.borderLeftColor = 'var(--accent-blue)';
-      newLead.innerHTML = `<strong>${rName}</strong> (${rCollege}) <br><span style="color: var(--text-dim);">Source: Simulated CR WhatsApp Broadcast • Just now</span>`;
+      newLead.className = 'stream-entry-pill';
+      newLead.style.borderLeftColor = 'var(--accent-cyan)';
+      newLead.innerHTML = `<strong>${rName}</strong> (${rCollege}) <br><span style="color: var(--text-tertiary);">Source: Simulated CR WhatsApp Broadcast • Just now</span>`;
       stream.insertBefore(newLead, stream.firstChild);
+
+      focus3DNode(0);
     }
 
-    function resetSimulatedData() {
-      totalRegCount = 412;
-      simulatedFriends = 0;
-      document.getElementById('seatCounterDisplay').textContent = totalRegCount;
-      document.getElementById('opsTotalRegs').textContent = totalRegCount;
+    function resetCampaignData() {
+      currentRegCount = 412;
+      referredCount = 0;
+      document.getElementById('seatCounterDisplay').textContent = currentRegCount;
+      document.getElementById('opsTotalRegs').textContent = currentRegCount;
       document.getElementById('seatProgressBar').style.width = '82.4%';
       
-      const m1 = document.getElementById('m1');
-      const m2 = document.getElementById('m2');
-      m1.classList.remove('unlocked');
-      m2.classList.remove('unlocked');
-      document.getElementById('m1Badge').className = 'milestone-badge badge-locked';
-      document.getElementById('m1Badge').textContent = '🔒 Locked';
-      document.getElementById('m2Badge').className = 'milestone-badge badge-locked';
-      document.getElementById('m2Badge').textContent = '🔒 Locked';
+      const t1 = document.getElementById('tier1');
+      const t2 = document.getElementById('tier2');
+      t1.classList.remove('unlocked');
+      t2.classList.remove('unlocked');
+      document.getElementById('t1Badge').className = 'badge-lock-status badge-locked';
+      document.getElementById('t1Badge').textContent = '🔒 Locked';
+      document.getElementById('t2Badge').className = 'badge-lock-status badge-locked';
+      document.getElementById('t2Badge').textContent = '🔒 Locked';
 
       alert("Simulation metrics and referral milestone states reset to baseline.");
     }
 
-    function exportRegistrationsCSV() {
-      const csvContent = "data:text/csv;charset=utf-8,TicketID,Name,College,Branch,AttributionSource,SimulatedTimestamp\n" +
+    function exportSimulatedCSV() {
+      const csvData = "data:text/csv;charset=utf-8,TicketID,Name,College,Branch,AttributionSource,SimulatedTimestamp\n" +
         "NXW-2026-8491,Rahul Sharma,CBIT Hyderabad,CSE,CR WhatsApp Group #04,2026-10-04 10:15:00\n" +
         "NXW-2026-8492,Ananya S.,SRM Chennai,ECE,Viral Referral (ref=NXW-PRIYA),2026-10-04 10:22:00\n" +
         "NXW-2026-8493,Siddharth M.,VNR VJIET,Mech,CR WhatsApp Group #12,2026-10-04 10:35:00\n" +
         "NXW-2026-8494,Pooja Patel,MIT Manipal,CSE,Micro-Bounty Coding Club,2026-10-04 10:48:00";
-      const encodedUri = encodeURI(csvContent);
+      const encodedUri = encodeURI(csvData);
       const link = document.createElement("a");
       link.setAttribute("href", encodedUri);
       link.setAttribute("download", "nxtwave_growth_simulated_leads.csv");
@@ -1922,8 +2267,11 @@
       document.body.removeChild(link);
     }
 
-    // Auto load initial project state
-    updatePreview();
+    // Initialize WebGL and Project Preview on Load
+    window.addEventListener('DOMContentLoaded', () => {
+      init3D();
+      updateProjectPreview();
+    });
   </script>
 </body>
 </html>
