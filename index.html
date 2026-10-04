@@ -655,6 +655,11 @@
       }
     }
 
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -667,7 +672,7 @@
       font-family: var(--font-sans);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
+      overflow-x: clip;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -682,7 +687,7 @@
       width: 100vw;
       height: 100vh;
       z-index: 0;
-      pointer-events: none;
+      pointer-events: none !important;
       background: var(--gradient-atmosphere);
       transition: background 0.6s ease;
     }
@@ -695,18 +700,33 @@
       width: 100vw;
       height: 100vh;
       z-index: 1;
-      pointer-events: none;
+      pointer-events: none !important;
       opacity: var(--webgl-opacity);
       transition: opacity 0.6s ease;
     }
 
-    /* Content Foreground Layer */
+    /* Content Foreground Layer: Natural Unhindered Page Scroll */
     .app-viewport {
       position: relative;
       z-index: 10;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
+      overflow: visible;
+      width: 100%;
+    }
+
+    /* Target Sections: Native Smooth Scroll Offset below Sticky Navigation */
+    #whyAttendSection,
+    #whatYouWillBuildSection,
+    section[aria-labelledby="walkawayHeading"],
+    section[aria-labelledby="howItWorksHeading"],
+    .placement-matrix-container,
+    section[aria-labelledby="prereqHeading"],
+    #registrationSection,
+    section[aria-labelledby="faqHeading"],
+    #opsTelemetryView {
+      scroll-margin-top: 86px;
     }
 
     .container {
@@ -899,6 +919,8 @@
       text-align: center;
       padding: 44px 0 28px;
       position: relative;
+      transform: none !important;
+      will-change: auto;
     }
 
     /* Dedicated Optical Backdrop for Text Legibility */
@@ -3450,16 +3472,16 @@
       color: #ffffff;
     }
 
-    /* 7. Scroll-Triggered Storytelling Reveals */
+    /* 7. Scroll Storytelling & Natural Section Entry (Never Hide Content Behind Zero Opacity) */
     .reveal-on-scroll {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 1 !important;
+      transform: none !important;
+      transition: opacity 0.4s ease, transform 0.4s ease;
     }
 
     .reveal-on-scroll.is-revealed {
-      opacity: 1;
-      transform: translateY(0);
+      opacity: 1 !important;
+      transform: none !important;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -3938,14 +3960,19 @@
        MOBILE-FIRST RESPONSIVE ARCHITECTURE & METICULOUS SPACING SYSTEM
        ========================================================================== */
 
-    /* Global Gutter & Layout Safeguards */
-    html, body {
-      overflow-x: hidden;
+    /* Global Gutter & Layout Safeguards (Seamless Document Flow) */
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      overflow-x: clip;
       width: 100%;
     }
 
     .app-viewport {
-      overflow-x: hidden;
+      overflow: visible;
       width: 100%;
     }
 
@@ -4123,13 +4150,16 @@
         color: var(--text-secondary);
       }
 
-      /* 5. Mobile Hero: Ordered Visual Calm & Clear Hierarchy */
+      /* 5. Mobile Hero: Ordered Visual Calm & Clear Hierarchy (Natural Document Flow) */
       .hero-container {
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
         padding: 34px 0 26px;
+        position: relative;
+        transform: none !important;
+        will-change: auto;
       }
 
       .hero-live-pill {
@@ -7392,7 +7422,8 @@
 
     function onScroll() {
       const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-      scrollYOffset = -scrollY * 0.006;
+      // Gentle, natural scroll parallax offset (capped to preserve scene harmony)
+      scrollYOffset = -Math.min(scrollY * 0.010, 26);
     }
 
     function focusAmbientNode(idx) {
@@ -7449,9 +7480,9 @@
         pulse.mesh.position.copy(pos);
       });
 
-      // Smooth Clamped Camera Parallax + Scroll Response
-      currentCamX += (mouseX - currentCamX) * 0.025;
-      currentCamY += (mouseY + scrollYOffset - currentCamY) * 0.025;
+      // Smooth Clamped Camera Parallax + Scroll Response (Fluid tracking without lag or layout jumps)
+      currentCamX += (mouseX - currentCamX) * 0.05;
+      currentCamY += (mouseY + scrollYOffset - currentCamY) * 0.06;
 
       const isMobileScreen = window.innerWidth < 768;
       let targetCamZ = isMobileScreen ? (isOpsMode ? 62 : 54) : (isOpsMode ? 52 : 46);
@@ -7461,7 +7492,8 @@
       camera.position.y = currentCamY;
       camera.position.z += (targetCamZ - camera.position.z) * 0.03;
 
-      camera.lookAt(0, scrollYOffset * 0.3, 0);
+      // Stable, subtle look target that smoothly matches camera Y movement
+      camera.lookAt(currentCamX * 0.1, currentCamY * 0.45, 0);
 
       renderer.render(scene, camera);
     }
@@ -8995,23 +9027,10 @@
       }
     });
 
-    // 5. Scroll-Triggered Storytelling & Metric Count-Ups
+    // 5. Scroll-Triggered Storytelling & Metric Count-Ups (Immediate Visibility for Natural Scroll)
     function initScrollStorytelling() {
       const revealElements = document.querySelectorAll('.reveal-on-scroll');
-      if ('IntersectionObserver' in window) {
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-revealed');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-        revealElements.forEach(el => revealObserver.observe(el));
-      } else {
-        revealElements.forEach(el => el.classList.add('is-revealed'));
-      }
+      revealElements.forEach(el => el.classList.add('is-revealed'));
 
       initCounterAnimation('opsTotalRegs', 0, 412, 1100);
       initCounterAnimation('opsKFactor', 0, 0.34, 1100, 2);
@@ -9094,26 +9113,10 @@
       scrollToReserve();
     }
 
-    // 7. Hero Parallax Micro-Interaction
+    // 7. Hero Scroll Freedom Guarantee (Hero scrolls naturally with normal document flow)
     function initHeroParallax() {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      if (window.innerWidth < 768) return;
-
-      const heroBox = document.querySelector('.hero-headline-block');
-      if (!heroBox) return;
-
-      let ticking = false;
-      window.addEventListener('mousemove', (e) => {
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            const xOffset = (e.clientX / window.innerWidth - 0.5) * 8;
-            const yOffset = (e.clientY / window.innerHeight - 0.5) * 6;
-            heroBox.style.transform = `translate3d(${xOffset}px, ${yOffset}px, 0)`;
-            ticking = false;
-          });
-          ticking = true;
-        }
-      }, { passive: true });
+      // Intentionally neutral: The hero headline, live pill, capacity dock, and CTAs
+      // scroll upward naturally with standard browser scrolling, without pinned transforms.
     }
 
     // 8. Tab Visibility Listener for Three.js Power Efficiency
