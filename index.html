@@ -120,18 +120,18 @@
 
     /* Light Mode Tokens: Clean, Lavender / Soft White / Slate Aesthetic */
     [data-theme="light"] {
-      --bg-dark: #f8fafc;
+      --bg-dark: #f8faff;
       --bg-surface: #ffffff;
       --bg-surface-elevated: #f1f5f9;
-      --bg-glass: rgba(255, 255, 255, 0.85);
-      --bg-glass-elevated: rgba(255, 255, 255, 0.95);
+      --bg-glass: rgba(255, 255, 255, 0.88);
+      --bg-glass-elevated: rgba(255, 255, 255, 0.96);
       --bg-dock: rgba(241, 245, 249, 0.95);
-      --bg-header: rgba(255, 255, 255, 0.88);
+      --bg-header: rgba(255, 255, 255, 0.92);
       --bg-footer: #f1f5f9;
-      --bg-banner: rgba(241, 245, 249, 0.92);
+      --bg-banner: rgba(241, 245, 249, 0.95);
       
-      --border-subtle: rgba(148, 163, 184, 0.25);
-      --border-glass: rgba(99, 102, 241, 0.2);
+      --border-subtle: rgba(148, 163, 184, 0.28);
+      --border-glass: rgba(99, 102, 241, 0.22);
       --border-focus: #6366f1;
       
       --accent-cyan: #0284c7;
@@ -147,14 +147,14 @@
       --text-tertiary: #64748b;
       
       --gradient-brand: linear-gradient(135deg, #0284c7 0%, #6366f1 50%, #8b5cf6 100%);
-      --gradient-metal: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(241, 245, 249, 0.7) 100%);
-      --gradient-hero-vignette: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.7) 60%, transparent 100%);
-      --gradient-atmosphere: radial-gradient(ellipse at 50% 15%, rgba(224, 231, 255, 0.55) 0%, rgba(248, 250, 252, 0.85) 65%, #f8fafc 100%), linear-gradient(180deg, rgba(241, 245, 249, 0.4) 0%, rgba(248, 250, 252, 0.98) 100%);
-      --gradient-conversion-strip: linear-gradient(135deg, rgba(245, 243, 255, 0.95) 0%, rgba(238, 242, 255, 0.9) 100%);
+      --gradient-metal: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(241, 245, 249, 0.75) 100%);
+      --gradient-hero-vignette: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.25) 60%, transparent 100%);
+      --gradient-atmosphere: radial-gradient(ellipse at 50% 15%, rgba(224, 231, 255, 0.5) 0%, rgba(248, 250, 255, 0.85) 65%, #f8faff 100%), linear-gradient(180deg, rgba(241, 245, 249, 0.4) 0%, rgba(248, 250, 255, 0.98) 100%);
+      --gradient-conversion-strip: linear-gradient(135deg, rgba(245, 243, 255, 0.95) 0%, rgba(238, 242, 255, 0.92) 100%);
       
       --shadow-ambient: 0 16px 36px -12px rgba(99, 102, 241, 0.12), 0 4px 12px -2px rgba(15, 23, 42, 0.06);
-      --shadow-fresnel: inset 0 1px 1px 0 rgba(255, 255, 255, 0.9), 0 1px 3px rgba(0, 0, 0, 0.05);
-      --webgl-opacity: 0.52;
+      --shadow-fresnel: inset 0 1px 1px 0 rgba(255, 255, 255, 0.95), 0 1px 3px rgba(0, 0, 0, 0.05);
+      --webgl-opacity: 0.55;
     }
 
     /* Smooth Transitions for Color Theming */
@@ -584,6 +584,45 @@
       color: #64748b;
     }
 
+    [data-theme="light"] .viral-referral-shell {
+      background: rgba(255, 255, 255, 0.92);
+      border-color: rgba(99, 102, 241, 0.25);
+    }
+
+    [data-theme="light"] .btn-copy-chip {
+      background: #eef2ff;
+      border-color: rgba(99, 102, 241, 0.35);
+      color: var(--accent-indigo);
+    }
+
+    [data-theme="light"] .btn-copy-chip:hover {
+      background: #e0e7ff;
+    }
+
+    [data-theme="light"] .btn-secondary-glass {
+      background: rgba(255, 255, 255, 0.88);
+      color: #0f172a;
+      border-color: rgba(203, 213, 225, 0.8);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    }
+
+    [data-theme="light"] .btn-secondary-glass:hover {
+      background: #ffffff;
+      border-color: var(--accent-indigo);
+      color: var(--accent-indigo);
+    }
+
+    [data-theme="light"] .contrast-header {
+      border-bottom-color: rgba(148, 163, 184, 0.25);
+    }
+
+    /* WebGL Fallback Depth Simulation */
+    .webgl-fallback-active .ambient-atmosphere-layer {
+      background: radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
+                  radial-gradient(circle at 80% 70%, rgba(56, 189, 248, 0.12) 0%, transparent 45%),
+                  var(--gradient-atmosphere);
+    }
+
         /* Accessibility: Reduced Motion */
     @media (prefers-reduced-motion: reduce) {
       *, ::before, ::after {
@@ -615,7 +654,20 @@
       position: relative;
     }
 
-    /* 3D WebGL Canvas Layer (Sophisticated Ambient Backdrop) */
+    /* Atmospheric Vignette & Depth Layer (Layer 0, behind canvas) */
+    .ambient-atmosphere-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      background: var(--gradient-atmosphere);
+      transition: background 0.6s ease;
+    }
+
+    /* 3D WebGL Canvas Layer (Layer 1, in front of atmosphere, behind foreground content) */
     #webglCanvas {
       position: fixed;
       top: 0;
@@ -624,21 +676,8 @@
       height: 100vh;
       z-index: 1;
       pointer-events: none;
-      opacity: 0.65;
+      opacity: var(--webgl-opacity);
       transition: opacity 0.6s ease;
-    }
-
-    /* Atmospheric Vignette & Depth Layer */
-    .ambient-atmosphere-layer {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 2;
-      pointer-events: none;
-      background: radial-gradient(ellipse at 50% 15%, rgba(6, 9, 19, 0.3) 0%, rgba(6, 9, 19, 0.85) 65%, #060913 100%),
-                  linear-gradient(180deg, rgba(6, 9, 19, 0.2) 0%, rgba(6, 9, 19, 0.95) 100%);
     }
 
     /* Content Foreground Layer */
@@ -684,7 +723,7 @@
        TOP GLOBAL BANNER: SIMULATION & METHODOLOGY NOTICE
        ========================================================================== */
     .global-disclaimer-strip {
-      background: rgba(10, 15, 29, 0.85);
+      background: var(--bg-banner);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(56, 189, 248, 0.15);
       padding: 8px 16px;
@@ -714,7 +753,7 @@
        PRODUCT NAVIGATION & VIEW SWITCHER
        ========================================================================== */
     .product-header {
-      background: rgba(7, 11, 22, 0.75);
+      background: var(--bg-header);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-subtle);
@@ -772,7 +811,7 @@
 
     .view-control-dock {
       display: inline-flex;
-      background: rgba(13, 20, 36, 0.85);
+      background: var(--bg-dock);
       border: 1px solid var(--border-glass);
       padding: 4px;
       border-radius: var(--radius-md);
@@ -810,12 +849,13 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(14, 22, 38, 0.6);
-      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-glass);
       padding: 4px 10px;
       border-radius: var(--radius-full);
       font-size: 0.72rem;
       color: var(--text-secondary);
+      transition: all 0.25s ease;
     }
 
     .camera-dot {
@@ -824,6 +864,12 @@
       border-radius: 50%;
       background: var(--accent-emerald);
       box-shadow: 0 0 8px var(--accent-emerald);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .camera-dot.fallback {
+      background: var(--accent-amber);
+      box-shadow: 0 0 8px var(--accent-amber);
     }
 
     /* ==========================================================================
@@ -845,9 +891,10 @@
       width: 100%;
       max-width: 960px;
       height: 100%;
-      background: radial-gradient(ellipse at center, rgba(6, 9, 19, 0.88) 0%, rgba(6, 9, 19, 0.6) 60%, transparent 100%);
+      background: var(--gradient-hero-vignette);
       z-index: -1;
       pointer-events: none;
+      transition: background 0.6s ease;
     }
 
     .hero-live-pill {
@@ -2050,7 +2097,7 @@
     /* Footer */
     footer {
       border-top: 1px solid var(--border-subtle);
-      background: rgba(6, 9, 17, 0.95);
+      background: var(--bg-footer);
       padding: 28px 0;
       text-align: center;
       font-size: 0.82rem;
@@ -2067,8 +2114,8 @@
   <a href="#mainAppContent" class="skip-link">Skip to main content</a>
 
   <!-- Ambient 3D WebGL Canvas Layer (Sophisticated & Calm) -->
-  <canvas id="webglCanvas" aria-hidden="true"></canvas>
   <div class="ambient-atmosphere-layer" aria-hidden="true"></div>
+  <canvas id="webglCanvas" aria-hidden="true"></canvas>
 
   <div class="app-viewport">
     
@@ -2119,9 +2166,9 @@
             </button>
           </div>
 
-          <div class="camera-hud-badge" aria-hidden="true">
-            <span class="camera-dot"></span>
-            <span>Ambient 3D Ecosystem</span>
+          <div class="camera-hud-badge" id="webglStatusBadge" role="status" aria-label="3D Engine Status">
+            <span class="camera-dot" id="webglStatusDot"></span>
+            <span id="webglStatusText">Ambient 3D: Active</span>
           </div>
 
         </div>
@@ -3130,15 +3177,262 @@
       { name: "Telemetry Matrix (Measure)", basePos: [0, 24, -36], radius: 5.8, speed: 0.0004, phase: 2.2 }
     ];
 
+    // Explicit 3D Theme Scene Configurations
+    const LIGHT_SCENE_CONFIG = {
+      fog: { color: 0xf8faff, density: 0.012 },
+      ambientLight: { color: 0xf1f5f9, intensity: 1.85 },
+      keyLight: { color: 0x6366f1, intensity: 1.5, pos: [-25, 35, 30] },
+      rimLight: { color: 0x0284c7, intensity: 1.25, pos: [30, -25, -15] },
+      spline: { color: 0x6366f1, opacity: 0.25 },
+      pulse: { color: 0x4f46e5, opacity: 0.8 },
+      outerNode: {
+        color: 0x818cf8,
+        metalness: 0.08,
+        roughness: 0.20,
+        transmission: 0.90,
+        thickness: 3.0,
+        opacity: 0.65,
+        clearcoat: 0.8,
+        clearcoatRoughness: 0.2
+      },
+      innerCores: [
+        { color: 0x4f46e5, emissive: 0x4f46e5, intensity: 0.45 },
+        { color: 0x0284c7, emissive: 0x0284c7, intensity: 0.45 },
+        { color: 0x059669, emissive: 0x059669, intensity: 0.50 },
+        { color: 0xd97706, emissive: 0xd97706, intensity: 0.50 },
+        { color: 0x7c3aed, emissive: 0x7c3aed, intensity: 0.45 }
+      ]
+    };
+
+    const DARK_SCENE_CONFIG = {
+      fog: { color: 0x060913, density: 0.016 },
+      ambientLight: { color: 0x0a1020, intensity: 1.4 },
+      keyLight: { color: 0xe2e8f0, intensity: 1.2, pos: [-25, 35, 30] },
+      rimLight: { color: 0x38bdf8, intensity: 0.9, pos: [30, -25, -15] },
+      spline: { color: 0x38bdf8, opacity: 0.14 },
+      pulse: { color: 0x38bdf8, opacity: 0.5 },
+      outerNode: {
+        color: 0x1b263b,
+        metalness: 0.12,
+        roughness: 0.32,
+        transmission: 0.92,
+        thickness: 3.2,
+        opacity: 0.78,
+        clearcoat: 0.6,
+        clearcoatRoughness: 0.25
+      },
+      innerCores: [
+        { color: 0x38bdf8, emissive: 0x38bdf8, intensity: 0.25 },
+        { color: 0x38bdf8, emissive: 0x38bdf8, intensity: 0.25 },
+        { color: 0x10b981, emissive: 0x10b981, intensity: 0.35 },
+        { color: 0xf59e0b, emissive: 0xf59e0b, intensity: 0.35 },
+        { color: 0xc084fc, emissive: 0xc084fc, intensity: 0.25 }
+      ]
+    };
+
+    // Smooth Theme Transition State (650ms Cinematic Interpolation)
+    let sceneTransition = {
+      active: false,
+      startTime: 0,
+      duration: 650,
+      startConfig: null,
+      targetConfig: null
+    };
+
+    function captureCurrentSceneState() {
+      return {
+        fog: {
+          color: scene && scene.fog ? scene.fog.color.clone() : new THREE.Color(0x060913),
+          density: scene && scene.fog ? scene.fog.density : 0.016
+        },
+        ambientLight: {
+          color: ambientLight ? ambientLight.color.clone() : new THREE.Color(0x0a1020),
+          intensity: ambientLight ? ambientLight.intensity : 1.4
+        },
+        keyLight: {
+          color: keyLight ? keyLight.color.clone() : new THREE.Color(0xe2e8f0),
+          intensity: keyLight ? keyLight.intensity : 1.2
+        },
+        rimLight: {
+          color: rimLight ? rimLight.color.clone() : new THREE.Color(0x38bdf8),
+          intensity: rimLight ? rimLight.intensity : 0.9
+        },
+        spline: {
+          color: (splineLineMesh && splineLineMesh.material) ? splineLineMesh.material.color.clone() : new THREE.Color(0x38bdf8),
+          opacity: (splineLineMesh && splineLineMesh.material) ? splineLineMesh.material.opacity : 0.14
+        },
+        pulse: {
+          color: (dataPulses[0] && dataPulses[0].mesh.material) ? dataPulses[0].mesh.material.color.clone() : new THREE.Color(0x38bdf8),
+          opacity: (dataPulses[0] && dataPulses[0].mesh.material) ? dataPulses[0].mesh.material.opacity : 0.5
+        },
+        outerNode: {
+          color: (ambientNodes[0] && ambientNodes[0].outerMesh.material) ? ambientNodes[0].outerMesh.material.color.clone() : new THREE.Color(0x1b263b),
+          roughness: ambientNodes[0] ? ambientNodes[0].outerMesh.material.roughness : 0.32,
+          transmission: ambientNodes[0] ? ambientNodes[0].outerMesh.material.transmission : 0.92,
+          opacity: ambientNodes[0] ? ambientNodes[0].outerMesh.material.opacity : 0.78
+        },
+        innerCores: ambientNodes.map(node => ({
+          color: node.innerMesh.material.color.clone(),
+          emissive: node.innerMesh.material.emissive.clone(),
+          intensity: node.innerMesh.material.emissiveIntensity
+        }))
+      };
+    }
+
+    function applySceneConfigInstant(cfg) {
+      if (!scene) return;
+      if (scene.fog) {
+        scene.fog.color.setHex(cfg.fog.color);
+        scene.fog.density = cfg.fog.density;
+      }
+      if (ambientLight) {
+        ambientLight.color.setHex(cfg.ambientLight.color);
+        ambientLight.intensity = cfg.ambientLight.intensity;
+      }
+      if (keyLight) {
+        keyLight.color.setHex(cfg.keyLight.color);
+        keyLight.intensity = cfg.keyLight.intensity;
+      }
+      if (rimLight) {
+        rimLight.color.setHex(cfg.rimLight.color);
+        rimLight.intensity = cfg.rimLight.intensity;
+      }
+      if (splineLineMesh && splineLineMesh.material) {
+        splineLineMesh.material.color.setHex(cfg.spline.color);
+        splineLineMesh.material.opacity = cfg.spline.opacity;
+      }
+      dataPulses.forEach(p => {
+        if (p.mesh && p.mesh.material) {
+          p.mesh.material.color.setHex(cfg.pulse.color);
+          p.mesh.material.opacity = cfg.pulse.opacity;
+        }
+      });
+      ambientNodes.forEach((node, idx) => {
+        if (node.outerMesh && node.outerMesh.material) {
+          node.outerMesh.material.color.setHex(cfg.outerNode.color);
+          node.outerMesh.material.roughness = cfg.outerNode.roughness;
+          node.outerMesh.material.transmission = cfg.outerNode.transmission;
+          node.outerMesh.material.opacity = cfg.outerNode.opacity;
+        }
+        if (node.innerMesh && node.innerMesh.material) {
+          const core = cfg.innerCores[idx] || cfg.innerCores[0];
+          node.innerMesh.material.color.setHex(core.color);
+          node.innerMesh.material.emissive.setHex(core.emissive);
+          node.innerMesh.material.emissiveIntensity = core.intensity;
+        }
+      });
+      if (isReducedMotion && renderer && camera) {
+        renderer.render(scene, camera);
+      }
+    }
+
+    function startSceneThemeTransition(targetConfig, animate = true) {
+      if (!scene) return;
+      if (!animate || isReducedMotion) {
+        applySceneConfigInstant(targetConfig);
+        return;
+      }
+      sceneTransition.startConfig = captureCurrentSceneState();
+      sceneTransition.targetConfig = targetConfig;
+      sceneTransition.startTime = performance.now();
+      sceneTransition.active = true;
+    }
+
+    function updateSceneThemeTransition() {
+      if (!sceneTransition.active || !scene) return;
+      const now = performance.now();
+      const elapsed = now - sceneTransition.startTime;
+      let progress = Math.min(1, elapsed / sceneTransition.duration);
+
+      // Smooth cubic ease-in-out
+      const t = progress < 0.5
+        ? 4 * progress * progress * progress
+        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+      const s = sceneTransition.startConfig;
+      const tg = sceneTransition.targetConfig;
+
+      const targetFogColor = new THREE.Color(tg.fog.color);
+      const targetAmbColor = new THREE.Color(tg.ambientLight.color);
+      const targetKeyColor = new THREE.Color(tg.keyLight.color);
+      const targetRimColor = new THREE.Color(tg.rimLight.color);
+      const targetSplineColor = new THREE.Color(tg.spline.color);
+      const targetPulseColor = new THREE.Color(tg.pulse.color);
+      const targetOuterColor = new THREE.Color(tg.outerNode.color);
+
+      if (scene.fog && s.fog) {
+        scene.fog.color.copy(s.fog.color).lerp(targetFogColor, t);
+        scene.fog.density = s.fog.density + (tg.fog.density - s.fog.density) * t;
+      }
+      if (ambientLight && s.ambientLight) {
+        ambientLight.color.copy(s.ambientLight.color).lerp(targetAmbColor, t);
+        ambientLight.intensity = s.ambientLight.intensity + (tg.ambientLight.intensity - s.ambientLight.intensity) * t;
+      }
+      if (keyLight && s.keyLight) {
+        keyLight.color.copy(s.keyLight.color).lerp(targetKeyColor, t);
+        keyLight.intensity = s.keyLight.intensity + (tg.keyLight.intensity - s.keyLight.intensity) * t;
+      }
+      if (rimLight && s.rimLight) {
+        rimLight.color.copy(s.rimLight.color).lerp(targetRimColor, t);
+        rimLight.intensity = s.rimLight.intensity + (tg.rimLight.intensity - s.rimLight.intensity) * t;
+      }
+      if (splineLineMesh && splineLineMesh.material && s.spline) {
+        splineLineMesh.material.color.copy(s.spline.color).lerp(targetSplineColor, t);
+        splineLineMesh.material.opacity = s.spline.opacity + (tg.spline.opacity - s.spline.opacity) * t;
+      }
+      dataPulses.forEach(p => {
+        if (p.mesh && p.mesh.material && s.pulse) {
+          p.mesh.material.color.copy(s.pulse.color).lerp(targetPulseColor, t);
+          p.mesh.material.opacity = s.pulse.opacity + (tg.pulse.opacity - s.pulse.opacity) * t;
+        }
+      });
+      ambientNodes.forEach((node, idx) => {
+        if (node.outerMesh && node.outerMesh.material && s.outerNode) {
+          node.outerMesh.material.color.copy(s.outerNode.color).lerp(targetOuterColor, t);
+          node.outerMesh.material.roughness = s.outerNode.roughness + (tg.outerNode.roughness - s.outerNode.roughness) * t;
+          node.outerMesh.material.transmission = s.outerNode.transmission + (tg.outerNode.transmission - s.outerNode.transmission) * t;
+          node.outerMesh.material.opacity = s.outerNode.opacity + (tg.outerNode.opacity - s.outerNode.opacity) * t;
+        }
+        if (node.innerMesh && node.innerMesh.material && s.innerCores) {
+          const sCore = s.innerCores[idx] || s.innerCores[0];
+          const tgCore = tg.innerCores[idx] || tg.innerCores[0];
+          const tCoreColor = new THREE.Color(tgCore.color);
+          const tEmissiveColor = new THREE.Color(tgCore.emissive);
+
+          node.innerMesh.material.color.copy(sCore.color).lerp(tCoreColor, t);
+          node.innerMesh.material.emissive.copy(sCore.emissive).lerp(tEmissiveColor, t);
+          node.innerMesh.material.emissiveIntensity = sCore.intensity + (tgCore.intensity - sCore.intensity) * t;
+        }
+      });
+
+      if (progress >= 1) {
+        sceneTransition.active = false;
+      }
+    }
+
     function initAmbient3D() {
-      if (!window.WebGLRenderingContext || !canvas) return;
+      const statusDot = document.getElementById('webglStatusDot');
+      const statusText = document.getElementById('webglStatusText');
+
+      if (!window.WebGLRenderingContext || !canvas) {
+        if (statusDot && statusText) {
+          statusDot.classList.add('fallback');
+          statusText.textContent = "CSS Depth: Active";
+        }
+        document.body.classList.add('webgl-fallback-active');
+        return;
+      }
 
       isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       try {
         scene = new THREE.Scene();
+
+        const initIsLight = document.documentElement.getAttribute('data-theme') === 'light';
+        const initialCfg = initIsLight ? LIGHT_SCENE_CONFIG : DARK_SCENE_CONFIG;
+
         // Atmospheric deep falloff fog
-        scene.fog = new THREE.FogExp2(0x060913, 0.016);
+        scene.fog = new THREE.FogExp2(initialCfg.fog.color, initialCfg.fog.density);
 
         camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.5, 300);
         camera.position.set(0, 0, 46);
@@ -3151,30 +3445,35 @@
         });
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.05;
+        renderer.setClearColor(0x000000, 0);
 
         // Restrained Studio Lighting
-        ambientLight = new THREE.AmbientLight(0x0a1020, 1.4);
+        ambientLight = new THREE.AmbientLight(initialCfg.ambientLight.color, initialCfg.ambientLight.intensity);
         scene.add(ambientLight);
 
         // Soft cool key light from upper-left
-        keyLight = new THREE.DirectionalLight(0xe2e8f0, 1.2);
-        keyLight.position.set(-25, 35, 30);
+        keyLight = new THREE.DirectionalLight(initialCfg.keyLight.color, initialCfg.keyLight.intensity);
+        keyLight.position.set(...initialCfg.keyLight.pos);
         scene.add(keyLight);
 
         // Soft slate rim light from lower-right
-        rimLight = new THREE.DirectionalLight(0x38bdf8, 0.9);
-        rimLight.position.set(30, -25, -15);
+        rimLight = new THREE.DirectionalLight(initialCfg.rimLight.color, initialCfg.rimLight.intensity);
+        rimLight.position.set(...initialCfg.rimLight.pos);
         scene.add(rimLight);
 
         // Build the 5 Physical Glass Nodes
-        buildTranslucentNodes();
+        buildTranslucentNodes(initialCfg);
 
         // Build Subtle Spline Data Pathways connecting the 5 nodes
-        buildSubtleDataPathways();
+        buildSubtleDataPathways(initialCfg);
 
-        // Synchronize 3D scene with current effective theme
-        const initIsLight = document.documentElement.getAttribute('data-theme') === 'light';
-        update3DTheme(initIsLight);
+        if (statusDot && statusText) {
+          statusDot.classList.remove('fallback');
+          statusText.textContent = "Ambient 3D: Active";
+        }
 
         // Window & Interaction Listeners
         window.addEventListener('resize', onResize, false);
@@ -3192,40 +3491,49 @@
         }
       } catch (err) {
         console.warn("Ambient 3D fallback initialized:", err);
+        if (statusDot && statusText) {
+          statusDot.classList.add('fallback');
+          statusText.textContent = "CSS Depth: Active";
+        }
+        document.body.classList.add('webgl-fallback-active');
       }
     }
 
-    function buildTranslucentNodes() {
+    function buildTranslucentNodes(cfg) {
+      ambientNodes = [];
+      const nodeCfg = cfg || (document.documentElement.getAttribute('data-theme') === 'light' ? LIGHT_SCENE_CONFIG : DARK_SCENE_CONFIG);
+
       nodeArchitectures.forEach((spec, idx) => {
         const group = new THREE.Group();
 
         // Outer Frosted Glass Sphere (Photorealistic Physical Material)
         const outerGeo = new THREE.SphereGeometry(spec.radius, 48, 48);
         const outerMat = new THREE.MeshPhysicalMaterial({
-          color: 0x1b263b,
-          metalness: 0.12,
-          roughness: 0.32,
-          transmission: 0.92,
-          thickness: 3.2,
+          color: nodeCfg.outerNode.color,
+          metalness: nodeCfg.outerNode.metalness,
+          roughness: nodeCfg.outerNode.roughness,
+          transmission: nodeCfg.outerNode.transmission,
+          thickness: nodeCfg.outerNode.thickness,
           ior: 1.46,
           reflectivity: 0.45,
-          clearcoat: 0.6,
-          clearcoatRoughness: 0.25,
+          clearcoat: nodeCfg.outerNode.clearcoat,
+          clearcoatRoughness: nodeCfg.outerNode.clearcoatRoughness,
           transparent: true,
-          opacity: 0.78
+          opacity: nodeCfg.outerNode.opacity
         });
         const outerMesh = new THREE.Mesh(outerGeo, outerMat);
         group.add(outerMesh);
 
-        // Inner Luminous Core (Subtle glowing core inside the glass, like an optical prism)
+        // Inner Luminous Core
+        const coreCfg = nodeCfg.innerCores[idx] || nodeCfg.innerCores[0];
         const innerGeo = new THREE.SphereGeometry(spec.radius * 0.42, 24, 24);
         const innerMat = new THREE.MeshStandardMaterial({
-          color: idx === 2 ? 0x10b981 : (idx === 3 ? 0xf59e0b : 0x38bdf8),
-          emissive: idx === 2 ? 0x10b981 : (idx === 3 ? 0xf59e0b : 0x38bdf8),
-          emissiveIntensity: 0.2,
+          color: coreCfg.color,
+          emissive: coreCfg.emissive,
+          emissiveIntensity: coreCfg.intensity,
           roughness: 0.6,
           transparent: true,
-          opacity: 0.45
+          opacity: 0.55
         });
         const innerMesh = new THREE.Mesh(innerGeo, innerMat);
         group.add(innerMesh);
@@ -3243,7 +3551,10 @@
       });
     }
 
-    function buildSubtleDataPathways() {
+    function buildSubtleDataPathways(cfg) {
+      dataPulses = [];
+      const pathCfg = cfg || (document.documentElement.getAttribute('data-theme') === 'light' ? LIGHT_SCENE_CONFIG : DARK_SCENE_CONFIG);
+
       // Connect nodes in flow: Node 0 (Acquire) -> 1 (Register) -> 2 (Refer) -> 3 (Unlock) -> 4 (Measure)
       const points = ambientNodes.map(n => new THREE.Vector3(...n.spec.basePos));
       points.push(new THREE.Vector3(...ambientNodes[0].spec.basePos)); // Close the loop
@@ -3257,20 +3568,20 @@
       
       // Extremely faint illuminated pathway
       const lineMat = new THREE.LineBasicMaterial({
-        color: 0x38bdf8,
+        color: pathCfg.spline.color,
         transparent: true,
-        opacity: 0.12
+        opacity: pathCfg.spline.opacity
       });
 
       splineLineMesh = new THREE.Line(lineGeo, lineMat);
       scene.add(splineLineMesh);
 
       // 4 Slow Data Pulses Traveling Along the Spline Pathway
-      const pulseGeo = new THREE.SphereGeometry(0.3, 12, 12);
+      const pulseGeo = new THREE.SphereGeometry(0.32, 12, 12);
       const pulseMat = new THREE.MeshBasicMaterial({
-        color: 0x38bdf8,
+        color: pathCfg.pulse.color,
         transparent: true,
-        opacity: 0.45
+        opacity: pathCfg.pulse.opacity
       });
 
       for (let i = 0; i < 4; i++) {
@@ -3295,12 +3606,12 @@
 
         if (isMobile) {
           // Push outward and scale down on mobile so the center reading column is 100% unobstructed
-          x = x < 0 ? -18 : (x > 0 ? 18 : 0);
-          z -= 8;
-          node.group.scale.set(0.75, 0.75, 0.75);
+          x = x < 0 ? -19 : (x > 0 ? 19 : 0);
+          z -= 10;
+          node.group.scale.set(0.7, 0.7, 0.7);
         } else if (isTablet) {
-          x = x * 0.9;
-          node.group.scale.set(0.9, 0.9, 0.9);
+          x = x * 0.92;
+          node.group.scale.set(0.85, 0.85, 0.85);
         } else {
           node.group.scale.set(1, 1, 1);
         }
@@ -3337,7 +3648,9 @@
       // Gentle subtle pulse illumination
       node.innerMesh.material.emissiveIntensity = 0.55;
       setTimeout(() => {
-        node.innerMesh.material.emissiveIntensity = 0.2;
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        const baseIntensity = isLight ? LIGHT_SCENE_CONFIG.innerCores[idx].intensity : DARK_SCENE_CONFIG.innerCores[idx].intensity;
+        node.innerMesh.material.emissiveIntensity = baseIntensity;
       }, 700);
     }
 
@@ -3349,6 +3662,9 @@
     function animateAmbientScene() {
       if (isReducedMotion) return;
       requestAnimationFrame(animateAmbientScene);
+
+      // Smoothly update theme transition if active
+      updateSceneThemeTransition();
 
       const elapsedTime = clock.getElapsedTime();
 
@@ -3912,93 +4228,10 @@
       return setting;
     }
 
-    function update3DTheme(isLight) {
+    function update3DTheme(isLight, animate = true) {
       if (!scene) return;
-
-      if (isLight) {
-        if (scene.fog) {
-          scene.fog.color.setHex(0xf8fafc);
-          scene.fog.density = 0.012;
-        }
-        if (ambientLight) {
-          ambientLight.color.setHex(0xe2e8f0);
-          ambientLight.intensity = 1.8;
-        }
-        if (keyLight) {
-          keyLight.color.setHex(0x6366f1);
-          keyLight.intensity = 1.4;
-        }
-        if (rimLight) {
-          rimLight.color.setHex(0x0284c7);
-          rimLight.intensity = 1.1;
-        }
-        if (splineLineMesh && splineLineMesh.material) {
-          splineLineMesh.material.color.setHex(0x6366f1);
-          splineLineMesh.material.opacity = 0.22;
-        }
-        dataPulses.forEach(pulse => {
-          if (pulse.mesh && pulse.mesh.material) {
-            pulse.mesh.material.color.setHex(0x4f46e5);
-            pulse.mesh.material.opacity = 0.7;
-          }
-        });
-        ambientNodes.forEach((node, idx) => {
-          if (node.outerMesh && node.outerMesh.material) {
-            node.outerMesh.material.color.setHex(0x818cf8);
-            node.outerMesh.material.roughness = 0.22;
-            node.outerMesh.material.transmission = 0.88;
-            node.outerMesh.material.opacity = 0.55;
-          }
-          if (node.innerMesh && node.innerMesh.material) {
-            const c = idx === 2 ? 0x059669 : (idx === 3 ? 0xd97706 : 0x4f46e5);
-            node.innerMesh.material.color.setHex(c);
-            node.innerMesh.material.emissive.setHex(c);
-            node.innerMesh.material.emissiveIntensity = 0.35;
-          }
-        });
-      } else {
-        // Dark mode
-        if (scene.fog) {
-          scene.fog.color.setHex(0x060913);
-          scene.fog.density = 0.016;
-        }
-        if (ambientLight) {
-          ambientLight.color.setHex(0x0a1020);
-          ambientLight.intensity = 1.4;
-        }
-        if (keyLight) {
-          keyLight.color.setHex(0xe2e8f0);
-          keyLight.intensity = 1.2;
-        }
-        if (rimLight) {
-          rimLight.color.setHex(0x38bdf8);
-          rimLight.intensity = 0.9;
-        }
-        if (splineLineMesh && splineLineMesh.material) {
-          splineLineMesh.material.color.setHex(0x38bdf8);
-          splineLineMesh.material.opacity = 0.12;
-        }
-        dataPulses.forEach(pulse => {
-          if (pulse.mesh && pulse.mesh.material) {
-            pulse.mesh.material.color.setHex(0x38bdf8);
-            pulse.mesh.material.opacity = 0.45;
-          }
-        });
-        ambientNodes.forEach((node, idx) => {
-          if (node.outerMesh && node.outerMesh.material) {
-            node.outerMesh.material.color.setHex(0x1b263b);
-            node.outerMesh.material.roughness = 0.32;
-            node.outerMesh.material.transmission = 0.92;
-            node.outerMesh.material.opacity = 0.78;
-          }
-          if (node.innerMesh && node.innerMesh.material) {
-            const c = idx === 2 ? 0x10b981 : (idx === 3 ? 0xf59e0b : 0x38bdf8);
-            node.innerMesh.material.color.setHex(c);
-            node.innerMesh.material.emissive.setHex(c);
-            node.innerMesh.material.emissiveIntensity = 0.2;
-          }
-        });
-      }
+      const targetConfig = isLight ? LIGHT_SCENE_CONFIG : DARK_SCENE_CONFIG;
+      startSceneThemeTransition(targetConfig, animate);
     }
 
     function applyTheme(setting) {
